@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_home"
+        android:icon="@drawable/selector_bnv_home"
+        android:title="@string/tv_bnv_home" />
+    <item
+        android:id="@+id/menu_ranking"
+        android:icon="@drawable/selector_bnv_ranking"
+        android:title="@string/tv_bnv_ranking" />
+    <item
+        android:id="@+id/menu_myedit"
+        android:icon="@drawable/selector_bnv_myedit"
+        android:title="@string/tv_bnv_myedit" />
+
+</menu>
