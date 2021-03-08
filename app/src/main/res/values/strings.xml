@@ -1,3 +1,10 @@
 <resources>
+    <!--  app config  -->
     <string name="app_name">Edit</string>
+
+    <!--  activity_main  -->
+    <string name="tv_bnv_home">홈</string>
+    <string name="tv_bnv_ranking">랭킹</string>
+    <string name="tv_bnv_myedit">나의 에딧</string>
+
 </resources>
