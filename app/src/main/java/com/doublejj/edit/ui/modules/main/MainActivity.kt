@@ -2,17 +2,14 @@ package com.doublejj.edit.ui.modules.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.MenuItem
-import android.widget.Toast
-import androidx.databinding.DataBindingUtil
+import androidx.databinding.DataBindingUtil.setContentView
 import androidx.fragment.app.FragmentTransaction
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import com.doublejj.edit.R
 import com.doublejj.edit.databinding.ActivityMainBinding
 import com.doublejj.edit.ui.modules.main.home.HomeFragment
 import com.doublejj.edit.ui.modules.main.myedit.MyeditFragment
 import com.doublejj.edit.ui.modules.main.ranking.RankingFragment
-import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
     private val TAG: String = javaClass.simpleName.toString()
@@ -30,11 +27,11 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        binding = setContentView(this, R.layout.activity_main)
         binding.lifecycleOwner = this
 
-        viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
-        binding.viewModel = viewModel
+        viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
+        binding.mainViewModel = viewModel
 
         // prepare instances
         homeFragment = HomeFragment()
