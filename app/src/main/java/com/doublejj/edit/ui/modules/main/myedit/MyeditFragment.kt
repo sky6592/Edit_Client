@@ -6,21 +6,29 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import com.doublejj.edit.R
+import com.doublejj.edit.databinding.MyeditFragmentBinding
 
 class MyeditFragment : Fragment() {
+    private lateinit var binding: MyeditFragmentBinding
     private lateinit var viewModel: MyeditViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.myedit_fragment, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.myedit_fragment, container, false)
+        viewModel = ViewModelProvider(this).get(MyeditViewModel::class.java)
+
+        binding.myeditViewModel = viewModel
+        binding.lifecycleOwner = this
+
+        return binding.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(MyeditViewModel::class.java)
         // TODO: Use the ViewModel
     }
 
