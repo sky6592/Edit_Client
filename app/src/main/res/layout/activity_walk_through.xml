@@ -13,8 +13,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1" />
+<<<<<<< HEAD
     //cchek
 >>>>>>> a26ff90 (chore : add auto-scroll-view)
+=======
+    //why not
+>>>>>>> 3254d81 (chore : add auto-scroll-view)
 
 
 </LinearLayout>
