@@ -18,7 +18,7 @@
 
             <include
                 android:id="@+id/toolbar_main_home"
-                layout="@layout/toolbar_main_home"
+                layout="@layout/toolbar_logo_and_refresh"
 
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
