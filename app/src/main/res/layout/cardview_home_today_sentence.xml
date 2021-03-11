@@ -6,7 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    app:cardCornerRadius="@dimen/size_card_radius"
+    app:cardCornerRadius="@dimen/size_card_radius_7dp"
     android:elevation="10dp"
 
     android:layout_marginTop="@dimen/margin_card_inner_text_start_and_end_20dp"
@@ -37,7 +37,7 @@
             android:maxWidth="@dimen/size_card_home_today_sentence_width"
 
             style="@style/CustomTextViewMidBlack"
-            android:text="실습은 요양원에서 했는데 현장에서 일을 해보니 생각했던 것보다 사회복지사가 신경써야 할 부분들이 많았지만 어르신들과 보내는 시간이 너무 즐거웠습니다."
+            android:text="@string/tv_sentence_content_example"
             android:textSize="@dimen/size_tv_card_content_12dp"
 
             android:layout_marginBottom="@dimen/margin_card_inner_text_start_and_end_20dp"

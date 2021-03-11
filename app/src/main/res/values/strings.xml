@@ -22,4 +22,7 @@
 
     <string name="tv_title_best_sentence_of_sympathy">많은 분들이 공감하고 있어요!</string>
 
+    <string name="tv_sentence_content_example">
+        실습은 요양원에서 했는데 현장에서 일을 해보니 생각했던 것보다 사회복지사가 신경써야 할 부분들이 많았지만 어르신들과 보내는 시간이 너무 즐거웠습니다.
+    </string>
 </resources>

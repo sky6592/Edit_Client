@@ -20,7 +20,7 @@
 
     <dimen name="size_card_home_today_sentence_width">294dp</dimen>
     <dimen name="size_card_home_today_sentence_height">150dp</dimen>
-    <dimen name="size_card_radius">7dp</dimen>
+    <dimen name="size_card_radius_7dp">7dp</dimen>
     <dimen name="margin_card_outer_side_16dp">16dp</dimen>
     <dimen name="margin_card_inner_text_top_and_bottom_14dp">16dp</dimen>
     <dimen name="margin_card_inner_text_start_and_end_20dp">20dp</dimen>
@@ -38,20 +38,34 @@
     <dimen name="size_iv_flower_yellow_width">32.5dp</dimen>
     <dimen name="size_iv_flower_yellow_height">35dp</dimen>
 
+    <dimen name="size_1dp">1dp</dimen>
+    <dimen name="size_5dp">5dp</dimen>
     <dimen name="size_6dp">6dp</dimen>
+    <dimen name="size_7dp">7dp</dimen>
     <dimen name="size_9dp">9dp</dimen>
     <dimen name="size_10dp">10dp</dimen>
     <dimen name="size_11dp">11dp</dimen>
     <dimen name="size_12dp">12dp</dimen>
     <dimen name="size_15dp">15dp</dimen>
+    <dimen name="size_18dp">18dp</dimen>
     <dimen name="size_20dp">20dp</dimen>
+    <dimen name="size_25dp">25dp</dimen>
     <dimen name="size_26dp">26dp</dimen>
     <dimen name="size_31dp">31dp</dimen>
     <dimen name="size_40dp">40dp</dimen>
     <dimen name="size_42dp">42dp</dimen>
     <dimen name="size_48dp">48dp</dimen>
+    <dimen name="size_54dp">54dp</dimen>
     <dimen name="size_56dp">56dp</dimen>
+    <dimen name="size_57dp">57dp</dimen>
     <dimen name="size_63dp">63dp</dimen>
+    <dimen name="size_67dp">67dp</dimen>
+    <dimen name="size_86dp">86dp</dimen>
 
     <dimen name="margin_section_10dp">10dp</dimen>
+
+    <dimen name="size_banner_height">84dp</dimen>
+
+    <dimen name="size_card_home_sentence_box_width">320dp</dimen>
+    <dimen name="size_card_home_sentence_box_height">120dp</dimen>
 </resources>

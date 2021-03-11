@@ -6,7 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    app:cardCornerRadius="@dimen/size_card_radius"
+    app:cardCornerRadius="@dimen/size_card_radius_7dp"
     android:elevation="10dp"
 
     android:layout_marginTop="@dimen/margin_card_inner_text_start_and_end_20dp"
