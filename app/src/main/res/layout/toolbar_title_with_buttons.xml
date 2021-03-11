@@ -29,6 +29,7 @@
             style="@style/CustomTextViewMidBlack"
             android:text="@string/tv_title_today_sentence"
             android:textSize="@dimen/size_tv_title_15dp"
+            android:fontFamily="@font/noto_sans_kr_medium"
             android:background="@color/transparent"
             android:gravity="center"
 
