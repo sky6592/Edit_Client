@@ -6,11 +6,18 @@
         <item name="colorPrimaryVariant">@color/purple_active</item>
         <item name="colorOnPrimary">@color/black</item>
         <!-- Secondary brand color. -->
-<!--        <item name="colorSecondary">@color/teal_200</item>-->
-<!--        <item name="colorSecondaryVariant">@color/teal_200</item>-->
-<!--        <item name="colorOnSecondary">@color/black</item>-->
+        <item name="colorSecondary">@color/purple_active</item>
+        <item name="colorSecondaryVariant">@color/purple_active</item>
+        <item name="colorOnSecondary">@color/white</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
-        <!-- Customize your theme here. -->
+
+        <!-- Font family -->
+        <item name="android:textViewStyle">@style/TextViewFontStyle</item>
+        <item name="android:editTextStyle">@style/EditTextFontStyle</item>
+        <item name="android:buttonStyle">@style/ButtonFontStyle</item>
+        <item name="android:radioButtonStyle">@style/RadioButtonFontStyle</item>
+        <item name="android:checkboxStyle">@style/CheckboxFontStyle</item>
+
     </style>
 </resources>

@@ -7,4 +7,19 @@
     <string name="tv_bnv_ranking">랭킹</string>
     <string name="tv_bnv_myedit">나의 에딧</string>
 
+    <!--  home_fragment  -->
+    <string name="fab_description_mentee">자소서 작성</string>
+    <string name="fab_description_mentor">자소서 코멘트 작성</string>
+
+    <string name="tv_title_today_sentence">오늘의 문장</string>
+    <string name="tv_card_writer">멘티님</string>
+    <string name="tv_card_zero_title">문장이 아직 등록되지 않았어요.</string>
+    <string name="tv_card_zero_content">오늘 첫 문장의 주인공이 되어보세요!</string>
+
+    <string name="tv_title_waited_comment">코멘트를 기다리고 있어요!</string>
+
+    <string name="tv_title_completed_reward">채택이 완료되었어요!</string>
+
+    <string name="tv_title_best_sentence_of_sympathy">많은 분들이 공감하고 있어요!</string>
+
 </resources>

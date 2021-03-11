@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="CustomTextViewMidBlack" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textColor">@color/mid_black</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+</resources>

@@ -20,7 +20,7 @@
             android:textStyle="bold"
             android:textColor="@color/purple_active"
             android:textSize="@dimen/size_toolbar_logo_text"
-            android:background="@color/transparency"
+            android:background="@color/transparent"
             android:gravity="center"
 
             app:layout_constraintStart_toStartOf="parent"
@@ -29,7 +29,9 @@
         <ImageButton
             android:layout_width="@dimen/size_icon_button_24dp"
             android:layout_height="@dimen/size_icon_button_24dp"
-            android:background="@drawable/icon_refresh"
+            android:src="@drawable/icon_refresh"
+            android:background="@color/transparent"
+            android:scaleType="fitXY"
 
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"

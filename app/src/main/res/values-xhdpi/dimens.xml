@@ -1,17 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources
+    xmlns:tools="http://schemas.android.com/tools">
     <dimen name="size_toolbar_logo_width">51dp</dimen>
     <dimen name="size_toolbar_logo_height">32dp</dimen>
     <dimen name="size_toolbar_logo_text">22dp</dimen>
 
+    <!--  toolbar  -->
     <dimen name="size_toolbar_height">54dp</dimen>
-
     <dimen name="size_icon_button_24dp">24dp</dimen>
-    <dimen name="size_floatingactionbutton_56dp">56dp</dimen>
-    <dimen name="padding_floatingactionbutton_inner_13dp">13dp</dimen>
-
     <dimen name="margin_component_inset_20dp">20dp</dimen>
-    <dimen name="margin_section_10dp">10dp</dimen>
+
+    <!--  home_fragment  -->
+    <dimen name="size_fab_56dp">56dp</dimen>
+    <dimen name="margin_fab_outer_20dp">20dp</dimen>
+    <dimen name="design_fab_image_size" tools:override="true">56dp</dimen>
+
+    <dimen name="size_tv_title_15dp">15dp</dimen>
+    <dimen name="padding_tv_title_top_and_bottom_17dp">17dp</dimen>
+
+    <dimen name="size_card_home_today_sentence_width">294dp</dimen>
+    <dimen name="size_card_home_today_sentence_height">150dp</dimen>
+    <dimen name="size_card_radius">7dp</dimen>
     <dimen name="margin_card_outer_side_16dp">16dp</dimen>
     <dimen name="margin_card_inner_text_top_and_bottom_14dp">16dp</dimen>
+    <dimen name="margin_card_inner_text_start_and_end_20dp">20dp</dimen>
+    <dimen name="size_tv_card_writer_14dp">14dp</dimen>
+    <dimen name="size_tv_card_content_12dp">12dp</dimen>
+    <dimen name="margin_card_top_space">3dp</dimen>
+    <dimen name="margin_card_end_space">16dp</dimen>
+
+    <dimen name="size_iv_leaf_triple_width">76dp</dimen>
+    <dimen name="size_iv_leaf_triple_height">79dp</dimen>
+    <dimen name="size_iv_leaf_double_width">77dp</dimen>
+    <dimen name="size_iv_leaf_double_height">86dp</dimen>
+    <dimen name="size_iv_flower_red_width">43dp</dimen>
+    <dimen name="size_iv_flower_red_height">44dp</dimen>
+    <dimen name="size_iv_flower_yellow_width">32.5dp</dimen>
+    <dimen name="size_iv_flower_yellow_height">35dp</dimen>
+
+    <dimen name="size_6dp">6dp</dimen>
+    <dimen name="size_9dp">9dp</dimen>
+    <dimen name="size_10dp">10dp</dimen>
+    <dimen name="size_11dp">11dp</dimen>
+    <dimen name="size_12dp">12dp</dimen>
+    <dimen name="size_15dp">15dp</dimen>
+    <dimen name="size_20dp">20dp</dimen>
+    <dimen name="size_26dp">26dp</dimen>
+    <dimen name="size_31dp">31dp</dimen>
+    <dimen name="size_40dp">40dp</dimen>
+    <dimen name="size_42dp">42dp</dimen>
+    <dimen name="size_48dp">48dp</dimen>
+    <dimen name="size_56dp">56dp</dimen>
+    <dimen name="size_63dp">63dp</dimen>
+
+    <dimen name="margin_section_10dp">10dp</dimen>
 </resources>
