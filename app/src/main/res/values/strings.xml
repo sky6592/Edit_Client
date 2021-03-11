@@ -20,7 +20,7 @@
     <string name="tv_title_waited_comment">코멘트를 기다리고 있어요!</string>
     <string name="tv_title_completed_reward">채택이 완료되었어요!</string>
     <string name="tv_title_best_sentence_of_sympathy">많은 분들이 공감하고 있어요!</string>
-    <string name="tv_title_view_comment">코멘트 보기</string>
+    <string name="tv_title_open_comment">코멘트 보기</string>
     <string name="tv_title_self_writing">자소서 입력하기</string>
 
     <string name="tv_sentence_content_example">
@@ -34,18 +34,20 @@
     <string name="tv_vertical_bar">|</string>
     <string name="tv_occupation_type">디자인</string>
     <string name="tv_colon">:</string>
+    <string name="tv_sympathy">공감해요</string>
+    <string name="tv_sympathy_count">32</string>
 
 
     <!--  self_writing_activity  -->
-    <style name="tv_self_writing_spinner_kind">자소서 종류</style>
-    <style name="spinner_hint">선택해주세요.</style>
-    <style name="spinner_self_writing_0">지원동기</style>
-    <style name="spinner_self_writing_1">성장배경</style>
-    <style name="spinner_self_writing_2">성격의 장ㆍ단점</style>
-    <style name="spinner_self_writing_3">직무 관련 경험</style>
-    <style name="spinner_self_writing_4">문제 해결 경험</style>
-    <style name="spinner_self_writing_5">도전ㆍ성취ㆍ실패ㆍ극복 경험</style>
-    <style name="spinner_self_writing_6">취미 / 특기</style>
-    <style name="spinner_self_writing_7">기타</style>
+    <string name="tv_self_writing_spinner_kind">자소서 종류</string>
+    <string name="spinner_hint">선택해주세요.</string>
+    <string name="spinner_self_writing_0">지원동기</string>
+    <string name="spinner_self_writing_1">성장배경</string>
+    <string name="spinner_self_writing_2">성격의 장ㆍ단점</string>
+    <string name="spinner_self_writing_3">직무 관련 경험</string>
+    <string name="spinner_self_writing_4">문제 해결 경험</string>
+    <string name="spinner_self_writing_5">도전ㆍ성취ㆍ실패ㆍ극복 경험</string>
+    <string name="spinner_self_writing_6">취미 / 특기</string>
+    <string name="spinner_self_writing_7">기타</string>
 
 </resources>
