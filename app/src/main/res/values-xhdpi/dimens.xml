@@ -39,6 +39,7 @@
     <dimen name="size_iv_flower_yellow_height">35dp</dimen>
 
     <dimen name="size_1dp">1dp</dimen>
+    <dimen name="size_2dp">2dp</dimen>
     <dimen name="size_4dp">4dp</dimen>
     <dimen name="size_3dp">3dp</dimen>
     <dimen name="size_5dp">5dp</dimen>
@@ -59,31 +60,47 @@
     <dimen name="size_20dp">20dp</dimen>
     <dimen name="size_21dp">21dp</dimen>
     <dimen name="size_22dp">22dp</dimen>
+    <dimen name="size_23dp">23dp</dimen>
     <dimen name="size_24dp">24dp</dimen>
     <dimen name="size_25dp">25dp</dimen>
     <dimen name="size_26dp">26dp</dimen>
     <dimen name="size_27dp">27dp</dimen>
+    <dimen name="size_28dp">28dp</dimen>
     <dimen name="size_31dp">31dp</dimen>
+    <dimen name="size_32dp">32dp</dimen>
     <dimen name="size_33dp">33dp</dimen>
+    <dimen name="size_34dp">34dp</dimen>
     <dimen name="size_36dp">36dp</dimen>
+    <dimen name="size_38dp">38dp</dimen>
     <dimen name="size_40dp">40dp</dimen>
+    <dimen name="size_41dp">41dp</dimen>
     <dimen name="size_42dp">42dp</dimen>
     <dimen name="size_43dp">43dp</dimen>
     <dimen name="size_44dp">44dp</dimen>
     <dimen name="size_45dp">45dp</dimen>
+    <dimen name="size_47dp">47dp</dimen>
     <dimen name="size_48dp">48dp</dimen>
+    <dimen name="size_50dp">50dp</dimen>
+    <dimen name="size_53dp">53dp</dimen>
     <dimen name="size_54dp">54dp</dimen>
+    <dimen name="size_55dp">55dp</dimen>
     <dimen name="size_56dp">56dp</dimen>
     <dimen name="size_57dp">57dp</dimen>
+    <dimen name="size_58dp">58dp</dimen>
     <dimen name="size_59dp">59dp</dimen>
     <dimen name="size_63dp">63dp</dimen>
     <dimen name="size_67dp">67dp</dimen>
+    <dimen name="size_73dp">73dp</dimen>
     <dimen name="size_74dp">74dp</dimen>
+    <dimen name="size_75dp">75dp</dimen>
     <dimen name="size_86dp">86dp</dimen>
     <dimen name="size_100dp">100dp</dimen>
+    <dimen name="size_112dp">112dp</dimen>
+    <dimen name="size_116dp">116dp</dimen>
+    <dimen name="size_147dp">147dp</dimen>
+    <dimen name="size_208dp">208dp</dimen>
     <dimen name="size_237dp">237dp</dimen>
     <dimen name="size_280dp">280dp</dimen>
-    <dimen name="size_208dp">208dp</dimen>
 
     <dimen name="margin_section_10dp">10dp</dimen>
 

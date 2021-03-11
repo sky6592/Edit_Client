@@ -99,4 +99,13 @@
     <string name="tv_dialog_submit">등록하기</string>
     <string name="tv_dialog_dismiss">취소</string>
 
+
+    <!--  myedit_fragment  -->
+    <string name="tv_menu_profile">내 정보</string>
+    <string name="tv_menu_sympathy_list">공감 목록</string>
+    <string name="tv_menu_sentence_list">자소서 목록</string>
+    <string name="tv_menu_sentence_complete_list">자소서 완성</string>
+    <string name="tv_menu_temp_list">임시 저장</string>
+    <string name="tv_switch_position">멘토/멘티 변경하기</string>
+    <string name="btn_logout">로그아웃</string>
 </resources>
