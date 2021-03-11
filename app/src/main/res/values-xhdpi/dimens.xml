@@ -61,6 +61,7 @@
     <dimen name="size_63dp">63dp</dimen>
     <dimen name="size_67dp">67dp</dimen>
     <dimen name="size_86dp">86dp</dimen>
+    <dimen name="size_101dp">101dp</dimen>
 
     <dimen name="margin_section_10dp">10dp</dimen>
 
