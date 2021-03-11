@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="walkThroughActivity"
+            type="com.doublejj.edit.ui.modules.main.walkthrough.WalkThroughActivity" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <pl.pzienowicz.autoscrollviewpager.AutoScrollViewPager
+            android:id="@+id/auto_view_pager_walk_through"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <ImageButton
+            android:id="@+id/img_btn_walk_through_sign_up"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="@dimen/walk_through_sign_up_margin_bottom"
+            android:background="@drawable/walk_through_sign_up_imgbtn"
+            android:onClick="@{()->walkThroughActivity.onMoveSignUp()}" />
+
+
+        <ImageButton
+            android:id="@+id/img_btn_walk_through_log_in"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="@dimen/walk_through_log_in_margin_bottom"
+            android:background="@drawable/walk_through_log_in_imgbtn"
+            android:onClick="@{()->walkThroughActivity.onMoveLogIn()}" />
+    </LinearLayout>
+</layout>

@@ -18,6 +18,8 @@ allprojects {
     repositories {
         google()
         jcenter()
+        //auto-scroll-view
+        maven { url "https://jitpack.io" }
     }
 }
 

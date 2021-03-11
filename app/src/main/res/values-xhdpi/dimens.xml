@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="size_toolbar_logo_width">51dp</dimen>
+    <dimen name="size_toolbar_logo_height">32dp</dimen>
+    <dimen name="size_toolbar_logo_text">22dp</dimen>
+
+    <dimen name="size_toolbar_height">54dp</dimen>
+
+    <dimen name="size_icon_button_24dp">24dp</dimen>
+    <dimen name="size_floatingactionbutton_56dp">56dp</dimen>
+    <dimen name="padding_floatingactionbutton_inner_13dp">13dp</dimen>
+
+    <dimen name="margin_component_inset_20dp">20dp</dimen>
+    <dimen name="margin_section_10dp">10dp</dimen>
+    <dimen name="margin_card_outer_side_16dp">16dp</dimen>
+    <dimen name="margin_card_inner_text_top_and_bottom_14dp">16dp</dimen>
+
+    //walk_through
+    <dimen name="walk_through_entire_padding">10dp</dimen>
+    <dimen name="walk_through_sign_up_margin_bottom">8dp</dimen>
+    <dimen name="walk_through_log_in_margin_bottom">28dp</dimen>
+</resources>
