@@ -2,6 +2,10 @@
 <resources>
     <color name="purple_inactive">#FFCDC1F4</color>
     <color name="purple_active">#FF5A32DC</color>
+    <color name="mid_purple">#FF8C5AC8</color>
+    <color name="sky">#FF3282E6</color>
+    <color name="navy">#FF3C46C8</color>
+
     <color name="black">#FF000000</color>
     <color name="mid_black">#FF282828</color>
     <color name="mid_gray">#FF5F5F5F</color>

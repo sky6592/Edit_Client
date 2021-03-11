@@ -10,6 +10,7 @@
     <!--  home_fragment  -->
     <string name="fab_description_mentee">자소서 작성</string>
     <string name="fab_description_mentor">자소서 코멘트 작성</string>
+    <string name="snackbar_description_mentor">나의 에딧>멘토 인증하기를 진행해주세요. :)</string>
 
     <string name="tv_title_today_sentence">오늘의 문장</string>
     <string name="tv_card_writer">멘티님</string>
@@ -17,12 +18,34 @@
     <string name="tv_card_zero_content">오늘 첫 문장의 주인공이 되어보세요!</string>
 
     <string name="tv_title_waited_comment">코멘트를 기다리고 있어요!</string>
-
     <string name="tv_title_completed_reward">채택이 완료되었어요!</string>
-
     <string name="tv_title_best_sentence_of_sympathy">많은 분들이 공감하고 있어요!</string>
+    <string name="tv_title_view_comment">코멘트 보기</string>
+    <string name="tv_title_self_writing">자소서 입력하기</string>
 
     <string name="tv_sentence_content_example">
         실습은 요양원에서 했는데 현장에서 일을 해보니 생각했던 것보다 사회복지사가 신경써야 할 부분들이 많았지만 어르신들과 보내는 시간이 너무 즐거웠습니다.
     </string>
+
+
+    <!--  today_sentence_fragment -->
+    <string name="et_sentence_hint">함께 고민하고 싶은 문장이 있나요?</string>
+    <string name="tv_occupation_text">희망 직군</string>
+    <string name="tv_vertical_bar">|</string>
+    <string name="tv_occupation_type">디자인</string>
+    <string name="tv_colon">:</string>
+
+
+    <!--  self_writing_activity  -->
+    <style name="tv_self_writing_spinner_kind">자소서 종류</style>
+    <style name="spinner_hint">선택해주세요.</style>
+    <style name="spinner_self_writing_0">지원동기</style>
+    <style name="spinner_self_writing_1">성장배경</style>
+    <style name="spinner_self_writing_2">성격의 장ㆍ단점</style>
+    <style name="spinner_self_writing_3">직무 관련 경험</style>
+    <style name="spinner_self_writing_4">문제 해결 경험</style>
+    <style name="spinner_self_writing_5">도전ㆍ성취ㆍ실패ㆍ극복 경험</style>
+    <style name="spinner_self_writing_6">취미 / 특기</style>
+    <style name="spinner_self_writing_7">기타</style>
+
 </resources>
