@@ -1,7 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-</LinearLayout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="walkThroughActivity"
+            type="com.doublejj.edit.ui.modules.main.walkthrough.WalkThroughActivity" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <pl.pzienowicz.autoscrollviewpager.AutoScrollViewPager
+            android:id="@+id/auto_view_pager_walk_through"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <!-- dp 모두 dimens에 넣어야함!-->
+        <com.tbuonomo.viewpagerdotsindicator.DotsIndicator
+            android:id="@+id/dots_indicator_walk_thorugh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            app:dotsColor="@color/lavender"
+
+            app:dotsCornerRadius="8dp"
+            app:dotsSize="16dp"
+            app:dotsSpacing="4dp"
+            app:dotsWidthFactor="2.5"
+            app:progressMode="true"
+            app:selectedDotColor="@color/purple" />
+
+
+        <!-- 그림자 수정해야함! -->
+        <ImageButton
+            android:id="@+id/img_btn_walk_through_sign_up"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="@dimen/walk_through_sign_up_margin_bottom"
+            android:background="@drawable/walk_through_sign_up_imgbtn"
+            android:onClick="@{()->walkThroughActivity.onMoveSignUp()}" />
+
+        <ImageButton
+            android:id="@+id/img_btn_walk_through_log_in"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="@dimen/walk_through_log_in_margin_bottom"
+            android:background="@drawable/walk_through_log_in_imgbtn"
+            android:onClick="@{()->walkThroughActivity.onMoveLogIn()}" />
+    </LinearLayout>
+</layout>
