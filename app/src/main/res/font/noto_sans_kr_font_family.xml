@@ -11,12 +11,13 @@
         app:fontStyle="normal"
         app:fontWeight="500" />
 
+
     <!-- noto sans kr bold -->
     <font
         android:font="@font/noto_sans_kr_bold"
         android:fontStyle="normal"
-        android:fontWeight="800"
+        android:fontWeight="900"
         app:font="@font/noto_sans_kr_bold"
         app:fontStyle="normal"
-        app:fontWeight="800" />
+        app:fontWeight="900" />
 </font-family>

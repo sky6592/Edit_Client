@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/size_card_home_sentence_box_height"
+    android:orientation="vertical"
+    android:background="@drawable/shape_gray_border_box"
+
+    android:paddingTop="@dimen/size_12dp"
+    android:paddingBottom="@dimen/size_18dp"
+    android:paddingStart="@dimen/margin_card_inner_text_start_and_end_20dp"
+    android:paddingEnd="@dimen/margin_card_inner_text_start_and_end_20dp">
+
+    <TextView
+        android:id="@+id/tv_sentence_writer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/CustomTextViewMidBlack"
+        android:text="@string/tv_card_writer"
+        android:textStyle="bold"
+        android:textSize="@dimen/size_tv_card_writer_14dp"
+
+        android:layout_marginTop="@dimen/size_12dp"
+        android:layout_marginBottom="@dimen/size_10dp" />
+    <TextView
+        android:id="@+id/tv_sentence_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxLines="3"
+        android:maxWidth="@dimen/size_card_home_sentence_box_width"
+
+        style="@style/CustomTextViewMidBlack"
+        android:text="@string/tv_sentence_content_example"
+        android:textSize="@dimen/size_tv_card_content_12dp" />
+</LinearLayout>

@@ -7,4 +7,105 @@
     <string name="tv_bnv_ranking">랭킹</string>
     <string name="tv_bnv_myedit">나의 에딧</string>
 
+    <!--  home_fragment  -->
+    <string name="fab_description_mentee">자소서 작성</string>
+    <string name="fab_description_mentor">자소서 코멘트 작성</string>
+    <string name="snackbar_description_mentor">나의 에딧>멘토 인증하기를 진행해주세요. :)</string>
+
+    <string name="tv_title_today_sentence">오늘의 문장</string>
+    <string name="tv_card_writer">멘티님</string>
+    <string name="tv_card_zero_title">문장이 아직 등록되지 않았어요.</string>
+    <string name="tv_card_zero_content">오늘 첫 문장의 주인공이 되어보세요!</string>
+
+    <string name="tv_title_waited_comment">코멘트를 기다리고 있어요!</string>
+    <string name="tv_title_completed_reward">채택이 완료되었어요!</string>
+    <string name="tv_title_best_sentence_of_sympathy">많은 분들이 공감하고 있어요!</string>
+    <string name="tv_title_open_comment">코멘트 보기</string>
+    <string name="tv_title_self_writing">자소서 입력하기</string>
+
+    <string name="tv_sentence_content_example">
+        실습은 요양원에서 했는데 현장에서 일을 해보니 생각했던 것보다 사회복지사가 신경써야 할 부분들이 많았지만 어르신들과 보내는 시간이 너무 즐거웠습니다.
+    </string>
+
+    <!--  today_sentence_fragment -->
+    <string name="et_sentence_hint">함께 고민하고 싶은 문장이 있나요?</string>
+    <string name="tv_occupation_text">희망 직군</string>
+    <string name="tv_vertical_bar">|</string>
+    <string name="tv_occupation_type">디자인</string>
+    <string name="tv_colon">:</string>
+    <string name="tv_sympathy">공감해요</string>
+    <string name="tv_sympathy_count">32</string>
+
+    <string name="snackbar_report">신고가 정상적으로 접수되었습니다. :)</string>
+    <string name="snackbar_limit_over">오늘 하루 10개의 문장 작성을 완료하셨습니다! :)</string>
+    <string name="snackbar_mentee_only">자소서 입력하기로 이어지며, 멘티만 작성 가능합니다! :)</string>
+
+    <!--  self_writing_activity  -->
+    <string name="tv_self_writing_spinner_kind_title">자소서 종류</string>
+    <string name="spinner_hint">선택해주세요.</string>
+    <string name="spinner_self_writing_0">지원동기</string>
+    <string name="spinner_self_writing_1">성장배경</string>
+    <string name="spinner_self_writing_2">성격의 장ㆍ단점</string>
+    <string name="spinner_self_writing_3">직무 관련 경험</string>
+    <string name="spinner_self_writing_4">문제 해결 경험</string>
+    <string name="spinner_self_writing_5">도전ㆍ성취ㆍ실패ㆍ극복 경험</string>
+    <string name="spinner_self_writing_6">취미 / 특기</string>
+    <string name="spinner_self_writing_7">기타</string>
+    <string name="et_self_writing_etc_hint">최대 20자 입력 가능합니다.</string>
+    <string name="tv_self_writing_notice_write_first">하루에 등록 가능한 문장은 최대 10개 입니다.</string>
+    <string name="tv_self_writing_notice_write_second">10개 이상 입력할 수 있는 서비스를 준비 중이니, 조금만 기다려주세요!</string>
+
+    <string name="tv_self_writing_input_title">문장 입력</string>
+    <string name="tv_self_writing_input_include_space">공백 포함:</string>
+    <string name="tv_self_writing_input_without_space">공백 제외:</string>
+    <string name="tv_self_writing_input_count">자</string>
+    <string name="tv_self_writing_input_hint">문장은 공백 포함 90자 내로 제한됩니다.</string>
+    <string name="tv_self_writing_notice_input_first">한 번 등록한 문장은 수정이 어렵습니다. 신중히 확인 후 등록해주세요!</string>
+    <string name="btn_self_writing_temp">임시 저장</string>
+    <string name="btn_self_writing_submit">등록하기</string>
+
+
+    <!--  open_comment_activity  -->
+    <string name="tv_open_comment_evaluation_type_0">문장에 대한 전체 평가</string>
+    <string name="tv_open_comment_evaluation_type_1">성실성</string>
+    <string name="tv_open_comment_evaluation_type_2">구체성과 논리성</string>
+    <string name="tv_open_comment_evaluation_type_3">활동성</string>
+    <string name="tv_open_comment_evaluation_good">좋음</string>
+    <string name="tv_open_comment_evaluation_normal">보통</string>
+    <string name="tv_open_comment_evaluation_leak">부족</string>
+
+    <string name="tv_open_comment_zero_title">아직 코멘트가 없습니다.</string>
+    <string name="tv_open_comment_zero_content">멘토님이 작성해주신 코멘트 한 줄이<br/>멘티님께는 큰 도움이 됩니다!</string>
+
+    <!--  dialog  -->
+    <string name="tv_dialog_self_writing_title">문장 완성을 할 수 없어요!</string>
+    <string name="tv_dialog_self_writing_content">코멘트가 아직 없거나, 채택한 코멘트가 없는 경우 문장 완성을 할 수 없어요.</string>
+    <string name="tv_dialog_open_comment_title">코멘트를 삭제하시겠어요?</string>
+    <string name="tv_dialog_open_comment_content">삭제된 코멘트는 복구할 수 없습니다.<br/>정말 삭제하시겠어요?</string>
+    <string name="tv_dialog_open_sentence_title">문장을 삭제하시겠어요?</string>
+    <string name="tv_dialog_open_sentence_content">삭제된 문장은 복구할 수 없습니다.<br/>정말 삭제하시겠어요?</string>
+    <string name="tv_dialog_sentence_report_title">이 글을 신고하시겠어요?</string>
+    <string name="tv_dialog_sentence_report_content">해당 글이 에딧의 가이드에 어긋나거나<br/>불쾌감을 줄 경우 신고해주세요.</string>
+    <string name="tv_dialog_sentence_temp_title">임시 저장하시겠어요?</string>
+    <string name="tv_dialog_sentence_temp_content">임시 저장 목록에 문장을 저장하고<br/>나중에 다시 작업할 수 있어요.</string>
+    <string name="tv_dialog_sentence_submit_title">등록하시겠어요?</string>
+    <string name="tv_dialog_sentence_submit_content">등록 이후에는 수정이 어렵습니다.<br/>신중하게 확인 후 등록해주세요!</string>
+    <string name="tv_dialog_sentence_complete_title">완성하시겠어요?</string>
+    <string name="tv_dialog_sentence_complete_content">완성 이후에는 수정이 어렵습니다.<br/>신중하게 확인 후 등록해주세요!</string>
+    <string name="tv_dialog_confirm">확인</string>
+    <string name="tv_dialog_delete">삭제</string>
+    <string name="tv_dialog_report">신고하기</string>
+    <string name="tv_dialog_temp">임시 저장</string>
+    <string name="tv_dialog_submit">등록하기</string>
+    <string name="tv_dialog_dismiss">취소</string>
+
+
+    <!--  myedit_fragment  -->
+    <string name="tv_menu_profile">내 정보</string>
+    <string name="tv_menu_sympathy_list">공감 목록</string>
+    <string name="tv_menu_sentence_list">자소서 목록</string>
+    <string name="tv_menu_sentence_complete_list">자소서 완성</string>
+    <string name="tv_menu_temp_list">임시 저장</string>
+    <string name="tv_switch_position">멘토/멘티 변경하기</string>
+    <string name="btn_logout">로그아웃</string>
 </resources>

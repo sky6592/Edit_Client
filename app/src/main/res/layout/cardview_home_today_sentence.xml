@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="@dimen/size_card_radius_7dp"
+    android:elevation="10dp"
+
+    android:layout_marginTop="@dimen/margin_card_inner_text_start_and_end_20dp"
+    android:layout_marginBottom="@dimen/margin_card_inner_text_start_and_end_20dp">
+    <LinearLayout
+        android:layout_width="@dimen/size_card_home_today_sentence_width"
+        android:layout_height="@dimen/size_card_home_today_sentence_height"
+        android:orientation="vertical"
+        android:layout_gravity="top">
+        <TextView
+            android:id="@+id/tv_today_sentence_writer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/CustomTextViewMidBlack"
+            android:text="@string/tv_card_writer"
+            android:textStyle="bold"
+            android:textSize="@dimen/size_tv_card_writer_14dp"
+
+            android:layout_marginTop="@dimen/margin_card_inner_text_top_and_bottom_14dp"
+            android:layout_marginBottom="@dimen/margin_card_inner_text_top_and_bottom_14dp"
+            android:layout_marginStart="@dimen/margin_card_inner_text_start_and_end_20dp"
+            android:layout_marginEnd="@dimen/margin_card_inner_text_start_and_end_20dp" />
+        <TextView
+            android:id="@+id/tv_today_sentence_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="4"
+            android:maxWidth="@dimen/size_card_home_today_sentence_width"
+
+            style="@style/CustomTextViewMidBlack"
+            android:text="@string/tv_sentence_content_example"
+            android:textSize="@dimen/size_tv_card_content_12dp"
+
+            android:layout_marginBottom="@dimen/margin_card_inner_text_start_and_end_20dp"
+            android:layout_marginStart="@dimen/margin_card_inner_text_start_and_end_20dp"
+            android:layout_marginEnd="@dimen/margin_card_inner_text_start_and_end_20dp" />
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
