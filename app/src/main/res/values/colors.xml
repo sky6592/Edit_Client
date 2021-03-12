@@ -9,4 +9,6 @@
     <color name="gray_shadow">#FFD8D8D8</color>
     <color name="white">#FFFFFFFF</color>
     <color name="transparency">#00FFFFFF</color>
+    <color name="purple">#5a32dc</color>
+    <color name="lavender">#cdc1f4</color>
 </resources>
