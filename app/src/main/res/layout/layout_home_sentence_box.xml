@@ -19,8 +19,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         style="@style/CustomTextViewMidBlack"
+        android:fontFamily="@font/noto_sans_kr_bold"
         android:text="@string/tv_card_writer"
-        android:textStyle="bold"
         android:textSize="@dimen/size_tv_card_writer_14dp"
 
         android:layout_marginTop="@dimen/size_12dp"

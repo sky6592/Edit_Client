@@ -50,7 +50,7 @@
 
                             android:text="@string/tv_title_today_sentence"
                             style="@style/CustomTextViewMidBlack"
-                            android:textStyle="bold"
+                            android:fontFamily="@font/noto_sans_kr_bold"
                             android:textSize="@dimen/size_tv_title_15dp"
 
                             android:paddingTop="@dimen/padding_tv_title_top_and_bottom_17dp"
@@ -194,8 +194,8 @@
                             android:layout_height="wrap_content"
 
                             style="@style/CustomTextViewMidBlack"
+                            android:fontFamily="@font/noto_sans_kr_bold"
                             android:text="@string/tv_title_waited_comment"
-                            android:textStyle="bold"
                             android:textSize="@dimen/size_tv_title_15dp"
 
                             android:paddingTop="@dimen/padding_tv_title_top_and_bottom_17dp"
@@ -351,8 +351,8 @@
                             android:layout_height="wrap_content"
 
                             style="@style/CustomTextViewMidBlack"
+                            android:fontFamily="@font/noto_sans_kr_bold"
                             android:text="@string/tv_title_best_sentence_of_sympathy"
-                            android:textStyle="bold"
                             android:textSize="@dimen/size_tv_title_15dp"
 
                             android:paddingTop="@dimen/padding_tv_title_top_and_bottom_17dp"
