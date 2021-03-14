@@ -28,6 +28,7 @@ class ApplicationClass : Application() {
         var USER_POSITION = "USER-POSITION"
         var MENTOR_AUTH_CONFIRM = "MENTOR-AUTH-CONFIRM"
 
+        val MENTEE_SENTENCE_LIMIT = 10
     }
 
     override fun onCreate() {

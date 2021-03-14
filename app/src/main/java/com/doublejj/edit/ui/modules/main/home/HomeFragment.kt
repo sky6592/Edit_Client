@@ -1,6 +1,6 @@
 package com.doublejj.edit.ui.modules.main.home
 
-import android.graphics.Color
+import android.opengl.Visibility
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.util.Log
@@ -38,6 +38,7 @@ class HomeFragment : Fragment() {
         // MainActivty의 fragment 개수 관리 변수 증가
         (activity as MainActivity).increaseFragmentCount()
 
+        /** toolbar buttons **/
         binding.tvLogo.setOnClickListener {
             // TODO : scroll to top
             Log.d(TAG, "logo clicked")
@@ -48,7 +49,7 @@ class HomeFragment : Fragment() {
         }
 
         // fragment안에서 새로운 fragment 전환
-        binding.ibExpandTodaySentence.setOnClickListener {
+        binding.tvTitleTodaySentence.setOnClickListener {
             requireActivity().supportFragmentManager.beginTransaction()
                 .add(R.id.fl_home, TodaySentenceFragment())
                 .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
@@ -56,7 +57,7 @@ class HomeFragment : Fragment() {
                 .commit()
         }
 
-        binding.ibExpandWaitedComment.setOnClickListener {
+        binding.tvTitleWaitedComment.setOnClickListener {
             requireActivity().supportFragmentManager.beginTransaction()
                 .add(R.id.fl_home, WaitingForCommentFragment())
                 .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
@@ -64,7 +65,7 @@ class HomeFragment : Fragment() {
                 .commit()
         }
 
-        binding.ibExpandSympathyComment.setOnClickListener {
+        binding.tvTitleSympathyComment.setOnClickListener {
             requireActivity().supportFragmentManager.beginTransaction()
                 .add(R.id.fl_home, BestSympathyFragment())
                 .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
@@ -72,20 +73,51 @@ class HomeFragment : Fragment() {
                 .commit()
         }
 
-        if (sSharedPreferences.getString(USER_POSITION, "MENTEE") == "MENTEE") {
-            binding.fabMentee.visibility = View.VISIBLE
-        }
-        else {
-            binding.fabMentee.visibility = View.GONE
-            // TODO : 첫 home 화면에서 아직 멘토 인증 안했다면 스낵바 띄우기 & 지우기
-            if (!sSharedPreferences.getBoolean(MENTOR_AUTH_CONFIRM, false)) {
-                CustomSnackbar.make(binding.root, getString(R.string.snackbar_description_mentor), Snackbar.LENGTH_INDEFINITE).show()
+        when (sSharedPreferences.getString(USER_POSITION, "MENTEE")) {
+            "MENTEE" -> {
+                binding.fabMentee.visibility = View.VISIBLE
             }
-
+            "MENTOR" -> {
+                binding.fabMentee.visibility = View.GONE
+                // TODO : 첫 home 화면에서 아직 멘토 인증 안했다면 스낵바 띄우기 & 지우기
+                if (!sSharedPreferences.getBoolean(MENTOR_AUTH_CONFIRM, false)) {
+                    CustomSnackbar.make(binding.root, getString(R.string.snackbar_description_mentor), Snackbar.LENGTH_INDEFINITE).show()
+                }
+            }
         }
+
         binding.fabMentee.setOnClickListener {
             // TODO : 자소서 입력하기로 이동
         }
+        
+        // TODO : 오늘의 문장 0개일 때 카드 데이터 할당
+        // 오늘의 문장 0개일 때 카드 처리
+        val uploadedSentenceCountTest = 0
+        if (uploadedSentenceCountTest <= 0) {
+            binding.cvHomeTodaySentenceZero0.visibility = View.VISIBLE
+            binding.cvHomeTodaySentenceZero1.visibility = View.VISIBLE
+            binding.cvHomeTodaySentenceZero2.visibility = View.VISIBLE
+            binding.cvHomeTodaySentenceZero3.visibility = View.VISIBLE
+            binding.cvHomeTodaySentenceZero4.visibility = View.VISIBLE
+            binding.cvHomeTodaySentence0.visibility = View.GONE
+            binding.cvHomeTodaySentence1.visibility = View.GONE
+            binding.cvHomeTodaySentence2.visibility = View.GONE
+            binding.cvHomeTodaySentence3.visibility = View.GONE
+            binding.cvHomeTodaySentence4.visibility = View.GONE
+        }
+        else {
+            binding.cvHomeTodaySentenceZero0.visibility = View.GONE
+            binding.cvHomeTodaySentenceZero1.visibility = View.GONE
+            binding.cvHomeTodaySentenceZero2.visibility = View.GONE
+            binding.cvHomeTodaySentenceZero3.visibility = View.GONE
+            binding.cvHomeTodaySentenceZero4.visibility = View.GONE
+            binding.cvHomeTodaySentence0.visibility = View.VISIBLE
+            binding.cvHomeTodaySentence1.visibility = View.VISIBLE
+            binding.cvHomeTodaySentence2.visibility = View.VISIBLE
+            binding.cvHomeTodaySentence3.visibility = View.VISIBLE
+            binding.cvHomeTodaySentence4.visibility = View.VISIBLE
+        }
+        
         return binding.root
     }
 

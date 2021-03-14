@@ -77,22 +77,6 @@
                         android:layout_height="wrap_content">
 
                         <!--  today's sentence section  -->
-                        <TextView
-                            android:id="@+id/tv_title_today_sentence"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-
-                            android:text="@string/tv_title_today_sentence"
-                            style="@style/CustomTextViewMidBlack"
-                            android:fontFamily="@font/noto_sans_kr_bold"
-                            android:textSize="@dimen/size_tv_title_15dp"
-
-                            android:paddingTop="@dimen/padding_tv_title_top_and_bottom_17dp"
-                            android:paddingBottom="@dimen/padding_tv_title_top_and_bottom_17dp"
-                            android:layout_marginStart="@dimen/margin_component_inset_20dp"
-                            android:layout_marginLeft="@dimen/margin_component_inset_20dp"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintStart_toStartOf="parent" />
                         <ImageButton
                             android:id="@+id/ib_expand_today_sentence"
                             android:layout_width="@dimen/size_icon_button_24dp"
@@ -106,6 +90,23 @@
                             app:layout_constraintTop_toTopOf="@id/tv_title_today_sentence"
                             app:layout_constraintBottom_toBottomOf="@id/tv_title_today_sentence"
                             app:layout_constraintEnd_toEndOf="parent" />
+                        <TextView
+                            android:id="@+id/tv_title_today_sentence"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+
+                            android:text="@string/tv_title_today_sentence"
+                            style="@style/CustomTextViewMidBlack"
+                            android:fontFamily="@font/noto_sans_kr_bold"
+                            android:textSize="@dimen/size_tv_title_15dp"
+
+                            android:paddingTop="@dimen/padding_tv_title_top_and_bottom_17dp"
+                            android:paddingBottom="@dimen/padding_tv_title_top_and_bottom_17dp"
+                            android:layout_marginStart="@dimen/margin_component_inset_20dp"
+                            android:layout_marginLeft="@dimen/margin_component_inset_20dp"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="@id/ib_expand_today_sentence" />
                         <HorizontalScrollView
                             android:id="@+id/hsv_today_sentence"
                             android:layout_width="match_parent"
@@ -172,7 +173,7 @@
                                     android:layout_marginTop="@dimen/margin_card_top_space"
                                     android:layout_marginBottom="@dimen/margin_card_inner_text_start_and_end_20dp"
                                     android:layout_marginEnd="@dimen/margin_card_end_space"
-                                    android:layout_marginRight="@dimen/margin_card_end_space" />
+                                    android:layout_marginRight="@dimen/margin_card_inner_text_start_and_end_20dp" />
                                 <include
                                     android:id="@+id/cv_home_today_sentence_0"
                                     android:layout_width="wrap_content"
@@ -195,6 +196,36 @@
                                     android:layout_marginBottom="@dimen/margin_card_inner_text_start_and_end_20dp"
                                     android:layout_marginEnd="@dimen/margin_card_end_space"
                                     android:layout_marginRight="@dimen/margin_card_end_space" />
+                                <include
+                                    android:id="@+id/cv_home_today_sentence_2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    layout="@layout/cardview_home_today_sentence"
+
+                                    android:layout_marginTop="@dimen/margin_card_top_space"
+                                    android:layout_marginBottom="@dimen/margin_card_inner_text_start_and_end_20dp"
+                                    android:layout_marginEnd="@dimen/margin_card_end_space"
+                                    android:layout_marginRight="@dimen/margin_card_end_space" />
+                                <include
+                                    android:id="@+id/cv_home_today_sentence_3"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    layout="@layout/cardview_home_today_sentence"
+
+                                    android:layout_marginTop="@dimen/margin_card_top_space"
+                                    android:layout_marginBottom="@dimen/margin_card_inner_text_start_and_end_20dp"
+                                    android:layout_marginEnd="@dimen/margin_card_end_space"
+                                    android:layout_marginRight="@dimen/margin_card_end_space" />
+                                <include
+                                    android:id="@+id/cv_home_today_sentence_4"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    layout="@layout/cardview_home_today_sentence"
+
+                                    android:layout_marginTop="@dimen/margin_card_top_space"
+                                    android:layout_marginBottom="@dimen/margin_card_inner_text_start_and_end_20dp"
+                                    android:layout_marginEnd="@dimen/margin_card_end_space"
+                                    android:layout_marginRight="@dimen/margin_card_inner_text_start_and_end_20dp" />
                             </LinearLayout>
                         </HorizontalScrollView>
 
@@ -222,22 +253,6 @@
                             app:layout_constraintTop_toBottomOf="@id/iv_banner_one" />
 
                         <!--  waited comment section  -->
-                        <TextView
-                            android:id="@+id/tv_title_waited_comment"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-
-                            style="@style/CustomTextViewMidBlack"
-                            android:fontFamily="@font/noto_sans_kr_bold"
-                            android:text="@string/tv_title_waited_comment"
-                            android:textSize="@dimen/size_tv_title_15dp"
-
-                            android:paddingTop="@dimen/padding_tv_title_top_and_bottom_17dp"
-                            android:paddingBottom="@dimen/padding_tv_title_top_and_bottom_17dp"
-                            android:layout_marginStart="@dimen/margin_component_inset_20dp"
-                            android:layout_marginLeft="@dimen/margin_component_inset_20dp"
-                            app:layout_constraintTop_toBottomOf="@id/view_space_1"
-                            app:layout_constraintStart_toStartOf="parent" />
                         <ImageButton
                             android:id="@+id/ib_expand_waited_comment"
                             android:layout_width="@dimen/size_icon_button_24dp"
@@ -251,6 +266,23 @@
                             app:layout_constraintTop_toTopOf="@id/tv_title_waited_comment"
                             app:layout_constraintBottom_toBottomOf="@id/tv_title_waited_comment"
                             app:layout_constraintEnd_toEndOf="parent" />
+                        <TextView
+                            android:id="@+id/tv_title_waited_comment"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+
+                            style="@style/CustomTextViewMidBlack"
+                            android:fontFamily="@font/noto_sans_kr_bold"
+                            android:text="@string/tv_title_waited_comment"
+                            android:textSize="@dimen/size_tv_title_15dp"
+
+                            android:paddingTop="@dimen/padding_tv_title_top_and_bottom_17dp"
+                            android:paddingBottom="@dimen/padding_tv_title_top_and_bottom_17dp"
+                            android:layout_marginStart="@dimen/margin_component_inset_20dp"
+                            android:layout_marginLeft="@dimen/margin_component_inset_20dp"
+                            app:layout_constraintTop_toBottomOf="@id/view_space_1"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="@id/ib_expand_waited_comment" />
                         <include
                             android:id="@+id/ll_home_waited_comment_0"
                             android:layout_width="0dp"
@@ -379,22 +411,6 @@
                             app:layout_constraintTop_toBottomOf="@id/iv_banner_two" />
 
                         <!--  waited comment section  -->
-                        <TextView
-                            android:id="@+id/tv_title_sympathy_comment"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-
-                            style="@style/CustomTextViewMidBlack"
-                            android:fontFamily="@font/noto_sans_kr_bold"
-                            android:text="@string/tv_title_best_sentence_of_sympathy"
-                            android:textSize="@dimen/size_tv_title_15dp"
-
-                            android:paddingTop="@dimen/padding_tv_title_top_and_bottom_17dp"
-                            android:paddingBottom="@dimen/padding_tv_title_top_and_bottom_17dp"
-                            android:layout_marginStart="@dimen/margin_component_inset_20dp"
-                            android:layout_marginLeft="@dimen/margin_component_inset_20dp"
-                            app:layout_constraintTop_toBottomOf="@id/view_space_3"
-                            app:layout_constraintStart_toStartOf="parent" />
                         <ImageButton
                             android:id="@+id/ib_expand_sympathy_comment"
                             android:layout_width="@dimen/size_icon_button_24dp"
@@ -408,6 +424,23 @@
                             app:layout_constraintTop_toTopOf="@id/tv_title_sympathy_comment"
                             app:layout_constraintBottom_toBottomOf="@id/tv_title_sympathy_comment"
                             app:layout_constraintEnd_toEndOf="parent" />
+                        <TextView
+                            android:id="@+id/tv_title_sympathy_comment"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+
+                            style="@style/CustomTextViewMidBlack"
+                            android:fontFamily="@font/noto_sans_kr_bold"
+                            android:text="@string/tv_title_best_sentence_of_sympathy"
+                            android:textSize="@dimen/size_tv_title_15dp"
+
+                            android:paddingTop="@dimen/padding_tv_title_top_and_bottom_17dp"
+                            android:paddingBottom="@dimen/padding_tv_title_top_and_bottom_17dp"
+                            android:layout_marginStart="@dimen/margin_component_inset_20dp"
+                            android:layout_marginLeft="@dimen/margin_component_inset_20dp"
+                            app:layout_constraintTop_toBottomOf="@id/view_space_3"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="@id/ib_expand_sympathy_comment" />
                         <include
                             android:id="@+id/ll_home_sympathy_comment_0"
                             android:layout_width="0dp"

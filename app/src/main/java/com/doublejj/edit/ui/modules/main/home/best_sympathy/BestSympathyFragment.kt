@@ -26,7 +26,13 @@ class BestSympathyFragment : Fragment() {
         binding.lifecycleOwner = this
         (activity as MainActivity).increaseFragmentCount()
 
-        // TODO : toolbar tv_title 값 바꾸기
+        /** toolbar buttons **/
+        binding.ibBack.setOnClickListener {
+            requireActivity().supportFragmentManager.popBackStack()
+        }
+        binding.ibRefresh.setOnClickListener {
+            // TODO : refresh data
+        }
 
         return binding.root
     }
