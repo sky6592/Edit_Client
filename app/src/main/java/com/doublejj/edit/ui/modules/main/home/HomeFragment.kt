@@ -72,13 +72,12 @@ class HomeFragment : Fragment() {
                 .commit()
         }
 
-//        if (sSharedPreferences.getString(USER_POSITION, "MENTEE") == "MENTEE") {
-        if (sSharedPreferences.getString(USER_POSITION, "MENTEE") == "MENTOR") {
+        if (sSharedPreferences.getString(USER_POSITION, "MENTEE") == "MENTEE") {
             binding.fabMentee.visibility = View.VISIBLE
         }
         else {
             binding.fabMentee.visibility = View.GONE
-            // TODO : 첫 home 화면에서 아직 멘토 인증 안했다면 스낵바 띄우기
+            // TODO : 첫 home 화면에서 아직 멘토 인증 안했다면 스낵바 띄우기 & 지우기
             if (!sSharedPreferences.getBoolean(MENTOR_AUTH_CONFIRM, false)) {
                 CustomSnackbar.make(binding.root, getString(R.string.snackbar_description_mentor), Snackbar.LENGTH_INDEFINITE).show()
             }
