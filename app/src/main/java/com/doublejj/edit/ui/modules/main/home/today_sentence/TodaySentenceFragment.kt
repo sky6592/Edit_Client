@@ -9,6 +9,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.doublejj.edit.R
 import com.doublejj.edit.databinding.TodaySentenceFragmentBinding
+import com.doublejj.edit.ui.modules.main.MainActivity
 
 class TodaySentenceFragment : Fragment() {
     private lateinit var binding: TodaySentenceFragmentBinding
@@ -23,7 +24,14 @@ class TodaySentenceFragment : Fragment() {
 
         binding.todaySentenceViewModel = viewModel
         binding.lifecycleOwner = this
+        (activity as MainActivity).increaseFragmentCount()
+
 
         return binding.root
+    }
+
+    override fun onDetach() {
+        super.onDetach()
+        (activity as MainActivity).decreaseFragmentCount()
     }
 }
