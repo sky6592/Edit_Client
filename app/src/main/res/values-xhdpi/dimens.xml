@@ -101,6 +101,7 @@
     <dimen name="size_208dp">208dp</dimen>
     <dimen name="size_237dp">237dp</dimen>
     <dimen name="size_280dp">280dp</dimen>
+    <dimen name="size_344dp">344dp</dimen>
 
     <dimen name="margin_section_10dp">10dp</dimen>
 

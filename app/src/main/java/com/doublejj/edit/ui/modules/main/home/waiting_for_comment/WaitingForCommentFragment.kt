@@ -9,6 +9,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.doublejj.edit.R
 import com.doublejj.edit.databinding.WaitingForCommentFragmentBinding
+import com.doublejj.edit.ui.modules.main.MainActivity
 
 class WaitingForCommentFragment : Fragment() {
     private lateinit var binding: WaitingForCommentFragmentBinding
@@ -23,7 +24,16 @@ class WaitingForCommentFragment : Fragment() {
 
         binding.waitingForCommentViewModel = viewModel
         binding.lifecycleOwner = this
+        (activity as MainActivity).increaseFragmentCount()
+
+        // TODO : toolbar tv_title 값 바꾸기
+//        binding.toolbarTitleWithButtons.
 
         return binding.root
+    }
+
+    override fun onDetach() {
+        super.onDetach()
+        (activity as MainActivity).decreaseFragmentCount()
     }
 }

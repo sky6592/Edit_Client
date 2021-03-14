@@ -23,6 +23,11 @@ class ApplicationClass : Application() {
 
         // Retrofit 인스턴스, 앱 실행 시 한번만 생성하여 사용
         lateinit var sRetrofit: Retrofit
+
+        // User 관련 정보 키 값 (mentor or mentee)
+        var USER_POSITION = "USER-POSITION"
+        var MENTOR_AUTH_CONFIRM = "MENTOR-AUTH-CONFIRM"
+
     }
 
     override fun onCreate() {

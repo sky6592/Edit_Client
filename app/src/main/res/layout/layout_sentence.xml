@@ -25,11 +25,25 @@
         android:text="@string/tv_card_writer"
         android:textStyle="bold"
         android:textSize="@dimen/size_tv_card_writer_14dp"
+        android:textColor="@color/purple_active"
 
         android:layout_marginStart="@dimen/size_21dp"
         android:layout_marginLeft="@dimen/size_21dp"
         app:layout_constraintTop_toTopOf="@id/iv_character"
         app:layout_constraintStart_toEndOf="@id/iv_character" />
+    <TextView
+        android:id="@+id/tv_sentence_position"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/CustomTextViewMidBlack"
+        android:text="@string/tv_card_position"
+        android:textStyle="bold"
+        android:textSize="@dimen/size_tv_card_writer_14dp"
+
+        android:layout_marginStart="@dimen/size_5dp"
+        android:layout_marginLeft="@dimen/size_5dp"
+        app:layout_constraintTop_toTopOf="@id/iv_character"
+        app:layout_constraintStart_toEndOf="@id/tv_sentence_writer" />
     <TextView
         android:id="@+id/tv_occupation_text"
         android:layout_width="wrap_content"
