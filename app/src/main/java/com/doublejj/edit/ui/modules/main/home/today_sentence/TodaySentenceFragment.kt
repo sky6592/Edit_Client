@@ -13,6 +13,8 @@ import com.doublejj.edit.ApplicationClass.Companion.sSharedPreferences
 import com.doublejj.edit.R
 import com.doublejj.edit.databinding.TodaySentenceFragmentBinding
 import com.doublejj.edit.ui.modules.main.MainActivity
+import com.doublejj.edit.ui.utils.dialog.CustomDialogFragment
+import com.doublejj.edit.ui.utils.dialog.CustomDialogClickListener
 import com.doublejj.edit.ui.utils.snackbar.CustomSnackbar
 import com.google.android.material.snackbar.Snackbar
 
