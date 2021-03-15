@@ -28,7 +28,7 @@ class ApplicationClass : Application() {
         var USER_POSITION = "USER-POSITION"
         var MENTOR_AUTH_CONFIRM = "MENTOR-AUTH-CONFIRM"
 
-        val MENTEE_SENTENCE_LIMIT = 10
+        const val MENTEE_SENTENCE_LIMIT = 10
     }
 
     override fun onCreate() {
@@ -64,14 +64,14 @@ class ApplicationClass : Application() {
         val colorAndEmotion = code.split("/")
         var resPath = "icon_char_"
 
-        when (colorAndEmotion[0]) {
+        when (colorAndEmotion.first()) {
             "purple" -> resPath += "purple_active_"
             "lightPurple" -> resPath += "mid_purple_"
             "blue" -> resPath += "navy_"
             "lightBlue" -> resPath += "sky_"
             "gray" -> resPath += "gray_"
         }
-        when (colorAndEmotion[1]) {
+        when (colorAndEmotion.last()) {
             "relief" -> resPath += "0"
             "bigSmile" -> resPath += "1"
             "suprise" -> resPath += "2"
@@ -80,5 +80,14 @@ class ApplicationClass : Application() {
             "wink" -> resPath += "5"
         }
         return applicationContext.resources!!.getIdentifier(resPath, "drawable", packageName)
+    }
+
+    fun getEvaluationColorId(code: String) : Int {
+        return when (code) {
+            "부족" -> R.color.red_light
+            "보통" -> R.color.yellow_light
+            "좋음" -> R.color.green_light
+            else -> -1
+        }
     }
 }

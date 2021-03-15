@@ -15,6 +15,7 @@
     <string name="tv_title_today_sentence">오늘의 문장</string>
     <string name="tv_card_writer">유진</string>
     <string name="tv_card_position">멘티님</string>
+    <string name="tv_card_position_mentor">멘토님</string>
     <string name="tv_card_zero_title">문장이 아직 등록되지 않았어요.</string>
     <string name="tv_card_zero_content">오늘 첫 문장의 주인공이 되어보세요!</string>
 
@@ -27,10 +28,14 @@
     <string name="tv_sentence_content_example">
         실습은 요양원에서 했는데 현장에서 일을 해보니 생각했던 것보다 사회복지사가 신경써야 할 부분들이 많았지만 어르신들과 보내는 시간이 너무 즐거웠습니다.
     </string>
+    <string name="tv_sentence_comment_example">
+        해당 실습은 3주간의 기간을 노인 요양원에서 어르신들과 함께하는 시간이었습니다. 이렇게 작성하시는 것이 더 좋을 것 같아요.
+    </string>
 
     <!--  today_sentence_fragment -->
     <string name="et_sentence_hint">함께 고민하고 싶은 문장이 있나요?</string>
     <string name="tv_occupation_text">희망 직군</string>
+    <string name="tv_current_job_text">직군</string>
     <string name="tv_vertical_bar">|</string>
     <string name="tv_occupation_type">디자인</string>
     <string name="tv_colon">:</string>
@@ -66,7 +71,7 @@
     <string name="btn_self_writing_submit">등록하기</string>
 
 
-    <!--  open_comment_activity  -->
+    <!--  open_comment_fragment  -->
     <string name="tv_open_comment_evaluation_type_0">문장에 대한 전체 평가</string>
     <string name="tv_open_comment_evaluation_type_1">성실성</string>
     <string name="tv_open_comment_evaluation_type_2">구체성과 논리성</string>
@@ -76,23 +81,26 @@
     <string name="tv_open_comment_evaluation_leak">부족</string>
 
     <string name="tv_open_comment_zero_title">아직 코멘트가 없습니다.</string>
-    <string name="tv_open_comment_zero_content">멘토님이 작성해주신 코멘트 한 줄이<br/>멘티님께는 큰 도움이 됩니다!</string>
+    <string name="tv_open_comment_zero_content">멘토님이 작성해주신 코멘트 한 줄이 <br />멘티님께는 큰 도움이 됩니다!</string>
+
+    <string name="tv_open_comment_thanks">감사합니다!</string>
+    <string name="tv_open_comment_adoption">채택하기</string>
 
     <!--  dialog  -->
     <string name="tv_dialog_self_writing_title">문장 완성을 할 수 없어요!</string>
     <string name="tv_dialog_self_writing_content">코멘트가 아직 없거나, 채택한 코멘트가 없는 경우 문장 완성을 할 수 없어요.</string>
     <string name="tv_dialog_open_comment_title">코멘트를 삭제하시겠어요?</string>
-    <string name="tv_dialog_open_comment_content">삭제된 코멘트는 복구할 수 없습니다.<br/>정말 삭제하시겠어요?</string>
+    <string name="tv_dialog_open_comment_content">삭제된 코멘트는 복구할 수 없습니다. <br />정말 삭제하시겠어요?</string>
     <string name="tv_dialog_open_sentence_title">문장을 삭제하시겠어요?</string>
-    <string name="tv_dialog_open_sentence_content">삭제된 문장은 복구할 수 없습니다.<br/>정말 삭제하시겠어요?</string>
+    <string name="tv_dialog_open_sentence_content">삭제된 문장은 복구할 수 없습니다. <br />정말 삭제하시겠어요?</string>
     <string name="tv_dialog_sentence_report_title">이 글을 신고하시겠어요?</string>
-    <string name="tv_dialog_sentence_report_content">해당 글이 에딧의 가이드에 어긋나거나<br/>불쾌감을 줄 경우 신고해주세요.</string>
+    <string name="tv_dialog_sentence_report_content">해당 글이 에딧의 가이드에 어긋나거나 <br />불쾌감을 줄 경우 신고해주세요.</string>
     <string name="tv_dialog_sentence_temp_title">임시 저장하시겠어요?</string>
-    <string name="tv_dialog_sentence_temp_content">임시 저장 목록에 문장을 저장하고<br/>나중에 다시 작업할 수 있어요.</string>
+    <string name="tv_dialog_sentence_temp_content">임시 저장 목록에 문장을 저장하고 <br />나중에 다시 작업할 수 있어요.</string>
     <string name="tv_dialog_sentence_submit_title">등록하시겠어요?</string>
-    <string name="tv_dialog_sentence_submit_content">등록 이후에는 수정이 어렵습니다.<br/>신중하게 확인 후 등록해주세요!</string>
+    <string name="tv_dialog_sentence_submit_content">등록 이후에는 수정이 어렵습니다. <br />신중하게 확인 후 등록해주세요!</string>
     <string name="tv_dialog_sentence_complete_title">완성하시겠어요?</string>
-    <string name="tv_dialog_sentence_complete_content">완성 이후에는 수정이 어렵습니다.<br/>신중하게 확인 후 등록해주세요!</string>
+    <string name="tv_dialog_sentence_complete_content">완성 이후에는 수정이 어렵습니다. <br />신중하게 확인 후 등록해주세요!</string>
     <string name="tv_dialog_confirm">확인</string>
     <string name="tv_dialog_delete">삭제</string>
     <string name="tv_dialog_report">신고하기</string>

@@ -1,6 +1,7 @@
 package com.doublejj.edit.ui.modules.main.home.today_sentence
 
 import android.content.Context
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.doublejj.edit.ApplicationClass
 import com.doublejj.edit.R
 import com.doublejj.edit.data.models.sentence.SentenceData
-import com.doublejj.edit.ui.modules.main.MainActivity
+import com.doublejj.edit.ui.modules.main.home.open_comment.OpenCommentFragment
 import com.doublejj.edit.ui.utils.dialog.CustomDialogClickListener
 import com.doublejj.edit.ui.utils.dialog.CustomDialogFragment
 import com.doublejj.edit.ui.utils.snackbar.CustomSnackbar
@@ -36,7 +37,8 @@ class TodaySentenceAdapter(
     override fun onBindViewHolder(holder: TodaySentenceAdapter.ViewHolder, position: Int) {
         var sentenceData = sentenceDataList.get(position)
 
-        holder.ivCharacter.setImageResource((context.applicationContext as ApplicationClass).getCharacterResId(sentenceData.userProfile))
+        val characterResId = (context.applicationContext as ApplicationClass).getCharacterResId(sentenceData.userProfile)
+        holder.ivCharacter.setImageResource(characterResId)
         holder.tvSentenceWriter.text = sentenceData.nickName
         holder.tvOccupationType.text = sentenceData.jobName
         holder.ibMenu.setOnClickListener {
@@ -60,7 +62,7 @@ class TodaySentenceAdapter(
         holder.tvSentenceContent.text = sentenceData.coverLetterContent
         holder.tbSympathy.isChecked = sentenceData.sympathy
         holder.tvSympathyCount.text = sentenceData.sympathiesCount.toString()
-        holder.llBtnSympathy.setOnClickListener { 
+        holder.llBtnSympathy.setOnClickListener {
             // TODO : 해당 카드 공감 처리
             val sympathyState = holder.tbSympathy.isChecked
             holder.tbSympathy.isChecked = !sympathyState
@@ -72,10 +74,21 @@ class TodaySentenceAdapter(
             }
             holder.tvSympathyCount.text = sentenceData.sympathiesCount.toString()
         }
+        // TODO : ToggleButton 혼자만 눌리는 이슈 해결하기
         holder.llBtnOpenComment.setOnClickListener {
             // TODO : 해당 카드의 코멘트 보기 화면으로 이동
+            val bundle = Bundle()
+            bundle.putLong("coverLetterId", sentenceData.coverLetterId)
+            bundle.putInt("ivCharacter", characterResId)
+            bundle.putString("tvSentenceWriter", sentenceData.nickName)
+            bundle.putString("tvOccupationType", sentenceData.jobName)
+            bundle.putString("tvSelfWritingType", sentenceData.coverLetterCategoryName)
+            bundle.putString("tvSentenceContent", sentenceData.coverLetterContent)
+
             fm.beginTransaction()
-                .add(R.id.fl_home, OpenCommentFragment())
+                .add(R.id.fl_home, OpenCommentFragment().apply {
+                    arguments = bundle
+                })
                 .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                 .addToBackStack(null)
                 .commit()

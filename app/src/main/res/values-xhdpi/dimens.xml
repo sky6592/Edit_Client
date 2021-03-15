@@ -98,9 +98,13 @@
     <dimen name="size_112dp">112dp</dimen>
     <dimen name="size_116dp">116dp</dimen>
     <dimen name="size_147dp">147dp</dimen>
+    <dimen name="size_148dp">148dp</dimen>
+    <dimen name="size_179dp">179dp</dimen>
     <dimen name="size_208dp">208dp</dimen>
     <dimen name="size_237dp">237dp</dimen>
+    <dimen name="size_255dp">255dp</dimen>
     <dimen name="size_280dp">280dp</dimen>
+    <dimen name="size_341dp">341dp</dimen>
     <dimen name="size_344dp">344dp</dimen>
 
     <dimen name="margin_section_10dp">10dp</dimen>

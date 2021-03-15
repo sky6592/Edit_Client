@@ -13,7 +13,8 @@
         android:theme="@style/Theme.Edit"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
-        <activity android:name=".ui.modules.main.walkthrough.WalkThroughActivity"></activity>
+        <activity android:name=".ui.modules.main.home.comment_writing.CommentWritingActivity"></activity>
+        <activity android:name=".ui.modules.main.walkthrough.WalkThroughActivity" />
         <activity android:name=".ui.modules.main.splash.SplashActivity" />
         <activity android:name=".ui.modules.main.MainActivity">
             <intent-filter>
