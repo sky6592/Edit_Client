@@ -20,6 +20,7 @@ import com.doublejj.edit.data.models.mainoneshot.MainSentenceData
 import com.doublejj.edit.data.models.mainoneshot.MainSentences
 import com.doublejj.edit.databinding.HomeFragmentBinding
 import com.doublejj.edit.ui.modules.main.MainActivity
+import com.doublejj.edit.ui.modules.main.home.adoption_completed.AdoptionCompletedFragment
 import com.doublejj.edit.ui.modules.main.home.best_sympathy.BestSympathyFragment
 import com.doublejj.edit.ui.modules.main.home.today_sentence.TodaySentenceFragment
 import com.doublejj.edit.ui.modules.main.home.waiting_for_comment.WaitingForCommentFragment
@@ -59,7 +60,6 @@ class HomeFragment : Fragment(), MainOneshotView {
                 .addToBackStack(null)
                 .commit()
         }
-
         binding.tvTitleWaitedComment.setOnClickListener {
             requireActivity().supportFragmentManager.beginTransaction()
                 .add(R.id.fl_home, WaitingForCommentFragment())
@@ -67,7 +67,13 @@ class HomeFragment : Fragment(), MainOneshotView {
                 .addToBackStack(null)
                 .commit()
         }
-
+        binding.tvTitleCompletedAdoption.setOnClickListener {
+            requireActivity().supportFragmentManager.beginTransaction()
+                .add(R.id.fl_home, AdoptionCompletedFragment())
+                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                .addToBackStack(null)
+                .commit()
+        }
         binding.tvTitleSympathyComment.setOnClickListener {
             requireActivity().supportFragmentManager.beginTransaction()
                 .add(R.id.fl_home, BestSympathyFragment())

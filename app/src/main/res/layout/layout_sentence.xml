@@ -23,8 +23,8 @@
         android:layout_height="wrap_content"
         style="@style/CustomTextViewMidBlack"
         android:text="@string/tv_card_writer"
-        android:textStyle="bold"
         android:textSize="@dimen/size_tv_card_writer_14dp"
+        android:fontFamily="@font/noto_sans_kr_bold"
         android:textColor="@color/purple_active"
 
         android:layout_marginStart="@dimen/size_21dp"
@@ -37,7 +37,7 @@
         android:layout_height="wrap_content"
         style="@style/CustomTextViewMidBlack"
         android:text="@string/tv_card_position"
-        android:textStyle="bold"
+        android:fontFamily="@font/noto_sans_kr_bold"
         android:textSize="@dimen/size_tv_card_writer_14dp"
 
         android:layout_marginStart="@dimen/size_5dp"
