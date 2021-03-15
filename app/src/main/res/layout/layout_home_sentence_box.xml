@@ -6,7 +6,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="@dimen/size_card_home_sentence_box_height"
-    android:orientation="vertical"
     android:background="@drawable/shape_gray_border_box"
 
     android:paddingTop="@dimen/size_12dp"

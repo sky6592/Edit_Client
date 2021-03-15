@@ -20,7 +20,7 @@
     <string name="tv_card_zero_content">오늘 첫 문장의 주인공이 되어보세요!</string>
 
     <string name="tv_title_waited_comment">코멘트를 기다리고 있어요!</string>
-    <string name="tv_title_completed_reward">채택이 완료되었어요!</string>
+    <string name="tv_title_completed_adoption">채택이 완료되었어요!</string>
     <string name="tv_title_best_sentence_of_sympathy">많은 분들이 공감하고 있어요!</string>
     <string name="tv_title_open_comment">코멘트 보기</string>
     <string name="tv_title_self_writing">자소서 입력하기</string>
