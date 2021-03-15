@@ -60,4 +60,25 @@ class ApplicationClass : Application() {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
+    fun getCharacterResId(code: String) : Int {
+        val colorAndEmotion = code.split("/")
+        var resPath = "icon_char_"
+
+        when (colorAndEmotion[0]) {
+            "purple" -> resPath += "purple_active_"
+            "lightPurple" -> resPath += "mid_purple_"
+            "blue" -> resPath += "navy_"
+            "lightBlue" -> resPath += "sky_"
+            "gray" -> resPath += "gray_"
+        }
+        when (colorAndEmotion[1]) {
+            "relief" -> resPath += "0"
+            "bigSmile" -> resPath += "1"
+            "suprise" -> resPath += "2"
+            "happy" -> resPath += "3"
+            "smallSmile" -> resPath += "4"
+            "wink" -> resPath += "5"
+        }
+        return applicationContext.resources!!.getIdentifier(resPath, "drawable", packageName)
+    }
 }

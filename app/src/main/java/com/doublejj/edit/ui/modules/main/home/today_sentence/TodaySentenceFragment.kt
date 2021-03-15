@@ -7,14 +7,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.doublejj.edit.ApplicationClass.Companion.MENTEE_SENTENCE_LIMIT
 import com.doublejj.edit.ApplicationClass.Companion.USER_POSITION
 import com.doublejj.edit.ApplicationClass.Companion.sSharedPreferences
 import com.doublejj.edit.R
+import com.doublejj.edit.data.models.sentence.SentenceData
 import com.doublejj.edit.databinding.TodaySentenceFragmentBinding
 import com.doublejj.edit.ui.modules.main.MainActivity
-import com.doublejj.edit.ui.utils.dialog.CustomDialogFragment
-import com.doublejj.edit.ui.utils.dialog.CustomDialogClickListener
 import com.doublejj.edit.ui.utils.snackbar.CustomSnackbar
 import com.google.android.material.snackbar.Snackbar
 
@@ -32,6 +32,9 @@ class TodaySentenceFragment : Fragment() {
         binding.todaySentenceViewModel = viewModel
         binding.lifecycleOwner = this
         (activity as MainActivity).increaseFragmentCount()
+
+        /** set adapter **/
+        setAdapter()
 
         /** toolbar buttons **/
         binding.ibBack.setOnClickListener {
@@ -64,6 +67,45 @@ class TodaySentenceFragment : Fragment() {
         }
 
         return binding.root
+    }
+
+    fun setAdapter() {
+        var sentenceDataList = mutableListOf<SentenceData>()
+
+        // TODO : 테스트 코드 지우기
+        sentenceDataList.add(SentenceData(
+            "purple/suprise",
+            0L,
+            "제인",
+            "개발",
+            "직무 관련 경험",
+            "어쩌구 저쩌구",
+            20L,
+            sympathy = true
+        ))
+        sentenceDataList.add(SentenceData(
+            "blue/wink",
+            1L,
+            "그린",
+            "개발",
+            "직무 관련 경험",
+            "어쩌구 저쩌구",
+            10L,
+            sympathy = true
+        ))
+        sentenceDataList.add(SentenceData(
+            "lightPurple/relief",
+            2L,
+            "조이",
+            "디자인",
+            "직무 관련 경험",
+            "어쩌구 저쩌구",
+            30L,
+            sympathy = false
+        ))
+
+        binding.rvSentence.layoutManager = LinearLayoutManager(context)
+        binding.rvSentence.adapter = TodaySentenceAdapter(requireContext(), sentenceDataList, requireActivity().supportFragmentManager)
     }
 
     override fun onDetach() {

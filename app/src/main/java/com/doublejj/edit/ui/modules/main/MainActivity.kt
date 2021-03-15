@@ -6,8 +6,6 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil.setContentView
 import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.ViewModelProvider
-import com.doublejj.edit.ApplicationClass.Companion.USER_POSITION
-import com.doublejj.edit.ApplicationClass.Companion.sSharedPreferences
 import com.doublejj.edit.R
 import com.doublejj.edit.databinding.ActivityMainBinding
 import com.doublejj.edit.ui.modules.main.home.HomeFragment
