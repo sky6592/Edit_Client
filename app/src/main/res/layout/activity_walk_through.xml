@@ -47,12 +47,12 @@
             android:onClick="@{()->walkThroughActivity.onMoveSignUp()}" />
 
         <ImageButton
-            android:id="@+id/img_btn_walk_through_log_in"
+            android:id="@+id/img_btn_walk_through_sign_in"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginBottom="@dimen/walk_through_log_in_margin_bottom"
-            android:background="@drawable/walk_through_log_in_imgbtn"
+            android:background="@drawable/walk_through_sign_in_imgbtn"
             android:onClick="@{()->walkThroughActivity.onMoveLogIn()}" />
     </LinearLayout>
 </layout>

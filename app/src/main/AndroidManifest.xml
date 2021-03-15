@@ -13,7 +13,7 @@
         android:theme="@style/Theme.Edit"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
-        <activity android:name=".ui.modules.main.login.LogInActivity"></activity>
+        <activity android:name=".ui.modules.main.signin.SignInActivity"></activity>
         <activity android:name=".ui.modules.main.signup.SignUpActivity" />
         <activity android:name=".ui.modules.main.walkthrough.WalkThroughActivity" >
             <intent-filter>

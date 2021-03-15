@@ -7,4 +7,7 @@
     <string name="tv_bnv_ranking">랭킹</string>
     <string name="tv_bnv_myedit">나의 에딧</string>
 
+    <!-- Splash -->
+    <string name="tv_splash">자소서 공유 플랫폼</string>
+
 </resources>
