@@ -36,9 +36,9 @@ class TodaySentenceAdapter(
 
     override fun onBindViewHolder(holder: TodaySentenceAdapter.ViewHolder, position: Int) {
         var sentenceData = sentenceDataList.get(position)
-
+        /*// TODO : response에 userProfile 추가되면 주석 풀고 프로필 적용
         val characterResId = (context.applicationContext as ApplicationClass).getCharacterResId(sentenceData.userProfile)
-        holder.ivCharacter.setImageResource(characterResId)
+        holder.ivCharacter.setImageResource(characterResId)*/
         holder.tvSentenceWriter.text = sentenceData.nickName
         holder.tvOccupationType.text = sentenceData.jobName
         holder.ibMenu.setOnClickListener {
@@ -79,7 +79,8 @@ class TodaySentenceAdapter(
             // TODO : 해당 카드의 코멘트 보기 화면으로 이동
             val bundle = Bundle()
             bundle.putLong("coverLetterId", sentenceData.coverLetterId)
-            bundle.putInt("ivCharacter", characterResId)
+            /*// TODO : response에 userProfile 추가되면 주석 풀고 프로필 적용
+            bundle.putInt("ivCharacter", characterResId)*/
             bundle.putString("tvSentenceWriter", sentenceData.nickName)
             bundle.putString("tvOccupationType", sentenceData.jobName)
             bundle.putString("tvSelfWritingType", sentenceData.coverLetterCategoryName)

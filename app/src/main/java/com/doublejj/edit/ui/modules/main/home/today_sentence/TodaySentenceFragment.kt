@@ -12,13 +12,16 @@ import com.doublejj.edit.ApplicationClass.Companion.MENTEE_SENTENCE_LIMIT
 import com.doublejj.edit.ApplicationClass.Companion.USER_POSITION
 import com.doublejj.edit.ApplicationClass.Companion.sSharedPreferences
 import com.doublejj.edit.R
+import com.doublejj.edit.data.api.services.todaysentence.TodaySentenceService
+import com.doublejj.edit.data.api.services.todaysentence.TodaySentenceView
 import com.doublejj.edit.data.models.sentence.SentenceData
+import com.doublejj.edit.data.models.todaysentence.TodaySentenceResponse
 import com.doublejj.edit.databinding.TodaySentenceFragmentBinding
 import com.doublejj.edit.ui.modules.main.MainActivity
 import com.doublejj.edit.ui.utils.snackbar.CustomSnackbar
 import com.google.android.material.snackbar.Snackbar
 
-class TodaySentenceFragment : Fragment() {
+class TodaySentenceFragment : Fragment(), TodaySentenceView {
     private lateinit var binding: TodaySentenceFragmentBinding
     private lateinit var viewModel: TodaySentenceViewModel
 
@@ -72,8 +75,9 @@ class TodaySentenceFragment : Fragment() {
     fun setAdapter() {
         var sentenceDataList = mutableListOf<SentenceData>()
 
+        TodaySentenceService(this).tryGetTodaySentence(page = 0)
         // TODO : 테스트 코드 지우기
-        sentenceDataList.add(SentenceData(
+        /*sentenceDataList.add(SentenceData(
             "purple/suprise",
             0L,
             "제인",
@@ -102,10 +106,21 @@ class TodaySentenceFragment : Fragment() {
             "어쩌구 저쩌구",
             30L,
             sympathy = false
-        ))
+        ))*/
 
         binding.rvSentence.layoutManager = LinearLayoutManager(context)
-        binding.rvSentence.adapter = TodaySentenceAdapter(requireContext(), sentenceDataList, requireActivity().supportFragmentManager)
+//        binding.rvSentence.adapter = TodaySentenceAdapter(requireContext(), sentenceDataList, requireActivity().supportFragmentManager)
+    }
+
+    override fun onGetTodaySentenceSuccess(response: TodaySentenceResponse) {
+        if (response.isSuccess) {
+
+            binding.rvSentence.adapter = TodaySentenceAdapter(requireContext(), response.result, requireActivity().supportFragmentManager)
+        }
+    }
+
+    override fun onGetTodaySentenceFailure(message: String) {
+        CustomSnackbar.make(requireView(), message, Snackbar.LENGTH_SHORT)
     }
 
     override fun onDetach() {
