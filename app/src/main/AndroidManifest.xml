@@ -27,14 +27,14 @@
             android:windowSoftInputMode="adjustResize" />
         <activity android:name=".ui.modules.main.home.writing_comment.WritingCommentActivity" />
         <activity android:name=".ui.modules.main.walkthrough.WalkThroughActivity" />
-        <activity android:name=".ui.modules.main.splash.SplashActivity" />
-        <activity android:name=".ui.modules.main.MainActivity">
+        <activity android:name=".ui.modules.main.splash.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ui.modules.main.MainActivity" />
     </application>
 
 </manifest>

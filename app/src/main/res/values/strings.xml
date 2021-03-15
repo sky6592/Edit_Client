@@ -7,6 +7,9 @@
     <string name="tv_bnv_ranking">랭킹</string>
     <string name="tv_bnv_myedit">나의 에딧</string>
 
+    <!-- Splash -->
+    <string name="tv_splash">자소서 공유 플랫폼</string>
+
     <!--  home_fragment  -->
     <string name="fab_description_mentee">자소서 작성</string>
     <string name="fab_description_mentor">자소서 코멘트 작성</string>
