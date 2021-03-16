@@ -13,6 +13,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:lottie_autoPlay="true"
-        app:lottie_fileName="splash_test_two.json"
+        app:lottie_fileName="splash_test_three.json"
         app:lottie_loop="false" />
 </LinearLayout>

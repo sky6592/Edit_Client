@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
@@ -10,7 +11,7 @@
 
         <!-- Title -->
         <LinearLayout
-            android:id="@+id/linear_job_group"
+            android:id="@+id/linear_read"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/shadow_bg"
@@ -20,14 +21,14 @@
             android:paddingTop="@dimen/padding_common">
 
             <ImageView
-                android:id="@+id/iv_back_job_group"
+                android:id="@+id/iv_back_read"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_baseline_navigate_before_24" />
 
 
             <TextView
-                android:id="@+id/tv_title_job_group"
+                android:id="@+id/tv_title_read"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -53,7 +54,7 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/tv_nick_name_job_group"
+                    android:id="@+id/tv_nick_name_read"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/noto_sans_kr_bold"
@@ -62,7 +63,7 @@
                     android:textSize="@dimen/tv_18sp" />
 
                 <TextView
-                    android:id="@+id/tv_info_one_job_group"
+                    android:id="@+id/tv_info_one_read"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/noto_sans_kr_bold"
@@ -71,19 +72,30 @@
                     android:textSize="@dimen/tv_18sp" />
             </LinearLayout>
 
-            <!--직을 선택해주세요!-->
+            <!--직군을 선택해주세요!-->
             <TextView
-                android:id="@+id/tv_info_two_job_group"
+                android:id="@+id/tv_info_two_read"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/noto_sans_kr_bold"
                 android:gravity="center"
-                android:text="@string/tv_info_job_group"
+                android:text="@string/tv_info_read"
                 android:textColor="@color/black"
                 android:textSize="@dimen/tv_18sp" />
+
+            <TextView
+                android:id="@+id/tv_info_last_read"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/noto_sans_kr_bold"
+                android:gravity="center"
+                android:text="@string/tv_info_last_read"
+                android:textColor="@color/black"
+                android:textSize="@dimen/tv_18sp" />
+
         </LinearLayout>
 
-        <!--Spinner-->
+        <!--스크롤뷰설치하기!!!-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
