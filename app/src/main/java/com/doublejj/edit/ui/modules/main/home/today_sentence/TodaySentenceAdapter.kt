@@ -9,8 +9,10 @@ import android.widget.*
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.RecyclerView
-import com.doublejj.edit.ApplicationClass
 import com.doublejj.edit.R
+import com.doublejj.edit.data.api.services.reportsentence.ReportSentenceService
+import com.doublejj.edit.data.api.services.reportsentence.ReportSentenceView
+import com.doublejj.edit.data.models.reportsentence.ReportSentenceResponse
 import com.doublejj.edit.data.models.sentence.SentenceData
 import com.doublejj.edit.ui.modules.main.home.open_comment.OpenCommentFragment
 import com.doublejj.edit.ui.utils.dialog.CustomDialogClickListener
@@ -22,12 +24,15 @@ class TodaySentenceAdapter(
     val context: Context,
     var sentenceDataList: MutableList<SentenceData>,
     val fm: FragmentManager
-) : RecyclerView.Adapter<TodaySentenceAdapter.ViewHolder>() {
+) : RecyclerView.Adapter<TodaySentenceAdapter.ViewHolder>(), ReportSentenceView {
+    lateinit var parentView: ViewGroup
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
     ): TodaySentenceAdapter.ViewHolder {
+        parentView = parent
+
         val inflater = LayoutInflater.from(parent.context)
         val itemView: View = inflater.inflate(R.layout.layout_sentence, parent, false)
 
@@ -50,8 +55,8 @@ class TodaySentenceAdapter(
             )
             dialog.setDialogClickListener(object : CustomDialogClickListener {
                 override fun onPositiveClick() {
-                    // TODO : 해당 카드 신고 처리
-                    CustomSnackbar.make(it, context.getString(R.string.snackbar_report), Snackbar.LENGTH_LONG).show()
+                    // 해당 카드 신고 처리
+                    ReportSentenceService(this@TodaySentenceAdapter).tryReportSentence(sentenceData.coverLetterId)
                 }
                 override fun onNegativeClick() {
                 }
@@ -98,6 +103,16 @@ class TodaySentenceAdapter(
 
     override fun getItemCount(): Int {
         return sentenceDataList.size
+    }
+
+    override fun onReportSentenceSuccess(response: ReportSentenceResponse) {
+        if (response.isSuccess) {
+            CustomSnackbar.make(parentView, context.getString(R.string.snackbar_report), Snackbar.LENGTH_LONG).show()
+        }
+    }
+
+    override fun onReportSentenceFailure(message: String) {
+        CustomSnackbar.make(parentView, message, Snackbar.LENGTH_SHORT).show()
     }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
