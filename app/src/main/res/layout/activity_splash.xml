@@ -4,26 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:gravity="center"
+    android:orientation="vertical"
     tools:context=".ui.modules.main.splash.SplashActivity">
 
-<!-- splash 위치 지정해야함 -->
-
-    <ImageView
-        android:id="@+id/iv_splash"
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animation_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/icon_edit_logo" />
-
-    <TextView
-        android:id="@+id/tv_splash"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/noto_sans_kr_bold"
-        android:gravity="center_horizontal"
-        android:textColor="@color/purple"
-        android:textSize="15sp"
-        android:textStyle="bold"
-        tools:text="@string/tv_splash" />
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="splash_test_two.json"
+        app:lottie_loop="false" />
 </LinearLayout>

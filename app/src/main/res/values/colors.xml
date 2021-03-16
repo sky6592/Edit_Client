@@ -20,5 +20,7 @@
     <color name="transparency">#00FFFFFF</color>
     <color name="purple">#5a32dc</color>
     <color name="lavender">#cdc1f4</color>
+    <color name="very_light_pink">#d8d8d8</color>
+
 
 </resources>
