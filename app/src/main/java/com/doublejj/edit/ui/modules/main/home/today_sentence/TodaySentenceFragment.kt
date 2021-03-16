@@ -73,49 +73,15 @@ class TodaySentenceFragment : Fragment(), TodaySentenceView {
     }
 
     fun setAdapter() {
-        var sentenceDataList = mutableListOf<SentenceData>()
-
+        // TODO : 페이징 적용하기
         TodaySentenceService(this).tryGetTodaySentence(page = 0)
-        // TODO : 테스트 코드 지우기
-        /*sentenceDataList.add(SentenceData(
-            "purple/suprise",
-            0L,
-            "제인",
-            "개발",
-            "직무 관련 경험",
-            "어쩌구 저쩌구",
-            20L,
-            sympathy = true
-        ))
-        sentenceDataList.add(SentenceData(
-            "blue/wink",
-            1L,
-            "그린",
-            "개발",
-            "직무 관련 경험",
-            "어쩌구 저쩌구",
-            10L,
-            sympathy = true
-        ))
-        sentenceDataList.add(SentenceData(
-            "lightPurple/relief",
-            2L,
-            "조이",
-            "디자인",
-            "직무 관련 경험",
-            "어쩌구 저쩌구",
-            30L,
-            sympathy = false
-        ))*/
-
         binding.rvSentence.layoutManager = LinearLayoutManager(context)
-//        binding.rvSentence.adapter = TodaySentenceAdapter(requireContext(), sentenceDataList, requireActivity().supportFragmentManager)
     }
 
     override fun onGetTodaySentenceSuccess(response: TodaySentenceResponse) {
         if (response.isSuccess) {
 
-            binding.rvSentence.adapter = TodaySentenceAdapter(requireContext(), response.result, requireActivity().supportFragmentManager)
+            binding.rvSentence.adapter = SentenceAdapter(requireContext(), response.result, requireActivity().supportFragmentManager)
         }
     }
 

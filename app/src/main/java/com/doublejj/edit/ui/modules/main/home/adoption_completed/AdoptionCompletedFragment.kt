@@ -12,7 +12,7 @@ import com.doublejj.edit.R
 import com.doublejj.edit.data.models.sentence.SentenceData
 import com.doublejj.edit.databinding.AdoptionCompletedFragmentBinding
 import com.doublejj.edit.ui.modules.main.MainActivity
-import com.doublejj.edit.ui.modules.main.home.today_sentence.TodaySentenceAdapter
+import com.doublejj.edit.ui.modules.main.home.today_sentence.SentenceAdapter
 
 class AdoptionCompletedFragment : Fragment() {
     private lateinit var binding: AdoptionCompletedFragmentBinding
@@ -85,7 +85,7 @@ class AdoptionCompletedFragment : Fragment() {
         )
 
         binding.rvSentence.layoutManager = LinearLayoutManager(context)
-        binding.rvSentence.adapter = TodaySentenceAdapter(requireContext(), sentenceDataList, requireActivity().supportFragmentManager)
+        binding.rvSentence.adapter = SentenceAdapter(requireContext(), sentenceDataList, requireActivity().supportFragmentManager)
     }
 
     override fun onDetach() {

@@ -20,17 +20,17 @@ import com.doublejj.edit.ui.utils.dialog.CustomDialogFragment
 import com.doublejj.edit.ui.utils.snackbar.CustomSnackbar
 import com.google.android.material.snackbar.Snackbar
 
-class TodaySentenceAdapter(
+class SentenceAdapter(
     val context: Context,
     var sentenceDataList: MutableList<SentenceData>,
     val fm: FragmentManager
-) : RecyclerView.Adapter<TodaySentenceAdapter.ViewHolder>(), ReportSentenceView {
+) : RecyclerView.Adapter<SentenceAdapter.ViewHolder>(), ReportSentenceView {
     lateinit var parentView: ViewGroup
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): TodaySentenceAdapter.ViewHolder {
+    ): SentenceAdapter.ViewHolder {
         parentView = parent
 
         val inflater = LayoutInflater.from(parent.context)
@@ -39,7 +39,7 @@ class TodaySentenceAdapter(
         return ViewHolder(itemView)
     }
 
-    override fun onBindViewHolder(holder: TodaySentenceAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: SentenceAdapter.ViewHolder, position: Int) {
         var sentenceData = sentenceDataList.get(position)
         /*// TODO : response에 userProfile 추가되면 주석 풀고 프로필 적용
         val characterResId = (context.applicationContext as ApplicationClass).getCharacterResId(sentenceData.userProfile)
@@ -56,7 +56,7 @@ class TodaySentenceAdapter(
             dialog.setDialogClickListener(object : CustomDialogClickListener {
                 override fun onPositiveClick() {
                     // 해당 카드 신고 처리
-                    ReportSentenceService(this@TodaySentenceAdapter).tryReportSentence(sentenceData.coverLetterId)
+                    ReportSentenceService(this@SentenceAdapter).tryReportSentence(sentenceData.coverLetterId)
                 }
                 override fun onNegativeClick() {
                 }
