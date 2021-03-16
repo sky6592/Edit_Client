@@ -7,8 +7,8 @@ import retrofit2.http.Body
 import retrofit2.http.POST
 
 interface LoginRetrofitInterface {
-    @POST("/login")
+    @POST("/api/login")
     fun postLogin(
-        @Body params: PostLoginRequest
+        @Body request: PostLoginRequest
     ) : Call<LoginResponse>
 }

@@ -54,5 +54,6 @@
             android:layout_marginBottom="@dimen/walk_through_log_in_margin_bottom"
             android:background="@drawable/walk_through_sign_in_imgbtn"
             android:onClick="@{()->walkThroughActivity.onMoveLogIn()}" />
+
     </LinearLayout>
 </layout>
