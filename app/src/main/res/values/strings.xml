@@ -71,6 +71,15 @@
     <string name="tv_mentee">멘티</string>
     <string name="tv_mentee_info">문장 단위로 자소서를\n작성합니다.</string>
 
+    <!-- Job Group -->
+    <string name="tv_info_job_group">직군을 선택해주세요.</string>
+    <string name="tv_job_group">직군</string>
+
+    <!-- Read -->
+    <string name="tv_info_read">이것만은 지켜주세요!</string>
+    <string name="tv_info_last_read">아래 사항들을 꼭 읽어주세요.</string>
+
+
     <!-- Walk Through -->
     <string name="tv_walk_thorough_one">스스로 자소서를 완성하는\n힘을 기를 수 있게 합니다.</string>
     <string name="tv_walk_thorough_two">누구나 멘토, 멘티가 될 수 있지만\n아무나 멘토, 멘티가 될 수는 없다.</string>

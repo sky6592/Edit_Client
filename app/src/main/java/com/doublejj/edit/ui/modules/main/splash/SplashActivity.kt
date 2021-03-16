@@ -15,9 +15,9 @@ class SplashActivity : AppCompatActivity() {
 
         val animation_view: LottieAnimationView = findViewById(R.id.animation_view)
         animation_view.addAnimatorUpdateListener {
-            if(animation_view.isAnimating){
+            if (animation_view.isAnimating) {
                 //애니메이션 끝나고 화면 넘어가기
-                startActivity(Intent(this,InfoFirstActivity::class.java))
+                startActivity(Intent(this, InfoFirstActivity::class.java))
             }
         }
 
