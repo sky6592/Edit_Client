@@ -40,14 +40,14 @@
     <string name="tv_occupation_type">디자인</string>
     <string name="tv_colon">:</string>
     <string name="tv_sympathy">공감해요</string>
-    <string name="tv_sympathy_count">32</string>
+    <string name="tv_sympathy_count">0</string>
 
     <string name="snackbar_report">신고가 정상적으로 접수되었습니다. :)</string>
     <string name="snackbar_limit_over">오늘 하루 10개의 문장 작성을 완료하셨습니다! :)</string>
     <string name="snackbar_mentee_only">자소서 입력하기로 이어지며, 멘티만 작성 가능합니다! :)</string>
 
-    <!--  self_writing_activity  -->
-    <string name="tv_self_writing_spinner_kind_title">자소서 종류</string>
+    <!--  writing_sentence_activity  -->
+    <string name="tv_self_writing_spinner_type_title">자소서 종류</string>
     <string name="spinner_hint">선택해주세요.</string>
     <string name="spinner_self_writing_0">지원동기</string>
     <string name="spinner_self_writing_1">성장배경</string>
@@ -62,11 +62,12 @@
     <string name="tv_self_writing_notice_write_second">10개 이상 입력할 수 있는 서비스를 준비 중이니, 조금만 기다려주세요!</string>
 
     <string name="tv_self_writing_input_title">문장 입력</string>
-    <string name="tv_self_writing_input_include_space">공백 포함:</string>
-    <string name="tv_self_writing_input_without_space">공백 제외:</string>
+    <string name="tv_self_writing_input_include_space">공백 포함 :</string>
+    <string name="tv_self_writing_input_without_space">공백 제외 :</string>
     <string name="tv_self_writing_input_count">자</string>
     <string name="tv_self_writing_input_hint">문장은 공백 포함 90자 내로 제한됩니다.</string>
     <string name="tv_self_writing_notice_input_first">한 번 등록한 문장은 수정이 어렵습니다. 신중히 확인 후 등록해주세요!</string>
+    <string name="tv_self_writing_notice_input_second">문장 삭제는 ‘나의 에딧 &gt; 자소서 목록’에서 가능합니다.</string>
     <string name="btn_self_writing_temp">임시 저장</string>
     <string name="btn_self_writing_submit">등록하기</string>
 

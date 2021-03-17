@@ -4,6 +4,7 @@
     package="com.doublejj.edit">
 
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".ApplicationClass"
         android:allowBackup="true"
@@ -14,7 +15,10 @@
         android:theme="@style/Theme.Edit"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
-        <activity android:name=".ui.modules.main.home.comment_writing.CommentWritingActivity"></activity>
+        <activity
+            android:name=".ui.modules.main.home.writing_sentence.WritingSentenceActivity"
+            android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".ui.modules.main.home.comment_writing.CommentWritingActivity" />
         <activity android:name=".ui.modules.main.walkthrough.WalkThroughActivity" />
         <activity android:name=".ui.modules.main.splash.SplashActivity" />
         <activity android:name=".ui.modules.main.MainActivity">

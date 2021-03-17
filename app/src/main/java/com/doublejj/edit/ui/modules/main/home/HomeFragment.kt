@@ -1,5 +1,6 @@
 package com.doublejj.edit.ui.modules.main.home
 
+import android.content.Intent
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.util.Log
@@ -24,6 +25,7 @@ import com.doublejj.edit.ui.modules.main.home.adoption_completed.AdoptionComplet
 import com.doublejj.edit.ui.modules.main.home.best_sympathy.BestSympathyFragment
 import com.doublejj.edit.ui.modules.main.home.today_sentence.TodaySentenceFragment
 import com.doublejj.edit.ui.modules.main.home.waiting_for_comment.WaitingForCommentFragment
+import com.doublejj.edit.ui.modules.main.home.writing_sentence.WritingSentenceActivity
 import com.doublejj.edit.ui.utils.snackbar.CustomSnackbar
 import com.google.android.material.snackbar.Snackbar
 
@@ -96,7 +98,7 @@ class HomeFragment : Fragment(), MainOneshotView {
         }
 
         binding.fabMentee.setOnClickListener {
-            // TODO : 자소서 입력하기로 이동
+            startActivity(Intent(activity, WritingSentenceActivity::class.java))
         }
 
 
@@ -107,8 +109,6 @@ class HomeFragment : Fragment(), MainOneshotView {
     }
 
     fun setTodaySentence(todaySentences: MutableList<MainSentenceData>) {
-
-        // TODO : 오늘의 문장 0개일 때 카드 데이터 할당
         when (todaySentences.size) {
             0 -> {
                 // 오늘의 문장 0개일 때 카드 처리
@@ -129,30 +129,36 @@ class HomeFragment : Fragment(), MainOneshotView {
                 binding.cvHomeTodaySentenceZero2.visibility = View.GONE
                 binding.cvHomeTodaySentenceZero3.visibility = View.GONE
                 binding.cvHomeTodaySentenceZero4.visibility = View.GONE
-                if (todaySentences.size <= 5) {
-                    binding.cvHomeTodaySentence4.visibility = View.VISIBLE
-                    binding.tvTodaySentenceWriter4.text = todaySentences.get(4).nickName
-                    binding.tvTodaySentenceContent4.text = todaySentences.get(4).coverLetterContent
+                binding.cvHomeTodaySentence0.visibility = View.GONE
+                binding.cvHomeTodaySentence1.visibility = View.GONE
+                binding.cvHomeTodaySentence2.visibility = View.GONE
+                binding.cvHomeTodaySentence3.visibility = View.GONE
+                binding.cvHomeTodaySentence4.visibility = View.GONE
+
+                if (todaySentences.size >= 1) {
+                    binding.cvHomeTodaySentence0.visibility = View.VISIBLE
+                    binding.tvTodaySentenceWriter0.text = todaySentences.get(0).nickName
+                    binding.tvTodaySentenceContent0.text = todaySentences.get(0).coverLetterContent
                 }
-                if (todaySentences.size <= 4) {
-                    binding.cvHomeTodaySentence3.visibility = View.VISIBLE
-                    binding.tvTodaySentenceWriter3.text = todaySentences.get(3).nickName
-                    binding.tvTodaySentenceContent3.text = todaySentences.get(3).coverLetterContent
-                }
-                if (todaySentences.size <= 3) {
-                    binding.cvHomeTodaySentence2.visibility = View.VISIBLE
-                    binding.tvTodaySentenceWriter2.text = todaySentences.get(2).nickName
-                    binding.tvTodaySentenceContent2.text = todaySentences.get(2).coverLetterContent
-                }
-                if (todaySentences.size <= 2) {
+                if (todaySentences.size >= 2) {
                     binding.cvHomeTodaySentence1.visibility = View.VISIBLE
                     binding.tvTodaySentenceWriter1.text = todaySentences.get(1).nickName
                     binding.tvTodaySentenceContent1.text = todaySentences.get(1).coverLetterContent
                 }
-                if (todaySentences.size <= 1) {
-                    binding.cvHomeTodaySentence0.visibility = View.VISIBLE
-                    binding.tvTodaySentenceWriter0.text = todaySentences.get(0).nickName
-                    binding.tvTodaySentenceContent0.text = todaySentences.get(0).coverLetterContent
+                if (todaySentences.size >= 3) {
+                    binding.cvHomeTodaySentence2.visibility = View.VISIBLE
+                    binding.tvTodaySentenceWriter2.text = todaySentences.get(2).nickName
+                    binding.tvTodaySentenceContent2.text = todaySentences.get(2).coverLetterContent
+                }
+                if (todaySentences.size >= 4) {
+                    binding.cvHomeTodaySentence3.visibility = View.VISIBLE
+                    binding.tvTodaySentenceWriter3.text = todaySentences.get(3).nickName
+                    binding.tvTodaySentenceContent3.text = todaySentences.get(3).coverLetterContent
+                }
+                if (todaySentences.size >= 5) {
+                    binding.cvHomeTodaySentence4.visibility = View.VISIBLE
+                    binding.tvTodaySentenceWriter4.text = todaySentences.get(4).nickName
+                    binding.tvTodaySentenceContent4.text = todaySentences.get(4).coverLetterContent
                 }
             }
         }

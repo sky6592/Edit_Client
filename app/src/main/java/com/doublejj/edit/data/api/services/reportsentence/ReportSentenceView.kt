@@ -1,8 +1,8 @@
 package com.doublejj.edit.data.api.services.reportsentence
 
-import com.doublejj.edit.data.models.reportsentence.ReportSentenceResponse
+import com.doublejj.edit.data.models.ResultResponse
 
 interface ReportSentenceView {
-    fun onReportSentenceSuccess(response: ReportSentenceResponse)
+    fun onReportSentenceSuccess(response: ResultResponse)
     fun onReportSentenceFailure(message: String)
 }

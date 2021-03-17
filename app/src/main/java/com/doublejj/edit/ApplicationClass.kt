@@ -27,8 +27,6 @@ class ApplicationClass : Application() {
         // User 관련 정보 키 값 (mentor or mentee)
         var USER_POSITION = "USER-POSITION"
         var MENTOR_AUTH_CONFIRM = "MENTOR-AUTH-CONFIRM"
-
-        const val MENTEE_SENTENCE_LIMIT = 10
     }
 
     override fun onCreate() {

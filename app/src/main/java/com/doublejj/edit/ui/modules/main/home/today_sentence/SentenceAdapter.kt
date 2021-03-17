@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.doublejj.edit.R
 import com.doublejj.edit.data.api.services.reportsentence.ReportSentenceService
 import com.doublejj.edit.data.api.services.reportsentence.ReportSentenceView
-import com.doublejj.edit.data.models.reportsentence.ReportSentenceResponse
+import com.doublejj.edit.data.models.ResultResponse
 import com.doublejj.edit.data.models.sentence.SentenceData
 import com.doublejj.edit.ui.modules.main.home.open_comment.OpenCommentFragment
 import com.doublejj.edit.ui.utils.dialog.CustomDialogClickListener
@@ -105,7 +105,7 @@ class SentenceAdapter(
         return sentenceDataList.size
     }
 
-    override fun onReportSentenceSuccess(response: ReportSentenceResponse) {
+    override fun onReportSentenceSuccess(response: ResultResponse) {
         if (response.isSuccess) {
             CustomSnackbar.make(parentView, context.getString(R.string.snackbar_report), Snackbar.LENGTH_LONG).show()
         }

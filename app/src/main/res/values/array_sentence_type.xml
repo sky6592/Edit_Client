@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="array_sentence_type">
+        <item>@string/spinner_self_writing_0</item>
+        <item>@string/spinner_self_writing_1</item>
+        <item>@string/spinner_self_writing_2</item>
+        <item>@string/spinner_self_writing_3</item>
+        <item>@string/spinner_self_writing_4</item>
+        <item>@string/spinner_self_writing_5</item>
+        <item>@string/spinner_self_writing_6</item>
+        <item>@string/spinner_self_writing_7</item>
+    </string-array>
+</resources>

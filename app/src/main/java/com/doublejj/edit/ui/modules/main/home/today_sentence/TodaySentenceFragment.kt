@@ -1,5 +1,6 @@
 package com.doublejj.edit.ui.modules.main.home.today_sentence
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -8,16 +9,15 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.doublejj.edit.ApplicationClass.Companion.MENTEE_SENTENCE_LIMIT
 import com.doublejj.edit.ApplicationClass.Companion.USER_POSITION
 import com.doublejj.edit.ApplicationClass.Companion.sSharedPreferences
 import com.doublejj.edit.R
 import com.doublejj.edit.data.api.services.todaysentence.TodaySentenceService
 import com.doublejj.edit.data.api.services.todaysentence.TodaySentenceView
-import com.doublejj.edit.data.models.sentence.SentenceData
 import com.doublejj.edit.data.models.todaysentence.TodaySentenceResponse
 import com.doublejj.edit.databinding.TodaySentenceFragmentBinding
 import com.doublejj.edit.ui.modules.main.MainActivity
+import com.doublejj.edit.ui.modules.main.home.writing_sentence.WritingSentenceActivity
 import com.doublejj.edit.ui.utils.snackbar.CustomSnackbar
 import com.google.android.material.snackbar.Snackbar
 
@@ -51,9 +51,9 @@ class TodaySentenceFragment : Fragment(), TodaySentenceView {
             when (sSharedPreferences.getString(USER_POSITION, "MENTEE")) {
                 "MENTEE" -> {
                     // TODO : 문장 작성 가능 개수 남았다면 자소서 입력하기 화면
-                    val todaySentenceCountTest = 11
-                    if (todaySentenceCountTest < MENTEE_SENTENCE_LIMIT) {
-                        // TODO : 자소서 입력하기로 이동
+                    val todaySentenceCountTest = 4 // TODO : 테스트 임시 코드 지우기
+                    if (todaySentenceCountTest < resources.getInteger(R.integer.length_limit_mentee_sentence)) {
+                        startActivity(Intent(activity, WritingSentenceActivity::class.java))
                     }
                     else {
                         // 문장 작성 가능 개수 초과
