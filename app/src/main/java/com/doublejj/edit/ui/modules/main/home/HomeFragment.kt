@@ -16,6 +16,9 @@ import com.doublejj.edit.ApplicationClass.Companion.sSharedPreferences
 import com.doublejj.edit.R
 import com.doublejj.edit.data.api.services.mainoneshot.MainOneshotService
 import com.doublejj.edit.data.api.services.mainoneshot.MainOneshotView
+import com.doublejj.edit.data.api.services.writing_sentence.SentenceLimitService
+import com.doublejj.edit.data.api.services.writing_sentence.SentenceLimitView
+import com.doublejj.edit.data.models.ResultResponse
 import com.doublejj.edit.data.models.mainoneshot.MainOneshotResponse
 import com.doublejj.edit.data.models.mainoneshot.MainSentenceData
 import com.doublejj.edit.data.models.mainoneshot.MainSentences
@@ -29,7 +32,7 @@ import com.doublejj.edit.ui.modules.main.home.writing_sentence.WritingSentenceAc
 import com.doublejj.edit.ui.utils.snackbar.CustomSnackbar
 import com.google.android.material.snackbar.Snackbar
 
-class HomeFragment : Fragment(), MainOneshotView {
+class HomeFragment : Fragment(), MainOneshotView, SentenceLimitView {
     private val TAG: String = javaClass.simpleName.toString()
     private lateinit var binding: HomeFragmentBinding
     private lateinit var viewModel: HomeViewModel
@@ -98,7 +101,8 @@ class HomeFragment : Fragment(), MainOneshotView {
         }
 
         binding.fabMentee.setOnClickListener {
-            startActivity(Intent(activity, WritingSentenceActivity::class.java))
+            // 오늘 작성한 문장 개수 조회
+            SentenceLimitService(this).tryGetSentenceLimit()
         }
 
 
@@ -193,6 +197,24 @@ class HomeFragment : Fragment(), MainOneshotView {
     }
 
     override fun onGetMainSentencesFailure(message: String) {
+        CustomSnackbar.make(binding.root, message, Snackbar.LENGTH_SHORT)
+    }
+
+    override fun onGetSentenceLimitSuccess(response: ResultResponse) {
+        if (response.isSuccess) {
+            if (response.result < resources.getInteger(R.integer.length_limit_today_sentence)) {
+                // 문장 작성 가능
+                // TODO : 스낵바 위치 bnv 위로 올리기
+                startActivity(Intent(activity, WritingSentenceActivity::class.java))
+            }
+            else {
+                // 문장 작성 가능 개수 초과
+                CustomSnackbar.make(binding.root, getString(R.string.snackbar_limit_over),Snackbar.LENGTH_LONG).show()
+            }
+        }
+    }
+
+    override fun onGetSentenceLimitFailure(message: String) {
         CustomSnackbar.make(binding.root, message, Snackbar.LENGTH_SHORT)
     }
 

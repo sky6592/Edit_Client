@@ -14,6 +14,9 @@ import com.doublejj.edit.ApplicationClass.Companion.sSharedPreferences
 import com.doublejj.edit.R
 import com.doublejj.edit.data.api.services.todaysentence.TodaySentenceService
 import com.doublejj.edit.data.api.services.todaysentence.TodaySentenceView
+import com.doublejj.edit.data.api.services.writing_sentence.SentenceLimitService
+import com.doublejj.edit.data.api.services.writing_sentence.SentenceLimitView
+import com.doublejj.edit.data.models.ResultResponse
 import com.doublejj.edit.data.models.todaysentence.TodaySentenceResponse
 import com.doublejj.edit.databinding.TodaySentenceFragmentBinding
 import com.doublejj.edit.ui.modules.main.MainActivity
@@ -21,7 +24,7 @@ import com.doublejj.edit.ui.modules.main.home.writing_sentence.WritingSentenceAc
 import com.doublejj.edit.ui.utils.snackbar.CustomSnackbar
 import com.google.android.material.snackbar.Snackbar
 
-class TodaySentenceFragment : Fragment(), TodaySentenceView {
+class TodaySentenceFragment : Fragment(), TodaySentenceView, SentenceLimitView {
     private lateinit var binding: TodaySentenceFragmentBinding
     private lateinit var viewModel: TodaySentenceViewModel
 
@@ -50,16 +53,8 @@ class TodaySentenceFragment : Fragment(), TodaySentenceView {
         binding.etInputSentence.setOnClickListener {
             when (sSharedPreferences.getString(USER_POSITION, "MENTEE")) {
                 "MENTEE" -> {
-                    // TODO : 문장 작성 가능 개수 남았다면 자소서 입력하기 화면
-                    val todaySentenceCountTest = 4 // TODO : 테스트 임시 코드 지우기
-                    if (todaySentenceCountTest < resources.getInteger(R.integer.length_limit_mentee_sentence)) {
-                        startActivity(Intent(activity, WritingSentenceActivity::class.java))
-                    }
-                    else {
-                        // 문장 작성 가능 개수 초과
-                        // TODO : 스낵바 위치 bnv 위로 올리기
-                        CustomSnackbar.make(binding.root, getString(R.string.snackbar_limit_over), Snackbar.LENGTH_LONG).show()
-                    }
+                    // 오늘 작성한 문장 개수 조회
+                    SentenceLimitService(this).tryGetSentenceLimit()
                 }
                 "MENTOR" -> {
                     // 멘토 문장 작성 불가
@@ -87,6 +82,24 @@ class TodaySentenceFragment : Fragment(), TodaySentenceView {
 
     override fun onGetTodaySentenceFailure(message: String) {
         CustomSnackbar.make(requireView(), message, Snackbar.LENGTH_SHORT)
+    }
+
+    override fun onGetSentenceLimitSuccess(response: ResultResponse) {
+        if (response.isSuccess) {
+            if (response.result < resources.getInteger(R.integer.length_limit_today_sentence)) {
+                // 문장 작성 가능
+                startActivity(Intent(activity, WritingSentenceActivity::class.java))
+            }
+            else {
+                // 문장 작성 가능 개수 초과
+                // TODO : 스낵바 위치 bnv 위로 올리기
+                CustomSnackbar.make(binding.root, getString(R.string.snackbar_limit_over),Snackbar.LENGTH_LONG).show()
+            }
+        }
+    }
+
+    override fun onGetSentenceLimitFailure(message: String) {
+        CustomSnackbar.make(binding.root, message, Snackbar.LENGTH_SHORT)
     }
 
     override fun onDetach() {
