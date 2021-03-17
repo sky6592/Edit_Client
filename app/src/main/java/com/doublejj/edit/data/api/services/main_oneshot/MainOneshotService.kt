@@ -1,8 +1,8 @@
-package com.doublejj.edit.data.api.services.mainoneshot
+package com.doublejj.edit.data.api.services.main_oneshot
 
 import com.doublejj.edit.ApplicationClass.Companion.sRetrofit
-import com.doublejj.edit.data.api.retrofitinterfaces.mainoneshot.MainOneshotRetrofitInterface
-import com.doublejj.edit.data.models.mainoneshot.MainOneshotResponse
+import com.doublejj.edit.data.api.retrofitinterfaces.main_oneshot.MainOneshotRetrofitInterface
+import com.doublejj.edit.data.models.main_oneshot.MainOneshotResponse
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

@@ -7,16 +7,16 @@
     android:layout_height="wrap_content"
     android:background="@color/white">
     <ImageView
-    android:id="@+id/iv_character"
-    android:layout_width="@dimen/size_45dp"
-    android:layout_height="@dimen/size_45dp"
-    android:src="@drawable/icon_char_purple_active_1"
+        android:id="@+id/iv_character"
+        android:layout_width="@dimen/size_45dp"
+        android:layout_height="@dimen/size_45dp"
+        android:src="@drawable/icon_char_purple_active_1"
 
-    android:layout_marginTop="@dimen/size_20dp"
-    android:layout_marginStart="@dimen/size_20dp"
-    android:layout_marginLeft="@dimen/size_20dp"
-    app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintStart_toStartOf="parent" />
+        android:layout_marginTop="@dimen/size_20dp"
+        android:layout_marginStart="@dimen/size_20dp"
+        android:layout_marginLeft="@dimen/size_20dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
     <TextView
         android:id="@+id/tv_sentence_writer"
         android:layout_width="wrap_content"

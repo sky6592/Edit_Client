@@ -115,6 +115,7 @@
                             android:textStyle="bold"
                             android:textSize="@dimen/size_tv_card_writer_14dp"
                             android:textColor="@color/purple_active"
+                            android:fontFamily="@font/noto_sans_kr_bold"
 
                             android:layout_marginStart="@dimen/size_21dp"
                             android:layout_marginLeft="@dimen/size_21dp"
@@ -128,6 +129,7 @@
                             android:text="@string/tv_card_position"
                             android:textStyle="bold"
                             android:textSize="@dimen/size_tv_card_writer_14dp"
+                            android:fontFamily="@font/noto_sans_kr_bold"
 
                             android:layout_marginStart="@dimen/size_5dp"
                             android:layout_marginLeft="@dimen/size_5dp"

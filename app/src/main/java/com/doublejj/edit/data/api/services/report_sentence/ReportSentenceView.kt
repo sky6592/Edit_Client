@@ -1,4 +1,4 @@
-package com.doublejj.edit.data.api.services.reportsentence
+package com.doublejj.edit.data.api.services.report_sentence
 
 import com.doublejj.edit.data.models.ResultResponse
 

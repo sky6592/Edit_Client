@@ -12,12 +12,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.doublejj.edit.ApplicationClass.Companion.USER_POSITION
 import com.doublejj.edit.ApplicationClass.Companion.sSharedPreferences
 import com.doublejj.edit.R
-import com.doublejj.edit.data.api.services.todaysentence.TodaySentenceService
-import com.doublejj.edit.data.api.services.todaysentence.TodaySentenceView
+import com.doublejj.edit.data.api.services.today_sentence.TodaySentenceService
+import com.doublejj.edit.data.api.services.today_sentence.TodaySentenceView
 import com.doublejj.edit.data.api.services.writing_sentence.SentenceLimitService
 import com.doublejj.edit.data.api.services.writing_sentence.SentenceLimitView
 import com.doublejj.edit.data.models.ResultResponse
-import com.doublejj.edit.data.models.todaysentence.TodaySentenceResponse
+import com.doublejj.edit.data.models.lookup_sentences_home.LookupSentenceResponse
 import com.doublejj.edit.databinding.TodaySentenceFragmentBinding
 import com.doublejj.edit.ui.modules.main.MainActivity
 import com.doublejj.edit.ui.modules.main.home.writing_sentence.WritingSentenceActivity
@@ -71,11 +71,15 @@ class TodaySentenceFragment : Fragment(), TodaySentenceView, SentenceLimitView {
         // TODO : 페이징 적용하기
         TodaySentenceService(this).tryGetTodaySentence(page = 0)
         binding.rvSentence.layoutManager = LinearLayoutManager(context)
+
+        // TODO : response에 새로 추가된 mine 처리 (내 글인 경우)
+        // TODO : 1. 각 문장조회 페이지(멘티) - 문장 카드에 신고버튼->삭제버튼
+        // TODO : 2. 코멘트보기(멘티) - 문장 카드에 감사해요, 채택하기 버튼 보이기, 화면 높이 내용물에 맞게 조정
+        // TODO : 3. 코멘트보기(멘토) - 코멘트 카드에 신고버튼->삭제버튼
     }
 
-    override fun onGetTodaySentenceSuccess(response: TodaySentenceResponse) {
+    override fun onGetTodaySentenceSuccess(response: LookupSentenceResponse) {
         if (response.isSuccess) {
-
             binding.rvSentence.adapter = SentenceAdapter(requireContext(), response.result, requireActivity().supportFragmentManager)
         }
     }

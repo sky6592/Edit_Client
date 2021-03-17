@@ -1,4 +1,4 @@
-package com.doublejj.edit.data.api.retrofitinterfaces.reportsentence
+package com.doublejj.edit.data.api.retrofitinterfaces.report_sentence
 
 import com.doublejj.edit.data.models.ResultResponse
 import retrofit2.Call

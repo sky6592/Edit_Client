@@ -1,4 +1,4 @@
-package com.doublejj.edit.data.models.mainoneshot
+package com.doublejj.edit.data.models.main_oneshot
 
 import com.doublejj.edit.data.models.BaseResponse
 import com.google.gson.annotations.SerializedName
