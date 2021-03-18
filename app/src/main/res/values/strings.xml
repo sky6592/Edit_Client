@@ -71,51 +71,321 @@
     <string name="btn_self_writing_temp">임시 저장</string>
     <string name="btn_self_writing_submit">등록하기</string>
 
+    <!--  writing_comment_activity  -->
+    <string name="tv_writing_comment_toolbar_title">코멘트 입력하기</string>
+    <string name="tv_writing_comment_input_title">멘토 코멘트 입력</string>
+    <string name="tv_writing_comment_input_hint">
+        해당 자소서에 대한 의견을 작성해주세요.\n
+        (40자 이상 작성 필수)
+    </string>
+    <string name="tv_writing_comment_notice_first">한 번 등록한 코멘트는 수정이 어렵습니다. 신중히 확인 후 등록해주세요!</string>
+    <string name="tv_writing_comment_notice_second">코멘트 삭제는 ‘나의 에딧 &gt; 작성한 코멘트’에서 가능합니다.</string>
 
     <!--  open_comment_fragment  -->
     <string name="tv_open_comment_evaluation_type_0">문장에 대한 전체 평가</string>
-    <string name="tv_open_comment_evaluation_type_1">성실성</string>
-    <string name="tv_open_comment_evaluation_type_2">구체성과 논리성</string>
+    <string name="tv_open_comment_evaluation_type_1">구체성과 논리성</string>
+    <string name="tv_open_comment_evaluation_type_2">성실성</string>
     <string name="tv_open_comment_evaluation_type_3">활동성</string>
     <string name="tv_open_comment_evaluation_good">좋음</string>
     <string name="tv_open_comment_evaluation_normal">보통</string>
     <string name="tv_open_comment_evaluation_leak">부족</string>
 
     <string name="tv_open_comment_zero_title">아직 코멘트가 없습니다.</string>
-    <string name="tv_open_comment_zero_content">멘토님이 작성해주신 코멘트 한 줄이 <br />멘티님께는 큰 도움이 됩니다!</string>
+    <string name="tv_open_comment_zero_content">
+        멘토님이 작성해주신 코멘트 한 줄이\n
+        멘티님께는 큰 도움이 됩니다!
+    </string>
 
+    <string name="tv_open_comment_completion">문장 완성하기</string>
     <string name="tv_open_comment_thanks">감사합니다!</string>
     <string name="tv_open_comment_adoption">채택하기</string>
+
+    <!--  comment_list, sentence_list  -->
+    <string name="snackbar_comment_adoption_mentee">코멘트를 채택하셨네요! 이제 문장을 완성해볼까요? :)</string>
+    <string name="snackbar_sentence_list_delete_mentee">선택하신 문장이 삭제되었습니다. :)</string>
+    <string name="tv_sentence_completion_mentee_written_by_me_title">내가 작성한 문장</string>
+    <string name="tv_sentence_completion_mentee_adopt_by_me_title">내가 채택한 코멘트</string>
+    <string name="tv_more_comment">+코멘트 더보기</string>
+    <string name="tv_open_sentence">문장 보기</string>
+    <string name="snackbar_comment_list_delete_mentor">선택하신 코멘트가 삭제되었습니다. :)</string>
+    <string name="tv_writing_comment_completion">코멘트 이어서 작성하기</string>
 
     <!--  dialog  -->
     <string name="tv_dialog_self_writing_title">문장 완성을 할 수 없어요!</string>
     <string name="tv_dialog_self_writing_content">코멘트가 아직 없거나, 채택한 코멘트가 없는 경우 문장 완성을 할 수 없어요.</string>
     <string name="tv_dialog_open_comment_title">코멘트를 삭제하시겠어요?</string>
-    <string name="tv_dialog_open_comment_content">삭제된 코멘트는 복구할 수 없습니다. <br />정말 삭제하시겠어요?</string>
+    <string name="tv_dialog_open_comment_content">
+        삭제된 코멘트는 복구할 수 없습니다.\n
+        정말 삭제하시겠어요?
+    </string>
     <string name="tv_dialog_open_sentence_title">문장을 삭제하시겠어요?</string>
-    <string name="tv_dialog_open_sentence_content">삭제된 문장은 복구할 수 없습니다. <br />정말 삭제하시겠어요?</string>
+    <string name="tv_dialog_open_sentence_content">
+        삭제된 문장은 복구할 수 없습니다.\n
+        정말 삭제하시겠어요?
+    </string>
     <string name="tv_dialog_sentence_report_title">이 글을 신고하시겠어요?</string>
-    <string name="tv_dialog_sentence_report_content">해당 글이 에딧의 가이드에 어긋나거나 <br />불쾌감을 줄 경우 신고해주세요.</string>
+    <string name="tv_dialog_sentence_report_content">
+        해당 글이 에딧의 가이드에 어긋나거나\n
+        불쾌감을 줄 경우 신고해주세요.
+    </string>
     <string name="tv_dialog_sentence_temp_title">임시 저장하시겠어요?</string>
-    <string name="tv_dialog_sentence_temp_content">임시 저장 목록에 문장을 저장하고 <br />나중에 다시 작업할 수 있어요.</string>
+    <string name="tv_dialog_sentence_temp_content">
+        임시 저장 목록에 문장을 저장하고\n
+        나중에 다시 작업할 수 있어요.
+    </string>
     <string name="tv_dialog_sentence_submit_title">등록하시겠어요?</string>
-    <string name="tv_dialog_sentence_submit_content">등록 이후에는 수정이 어렵습니다. <br />신중하게 확인 후 등록해주세요!</string>
+    <string name="tv_dialog_sentence_submit_content">
+        등록 이후에는 수정이 어렵습니다.\n
+        신중하게 확인 후 등록해주세요!
+    </string>
     <string name="tv_dialog_sentence_complete_title">완성하시겠어요?</string>
-    <string name="tv_dialog_sentence_complete_content">완성 이후에는 수정이 어렵습니다. <br />신중하게 확인 후 등록해주세요!</string>
+    <string name="tv_dialog_sentence_complete_content">
+        완성 이후에는 수정이 어렵습니다.\n
+        신중하게 확인 후 등록해주세요!
+    </string>
+    <string name="tv_dialog_withdrawal_title">정보 삭제에 동의하시나요?</string>
+    <string name="tv_dialog_withdrawal_content">탈퇴 이후에는 모든 서비스를 사용할 수 없으며, 복구가 불가능합니다.</string>
     <string name="tv_dialog_confirm">확인</string>
     <string name="tv_dialog_delete">삭제</string>
     <string name="tv_dialog_report">신고하기</string>
     <string name="tv_dialog_temp">임시 저장</string>
     <string name="tv_dialog_submit">등록하기</string>
     <string name="tv_dialog_dismiss">취소</string>
+    <string name="tv_dialog_agree">동의</string>
+    <string name="tv_dialog_select">선택하기</string>
 
 
     <!--  myedit_fragment  -->
     <string name="tv_menu_profile">내 정보</string>
+    <string name="tv_change_profile">프로필 수정</string>
+    <string name="tv_change_profile_resources">캐릭터 및 색상 변경</string>
+    <string name="btn_save">저장하기</string>
+    <string name="tv_change_password">비밀번호 변경</string>
+    <string name="tv_change_password_input_old_title">
+        본인 확인을 위해\n
+        비밀번호를 입력해주세요.
+    </string>
+    <string name="tv_password">비밀번호</string>
+    <string name="tv_password_new">새 비밀번호</string>
+    <string name="tv_password_reenter">비밀번호 재입력</string>
+    <string name="tv_password_input_hint">비밀번호를 입력해주세요.</string>
+    <string name="tv_password_input_reenter_hint">비밀번호를 다시 한 번 입력해주세요.</string>
+    <string name="tv_password_input_correct">비밀번호가 일치합니다.</string>
+    <string name="tv_password_input_not_correct">입력하신 비밀번호가 일치하지 않습니다.</string>
+    <string name="tv_password_input_reg">영문, 숫자를 포함한 8~16자 조합으로 입력해주세요.</string>
+    <string name="tv_change_password_input_new_title">
+        변경하실 비밀번호를\n
+        입력해주세요.
+    </string>
+    <string name="tv_change_password_complete_title">
+        님,\n
+        변경이 완료되었습니다.
+    </string>
+    <string name="tv_change_position">직군 변경</string>
+    <string name="tv_change_position_title">
+        변경하실 직군을\n
+        선택해주세요.
+    </string>
+    <string name="tv_change_position_select">직군 선택</string>
     <string name="tv_menu_sympathy_list">공감 목록</string>
     <string name="tv_menu_sentence_list">자소서 목록</string>
     <string name="tv_menu_sentence_complete_list">자소서 완성</string>
     <string name="tv_menu_temp_list">임시 저장</string>
     <string name="tv_switch_position">멘토/멘티 변경하기</string>
+    <string name="tv_switch_position_title">
+        님,\n
+        정말 역할을 변경하시겠어요?
+    <string name="tv_switch_position_mentor_content">
+        작성하신 코멘트와 보유 코인 등 멘토 활동 내역은\n
+        역할 변경 후에 확인이 어렵습니다!\n\n
+        멘토로 다시 활동하실 때 확인하실 수 있어요.
+    </string>
+    <string name="tv_switch_position_mentee_content">
+        작성하신 자소서 및 멘티 활동 내역은\n
+        역할 변경 후에 확인이 어렵습니다!\n\n
+        멘티로 다시 활동하실 때 확인하실 수 있어요.
+    </string>
+    </string>
+    <string name="tv_switch_position_reason_title">
+        님,\n
+        역할 변경 사유를 알려주세요!
+    </string>
+    <string name="tv_switch_position_complete_title">
+        님,\n
+        변경 신청이 완료되었습니다.
+    </string>
+    <string name="tv_switch_position_complete_mentee_content">
+        어플을 종료한 후, 다시 로그인하시면\n
+        정상적으로 적용됩니다!
+    </string>
+    <string name="tv_switch_position_complete_mentor_content_first">
+        승인까지 1~2일 정도가 소요될 수 있습니다.\n
+        승인 전까지 멘티 활동은 가능합니다!
+    </string>
+    <string name="tv_switch_position_complete_mentor_content_second">
+        (승인 이후에는 로그인 화면으로 넘어가게 됩니다.)
+    </string>
+    <string name="btn_relogin">다시 로그인하기</string>
+    <string name="btn_main">메인으로</string>
     <string name="btn_logout">로그아웃</string>
+    <string name="tv_application_status_title">신청 현황 안내</string>
+    <string name="tv_switch_position_proceeding">
+        관리자가 검토 중입니다.\n
+        조금만 기다려주세요!
+    </string>
+    <string name="tv_switch_position_reject">
+        멘토/멘티 신청이 반려되었습니다.\n
+        변경을 다시 신청하실 수 있어요.
+    </string>
+    <string name="btn_reapply">재신청</string>
+
+    <string name="tv_menu_manage_coin">코인 관리</string>
+    <string name="tv_menu_comment_list">코멘트 목록</string>
+    <string name="tv_mentor_certification">멘토 인증하기</string>
+    <string name="tv_mentor_certification_welcome_title">
+        님의\n
+        멘토 활동을 환영합니다!
+    </string>
+    <string name="tv_mentor_certification_welcome_content">
+        멘토 활동을 위한 간단한 교육이 진행됩니다!\n
+        이후 인증을 거쳐 멘토 활동을 시작하게 됩니다.
+    </string>
+    <string name="tv_mentor_certification_training_step_title">아래 내용을 꼭 읽어주세요!</string>
+    <string name="tv_mentor_certification_training_step_one_title">구체적인 문장으로 적어주세요!</string>
+    <string name="tv_mentor_certification_training_step_two_title">논리적인 문장으로 적어주세요!</string>
+    <string name="tv_mentor_certification_training_step_three_title">문장은 성실하게 적어주세요!</string>
+    <string name="tv_mentor_certification_training_step_four_title">에딧에서는 이렇게!</string>
+    <string name="tv_mentor_certification_training_step_one_subtitle">
+        - 애매모호한 표현으로 기록된 문장 (X)
+    </string>
+    <string name="tv_mentor_certification_training_step_two_subtitle">
+        - 감정과 주장을 뒷받침하는 구체적 근거 (O)\n
+        - 멘토의 감정, 주장으로만 작성된 문장 (X)
+    </string>
+    <string name="tv_mentor_certification_training_step_three_subtitle">
+        - 작성해야하는 글자 수의 70% 이상 작성 (O)\n
+        - 다른 회사의 지원서 내용 또는 단어 (X)\n
+        - 지원하는 회사와 관련없는 내용 (X)
+    </string>
+    <string name="tv_mentor_certification_training_step_ex">예시 문장)</string>
+    <string name="tv_mentor_certification_training_step_guide">코멘트 가이드)</string>
+    <string name="tv_mentor_certification_training_step_one_ex">저는 취업에 대해 수도없이 떨어진 경험을 기반으로 실무와 프로젝트 경험이 중요하다는 것을 느끼게 되었습니다.</string>
+    <string name="tv_mentor_certification_training_step_one_guide_number">
+        1.\n
+        2.\n\n
+        3.
+    </string>
+    <string name="tv_mentor_certification_training_step_one_guide_text">
+        어떤 취업 준비를 했을까요?\n
+        수도없이 떨어진 경험의 한 두가지를 뒷받침 해주는\n
+        글이 필요합니다.\n
+        떨어진 경험을 통해 본인이 느낀 감정을 적어야합니다.
+    </string>
+    <string name="tv_mentor_certification_training_step_two_ex">OO 대회를 통하여 팀원들과 함께 아이디어를 선정하는 것이 즐거웠습니다.</string>
+    <string name="tv_mentor_certification_training_step_two_guide_number">
+        1.\n\n
+        2.\n\n
+    </string>
+    <string name="tv_mentor_certification_training_step_two_guide_text">
+        어떤 아이디어를 선정하였는지에 대한 글이 꼭 뒷받침 되어야 합니다.\n
+        ‘즐거웠다’는 감정을 뒷받침할 수 있는 근거가 \n
+        필요합니다.
+    </string>
+    <string name="tv_mentor_certification_training_step_three_ex">나는 성실한 어머니 밑에서 ‘늘 항상 부지런해야한다’는 말을 많이 들었다.</string>
+    <string name="tv_mentor_certification_training_step_three_guide_number">
+        1.\n
+        2.\n
+        3.
+    </string>
+    <string name="tv_mentor_certification_training_step_three_guide_text">
+        자소서에서 반말은 금해야 합니다.\n
+        자소서에도 보이지 않는 예의가 존재합니다.\n
+        문장에 예의가 없어보인다면 성실하지 않은 것으로\n
+        간주할 수 있습니다.
+    </string>
+    <string name="tv_mentor_certification_training_step_four_guide_number">
+        -\n\n\n
+        -\n\n\n
+        -\n\n\n
+        -\n\n
+    </string>
+    <string name="tv_mentor_certification_training_step_four_guide_text">
+        Edit ‘에딧’은 누구나 멘토가 될 수 있지만\n
+        아무나 멘토가 될 수는 없다고 생각합니다.\n\n
+        나의 코멘트가 상대방에게 ‘스스로 작성할 수 있는 힘’을 기를 수 있게 한다는 것을 기억해주세요.\n\n
+        부족한 자소서라도 넓은 마음으로 방향성을 제시해주세요.\n\n
+        자소서 문장을 보고 비판의 글을 남기는 것은 에딧의 취지와는 맞지 않습니다.
+    </string>
+    <string name="tv_mentor_certification_id_title">
+        님,\n
+        인증 수단을 선택해주세요.
+    </string>
+    <string name="tv_idcard">사원증 / 명함</string>
+    <string name="tv_mentor_certification_id_content_first">
+        사원증과 명함은\n
+        이미지 파일로 업로드 해주세요.
+    </string>
+    <string name="tv_mentor_certification_id_content_second">(인증 수단은 추후에 추가될 예정입니다!)</string>
+    <string name="tv_mentor_certification_image_title">
+        님,\n
+        사진을 선택해주세요.
+    </string>
+    <string name="tv_get_image">사진 가져오기</string>
+    <string name="btn_reselect">다시 선택</string>
+    <string name="btn_select">선택 완료</string>
+    <string name="tv_mentor_certification_complete_title">
+        님,\n
+        멘토 인증 신청이 완료되었습니다.
+    </string>
+    <string name="tv_mentor_certification_complete_content_first">
+        승인까지 1-2일 정도가 소요될 수 있습니다.\n
+        승인 전까지 코멘트 작성과 같은 멘토 활동은 어렵습니다!
+    </string>
+    <string name="tv_mentor_certification_complete_content_second">(승인이 된 이후에는 자동으로 멘토 활동 권한이 부여됩니다.)</string>
+    <string name="tv_setting_toolbar_title">설정</string>
+    <string name="tv_setting_notice">공지사항</string>
+    <string name="tv_service_center">고객센터</string>
+    <string name="tv_opensource">오픈소스 라이선스</string>
+    <string name="tv_app_vertion">버전 정보</string>
+    <string name="tv_account_withdrawal">에딧 탈퇴하기</string>
+    <string name="btn_next">다음으로</string>
+    <string name="btn_initial_screen">초기 화면으로</string>
+    <string name="tv_account_withdrawal_encourage_title">
+        님,\n
+        정말 에딧에서 탈퇴하시겠어요?
+    </string>
+    <string name="tv_account_withdrawal_encourage_content">
+        탈퇴하기 전 확인해주세요!\n\n
+        탈퇴할 경우 모든 활동 내역이 삭제되며,\n
+        탈퇴한 계정으로 로그인을 할 수 없습니다.
+    </string>
+    <string name="tv_account_withdrawal_reason_title">
+        님,\n
+        탈퇴 사유를 알려주세요!
+    </string>
+    <string name="tv_change_reason_title">변경 사유</string>
+    <string name="tv_other_comment_title">기타 의견</string>
+    <string name="tv_other_comment_hint">내용을 입력해주세요. (10자 이상)</string>
+    <string name="tv_account_withdrawal_complete_title">
+        님,\n
+        에딧 탈퇴가 완료되었습니다.
+    </string>
+    <string name="tv_account_withdrawal_compolete_content">
+        에딧을 사용해주셔서 감사합니다.\n
+        다음에 더 좋은 서비스로 만나요!
+    </string>
+
+
+    <!--  coin management  -->
+    <string name="tv_manage_coin_wallet">보유 코인</string>
+    <string name="tv_manage_coin_thanks">감사</string>
+    <string name="tv_manage_coin_adoption">채택</string>
+
+    <string name="tv_to_be_develop_title">개발 중입니다!</string>
+    <string name="tv_to_be_develop_coin_content">
+        코인으로 상품을 교환할 수 있는 서비스를
+        제공하기 위해 열심히 개발 중입니다.
+        조금만 더 기다려주세요!
+    </string>
+
 </resources>

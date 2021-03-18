@@ -54,6 +54,7 @@
     <dimen name="size_14dp">14dp</dimen>
     <dimen name="size_15dp">15dp</dimen>
     <dimen name="size_16dp">16dp</dimen>
+    <dimen name="size_16p5dp">16.5dp</dimen>
     <dimen name="size_17dp">17dp</dimen>
     <dimen name="size_18dp">18dp</dimen>
     <dimen name="size_19dp">19dp</dimen>
@@ -114,8 +115,10 @@
     <dimen name="size_74dp">74dp</dimen>
     <dimen name="size_75dp">75dp</dimen>
     <dimen name="size_86dp">86dp</dimen>
+    <dimen name="size_90dp">90dp</dimen>
     <dimen name="size_95dp">95dp</dimen>
     <dimen name="size_100dp">100dp</dimen>
+    <dimen name="size_105dp">105dp</dimen>
     <dimen name="size_112dp">112dp</dimen>
     <dimen name="size_116dp">116dp</dimen>
     <dimen name="size_147dp">147dp</dimen>
