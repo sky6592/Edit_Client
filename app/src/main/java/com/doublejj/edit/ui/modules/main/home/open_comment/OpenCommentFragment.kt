@@ -1,6 +1,7 @@
 package com.doublejj.edit.ui.modules.main.home.open_comment
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -11,7 +12,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.doublejj.edit.ApplicationClass.Companion.USER_POSITION
 import com.doublejj.edit.ApplicationClass.Companion.sSharedPreferences
 import com.doublejj.edit.R
+import com.doublejj.edit.data.api.services.lookup_comments_of_sentence.CommentsOfSentenceService
+import com.doublejj.edit.data.api.services.lookup_comments_of_sentence.CommentsOfSentenceView
 import com.doublejj.edit.data.models.comment.CommentData
+import com.doublejj.edit.data.models.lookup_comments_of_sentence.LookupCommentResponse
 import com.doublejj.edit.databinding.OpenCommentFragmentBinding
 import com.doublejj.edit.ui.modules.main.MainActivity
 import com.doublejj.edit.ui.utils.dialog.CustomDialogClickListener
@@ -19,7 +23,7 @@ import com.doublejj.edit.ui.utils.dialog.CustomDialogFragment
 import com.doublejj.edit.ui.utils.snackbar.CustomSnackbar
 import com.google.android.material.snackbar.Snackbar
 
-class OpenCommentFragment : Fragment() {
+class OpenCommentFragment : Fragment(), CommentsOfSentenceView {
     private lateinit var binding: OpenCommentFragmentBinding
     private lateinit var viewModel: OpenCommentViewModel
 
@@ -87,67 +91,38 @@ class OpenCommentFragment : Fragment() {
     }
 
     fun getComments() {
-        var commentDataList = mutableListOf<CommentData>()
+        // TODO : 무한스크롤 처리
+        val sentenceId = requireArguments().getLong("coverLetterId").toInt()
 
-        // TODO : 테스트 코드 지우기
-        val responseResultSizeTest = 3
-//        if (response.result.size() >= 1) {
-        if (responseResultSizeTest >= 1) {
-            commentDataList.add(
-                CommentData(
-                    "purple/suprise",
-                    0L,
-                    "제인",
-                    "개발",
-                    "보통",
-                    "좋음",
-                    "부족",
-                    "좋음",
-                    "111부사는 사용하지 마시고 기술 용어를 사용해서 표현하면 내용이 명확해질 것 같습니다.",
-                    "YES"
-                )
-            )
-            commentDataList.add(
-                CommentData(
-                    "lightBlue/happy",
-                    1L,
-                    "콜트",
-                    "개발",
-                    "보통",
-                    "좋음",
-                    "부족",
-                    "좋음",
-                    "222부사는 사용하지 마시고 기술 용어를 사용해서 표현하면 내용이 명확해질 것 같습니다.",
-                    "YES"
-                )
-            )
-            commentDataList.add(
-                CommentData(
-                    "blue/wink",
-                    2L,
-                    "디비",
-                    "개발",
-                    "보통",
-                    "좋음",
-                    "부족",
-                    "좋음",
-                    "333부사는 사용하지 마시고 기술 용어를 사용해서 표현하면 내용이 명확해질 것 같습니다.",
-                    "YES"
-                )
-            )
-            binding.llZeroComment.visibility = View.GONE
-            binding.rvComment.visibility = View.VISIBLE
-            setAdapter(commentDataList)
-        }
-        else {
-            binding.llZeroComment.visibility = View.VISIBLE
-            binding.rvComment.visibility = View.GONE
-        }
+        CommentsOfSentenceService(this).tryGetCommentsOfSentence(
+            sentenceId = sentenceId,
+            page = 0
+        )
     }
 
     fun setAdapter(commentDataList: MutableList<CommentData>) {
         binding.rvComment.layoutManager = LinearLayoutManager(context)
         binding.rvComment.adapter = OpenCommentAdapter(requireContext(), commentDataList, requireActivity().supportFragmentManager)
+    }
+
+    override fun onGetCommentsOfSentenceSuccess(response: LookupCommentResponse) {
+        if (response.isSuccess) {
+            val commentDataList = response.result.commentInfos
+            Log.d("ok", "size: ${commentDataList.size}")
+            if (commentDataList.size > 0) {
+                binding.llZeroComment.visibility = View.GONE
+                binding.rvComment.visibility = View.VISIBLE
+                setAdapter(commentDataList)
+            }
+            else {
+                binding.llZeroComment.visibility = View.VISIBLE
+                binding.rvComment.visibility = View.GONE
+            }
+        }
+    }
+
+    override fun onGetCommentsOfSentenceFailure(message: String) {
+        CustomSnackbar.make(binding.root, message, Snackbar.LENGTH_SHORT)
     }
 
     override fun onDetach() {

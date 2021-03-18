@@ -10,9 +10,11 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.RecyclerView
 import com.doublejj.edit.R
+import com.doublejj.edit.data.api.services.lookup_comments_of_sentence.CommentsOfSentenceService
 import com.doublejj.edit.data.api.services.report_sentence.ReportSentenceService
 import com.doublejj.edit.data.api.services.report_sentence.ReportSentenceView
 import com.doublejj.edit.data.models.ResultResponse
+import com.doublejj.edit.data.models.lookup_comments_of_sentence.LookupCommentResponse
 import com.doublejj.edit.data.models.sentence.SentenceData
 import com.doublejj.edit.ui.modules.main.home.open_comment.OpenCommentFragment
 import com.doublejj.edit.ui.utils.dialog.CustomDialogClickListener
@@ -99,6 +101,7 @@ class SentenceAdapter(
                 .addToBackStack(null)
                 .commit()
         }
+        // TODO : 내 문장 mine 처리
     }
 
     override fun getItemCount(): Int {
@@ -127,4 +130,5 @@ class SentenceAdapter(
         val tvSympathyCount: TextView = itemView.findViewById(R.id.tv_sympathy_count)
         val llBtnOpenComment: LinearLayout = itemView.findViewById(R.id.ll_btn_open_comment)
     }
+
 }

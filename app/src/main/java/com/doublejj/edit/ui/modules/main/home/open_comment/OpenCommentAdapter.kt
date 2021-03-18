@@ -34,9 +34,9 @@ class OpenCommentAdapter(
 
     override fun onBindViewHolder(holder: OpenCommentAdapter.ViewHolder, position: Int) {
         var commentData = commentDataList.get(position)
-
+        /*// TODO : response에 userProfile 추가되면 주석 풀고 프로필 적용
         val characterResId = (context.applicationContext as ApplicationClass).getCharacterResId(commentData.userProfile)
-        holder.ivCharacter.setImageResource(characterResId)
+        holder.ivCharacter.setImageResource(characterResId)*/
         holder.tvSentenceWriter.text = commentData.nickName
         holder.tvOccupationType.text = commentData.jobName
         holder.ibMenu.setOnClickListener {
@@ -59,13 +59,13 @@ class OpenCommentAdapter(
         }
 
         holder.tvEvaluationSentence.text = commentData.sentenceEvaluation
-        holder.tvEvaluationSentence.setTextColor(ContextCompat.getColor(context!!, (context.applicationContext as ApplicationClass).getEvaluationColorId(commentData.sentenceEvaluation)))
+        holder.tvEvaluationSentence.setTextColor(ContextCompat.getColor(context, (context.applicationContext as ApplicationClass).getEvaluationColorId(commentData.sentenceEvaluation)))
         holder.tvEvaluationConcretenessLogic.text = commentData.concretenessLogic
-        holder.tvEvaluationConcretenessLogic.setTextColor(ContextCompat.getColor(context!!, (context.applicationContext as ApplicationClass).getEvaluationColorId(commentData.concretenessLogic)))
+        holder.tvEvaluationConcretenessLogic.setTextColor(ContextCompat.getColor(context, (context.applicationContext as ApplicationClass).getEvaluationColorId(commentData.concretenessLogic)))
         holder.tvEvaluationSincerity.text = commentData.sincerity
-        holder.tvEvaluationSincerity.setTextColor(ContextCompat.getColor(context!!, (context.applicationContext as ApplicationClass).getEvaluationColorId(commentData.sincerity)))
+        holder.tvEvaluationSincerity.setTextColor(ContextCompat.getColor(context, (context.applicationContext as ApplicationClass).getEvaluationColorId(commentData.sincerity)))
         holder.tvEvaluationActivity.text = commentData.activity
-        holder.tvEvaluationActivity.setTextColor(ContextCompat.getColor(context!!, (context.applicationContext as ApplicationClass).getEvaluationColorId(commentData.activity)))
+        holder.tvEvaluationActivity.setTextColor(ContextCompat.getColor(context, (context.applicationContext as ApplicationClass).getEvaluationColorId(commentData.activity)))
         holder.tvCommentContent.text = commentData.commentContent
 
         // TODO : 내 문장에 코멘트를 달아줬다면 감사합니다, 채택하기 visible

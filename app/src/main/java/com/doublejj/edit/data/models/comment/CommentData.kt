@@ -12,5 +12,6 @@ data class CommentData(
     @SerializedName("sincerity") var sincerity: String,
     @SerializedName("activity") var activity: String,
     @SerializedName("commentContent") var commentContent: String,
-    @SerializedName("isAdopted") var isAdopted: String
+    @SerializedName("isAdopted") var isAdopted: String,
+    @SerializedName("mine") var mine: Boolean
 )
