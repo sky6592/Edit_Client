@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="@dimen/size_card_home_sentence_box_height"
-    android:orientation="vertical"
     android:background="@drawable/shape_gray_border_box"
 
     android:paddingTop="@dimen/size_12dp"
@@ -19,20 +18,38 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         style="@style/CustomTextViewMidBlack"
+        android:fontFamily="@font/noto_sans_kr_bold"
         android:text="@string/tv_card_writer"
-        android:textStyle="bold"
+        android:textSize="@dimen/size_tv_card_writer_14dp"
+        android:textColor="@color/purple_active"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:id="@+id/tv_sentence_position"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/CustomTextViewMidBlack"
+        android:fontFamily="@font/noto_sans_kr_bold"
+        android:text="@string/tv_card_position"
         android:textSize="@dimen/size_tv_card_writer_14dp"
 
-        android:layout_marginTop="@dimen/size_12dp"
-        android:layout_marginBottom="@dimen/size_10dp" />
+        android:layout_marginStart="@dimen/size_5dp"
+        android:layout_marginLeft="@dimen/size_5dp"
+        app:layout_constraintStart_toEndOf="@id/tv_sentence_writer"
+        app:layout_constraintTop_toTopOf="parent" />
     <TextView
         android:id="@+id/tv_sentence_content"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:maxLines="3"
         android:maxWidth="@dimen/size_card_home_sentence_box_width"
-
         style="@style/CustomTextViewMidBlack"
+
+        android:layout_marginTop="@dimen/size_12dp"
         android:text="@string/tv_sentence_content_example"
-        android:textSize="@dimen/size_tv_card_content_12dp" />
-</LinearLayout>
+        android:textSize="@dimen/size_tv_card_content_12dp"
+        app:layout_constraintTop_toBottomOf="@id/tv_sentence_writer"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

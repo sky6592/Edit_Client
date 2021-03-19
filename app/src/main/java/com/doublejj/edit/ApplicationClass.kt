@@ -23,6 +23,10 @@ class ApplicationClass : Application() {
 
         // Retrofit 인스턴스, 앱 실행 시 한번만 생성하여 사용
         lateinit var sRetrofit: Retrofit
+
+        // User 관련 정보 키 값 (mentor or mentee)
+        var USER_POSITION = "USER-POSITION"
+        var MENTOR_AUTH_CONFIRM = "MENTOR-AUTH-CONFIRM"
     }
 
     override fun onCreate() {
@@ -53,5 +57,35 @@ class ApplicationClass : Application() {
             .client(client)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
+    }
+    fun getCharacterResId(code: String) : Int {
+        val colorAndEmotion = code.split("/")
+        var resPath = "icon_char_"
+
+        when (colorAndEmotion.first()) {
+            "purple" -> resPath += "purple_active_"
+            "lightPurple" -> resPath += "mid_purple_"
+            "blue" -> resPath += "navy_"
+            "lightBlue" -> resPath += "sky_"
+            "gray" -> resPath += "gray_"
+        }
+        when (colorAndEmotion.last()) {
+            "relief" -> resPath += "0"
+            "bigSmile" -> resPath += "1"
+            "suprise" -> resPath += "2"
+            "happy" -> resPath += "3"
+            "smallSmile" -> resPath += "4"
+            "wink" -> resPath += "5"
+        }
+        return applicationContext.resources!!.getIdentifier(resPath, "drawable", packageName)
+    }
+
+    fun getEvaluationColorId(code: String) : Int {
+        return when (code) {
+            "부족" -> R.color.red_light
+            "보통" -> R.color.yellow_light
+            "좋음" -> R.color.green_light
+            else -> -1
+        }
     }
 }

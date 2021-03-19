@@ -6,4 +6,6 @@
         android:width="@dimen/size_1dp" />
     <corners
         android:radius="@dimen/size_card_radius_7dp" />
+    <solid
+        android:color="@color/white" />
 </shape>

@@ -2,6 +2,7 @@ package com.doublejj.edit.ui.modules.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil.setContentView
 import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.ViewModelProvider
@@ -21,8 +22,10 @@ class MainActivity : AppCompatActivity() {
     private val resList = mutableListOf(R.id.menu_home, R.id.menu_ranking, R.id.menu_myedit)
     private lateinit var homeFragment: HomeFragment
     private lateinit var rankingFragment: RankingFragment
-
     private lateinit var myeditFragment: MyeditFragment
+
+    private var backButtonTime = 0L
+    private var fragmentCount = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -76,4 +79,28 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    override fun onBackPressed() {
+        val currentTime = System.currentTimeMillis()
+        val gapTime = currentTime - backButtonTime
+
+        if (gapTime in 0..2000) {
+            // 2초 안에 두번 뒤로가기 누를 시 앱 종료
+            if (this.fragmentCount <= 0) finish()
+        }
+        else {
+            backButtonTime = currentTime
+            if (this.fragmentCount <= 1) Toast.makeText(this, "뒤로가기 버튼을 한번 더 누르시면 종료됩니다.", Toast.LENGTH_SHORT).show()
+            else super.onBackPressed()
+        }
+    }
+
+    fun increaseFragmentCount() {
+        this.fragmentCount += 1
+    }
+    fun decreaseFragmentCount() {
+        this.fragmentCount -= 1
+    }
+    fun getFragmentCount() : Int {
+        return this.fragmentCount
+    }
 }

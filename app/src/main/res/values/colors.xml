@@ -13,4 +13,8 @@
     <color name="gray_shadow">#FFD8D8D8</color>
     <color name="white">#FFFFFFFF</color>
     <color name="transparent">#00FFFFFF</color>
+
+    <color name="red_light">#FFFA3200</color>
+    <color name="yellow_light">#FFFFC800</color>
+    <color name="green_light">#FF14B400</color>
 </resources>
