@@ -9,12 +9,27 @@ import android.util.Log
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import com.doublejj.edit.R
+import com.doublejj.edit.data.api.services.infofirst.InfoFirstService
+import com.doublejj.edit.data.api.services.infofirst.InfoFirstView
+import com.doublejj.edit.data.models.infofirst.InfoFirstRequest
+import com.doublejj.edit.data.models.infofirst.InfoFirstResponse
 import com.doublejj.edit.databinding.ActivityInfoFirstBinding
 
-class InfoFirstActivity : AppCompatActivity() {
+class InfoFirstActivity : AppCompatActivity(), InfoFirstView {
     private lateinit var mBinding: ActivityInfoFirstBinding
 
     private var mNameFlag: Boolean = false
+
+    override fun onPostInfoFirstSuccess(response: InfoFirstResponse) {
+        //닉네임 중복여부 성공
+        Toast.makeText(this, "onGetInfoFirstSuccess - API성공", Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onPostInfoFirstFailure(message: String) {
+        //닉네임 중복여부 실패
+        Toast.makeText(this, "onGetInfoFirst패Failure - API실", Toast.LENGTH_SHORT).show()
+
+    }
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -94,6 +109,15 @@ class InfoFirstActivity : AppCompatActivity() {
 
         })
 
+        //닉네임 중복버튼
+        mBinding.btnDoubleCheck.setOnClickListener {
+            val nickName = mBinding.etNickNameInfoFirst.text.toString()
+            val postRequest = InfoFirstRequest(nickName = nickName)
+            //다이얼로그 넣어야함!
+            InfoFirstService(this).tryPostNickName(postRequest)
+
+        }
+
 
         //회원가입 버튼 클릭
         mBinding.btnInfoFirst.setOnClickListener {
@@ -120,5 +144,6 @@ class InfoFirstActivity : AppCompatActivity() {
 
 
     }
+
 
 }
