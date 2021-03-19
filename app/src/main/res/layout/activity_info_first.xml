@@ -194,7 +194,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/very_light_pink"
-            android:enabled="false"
             android:fontFamily="@font/noto_sans_kr_regular"
             android:text="@string/tv_sign_up_info"
             android:textColor="@color/white"

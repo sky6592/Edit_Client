@@ -6,6 +6,7 @@ import android.os.Bundle
 import com.airbnb.lottie.LottieAnimationView
 import com.doublejj.edit.R
 import com.doublejj.edit.ui.modules.main.signup.infofirst.InfoFirstActivity
+import com.doublejj.edit.ui.modules.main.walkthrough.WalkThroughActivity
 
 class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -17,7 +18,7 @@ class SplashActivity : AppCompatActivity() {
         animation_view.addAnimatorUpdateListener {
             if (animation_view.isAnimating) {
                 //애니메이션 끝나고 화면 넘어가기
-                startActivity(Intent(this, InfoFirstActivity::class.java))
+                startActivity(Intent(this, WalkThroughActivity::class.java))
             }
         }
 
