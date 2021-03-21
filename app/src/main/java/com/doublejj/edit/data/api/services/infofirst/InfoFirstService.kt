@@ -44,7 +44,5 @@ class  InfoFirstService(val infoFirstView: InfoFirstView) {
             }
 
         })
-
     }
-
 }

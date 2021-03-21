@@ -54,7 +54,8 @@
                     android:background="@drawable/shape_et_btn_info"
                     android:fontFamily="@font/noto_sans_kr_regular"
                     android:hint="@string/hint_name_info"
-                    android:inputType="textPersonName"
+                    android:inputType="textPersonName|textNoSuggestions"
+                    android:imeOptions="actionSearch"
                     android:paddingHorizontal="@dimen/hint_padding_10dp"
                     android:paddingTop="@dimen/hint_padding_5dp"
                     android:textSize="@dimen/tv_15sp" />
@@ -103,7 +104,7 @@
                         android:background="@drawable/shape_et_btn_info"
                         android:fontFamily="@font/noto_sans_kr_regular"
                         android:hint="@string/hint_nick_name_info"
-                        android:inputType="textPersonName"
+                        android:inputType="textPersonName|textNoSuggestions"
                         android:paddingHorizontal="@dimen/hint_padding_10dp"
                         android:paddingTop="@dimen/hint_padding_5dp"
                         android:textSize="@dimen/tv_15sp" />
@@ -155,7 +156,7 @@
                     android:background="@drawable/shape_et_btn_info"
                     android:fontFamily="@font/noto_sans_kr_regular"
                     android:hint="@string/hint_phone_info"
-                    android:inputType="phone"
+                    android:inputType="phone|textNoSuggestions"
                     android:paddingHorizontal="@dimen/hint_padding_10dp"
                     android:paddingTop="@dimen/hint_padding_5dp"
                     android:textSize="@dimen/tv_15sp" />
