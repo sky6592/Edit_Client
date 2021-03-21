@@ -80,7 +80,7 @@
             </LinearLayout>
 
             <TextView
-                android:id="@+id/tv_nick_name_caption_info_first"
+                android:id="@+id/tv_email_caption_info_first"
                 android:layout_width="wrap_content"
                 android:fontFamily="@font/noto_sans_kr_regular"
                 android:layout_height="wrap_content"
@@ -150,7 +150,7 @@
                 android:textSize="@dimen/tv_15sp" />
 
             <EditText
-                android:id="@+id/et_phone_info_first"
+                android:id="@+id/et_re_pw_info_first"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/margin_5dp"
@@ -163,7 +163,7 @@
                 android:textSize="@dimen/tv_15sp" />
 
             <TextView
-                android:id="@+id/tv_phone_caption_info_first"
+                android:id="@+id/tv_re_pw_caption_info_first"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/noto_sans_kr_regular"
