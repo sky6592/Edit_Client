@@ -418,12 +418,12 @@
     <string name="hint_name_info">이름을 입력해주세요.</string>
     <string name="tv_name_caption_info">실명을 입력해주세요</string>
     <string name="tv_name_caption_result_info">이름 입력 감사합니다!</string>
+    <string name="tv_name_caption_rule_info">2글자 이상 10글자 이내 입력</string>
     <string name="tv_caption_spacing_info">띄어쓰기는 제외해주세요</string>
     <string name="tv_phone_caption_result_info">핸드폰 입력 감사합니다!</string>
     <string name="tv_NickName_caption_result_info">닉네임 입력 감사합니다!</string>
     <string name="tv_NickName_caption_btn_info">닉네임 사용이 가능합니다!</string>
-
-
+    <string name="tv_NickName_caption_fail_info">중복된 닉네임입니다!</string>
 
     <string name="tv_nick_name_info">닉네임</string>
     <string name="hint_nick_name_info">닉네임을 입력해주세요.</string>
@@ -438,9 +438,12 @@
 
     <string name="tv_email_info">이메일</string>
     <string name="hint_email_info">이메일을 입력해 주세요.</string>
+    <string name="tv_email_result_info">이메일을 입력감사합니다!</string>
+    <string name="tv_email_result_wrong_info">이메일 형식을 맞춰주세요!</string>
+    <string name="tv_email_fail_info">중복된 이메일입니다!</string>
+
     <string name="tv_email_caption_info">로그인 시 사용할 이메일을 입력해주세요.</string>
     <string name="tv_click_caption_info">중복 확인을 눌러주세요!</string>
-
 
 
     <string name="tv_pw_info">비밀번호</string>
@@ -452,6 +455,7 @@
     <string name="tv_re_pw_info">비밀번호 재입력</string>
     <string name="hint_re_pw_info">비밀번호를 다시 한 번 입력해주세요.</string>
     <string name="tv_re_pw_caption_info">비밀번호가 일치합니다.</string>
+    <string name="tv_re_pw_caption_wrong_info">비밀번호가 일치하지않습니다.</string>
 
 
     <!-- Info & Select & Find : Button -->
