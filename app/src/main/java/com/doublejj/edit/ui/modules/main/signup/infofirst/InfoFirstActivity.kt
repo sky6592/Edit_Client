@@ -29,14 +29,17 @@ class InfoFirstActivity : AppCompatActivity(), InfoFirstView {
     private var mNickNameSpacingFlag: Boolean = false
     private var mPhoneSpacingFlag: Boolean = false
 
+    private var mNickNameLenghFlag: Boolean = false
+
 
     //@SuppressLint("ClickableViewAccessibility")
+    @SuppressLint("ResourceAsColor")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_info_first)
 
-        var namePattern = "^[a-zA-Z가-힣]*$"
-        var nickNamePattern = "^[a-zA-Zㄱ-ㅎ가-힣0-9]*$"
+        var namePattern = "^[a-zA-Z가-힣]{2,10}$"
+        var nickNamePattern = "^[a-zA-Zㄱ-ㅎ가-힣0-9]{2,6}$"
         var phonePattern = "^01(?:0|1|[6-9])(\\d{3}|\\d{4})(\\d{4})$"
 
         // 이름 입력
@@ -47,10 +50,12 @@ class InfoFirstActivity : AppCompatActivity(), InfoFirstView {
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
             }
 
+            @SuppressLint("ResourceAsColor")
             override fun afterTextChanged(s: Editable?) {
                 if (s != null) {
                     //띄어쓰기 & 빈공란 정규식
                     if (s.toString().contains(" ") || s.toString().isEmpty()) {
+                        mBinding.tvNameCaptionInfoFirst.setTextColor(R.color.purple)
                         mBinding.tvNameCaptionInfoFirst.text =
                             getString(R.string.tv_caption_spacing_info)
                         mNameSpacingFlag = true
@@ -66,11 +71,17 @@ class InfoFirstActivity : AppCompatActivity(), InfoFirstView {
                             mBinding.btnInfoFirst.setBackgroundResource(R.color.purple)
                         }
                     }
+                    //글자 기준
+                    if (s.toString().length < 2 || s.toString().length > 10) {
+                        mBinding.tvNameCaptionInfoFirst.setTextColor(R.color.purple)
+                        mBinding.tvNameCaptionInfoFirst.text =
+                            getString(R.string.tv_name_caption_rule_info)
+                    }
 
                     //이름 정규식
                     if (s.matches(namePattern.toRegex()) && !mNameSpacingFlag) {
-                        mBinding.tvNameCaptionInfoFirst.text =
-                            getString(R.string.tv_name_caption_result_info)
+//                        mBinding.tvNameCaptionInfoFirst.setTextColor(R.color.very_light_pink)
+                        mBinding.tvNameCaptionInfoFirst.text = ""
                         mNameFlag = true
                     }
 
@@ -80,11 +91,13 @@ class InfoFirstActivity : AppCompatActivity(), InfoFirstView {
                     }
 
 
-                } else {
-                    //빈공란 정규식
-                    mBinding.tvNameCaptionInfoFirst.text =
-                        getString(R.string.tv_name_caption_info)
                 }
+//                else {
+//                    //빈공란 정규식
+//                    mBinding.tvNameCaptionInfoFirst.setTextColor(R.color.purple)
+//                    mBinding.tvNameCaptionInfoFirst.text =
+//                        getString(R.string.tv_name_caption_info)
+//                }
             }
         })
 
@@ -96,11 +109,13 @@ class InfoFirstActivity : AppCompatActivity(), InfoFirstView {
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
             }
 
+            @SuppressLint("ResourceAsColor")
             override fun afterTextChanged(s: Editable?) {
                 if (s != null) {
 
                     //띄어쓰기 & 빈공란 정규식
                     if (s.toString().contains(" ") || s.toString().isEmpty()) {
+                        mBinding.tvNickNameCaptionInfoFirst.setTextColor(R.color.purple)
                         mBinding.tvNickNameCaptionInfoFirst.text =
                             getString(R.string.tv_caption_spacing_info)
                         mNickNameSpacingFlag = true
@@ -117,8 +132,19 @@ class InfoFirstActivity : AppCompatActivity(), InfoFirstView {
                         }
                     }
 
+                    if (s.toString().length > 6) {
+                        mBinding.tvNickNameCaptionInfoFirst.setTextColor(R.color.purple)
+                        mBinding.tvNickNameCaptionInfoFirst.text =
+                            getString(R.string.tv_nick_name_caption_info)
+                        mNickNameLenghFlag = true
+                    } else {
+                        mNickNameLenghFlag = false
+
+                    }
+
                     //닉네임 정규식
                     if (s.matches(nickNamePattern.toRegex()) && !mNickNameSpacingFlag) {
+                        mBinding.tvNickNameCaptionInfoFirst.setTextColor(R.color.purple)
                         mBinding.tvNickNameCaptionInfoFirst.text =
                             getString(R.string.tv_click_caption_info)
                     }
@@ -133,12 +159,20 @@ class InfoFirstActivity : AppCompatActivity(), InfoFirstView {
 
         //닉네임 중복버튼 - API
         mBinding.btnDoubleCheck.setOnClickListener {
-            mBinding.etNickNameInfoFirst.toString().replace(" ", "")
 
-            val nickName = mBinding.etNickNameInfoFirst.text.toString()
-            val postRequest = InfoFirstRequest(nickName = nickName)
-            //다이얼로그 넣어야함!
-            InfoFirstService(this).tryPostNickName(postRequest)
+            if (!mNickNameLenghFlag) {
+                mBinding.etNickNameInfoFirst.toString().replace(" ", "")
+
+                val nickName = mBinding.etNickNameInfoFirst.text.toString()
+                val postRequest = InfoFirstRequest(nickName = nickName)
+                //다이얼로그 넣어야함!
+                InfoFirstService(this).tryPostNickName(postRequest)
+            } else {
+                mBinding.tvNickNameCaptionInfoFirst.setTextColor(R.color.purple)
+                mBinding.tvNickNameCaptionInfoFirst.text =
+                    getString(R.string.tv_nick_name_caption_info)
+            }
+
         }
 
         //핸드폰 입력
@@ -151,10 +185,12 @@ class InfoFirstActivity : AppCompatActivity(), InfoFirstView {
 
             }
 
+            @SuppressLint("ResourceAsColor")
             override fun afterTextChanged(s: Editable?) {
                 if (s != null) {
                     //띄어쓰기 작성
                     if (s.toString().contains(" ")) {
+                        mBinding.tvPhoneCaptionInfoFirst.setTextColor(R.color.purple)
                         mBinding.tvPhoneCaptionInfoFirst.text =
                             getString(R.string.tv_caption_spacing_info)
                         mPhoneSpacingFlag = true
@@ -174,6 +210,7 @@ class InfoFirstActivity : AppCompatActivity(), InfoFirstView {
 
                     // '-' 정규식
                     if (s.toString().contains("-")) {
+                        mBinding.tvPhoneCaptionInfoFirst.setTextColor(R.color.purple)
                         mBinding.tvPhoneCaptionInfoFirst.text =
                             getString(R.string.hint_phone_info)
                         mBinding.btnInfoFirst.setBackgroundResource(R.color.very_light_pink)
@@ -182,12 +219,12 @@ class InfoFirstActivity : AppCompatActivity(), InfoFirstView {
 
                     //핸드폰 정규식
                     if (s.matches(phonePattern.toRegex()) && !mPhoneSpacingFlag) {
-                        mBinding.tvPhoneCaptionInfoFirst.text =
-                            getString(R.string.tv_phone_caption_result_info)
+                        mBinding.tvPhoneCaptionInfoFirst.text = ""
                         mPhoneFlag = true
                     }
                     //빈공란 정규식
                     if (s.toString().isEmpty()) {
+                        mBinding.tvPhoneCaptionInfoFirst.setTextColor(R.color.purple)
                         mBinding.tvPhoneCaptionInfoFirst.text =
                             getString(R.string.tv_phone_caption_info)
                     }
@@ -239,30 +276,39 @@ class InfoFirstActivity : AppCompatActivity(), InfoFirstView {
         }
     }
 
+    @SuppressLint("ResourceAsColor")
     override fun onPostInfoFirstSuccess(response: InfoFirstResponse) {
         //닉네임 중복여부 성공
         Log.d("sky", "onPostInfoFirstSuccess - api성공")
 
         //다이얼로그!!
 
-        mNickNameFlag = true
-        mBinding.tvNickNameCaptionInfoFirst.text =
-            getString(R.string.tv_NickName_caption_result_info)
+        runOnUiThread {
+            mNickNameFlag = true
+            mBinding.tvNickNameCaptionInfoFirst.text = ""
 
-        //입력 완료여부 정규식
-        if (mNameFlag && mNickNameFlag && mPhoneFlag) {
-            mBinding.btnInfoFirst.setBackgroundResource(R.color.purple)
+            //입력 완료여부 정규식
+            if (mNameFlag && mNickNameFlag && mPhoneFlag) {
+                mBinding.btnInfoFirst.setBackgroundResource(R.color.purple)
+            }
         }
+
         Log.d(
             "sky",
-            "중복버 : " + mNameFlag.toString() + "," + mNickNameFlag.toString() + "," + mPhoneFlag.toString()
+            "중복버튼 : " + mNameFlag.toString() + "," + mNickNameFlag.toString() + "," + mPhoneFlag.toString()
         )
     }
 
+    @SuppressLint("ResourceAsColor")
     override fun onPostInfoFirstFailure(message: String) {
         //닉네임 중복여부 실패
         Log.d("sky", "onPostInfoFirstFailure - api실패")
-        //쓰레드 작동이 안된다
+        runOnUiThread {
+            mNickNameFlag = false
+            mBinding.tvNickNameCaptionInfoFirst.setTextColor(R.color.purple)
+            mBinding.tvNickNameCaptionInfoFirst.text =
+                getString(R.string.tv_NickName_caption_fail_info)
+        }
     }
 
     override fun onBackPressed() {
