@@ -170,7 +170,7 @@
                     </LinearLayout>
 
                     <LinearLayout
-                        android:id="@+id/ll_btn_app_vertion"
+                        android:id="@+id/ll_btn_app_version"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical">

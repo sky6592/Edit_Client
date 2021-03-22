@@ -11,9 +11,7 @@ import androidx.databinding.DataBindingUtil
 import com.doublejj.edit.ApplicationClass
 import com.doublejj.edit.R
 import com.doublejj.edit.databinding.MyeditFragmentBinding
-import com.doublejj.edit.ui.modules.main.myedit.setting.SettingActivity
-import com.doublejj.edit.ui.utils.snackbar.CustomSnackbar
-import com.google.android.material.snackbar.Snackbar
+import com.doublejj.edit.ui.modules.main.myedit.settings.SettingsActivity
 
 class MyeditFragment : Fragment() {
     private lateinit var binding: MyeditFragmentBinding
@@ -53,7 +51,7 @@ class MyeditFragment : Fragment() {
             // TODO : 맨 위로 가기
         }
         binding.ibSettings.setOnClickListener {
-            startActivity(Intent(activity, SettingActivity::class.java))
+            startActivity(Intent(activity, SettingsActivity::class.java))
         }
 
         /** menu buttons **/

@@ -182,6 +182,7 @@
         변경이 완료되었습니다.
     </string>
     <string name="tv_change_position">직군 변경</string>
+    <string name="tv_change_reason_title">변경 사유</string>
     <string name="tv_change_position_title">
         변경하실 직군을\n
         선택해주세요.
@@ -348,6 +349,7 @@
     <string name="tv_opensource">오픈소스 라이선스</string>
     <string name="tv_app_vertion">버전 정보</string>
     <string name="tv_account_withdrawal">에딧 탈퇴하기</string>
+    <string name="tv_withdrawal_reason_title">탈퇴 사유</string>
     <string name="btn_next">다음으로</string>
     <string name="btn_initial_screen">초기 화면으로</string>
     <string name="tv_account_withdrawal_encourage_title">
@@ -363,9 +365,12 @@
         님,\n
         탈퇴 사유를 알려주세요!
     </string>
-    <string name="tv_change_reason_title">변경 사유</string>
-    <string name="tv_other_comment_title">기타 의견</string>
-    <string name="tv_other_comment_hint">내용을 입력해주세요. (10자 이상)</string>
+    <string name="tv_withdrawal_etc_title">기타 의견</string>
+    <string name="spinner_withdrawal_0">자소서 컨텐츠 부족</string>
+    <string name="spinner_withdrawal_1">수익 구조 없음</string>
+    <string name="spinner_withdrawal_2">표절 위험</string>
+    <string name="spinner_withdrawal_3">기타</string>
+    <string name="et_withdrawal_etc_hint">내용을 입력해주세요. (10자 이상)</string>
     <string name="tv_account_withdrawal_complete_title">
         님,\n
         에딧 탈퇴가 완료되었습니다.
@@ -388,4 +393,21 @@
         조금만 더 기다려주세요!
     </string>
 
+    <string-array name="array_sentence_type">
+        <item>@string/spinner_self_writing_0</item>
+        <item>@string/spinner_self_writing_1</item>
+        <item>@string/spinner_self_writing_2</item>
+        <item>@string/spinner_self_writing_3</item>
+        <item>@string/spinner_self_writing_4</item>
+        <item>@string/spinner_self_writing_5</item>
+        <item>@string/spinner_self_writing_6</item>
+        <item>@string/spinner_self_writing_7</item>
+    </string-array>
+
+    <string-array name="array_withdrawal_type">
+        <item>@string/spinner_withdrawal_0</item>
+        <item>@string/spinner_withdrawal_1</item>
+        <item>@string/spinner_withdrawal_2</item>
+        <item>@string/spinner_withdrawal_3</item>
+    </string-array>
 </resources>
