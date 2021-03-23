@@ -2,15 +2,12 @@ package com.doublejj.edit.ui.modules.main.signup.infosecond
 
 import android.annotation.SuppressLint
 import android.content.Intent
-import android.graphics.Color
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Handler
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.widget.Toast
-import androidx.core.content.ContextCompat
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.doublejj.edit.R
 import com.doublejj.edit.data.api.services.infosecond.InfoSecondService
@@ -18,7 +15,9 @@ import com.doublejj.edit.data.api.services.infosecond.InfoSecondView
 import com.doublejj.edit.data.models.infosecond.InfoSecondRequest
 import com.doublejj.edit.data.models.infosecond.InfoSecondResponse
 import com.doublejj.edit.databinding.ActivityInfoSecondBinding
-import com.doublejj.edit.ui.modules.main.signup.slectjopgroup.JobGroupActivity
+import com.doublejj.edit.ui.modules.main.signup.infofirst.InfoFirstActivity
+import com.doublejj.edit.ui.modules.main.signup.slecttype.SelectTypeActivity
+
 
 class InfoSecondActivity : AppCompatActivity(), InfoSecondView {
     private lateinit var mBinding: ActivityInfoSecondBinding
@@ -37,7 +36,14 @@ class InfoSecondActivity : AppCompatActivity(), InfoSecondView {
         super.onCreate(savedInstanceState)
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_info_second)
 
-        val emailPattern = "^[a-zA-Z0-9]+@[a-zA-Z0-9]$"
+        //Intent - ArrayList 저장
+        var arrayList = intent.getSerializableExtra("arrayList") as ArrayList<String>
+        for (str in arrayList) {
+            arrayList.add(str)
+            Log.d("sky",arrayList.add(str).toString())
+        }
+
+
         val emailPatternTest = android.util.Patterns.EMAIL_ADDRESS
 
         //문자(한글,영어), 숫자, 특수문자 중 2가지 포함(8-15자)
@@ -242,13 +248,25 @@ class InfoSecondActivity : AppCompatActivity(), InfoSecondView {
             Log.d("sky", "btnInfoSecond - In")
             Log.d(
                 "sky",
-                "중복버튼 :" + mEmailFlag + ", " + mPwFlag + ", " + mRePwFlag
+                "중복버튼 :$mEmailFlag, $mPwFlag, $mRePwFlag"
             )
+
+
+            var email = mBinding.etEmailInfoSecond.text.toString().replace(" ", "")
+            var pw = mBinding.etPwInfoSecond.text.toString().replace(" ", "")
+            var rePw = mBinding.etRePwInfoFirst.text.toString().replace(" ", "")
+            Log.d("sky", "값 : $email, $pw, $rePw")
+
             if (mEmailFlag && mPwFlag && mRePwFlag) {
                 mEmailFlag = false
                 mPwFlag = false
                 mRePwFlag = false
-                startActivity(Intent(this, JobGroupActivity::class.java))
+
+                val intent = Intent(this, SelectTypeActivity::class.java)
+                intent.putExtra("email", email)
+                intent.putExtra("pw", pw)
+                intent.putExtra("rePw", rePw)
+                startActivity(Intent(this, SelectTypeActivity::class.java))
                 finish()
             } else {
                 //다이얼로그 : 입력을 다시 확인해주세요!
