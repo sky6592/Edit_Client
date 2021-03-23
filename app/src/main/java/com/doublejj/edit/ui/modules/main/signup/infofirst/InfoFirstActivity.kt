@@ -7,7 +7,6 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import com.doublejj.edit.R
 import com.doublejj.edit.data.api.services.infofirst.InfoFirstService
@@ -29,8 +28,7 @@ class InfoFirstActivity : AppCompatActivity(), InfoFirstView {
     private var mNickNameSpacingFlag: Boolean = false
     private var mPhoneSpacingFlag: Boolean = false
 
-    private var mNickNameLenghFlag: Boolean = false
-
+    private var mNickNameLengthFlag: Boolean = false
 
     //@SuppressLint("ClickableViewAccessibility")
     @SuppressLint("ResourceAsColor")
@@ -136,9 +134,9 @@ class InfoFirstActivity : AppCompatActivity(), InfoFirstView {
                         mBinding.tvNickNameCaptionInfoFirst.setTextColor(R.color.purple)
                         mBinding.tvNickNameCaptionInfoFirst.text =
                             getString(R.string.tv_nick_name_caption_info)
-                        mNickNameLenghFlag = true
+                        mNickNameLengthFlag = true
                     } else {
-                        mNickNameLenghFlag = false
+                        mNickNameLengthFlag = false
 
                     }
 
@@ -160,7 +158,7 @@ class InfoFirstActivity : AppCompatActivity(), InfoFirstView {
         //닉네임 중복버튼 - API
         mBinding.btnDoubleCheck.setOnClickListener {
 
-            if (!mNickNameLenghFlag) {
+            if (!mNickNameLengthFlag) {
                 mBinding.etNickNameInfoFirst.toString().replace(" ", "")
 
                 val nickName = mBinding.etNickNameInfoFirst.text.toString()
@@ -247,13 +245,13 @@ class InfoFirstActivity : AppCompatActivity(), InfoFirstView {
 
             //입력내용 저장
             var name = mBinding.etNameInfoFirst.text.toString().replace(" ", "")
-            var nickName = mBinding.etNickNameInfoFirst.text.toString().replace(" ", "")
+            var nickname = mBinding.etNickNameInfoFirst.text.toString().replace(" ", "")
             var phone = mBinding.etPhoneInfoFirst.text.toString().replace(" ", "")
 
-            Log.d(
-                "sky",
-                "입력된 내용 : " + name.toString() + "," + nickName.toString() + "," + phone.toString()
-            )
+            var arrayList = ArrayList<String>()
+            arrayList.add(name)
+            arrayList.add(nickname)
+            arrayList.add(phone)
 
             //최종 넘기기
             if (mNameFlag && mNickNameFlag && mPhoneFlag) {
@@ -261,15 +259,9 @@ class InfoFirstActivity : AppCompatActivity(), InfoFirstView {
                 mNameFlag = false
                 mNickNameFlag = false
                 mPhoneFlag = false
-                //intent 값 저장
-                val keyName = "name"
-                val keyNickName = "nickName"
-                val keyPhone = "phone"
 
                 val intent = Intent(this, InfoSecondActivity::class.java)
-                intent.putExtra(keyName, name)
-                intent.putExtra(keyNickName, nickName)
-                intent.putExtra(keyPhone, phone)
+                intent.putExtra("arrayList",arrayList)
                 startActivity(intent)
                 finish()
             }
@@ -295,7 +287,7 @@ class InfoFirstActivity : AppCompatActivity(), InfoFirstView {
 
         Log.d(
             "sky",
-            "중복버튼 : " + mNameFlag.toString() + "," + mNickNameFlag.toString() + "," + mPhoneFlag.toString()
+            "중복버튼 : $mNameFlag,$mNickNameFlag,$mPhoneFlag"
         )
     }
 
