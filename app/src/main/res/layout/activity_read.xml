@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!-- Title -->
+        <LinearLayout
+            android:id="@+id/linear_read"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shadow_bg"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingHorizontal="@dimen/padding_common"
+            android:paddingTop="@dimen/padding_common">
+
+            <ImageView
+                android:id="@+id/iv_back_read"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_baseline_navigate_before_24" />
+
+
+            <TextView
+                android:id="@+id/tv_title_read"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/noto_sans_kr_bold"
+                android:gravity="center"
+                android:text="@string/tv_title_select"
+                android:textColor="@color/black" />
+
+        </LinearLayout>
+
+        <!--Choose Info-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_20dp"
+            android:orientation="vertical">
+
+            <!--닉네임님-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_nick_name_read"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/noto_sans_kr_bold"
+                    android:text="@string/tv_nick_name_select_type"
+                    android:textColor="@color/purple"
+                    android:textSize="@dimen/tv_18sp" />
+
+                <TextView
+                    android:id="@+id/tv_info_one_read"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/noto_sans_kr_bold"
+                    android:text="@string/tv_info_one_select_type"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/tv_18sp" />
+            </LinearLayout>
+
+            <!--직군을 선택해주세요!-->
+            <TextView
+                android:id="@+id/tv_info_two_read"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/noto_sans_kr_bold"
+                android:gravity="center"
+                android:text="@string/tv_info_read"
+                android:textColor="@color/black"
+                android:textSize="@dimen/tv_18sp" />
+
+            <TextView
+                android:id="@+id/tv_info_last_read"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/noto_sans_kr_bold"
+                android:gravity="center"
+                android:text="@string/tv_info_last_read"
+                android:textColor="@color/black"
+                android:textSize="@dimen/tv_18sp" />
+
+        </LinearLayout>
+
+        <!--스크롤뷰설치하기!!!-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="top"
+            android:orientation="vertical"
+            android:paddingHorizontal="@dimen/padding_common">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/noto_sans_kr_regular"
+                android:text="@string/tv_job_group"
+                android:textColor="@color/black"
+                android:textSize="@dimen/tv_15sp" />
+
+            <Spinner
+                android:id="@+id/spinner_job_group"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/shape_et_btn_info" />
+        </LinearLayout>
+
+        <!--Next Button-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="bottom">
+
+            <!-- Button -->
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_job_group"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/very_light_pink"
+                android:enabled="false"
+                android:text="@string/tv_next_info"
+                android:textColor="@color/white" />
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>

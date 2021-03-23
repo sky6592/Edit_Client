@@ -17,4 +17,10 @@
     <color name="red_light">#FFFA3200</color>
     <color name="yellow_light">#FFFFC800</color>
     <color name="green_light">#FF14B400</color>
+    <color name="transparency">#00FFFFFF</color>
+    <color name="purple">#5a32dc</color>
+    <color name="lavender">#cdc1f4</color>
+    <color name="very_light_pink">#d8d8d8</color>
+
+
 </resources>
