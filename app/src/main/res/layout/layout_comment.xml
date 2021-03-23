@@ -164,7 +164,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         style="@style/CustomTextViewMidBlack"
-        android:text="@string/tv_open_comment_evaluation_type_1"
+        android:text="@string/tv_open_comment_evaluation_type_2"
         android:textSize="@dimen/size_11dp"
         android:fontFamily="@font/noto_sans_kr_medium"
 
@@ -204,7 +204,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         style="@style/CustomTextViewMidBlack"
-        android:text="@string/tv_open_comment_evaluation_type_2"
+        android:text="@string/tv_open_comment_evaluation_type_1"
         android:textSize="@dimen/size_11dp"
         android:fontFamily="@font/noto_sans_kr_medium"
 
@@ -370,6 +370,6 @@
         android:layout_height="@dimen/size_10dp"
         android:background="@color/gray_background"
 
-        android:layout_marginTop="@dimen/size_15dp"
+        android:layout_marginTop="@dimen/size_19dp"
         app:layout_constraintTop_toBottomOf="@id/ll_btn_thanks" />
 </androidx.constraintlayout.widget.ConstraintLayout>

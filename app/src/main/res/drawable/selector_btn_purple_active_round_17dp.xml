@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:state_checked="true"
+        android:drawable="@drawable/shape_btn_purple_active_round_17dp">
+    </item>
+    <item
+        android:state_checked="false"
+        android:drawable="@drawable/shape_btn_purple_active_border_round_17dp">
+    </item>
+    <item
+        android:drawable="@drawable/shape_btn_purple_active_border_round_17dp" />
+</selector>

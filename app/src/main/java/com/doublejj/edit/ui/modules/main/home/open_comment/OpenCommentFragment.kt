@@ -1,5 +1,6 @@
 package com.doublejj.edit.ui.modules.main.home.open_comment
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -18,6 +19,7 @@ import com.doublejj.edit.data.models.comment.CommentData
 import com.doublejj.edit.data.models.lookup_comments_of_sentence.LookupCommentResponse
 import com.doublejj.edit.databinding.OpenCommentFragmentBinding
 import com.doublejj.edit.ui.modules.main.MainActivity
+import com.doublejj.edit.ui.modules.main.home.writing_comment.WritingCommentActivity
 import com.doublejj.edit.ui.utils.dialog.CustomDialogClickListener
 import com.doublejj.edit.ui.utils.dialog.CustomDialogFragment
 import com.doublejj.edit.ui.utils.snackbar.CustomSnackbar
@@ -52,10 +54,23 @@ class OpenCommentFragment : Fragment(), CommentsOfSentenceView {
         /** floating button **/
         when (sSharedPreferences.getString(USER_POSITION, "MENTEE")) {
             "MENTEE" -> {
+                // TODO : 멘토 테스트 코드
+                binding.fabMentor.visibility = View.VISIBLE
+                binding.fabMentor.isEnabled = true
+
+            /*// TODO : 테스팅 후 정상 코드로 돌리기
                 binding.fabMentor.visibility = View.GONE
+                binding.fabMentor.isEnabled = false*/
             }
             "MENTOR" -> {
                 binding.fabMentor.visibility = View.VISIBLE
+                binding.fabMentor.isEnabled = true
+            }
+        }
+
+        binding.fabMentor.setOnClickListener {
+            if (binding.fabMentor.isEnabled) {
+                startActivity(Intent(activity, WritingCommentActivity::class.java))
             }
         }
 
