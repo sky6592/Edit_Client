@@ -149,6 +149,7 @@
 
     //Common
     <dimen name="padding_common">34dp</dimen>
+    <dimen name="padding_20dp">20dp</dimen>
     <dimen name="btn_corners">5dp</dimen>
     <dimen name="tv_15sp">15sp</dimen>
     <dimen name="margin_10dp">10dp</dimen>

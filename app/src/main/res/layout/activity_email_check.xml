@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!-- Title -->
+        <LinearLayout
+            android:id="@+id/linear_email_check"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shadow_bg"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingHorizontal="@dimen/padding_common"
+            android:paddingTop="@dimen/padding_common">
+
+            <ImageView
+                android:id="@+id/iv_back_email_check"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_baseline_navigate_before_24" />
+
+
+            <TextView
+                android:id="@+id/tv_title_email_check"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/noto_sans_kr_bold"
+                android:gravity="center"
+                android:text="@string/tv_title_certification_email"
+                android:textColor="@color/black" />
+
+        </LinearLayout>
+
+        <!--Choose Info-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_20dp"
+            android:orientation="vertical">
+
+
+            <!--직을 선택해주세요!-->
+            <TextView
+                android:id="@+id/tv_info_two_email_check"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/noto_sans_kr_bold"
+                android:gravity="center"
+                android:text="@string/tv_info_email_check"
+                android:textColor="@color/black"
+                android:textSize="@dimen/tv_18sp" />
+        </LinearLayout>
+
+        <!--Spinner-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="top"
+            android:orientation="vertical"
+            android:paddingHorizontal="@dimen/padding_20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/noto_sans_kr_regular"
+                android:text="@string/tv_email_info"
+                android:textColor="@color/black"
+                android:textSize="@dimen/tv_15sp" />
+
+            <EditText
+                android:id="@+id/et_email_check"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/margin_10dp"
+                android:imeOptions="actionSearch"
+                android:background="@drawable/shape_et_btn_info"
+                android:fontFamily="@font/noto_sans_kr_regular"
+                android:inputType="textPersonName|textNoSuggestions"
+                android:paddingHorizontal="@dimen/hint_padding_10dp"
+                android:paddingTop="@dimen/hint_padding_5dp"
+                android:textSize="@dimen/tv_15sp" />
+
+            <TextView
+                android:id="@+id/tv_caption_email_check"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_10dp"
+                android:fontFamily="@font/noto_sans_kr_regular"
+                android:text="@string/tv_nick_name_caption_info"
+                android:textColor="@color/very_light_pink"
+                android:textSize="@dimen/tv_10sp" />
+
+        </LinearLayout>
+
+        <!--Next Button-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="bottom">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/noto_sans_kr_medium"
+                android:textStyle="normal"
+                android:textSize="10sp"
+                android:textColor="@color/black"
+                android:paddingHorizontal="@dimen/padding_20dp"
+                tools:text="@string/tv_bottom_email_check"
+                />
+
+
+            <!-- Button -->
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_email_check"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/very_light_pink"
+                android:enabled="false"
+                android:text="@string/tv_next_info"
+                android:textColor="@color/white" />
+        </LinearLayout>
+    </LinearLayout>
+</layout>

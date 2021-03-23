@@ -253,6 +253,8 @@ class InfoFirstActivity : AppCompatActivity(), InfoFirstView {
             arrayList.add(nickname)
             arrayList.add(phone)
 
+            Log.d("sky", arrayList.toString())
+
             //최종 넘기기
             if (mNameFlag && mNickNameFlag && mPhoneFlag) {
                 //초기화

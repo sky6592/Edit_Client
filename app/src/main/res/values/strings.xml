@@ -469,9 +469,6 @@
     <string name="tv_title_select">멘토/멘티 가입</string>
 
 
-
-
-
     <!-- Find -->
     <string name="tv_title_find_email">이메일 찾기</string>
     <string name="tv_title_find_pw">비밀번 찾기</string>
@@ -500,6 +497,12 @@
     <!-- Read -->
     <string name="tv_info_read">이것만은 지켜주세요!</string>
     <string name="tv_info_last_read">아래 사항들을 꼭 읽어주세요.</string>
+
+    <!-- Email Check -->
+    <string name="tv_info_email_check">이메일 인증을 진행합니다.\n메일 주소를 확인해주세요!</string>
+    <string name="tv_caption_email_check">인증을 진행할 이메일이 아니라면 다시 입력해주세요!</string>
+    <string name="tv_bottom_email_check">회원가입 완료까지 얼마 남지 않았어요! :)</string>
+
 
 
     <!-- Walk Through -->

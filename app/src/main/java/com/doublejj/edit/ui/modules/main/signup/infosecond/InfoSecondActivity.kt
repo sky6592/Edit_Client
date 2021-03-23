@@ -17,6 +17,7 @@ import com.doublejj.edit.data.models.infosecond.InfoSecondResponse
 import com.doublejj.edit.databinding.ActivityInfoSecondBinding
 import com.doublejj.edit.ui.modules.main.signup.infofirst.InfoFirstActivity
 import com.doublejj.edit.ui.modules.main.signup.slecttype.SelectTypeActivity
+import com.doublejj.edit.ui.utils.dialog.CustomDialogFragment
 
 
 class InfoSecondActivity : AppCompatActivity(), InfoSecondView {
@@ -38,10 +39,17 @@ class InfoSecondActivity : AppCompatActivity(), InfoSecondView {
 
         //Intent - ArrayList 저장
         var arrayList = intent.getSerializableExtra("arrayList") as ArrayList<String>
-        for (str in arrayList) {
-            arrayList.add(str)
-            Log.d("sky",arrayList.add(str).toString())
-        }
+//        Log.d("sky",arrayList.toString())
+//        for (str in arrayList) {
+//            Log.d("sky",str)
+//            Log.d("sky - for", arrayList.add(str).toString())
+
+//        }
+//        arrayList.add("test")
+        Log.d("sky - result",arrayList.toString())
+        var check = "test"
+        arrayList.add(check)
+        Log.d("sky", arrayList.toString())
 
 
         val emailPatternTest = android.util.Patterns.EMAIL_ADDRESS
