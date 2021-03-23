@@ -56,4 +56,8 @@
             android:onClick="@{()->walkThroughActivity.onMoveLogIn()}" />
 
     </LinearLayout>
+<<<<<<< HEAD
 </layout>
+=======
+</layout>
+>>>>>>> 0e222250f4f96df9ca8efecee5f25ad665ffaa9f

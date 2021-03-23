@@ -23,17 +23,26 @@
         <activity android:name=".ui.modules.main.signup.infosecond.InfoSecondActivity" >
 
         </activity>
-        <activity android:name=".ui.modules.main.signup.infofirst.InfoFirstActivity" >
+        <activity android:name=".ui.modules.main.signup.infofirst.InfoFirstActivity" />
+        <activity android:name=".ui.modules.main.signin.SignInActivity" />
+        <activity android:name=".ui.modules.main.myedit.settings.profile.ProfileActivity" />
+        <activity android:name=".ui.modules.main.myedit.settings.withdrawal.WithdrawalCompleteActivity" />
+        <activity
+            android:name=".ui.modules.main.myedit.settings.withdrawal.WithdrawalReasonActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".ui.modules.main.myedit.settings.withdrawal.WithdrawalActivity" />
+        <activity android:name=".ui.modules.main.myedit.settings.SettingsActivity" />
+        <activity
+            android:name=".ui.modules.main.home.writing_sentence.WritingSentenceActivity"
+            android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".ui.modules.main.home.writing_comment.WritingCommentActivity" />
+        <activity android:name=".ui.modules.main.walkthrough.WalkThroughActivity" />
+        <activity android:name=".ui.modules.main.splash.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity android:name=".ui.modules.main.signin.SignInActivity" />
-        <activity android:name=".ui.modules.main.walkthrough.WalkThroughActivity"></activity>
-        <activity android:name=".ui.modules.main.splash.SplashActivity">
-
         </activity>
         <activity android:name=".ui.modules.main.MainActivity" />
     </application>

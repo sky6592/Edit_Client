@@ -1,0 +1,578 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/gray_background">
+
+        <!--  toolbar section  -->
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar_writing_comment"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_toolbar_height"
+            app:contentInsetStart="@dimen/margin_component_inset_20dp"
+            app:contentInsetEnd="@dimen/margin_component_inset_20dp"
+            android:background="@color/white"
+            app:layout_constraintTop_toTopOf="parent">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageButton
+                    android:id="@+id/ib_back"
+                    android:layout_width="@dimen/size_icon_button_24dp"
+                    android:layout_height="@dimen/size_icon_button_24dp"
+                    android:src="@drawable/icon_back"
+                    android:background="@color/transparent"
+                    android:scaleType="fitXY"
+
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent" />
+                <TextView
+                    android:id="@+id/tv_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/CustomTextViewMidBlack"
+                    android:text="@string/tv_writing_comment_toolbar_title"
+                    android:textSize="@dimen/size_tv_title_15dp"
+                    android:fontFamily="@font/noto_sans_kr_medium"
+                    android:background="@color/transparent"
+                    android:gravity="center"
+
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.appcompat.widget.Toolbar>
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/nsv"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:fillViewport="true"
+            app:layout_constraintTop_toBottomOf="@id/toolbar_writing_comment"
+            app:layout_constraintBottom_toBottomOf="parent">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <!--  select sentence type section  -->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cl_select_sentence_section"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white">
+
+                    <!--  sentence section  -->
+                    <View
+                        android:id="@+id/view_sentence_section"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:background="@color/white"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="@id/tv_sentence_content"/>
+                    <ImageView
+                        android:id="@+id/iv_character"
+                        android:layout_width="@dimen/size_45dp"
+                        android:layout_height="@dimen/size_45dp"
+                        android:src="@drawable/icon_char_purple_active_1"
+
+                        android:layout_marginTop="@dimen/size_20dp"
+                        android:layout_marginStart="@dimen/size_20dp"
+                        android:layout_marginLeft="@dimen/size_20dp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+                    <TextView
+                        android:id="@+id/tv_sentence_writer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        style="@style/CustomTextViewMidBlack"
+                        android:text="@string/tv_card_writer"
+                        android:textStyle="bold"
+                        android:textSize="@dimen/size_tv_card_writer_14dp"
+                        android:textColor="@color/purple_active"
+                        android:fontFamily="@font/noto_sans_kr_bold"
+
+                        android:layout_marginStart="@dimen/size_21dp"
+                        android:layout_marginLeft="@dimen/size_21dp"
+                        app:layout_constraintTop_toTopOf="@id/iv_character"
+                        app:layout_constraintStart_toEndOf="@id/iv_character" />
+                    <TextView
+                        android:id="@+id/tv_sentence_position"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        style="@style/CustomTextViewMidBlack"
+                        android:text="@string/tv_card_position"
+                        android:textStyle="bold"
+                        android:textSize="@dimen/size_tv_card_writer_14dp"
+                        android:fontFamily="@font/noto_sans_kr_bold"
+
+                        android:layout_marginStart="@dimen/size_5dp"
+                        android:layout_marginLeft="@dimen/size_5dp"
+                        app:layout_constraintTop_toTopOf="@id/iv_character"
+                        app:layout_constraintStart_toEndOf="@id/tv_sentence_writer" />
+                    <TextView
+                        android:id="@+id/tv_occupation_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        style="@style/CustomTextViewMidBlack"
+                        android:text="@string/tv_occupation_text"
+                        android:textSize="@dimen/size_11dp"
+                        android:fontFamily="@font/noto_sans_kr_medium"
+
+                        android:layout_marginTop="@dimen/size_7dp"
+                        app:layout_constraintTop_toBottomOf="@id/tv_sentence_writer"
+                        app:layout_constraintStart_toStartOf="@id/tv_sentence_writer" />
+                    <TextView
+                        android:id="@+id/tv_occupation_bar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        style="@style/CustomTextViewMidBlack"
+                        android:text="@string/tv_vertical_bar"
+                        android:textSize="@dimen/size_9dp"
+                        android:textColor="@color/gray_shadow"
+                        android:fontFamily="@font/noto_sans_kr_medium"
+
+                        android:layout_marginStart="@dimen/size_5dp"
+                        android:layout_marginLeft="@dimen/size_5dp"
+                        app:layout_constraintTop_toTopOf="@id/tv_occupation_text"
+                        app:layout_constraintStart_toEndOf="@id/tv_occupation_text" />
+                    <TextView
+                        android:id="@+id/tv_occupation_type"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        style="@style/CustomTextViewMidBlack"
+                        android:text="@string/tv_occupation_type"
+                        android:textSize="@dimen/size_11dp"
+                        android:fontFamily="@font/noto_sans_kr_medium"
+
+                        android:layout_marginStart="@dimen/size_5dp"
+                        android:layout_marginLeft="@dimen/size_5dp"
+                        app:layout_constraintTop_toTopOf="@id/tv_occupation_text"
+                        app:layout_constraintStart_toEndOf="@id/tv_occupation_bar" />
+
+                    <TextView
+                        android:id="@+id/tv_sentence_type"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        style="@style/CustomTextViewMidBlack"
+                        android:text="@string/tv_self_writing_spinner_type_title"
+                        android:textSize="@dimen/size_11dp"
+                        android:fontFamily="@font/noto_sans_kr_medium"
+
+                        android:layout_marginTop="@dimen/size_16dp"
+                        app:layout_constraintTop_toBottomOf="@id/iv_character"
+                        app:layout_constraintStart_toStartOf="@id/iv_character" />
+                    <TextView
+                        android:id="@+id/tv_colon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        style="@style/CustomTextViewMidBlack"
+                        android:text="@string/tv_colon"
+                        android:textSize="@dimen/size_11dp"
+                        android:fontFamily="@font/noto_sans_kr_medium"
+
+                        android:layout_marginStart="@dimen/size_5dp"
+                        android:layout_marginLeft="@dimen/size_5dp"
+                        app:layout_constraintTop_toTopOf="@id/tv_sentence_type"
+                        app:layout_constraintStart_toEndOf="@id/tv_sentence_type" />
+                    <TextView
+                        android:id="@+id/tv_self_writing_type"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        style="@style/CustomTextViewMidBlack"
+                        android:text="@string/spinner_self_writing_3"
+                        android:textSize="@dimen/size_11dp"
+                        android:fontFamily="@font/noto_sans_kr_medium"
+
+                        android:layout_marginStart="@dimen/size_5dp"
+                        android:layout_marginLeft="@dimen/size_5dp"
+                        app:layout_constraintTop_toTopOf="@id/tv_colon"
+                        app:layout_constraintStart_toEndOf="@id/tv_colon" />
+
+                    <TextView
+                        android:id="@+id/tv_sentence_content"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+
+                        style="@style/CustomTextViewMidBlack"
+                        android:text="@string/tv_sentence_content_example"
+                        android:textSize="@dimen/size_13dp"
+                        android:maxLines="4"
+                        android:lineSpacingExtra="@dimen/size_5dp"
+
+                        android:paddingBottom="@dimen/size_19dp"
+                        android:layout_marginTop="@dimen/size_14dp"
+                        android:layout_marginEnd="@dimen/margin_component_inset_20dp"
+                        android:layout_marginRight="@dimen/margin_component_inset_20dp"
+                        app:layout_constraintTop_toBottomOf="@id/tv_sentence_type"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="@id/iv_character"
+                        app:layout_constraintEnd_toEndOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <!--  evaluation sentence section  -->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cl_eval_sentence_section"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="@dimen/margin_section_10dp"
+                    android:layout_weight="1"
+                    android:background="@color/white">
+
+                    <LinearLayout
+                        android:id="@+id/ll_eval_radiogroups"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+
+                        android:paddingTop="@dimen/size_15dp"
+                        android:paddingBottom="@dimen/size_15dp"
+                        android:paddingStart="@dimen/margin_component_inset_20dp"
+                        android:paddingLeft="@dimen/margin_component_inset_20dp"
+                        android:paddingEnd="@dimen/margin_component_inset_20dp"
+                        android:paddingRight="@dimen/margin_component_inset_20dp"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <TextView
+                            style="@style/CustomTextViewMidBlack"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+                            android:layout_marginTop="@dimen/size_20dp"
+                            android:fontFamily="@font/noto_sans_kr_medium"
+                            android:text="@string/tv_open_comment_evaluation_type_0"
+                            android:textSize="@dimen/size_15dp" />
+                        <RadioGroup
+                            android:id="@+id/rg_eval_0"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/size_33dp"
+                            android:orientation="horizontal"
+                            android:layout_marginTop="@dimen/size_15dp">
+                            <RadioButton
+                                android:layout_width="@dimen/size_56dp"
+                                android:layout_height="match_parent"
+                                android:text="@string/tv_open_comment_evaluation_leak"
+                                android:textSize="@dimen/size_13dp"
+                                android:textColor="@drawable/selector_btn_text_purple_active_white"
+                                android:fontFamily="@font/noto_sans_kr_medium"
+                                android:includeFontPadding="false"
+                                android:gravity="center"
+                                android:background="@drawable/selector_btn_purple_active_round_17dp"
+                                android:button="@null"
+                                android:layout_marginEnd="@dimen/size_24dp"
+                                android:layout_marginRight="@dimen/size_24dp" />
+                            <RadioButton
+                                android:layout_width="@dimen/size_56dp"
+                                android:layout_height="match_parent"
+                                android:text="@string/tv_open_comment_evaluation_normal"
+                                android:textSize="@dimen/size_13dp"
+                                android:textColor="@drawable/selector_btn_text_purple_active_white"
+                                android:fontFamily="@font/noto_sans_kr_medium"
+                                android:includeFontPadding="false"
+                                android:gravity="center"
+                                android:background="@drawable/selector_btn_purple_active_round_17dp"
+                                android:button="@null"
+                                android:layout_marginEnd="@dimen/size_24dp"
+                                android:layout_marginRight="@dimen/size_24dp" />
+                            <RadioButton
+                                android:layout_width="@dimen/size_56dp"
+                                android:layout_height="match_parent"
+                                android:text="@string/tv_open_comment_evaluation_good"
+                                android:textSize="@dimen/size_13dp"
+                                android:textColor="@drawable/selector_btn_text_purple_active_white"
+                                android:fontFamily="@font/noto_sans_kr_medium"
+                                android:includeFontPadding="false"
+                                android:gravity="center"
+                                android:background="@drawable/selector_btn_purple_active_round_17dp"
+                                android:button="@null" />
+                        </RadioGroup>
+                        <TextView
+                            style="@style/CustomTextViewMidBlack"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+                            android:layout_marginTop="@dimen/size_20dp"
+                            android:fontFamily="@font/noto_sans_kr_medium"
+                            android:text="@string/tv_open_comment_evaluation_type_1"
+                            android:textSize="@dimen/size_15dp" />
+                        <RadioGroup
+                            android:id="@+id/rg_eval_1"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/size_33dp"
+                            android:orientation="horizontal"
+                            android:layout_marginTop="@dimen/size_15dp">
+                            <RadioButton
+                                android:layout_width="@dimen/size_56dp"
+                                android:layout_height="match_parent"
+                                android:text="@string/tv_open_comment_evaluation_leak"
+                                android:textSize="@dimen/size_13dp"
+                                android:textColor="@drawable/selector_btn_text_purple_active_white"
+                                android:fontFamily="@font/noto_sans_kr_medium"
+                                android:includeFontPadding="false"
+                                android:gravity="center"
+                                android:background="@drawable/selector_btn_purple_active_round_17dp"
+                                android:button="@null"
+                                android:layout_marginEnd="@dimen/size_24dp"
+                                android:layout_marginRight="@dimen/size_24dp" />
+                            <RadioButton
+                                android:layout_width="@dimen/size_56dp"
+                                android:layout_height="match_parent"
+                                android:text="@string/tv_open_comment_evaluation_normal"
+                                android:textSize="@dimen/size_13dp"
+                                android:textColor="@drawable/selector_btn_text_purple_active_white"
+                                android:fontFamily="@font/noto_sans_kr_medium"
+                                android:includeFontPadding="false"
+                                android:gravity="center"
+                                android:background="@drawable/selector_btn_purple_active_round_17dp"
+                                android:button="@null"
+                                android:layout_marginEnd="@dimen/size_24dp"
+                                android:layout_marginRight="@dimen/size_24dp" />
+                            <RadioButton
+                                android:layout_width="@dimen/size_56dp"
+                                android:layout_height="match_parent"
+                                android:text="@string/tv_open_comment_evaluation_good"
+                                android:textSize="@dimen/size_13dp"
+                                android:textColor="@drawable/selector_btn_text_purple_active_white"
+                                android:fontFamily="@font/noto_sans_kr_medium"
+                                android:includeFontPadding="false"
+                                android:gravity="center"
+                                android:background="@drawable/selector_btn_purple_active_round_17dp"
+                                android:button="@null" />
+                        </RadioGroup>
+                        <TextView
+                            style="@style/CustomTextViewMidBlack"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+                            android:layout_marginTop="@dimen/size_20dp"
+                            android:fontFamily="@font/noto_sans_kr_medium"
+                            android:text="@string/tv_open_comment_evaluation_type_2"
+                            android:textSize="@dimen/size_15dp" />
+                        <RadioGroup
+                            android:id="@+id/rg_eval_2"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/size_33dp"
+                            android:orientation="horizontal"
+                            android:layout_marginTop="@dimen/size_15dp">
+                            <RadioButton
+                                android:layout_width="@dimen/size_56dp"
+                                android:layout_height="match_parent"
+                                android:text="@string/tv_open_comment_evaluation_leak"
+                                android:textSize="@dimen/size_13dp"
+                                android:textColor="@drawable/selector_btn_text_purple_active_white"
+                                android:fontFamily="@font/noto_sans_kr_medium"
+                                android:includeFontPadding="false"
+                                android:gravity="center"
+                                android:background="@drawable/selector_btn_purple_active_round_17dp"
+                                android:button="@null"
+                                android:layout_marginEnd="@dimen/size_24dp"
+                                android:layout_marginRight="@dimen/size_24dp" />
+                            <RadioButton
+                                android:layout_width="@dimen/size_56dp"
+                                android:layout_height="match_parent"
+                                android:text="@string/tv_open_comment_evaluation_normal"
+                                android:textSize="@dimen/size_13dp"
+                                android:textColor="@drawable/selector_btn_text_purple_active_white"
+                                android:fontFamily="@font/noto_sans_kr_medium"
+                                android:includeFontPadding="false"
+                                android:gravity="center"
+                                android:background="@drawable/selector_btn_purple_active_round_17dp"
+                                android:button="@null"
+                                android:layout_marginEnd="@dimen/size_24dp"
+                                android:layout_marginRight="@dimen/size_24dp" />
+                            <RadioButton
+                                android:layout_width="@dimen/size_56dp"
+                                android:layout_height="match_parent"
+                                android:text="@string/tv_open_comment_evaluation_good"
+                                android:textSize="@dimen/size_13dp"
+                                android:textColor="@drawable/selector_btn_text_purple_active_white"
+                                android:fontFamily="@font/noto_sans_kr_medium"
+                                android:includeFontPadding="false"
+                                android:gravity="center"
+                                android:background="@drawable/selector_btn_purple_active_round_17dp"
+                                android:button="@null" />
+                        </RadioGroup>
+                        <TextView
+                            style="@style/CustomTextViewMidBlack"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+                            android:layout_marginTop="@dimen/size_20dp"
+                            android:fontFamily="@font/noto_sans_kr_medium"
+                            android:text="@string/tv_open_comment_evaluation_type_3"
+                            android:textSize="@dimen/size_15dp" />
+                        <RadioGroup
+                            android:id="@+id/rg_eval_3"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/size_33dp"
+                            android:orientation="horizontal"
+                            android:layout_marginTop="@dimen/size_15dp">
+                            <RadioButton
+                                android:layout_width="@dimen/size_56dp"
+                                android:layout_height="match_parent"
+                                android:text="@string/tv_open_comment_evaluation_leak"
+                                android:textSize="@dimen/size_13dp"
+                                android:textColor="@drawable/selector_btn_text_purple_active_white"
+                                android:fontFamily="@font/noto_sans_kr_medium"
+                                android:includeFontPadding="false"
+                                android:gravity="center"
+                                android:background="@drawable/selector_btn_purple_active_round_17dp"
+                                android:button="@null"
+                                android:layout_marginEnd="@dimen/size_24dp"
+                                android:layout_marginRight="@dimen/size_24dp" />
+                            <RadioButton
+                                android:layout_width="@dimen/size_56dp"
+                                android:layout_height="match_parent"
+                                android:text="@string/tv_open_comment_evaluation_normal"
+                                android:textSize="@dimen/size_13dp"
+                                android:textColor="@drawable/selector_btn_text_purple_active_white"
+                                android:fontFamily="@font/noto_sans_kr_medium"
+                                android:includeFontPadding="false"
+                                android:gravity="center"
+                                android:background="@drawable/selector_btn_purple_active_round_17dp"
+                                android:button="@null"
+                                android:layout_marginEnd="@dimen/size_24dp"
+                                android:layout_marginRight="@dimen/size_24dp" />
+                            <RadioButton
+                                android:layout_width="@dimen/size_56dp"
+                                android:layout_height="match_parent"
+                                android:text="@string/tv_open_comment_evaluation_good"
+                                android:textSize="@dimen/size_13dp"
+                                android:textColor="@drawable/selector_btn_text_purple_active_white"
+                                android:fontFamily="@font/noto_sans_kr_medium"
+                                android:includeFontPadding="false"
+                                android:gravity="center"
+                                android:background="@drawable/selector_btn_purple_active_round_17dp"
+                                android:button="@null" />
+                        </RadioGroup>
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/tv_eval_commente_title"
+                        style="@style/CustomTextViewMidBlack"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin_component_inset_20dp"
+                        android:layout_marginLeft="@dimen/margin_component_inset_20dp"
+                        android:layout_marginTop="@dimen/size_18dp"
+
+                        android:fontFamily="@font/noto_sans_kr_medium"
+                        android:text="@string/tv_writing_comment_input_title"
+                        android:textSize="@dimen/size_15dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/ll_eval_radiogroups" />
+
+                    <EditText
+                        android:id="@+id/et_input_comment"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/size_164dp"
+                        android:background="@drawable/shape_gray_border_box"
+                        android:gravity="top"
+                        android:scrollbars="vertical"
+                        android:hint="@string/tv_writing_comment_input_hint"
+                        android:includeFontPadding="false"
+                        android:textSize="@dimen/size_15dp"
+
+                        android:padding="@dimen/size_14dp"
+                        android:layout_marginTop="@dimen/size_11dp"
+                        android:layout_marginStart="@dimen/margin_component_inset_20dp"
+                        android:layout_marginLeft="@dimen/margin_component_inset_20dp"
+                        android:layout_marginEnd="@dimen/margin_component_inset_20dp"
+                        android:layout_marginRight="@dimen/margin_component_inset_20dp"
+                        app:layout_constraintTop_toBottomOf="@id/tv_eval_commente_title" />
+
+                    <LinearLayout
+                        android:id="@+id/ll_input_comment_notice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/size_16dp"
+                        android:orientation="vertical"
+                        app:layout_constraintStart_toStartOf="@id/et_input_comment"
+                        app:layout_constraintTop_toBottomOf="@id/et_input_comment">
+
+                        <TextView
+                            style="@style/CustomTextViewMidBlack"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/noto_sans_kr_medium"
+                            android:text="@string/tv_writing_comment_notice_first"
+                            android:textSize="@dimen/size_10dp" />
+
+                        <TextView
+                            style="@style/CustomTextViewMidBlack"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/noto_sans_kr_medium"
+                            android:text="@string/tv_writing_comment_notice_second"
+                            android:textColor="@color/gray_shadow"
+                            android:textSize="@dimen/size_10dp" />
+                    </LinearLayout>
+
+                    <View
+                        android:id="@+id/view_sandwich_space"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+
+                        android:layout_marginTop="@dimen/size_30dp"
+                        app:layout_constraintTop_toBottomOf="@id/ll_input_comment_notice"
+                        app:layout_constraintBottom_toTopOf="@id/btn_save_temp" />
+
+                    <View
+                        android:id="@+id/view_btn_space"
+                        android:layout_width="@dimen/size_16dp"
+                        android:layout_height="0dp"
+
+                        android:layout_marginBottom="@dimen/size_35dp"
+                        app:layout_constraintTop_toBottomOf="@id/view_sandwich_space"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+                    <android.widget.Button
+                        android:id="@+id/btn_save_temp"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/size_36dp"
+                        android:background="@drawable/selector_btn_purple_active_border_round"
+                        android:fontFamily="@font/noto_sans_kr_medium"
+                        android:text="@string/btn_self_writing_temp"
+                        android:textColor="@color/purple_active"
+                        android:textSize="@dimen/size_13dp"
+
+                        android:layout_marginStart="@dimen/size_60dp"
+                        android:layout_marginLeft="@dimen/size_60dp"
+                        app:layout_constraintBottom_toBottomOf="@id/view_btn_space"
+                        app:layout_constraintEnd_toStartOf="@id/view_btn_space"
+                        app:layout_constraintStart_toStartOf="parent" />
+                    <android.widget.Button
+                        android:id="@+id/btn_submit"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/size_36dp"
+                        android:background="@drawable/selector_btn_purple_active_round"
+                        android:fontFamily="@font/noto_sans_kr_medium"
+                        android:text="@string/btn_self_writing_submit"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/size_13dp"
+
+                        android:layout_marginEnd="@dimen/size_60dp"
+                        android:layout_marginRight="@dimen/size_60dp"
+                        app:layout_constraintBottom_toBottomOf="@id/view_btn_space"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/view_btn_space" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
