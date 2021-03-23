@@ -23,8 +23,6 @@
     <dimen name="size_card_radius_7dp">7dp</dimen>
     <dimen name="margin_card_outer_side_16dp">16dp</dimen>
     <dimen name="margin_card_inner_text_top_and_bottom_14dp">16dp</dimen>
-<<<<<<< HEAD
-=======
     <dimen name="margin_card_inner_text_start_and_end_20dp">20dp</dimen>
     <dimen name="size_tv_card_writer_14dp">14dp</dimen>
     <dimen name="size_tv_card_content_12dp">12dp</dimen>
@@ -148,7 +146,6 @@
 
     <dimen name="size_card_home_sentence_box_width">320dp</dimen>
     <dimen name="size_card_home_sentence_box_height">120dp</dimen>
->>>>>>> 0e222250f4f96df9ca8efecee5f25ad665ffaa9f
 
     //Common
     <dimen name="padding_common">34dp</dimen>
@@ -173,8 +170,5 @@
     <dimen name="walk_through_img_margin_horizontal">37dp</dimen>
     <dimen name="walk_through_img_margin_vertical">200dp</dimen>
 
-<<<<<<< HEAD
 
-=======
->>>>>>> 0e222250f4f96df9ca8efecee5f25ad665ffaa9f
 </resources>

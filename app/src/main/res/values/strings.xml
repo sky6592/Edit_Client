@@ -10,8 +10,6 @@
     <!-- Splash -->
     <string name="tv_splash">자소서 공유 플랫폼</string>
 
-<<<<<<< HEAD
-=======
     <!--  home_fragment  -->
     <string name="fab_description_mentee">자소서 작성</string>
     <string name="fab_description_mentor">자소서 코멘트 작성</string>
@@ -415,7 +413,7 @@
         <item>@string/spinner_withdrawal_2</item>
         <item>@string/spinner_withdrawal_3</item>
     </string-array>
->>>>>>> 0e222250f4f96df9ca8efecee5f25ad665ffaa9f
+
     <!-- Info -->
     <string name="tv_name_info">이름</string>
     <string name="hint_name_info">이름을 입력해주세요.</string>
@@ -469,6 +467,10 @@
 
     <!-- Select -->
     <string name="tv_title_select">멘토/멘티 가입</string>
+
+
+
+
 
     <!-- Find -->
     <string name="tv_title_find_email">이메일 찾기</string>
