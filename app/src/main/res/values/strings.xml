@@ -503,8 +503,6 @@
     <string name="tv_caption_email_check">인증을 진행할 이메일이 아니라면 다시 입력해주세요!</string>
     <string name="tv_bottom_email_check">회원가입 완료까지 얼마 남지 않았어요! :)</string>
 
-
-
     <!-- Walk Through -->
     <string name="tv_walk_thorough_one">스스로 자소서를 완성하는\n힘을 기를 수 있게 합니다.</string>
     <string name="tv_walk_thorough_two">누구나 멘토, 멘티가 될 수 있지만\n아무나 멘토, 멘티가 될 수는 없다.</string>

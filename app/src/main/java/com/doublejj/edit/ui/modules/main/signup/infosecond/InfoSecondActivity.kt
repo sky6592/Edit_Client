@@ -15,6 +15,7 @@ import com.doublejj.edit.data.api.services.infosecond.InfoSecondView
 import com.doublejj.edit.data.models.infosecond.InfoSecondRequest
 import com.doublejj.edit.data.models.infosecond.InfoSecondResponse
 import com.doublejj.edit.databinding.ActivityInfoSecondBinding
+import com.doublejj.edit.ui.modules.main.signup.emailcheck.EmailCheckActivity
 import com.doublejj.edit.ui.modules.main.signup.infofirst.InfoFirstActivity
 import com.doublejj.edit.ui.modules.main.signup.slecttype.SelectTypeActivity
 import com.doublejj.edit.ui.utils.dialog.CustomDialogFragment
@@ -39,18 +40,9 @@ class InfoSecondActivity : AppCompatActivity(), InfoSecondView {
 
         //Intent - ArrayList 저장
         var arrayList = intent.getSerializableExtra("arrayList") as ArrayList<String>
-//        Log.d("sky",arrayList.toString())
-//        for (str in arrayList) {
-//            Log.d("sky",str)
-//            Log.d("sky - for", arrayList.add(str).toString())
-
-//        }
-//        arrayList.add("test")
-        Log.d("sky - result",arrayList.toString())
-        var check = "test"
-        arrayList.add(check)
-        Log.d("sky", arrayList.toString())
-
+//        var check = "test"
+//        arrayList.add(check)
+//        Log.d("sky", arrayList.toString())
 
         val emailPatternTest = android.util.Patterns.EMAIL_ADDRESS
 
@@ -265,17 +257,24 @@ class InfoSecondActivity : AppCompatActivity(), InfoSecondView {
             var rePw = mBinding.etRePwInfoFirst.text.toString().replace(" ", "")
             Log.d("sky", "값 : $email, $pw, $rePw")
 
+            arrayList.add(email)
+            arrayList.add(pw)
+            arrayList.add(rePw)
+
+
             if (mEmailFlag && mPwFlag && mRePwFlag) {
                 mEmailFlag = false
                 mPwFlag = false
                 mRePwFlag = false
+                mEmailSpacingFlag = false
+                mPwSpacingFlag = false
+                mRePwSpacingFlag = false
 
-                val intent = Intent(this, SelectTypeActivity::class.java)
-                intent.putExtra("email", email)
-                intent.putExtra("pw", pw)
-                intent.putExtra("rePw", rePw)
-                startActivity(Intent(this, SelectTypeActivity::class.java))
+                val intent = Intent(this, EmailCheckActivity::class.java)
+                intent.putExtra("arrayList",arrayList)
+                startActivity(intent)
                 finish()
+                Log.d("sky - array",arrayList.toString())
             } else {
                 //다이얼로그 : 입력을 다시 확인해주세요!
             }

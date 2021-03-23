@@ -95,7 +95,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/margin_10dp"
                 android:fontFamily="@font/noto_sans_kr_regular"
-                android:text="@string/tv_nick_name_caption_info"
+                android:text="@string/tv_caption_email_check"
                 android:textColor="@color/very_light_pink"
                 android:textSize="@dimen/tv_10sp" />
 
