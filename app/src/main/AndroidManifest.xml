@@ -15,8 +15,10 @@
         android:theme="@style/Theme.Edit"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
+        <activity android:name=".ui.modules.main.myedit.settings.profile.ProfileActivity"></activity>
         <activity android:name=".ui.modules.main.myedit.settings.withdrawal.WithdrawalCompleteActivity" />
-        <activity android:name=".ui.modules.main.myedit.settings.withdrawal.WithdrawalReasonActivity"
+        <activity
+            android:name=".ui.modules.main.myedit.settings.withdrawal.WithdrawalReasonActivity"
             android:windowSoftInputMode="adjustPan" />
         <activity android:name=".ui.modules.main.myedit.settings.withdrawal.WithdrawalActivity" />
         <activity android:name=".ui.modules.main.myedit.settings.SettingsActivity" />
