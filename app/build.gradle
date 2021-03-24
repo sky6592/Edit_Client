@@ -77,10 +77,4 @@ dependencies {
 
     //Lottie
     implementation 'com.airbnb.android:lottie:3.6.1'
-
-    //Indicator
-    implementation 'com.tbuonomo.andrui:viewpagerdotsindicator:4.1.2'
-
-    //Lottie
-    implementation 'com.airbnb.android:lottie:3.6.1'
 }

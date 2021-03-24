@@ -3,6 +3,7 @@ package com.doublejj.edit.ui.modules.main.myedit
 import android.content.Intent
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -12,8 +13,10 @@ import com.doublejj.edit.ApplicationClass
 import com.doublejj.edit.R
 import com.doublejj.edit.databinding.MyeditFragmentBinding
 import com.doublejj.edit.ui.modules.main.myedit.settings.SettingsActivity
+import com.doublejj.edit.ui.modules.main.myedit.settings.profile.ProfileActivity
 
 class MyeditFragment : Fragment() {
+    private val TAG: String = javaClass.simpleName.toString()
     private lateinit var binding: MyeditFragmentBinding
     private lateinit var viewModel: MyeditViewModel
 
@@ -51,12 +54,25 @@ class MyeditFragment : Fragment() {
             // TODO : 맨 위로 가기
         }
         binding.ibSettings.setOnClickListener {
-            startActivity(Intent(activity, SettingsActivity::class.java))
+            val sendIntent = Intent(activity, SettingsActivity::class.java)
+            startActivity(sendIntent)
         }
 
         /** menu buttons **/
         binding.ibMenuProfile.setOnClickListener {
             // TODO : 내 정보 페이지
+            Log.d(TAG, "clicked profile")
+            val sendIntent = Intent(activity, ProfileActivity::class.java)
+            // TODO : 프로필 받아서 테스트 교체
+            val nickName = "테스트"
+            val userRole = "멘티님"
+            val emotionName = "relief"
+            val colorName = "purple"
+            sendIntent.putExtra("nickName", nickName)
+            sendIntent.putExtra("userRole", userRole)
+            sendIntent.putExtra("emotionName", emotionName)
+            sendIntent.putExtra("colorName", colorName)
+            startActivity(sendIntent)
         }
         binding.ibMenuCoin.setOnClickListener {
             // TODO : 코인 페이지 (멘토)
@@ -73,7 +89,7 @@ class MyeditFragment : Fragment() {
         binding.ibMenuCommentList.setOnClickListener {
             // TODO : 코멘트 목록 페이지 (멘토)
         }
-        binding.ibMenuProfile.setOnClickListener {
+        binding.ibMenuTemp.setOnClickListener {
             // TODO : 임시 저장 페이지
         }
 
