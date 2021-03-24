@@ -15,9 +15,9 @@ import com.doublejj.edit.ApplicationClass.Companion.USER_NICKNAME
 import com.doublejj.edit.ApplicationClass.Companion.USER_POSITION
 import com.doublejj.edit.ApplicationClass.Companion.sSharedPreferences
 import com.doublejj.edit.R
-import com.doublejj.edit.data.api.services.myedit_info.ProfileInfoService
-import com.doublejj.edit.data.api.services.myedit_info.ProfileInfoView
-import com.doublejj.edit.data.models.myedit_info.ProfileInfoResponse
+import com.doublejj.edit.data.api.services.profile.info.ProfileInfoService
+import com.doublejj.edit.data.api.services.profile.info.ProfileInfoView
+import com.doublejj.edit.data.models.profile.info.ProfileInfoResponse
 import com.doublejj.edit.databinding.MyeditFragmentBinding
 import com.doublejj.edit.ui.modules.main.myedit.settings.SettingsActivity
 import com.doublejj.edit.ui.modules.main.myedit.settings.profile.ProfileActivity
@@ -95,6 +95,18 @@ class MyeditFragment : Fragment(), ProfileInfoView {
         }
 
         return binding.root
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        binding.tvNickname.text = sSharedPreferences.getString(USER_NICKNAME, null)
+        binding.tvPosition.text = (requireContext().applicationContext as ApplicationClass).getPostionToString(
+            sSharedPreferences.getString(USER_POSITION, null))
+        binding.ivProfile.setImageResource((requireContext().applicationContext as ApplicationClass).getCharacterResId(
+            sSharedPreferences.getString(USER_COLOR, null).toString(),
+            sSharedPreferences.getString(USER_EMOTION, null).toString()
+        ))
     }
 
     override fun onProfileInfoSuccess(response: ProfileInfoResponse) {

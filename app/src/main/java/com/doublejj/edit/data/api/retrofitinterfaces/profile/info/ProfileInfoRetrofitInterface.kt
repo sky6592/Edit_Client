@@ -1,6 +1,6 @@
-package com.doublejj.edit.data.api.retrofitinterfaces.myedit_info
+package com.doublejj.edit.data.api.retrofitinterfaces.profile.info
 
-import com.doublejj.edit.data.models.myedit_info.ProfileInfoResponse
+import com.doublejj.edit.data.models.profile.info.ProfileInfoResponse
 import retrofit2.Call
 import retrofit2.http.GET
 
