@@ -1,6 +1,6 @@
-package com.doublejj.edit.data.api.services.myedit_info
+package com.doublejj.edit.data.api.services.profile.info
 
-import com.doublejj.edit.data.models.myedit_info.ProfileInfoResponse
+import com.doublejj.edit.data.models.profile.info.ProfileInfoResponse
 
 interface ProfileInfoView {
     fun onProfileInfoSuccess(response: ProfileInfoResponse)

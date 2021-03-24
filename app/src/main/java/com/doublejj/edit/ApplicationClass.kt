@@ -76,7 +76,7 @@ class ApplicationClass : Application() {
         when (colorAndEmotion.last()) {
             "relief" -> resPath += "0"
             "bigSmile" -> resPath += "1"
-            "suprise" -> resPath += "2"
+            "surprise" -> resPath += "2"
             "happy" -> resPath += "3"
             "smallSmile" -> resPath += "4"
             "wink" -> resPath += "5"
@@ -95,14 +95,14 @@ class ApplicationClass : Application() {
         when (emotion) {
             "relief" -> resPath += "0"
             "bigSmile" -> resPath += "1"
-            "suprise" -> resPath += "2"
+            "surprise" -> resPath += "2"
             "happy" -> resPath += "3"
             "smallSmile" -> resPath += "4"
             "wink" -> resPath += "5"
         }
         return applicationContext.resources!!.getIdentifier(resPath, "drawable", packageName)
     }
-    fun getPostionToString(position: String) : String {
+    fun getPostionToString(position: String?) : String {
         return when (position) {
             "MENTEE" -> "멘티님"
             else -> "멘토님"

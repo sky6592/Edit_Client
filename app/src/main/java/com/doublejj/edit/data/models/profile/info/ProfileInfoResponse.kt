@@ -1,4 +1,4 @@
-package com.doublejj.edit.data.models.myedit_info
+package com.doublejj.edit.data.models.profile.info
 
 import com.doublejj.edit.data.models.BaseResponse
 import com.google.gson.annotations.SerializedName
