@@ -19,14 +19,18 @@ class ApplicationClass : Application() {
         lateinit var sSharedPreferences: SharedPreferences
 
         // JWT Token Header 키 값
-        val X_ACCESS_TOKEN = "X-ACCESS-TOKEN"
+        const val X_ACCESS_TOKEN = "X-ACCESS-TOKEN"
 
         // Retrofit 인스턴스, 앱 실행 시 한번만 생성하여 사용
         lateinit var sRetrofit: Retrofit
 
         // User 관련 정보 키 값 (mentor or mentee)
-        var USER_POSITION = "USER-POSITION"
-        var MENTOR_AUTH_CONFIRM = "MENTOR-AUTH-CONFIRM"
+        const val USER_POSITION = "USER-POSITION"
+        const val MENTOR_AUTH_CONFIRM = "MENTOR-AUTH-CONFIRM"
+
+        const val USER_NICKNAME = "USER-NICKNAME"
+        const val USER_EMOTION = "USER-EMOTION"
+        const val USER_COLOR = "USER-COLOR"
     }
 
     override fun onCreate() {
@@ -78,6 +82,31 @@ class ApplicationClass : Application() {
             "wink" -> resPath += "5"
         }
         return applicationContext.resources!!.getIdentifier(resPath, "drawable", packageName)
+    }
+    fun getCharacterResId(color: String, emotion: String) : Int {
+        var resPath = "icon_char_"
+        when (color) {
+            "purple" -> resPath += "purple_active_"
+            "lightPurple" -> resPath += "mid_purple_"
+            "blue" -> resPath += "navy_"
+            "lightBlue" -> resPath += "sky_"
+            "gray" -> resPath += "gray_"
+        }
+        when (emotion) {
+            "relief" -> resPath += "0"
+            "bigSmile" -> resPath += "1"
+            "suprise" -> resPath += "2"
+            "happy" -> resPath += "3"
+            "smallSmile" -> resPath += "4"
+            "wink" -> resPath += "5"
+        }
+        return applicationContext.resources!!.getIdentifier(resPath, "drawable", packageName)
+    }
+    fun getPostionToString(position: String) : String {
+        return when (position) {
+            "MENTEE" -> "멘티님"
+            else -> "멘토님"
+        }
     }
 
     fun getEvaluationColorId(code: String) : Int {

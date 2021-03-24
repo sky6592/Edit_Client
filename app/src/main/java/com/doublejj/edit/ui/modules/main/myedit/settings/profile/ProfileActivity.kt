@@ -24,30 +24,18 @@ class ProfileActivity : AppCompatActivity() {
         /** setting buttons **/
         binding.llBtnChangeProfile.setOnClickListener {
             // TODO : 프로필 수정 페이지
-            val intent = Intent(this, ChangeProfileActivity::class.java)
-            // TODO : 프로필 받아서 테스트 교체
-            val nickName = "테스트"
-            val userRole = "멘티님"
-            val emotionName = "relief"
-            val colorName = "purple"
-            intent.putExtra("nickName", nickName)
-            intent.putExtra("userRole", userRole)
-            intent.putExtra("emotionName", emotionName)
-            intent.putExtra("colorName", colorName)
-            startActivity(intent)
+            val sendIntent = Intent(this, ChangeProfileActivity::class.java)
+            startActivity(sendIntent)
         }
         binding.llBtnChangePassword.setOnClickListener {
             // TODO : 비밀번호 변경 페이지
-            /*val intent = Intent(this, ChangePasswordActivity::class.java)
-            // TODO : 프로필 받아서 테스트 교체
-            val nickName = "테스트"
-            intent.putExtra("nickName", nickName)
-            startActivity(intent)*/
+            /*val sendIntent = Intent(this, ChangePasswordActivity::class.java)
+            startActivity(sendIntent)*/
         }
         binding.llBtnChangePosition.setOnClickListener {
             // TODO : 직군 변경 페이지
-            /*val intent = Intent(this, ChangePositionActivity::class.java)
-            startActivity(intent)*/
+            /*val sendIntent = Intent(this, ChangePositionActivity::class.java)
+            startActivity(sendIntent)*/
         }
     }
 }

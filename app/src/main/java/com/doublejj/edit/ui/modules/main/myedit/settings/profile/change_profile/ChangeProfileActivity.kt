@@ -2,7 +2,6 @@ package com.doublejj.edit.ui.modules.main.myedit.settings.profile.change_profile
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.RadioGroup
 import androidx.databinding.DataBindingUtil
 import com.doublejj.edit.R
 import com.doublejj.edit.databinding.ActivityChangeProfileBinding
