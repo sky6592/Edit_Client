@@ -90,12 +90,6 @@ class InfoFirstActivity : AppCompatActivity(), InfoFirstView {
 
 
                 }
-//                else {
-//                    //빈공란 정규식
-//                    mBinding.tvNameCaptionInfoFirst.setTextColor(R.color.purple)
-//                    mBinding.tvNameCaptionInfoFirst.text =
-//                        getString(R.string.tv_name_caption_info)
-//                }
             }
         })
 
@@ -118,9 +112,11 @@ class InfoFirstActivity : AppCompatActivity(), InfoFirstView {
                             getString(R.string.tv_caption_spacing_info)
                         mNickNameSpacingFlag = true
                         mNickNameFlag = false
+                        mNickNameLengthFlag = true
                         mBinding.btnInfoFirst.setBackgroundResource(R.color.very_light_pink)
                     } else {
                         mNickNameSpacingFlag = false
+
                     }
 
                     //엔터 입력 : 다른 내용 입력 되어있는지 확인
@@ -263,7 +259,7 @@ class InfoFirstActivity : AppCompatActivity(), InfoFirstView {
                 mPhoneFlag = false
 
                 val intent = Intent(this, InfoSecondActivity::class.java)
-                intent.putExtra("arrayList",arrayList)
+                intent.putExtra("arrayList", arrayList)
                 startActivity(intent)
                 finish()
             }

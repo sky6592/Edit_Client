@@ -13,7 +13,7 @@
             android:id="@+id/linear_job_group"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/shadow_bg"
+            android:background="@drawable/shadow_below_bg"
             android:gravity="center_vertical"
             android:orientation="horizontal"
             android:paddingHorizontal="@dimen/padding_common"

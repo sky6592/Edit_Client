@@ -1,27 +1,53 @@
 package com.doublejj.edit.ui.modules.main.splash
 
+import android.app.Application
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.widget.Toast
+import androidx.databinding.DataBindingUtil
 import com.airbnb.lottie.LottieAnimationView
+import com.doublejj.edit.ApplicationClass
 import com.doublejj.edit.R
+import com.doublejj.edit.data.api.services.splash.SplashService
+import com.doublejj.edit.data.api.services.splash.SplashView
+import com.doublejj.edit.data.models.splash.SplashResponse
+import com.doublejj.edit.databinding.ActivitySplashBinding
+import com.doublejj.edit.ui.modules.main.MainActivity
 import com.doublejj.edit.ui.modules.main.signup.infofirst.InfoFirstActivity
 import com.doublejj.edit.ui.modules.main.walkthrough.WalkThroughActivity
 
-class SplashActivity : AppCompatActivity() {
+class SplashActivity : AppCompatActivity(), SplashView {
+    private lateinit var mBinding: ActivitySplashBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_splash)
+        mBinding = DataBindingUtil.setContentView(this, R.layout.activity_splash)
 
-
-        val animation_view: LottieAnimationView = findViewById(R.id.animation_view)
-        animation_view.addAnimatorUpdateListener {
-            if (animation_view.isAnimating) {
-                //애니메이션 끝나고 화면 넘어가기
-                startActivity(Intent(this, WalkThroughActivity::class.java))
+        mBinding.animationView.addAnimatorUpdateListener {
+            if (mBinding.animationView.isAnimating) {
+                Log.d("editors","addAnimatorUpdateListener")
+                SplashService(this).tryGetSplash()
             }
         }
+    }
 
+    override fun onGetSplashSuccess(response: SplashResponse) {
+        Log.d("editors","Splash - API성공")
+        /** Success : Go Main **/
+        if (response.code == 1000) {
+            var intentMain = Intent(this, MainActivity::class.java)
+            startActivity(intentMain)
+            finish()
+        } else {
+            var intentWalkThrough = Intent(this, WalkThroughActivity::class.java)
+            startActivity(intentWalkThrough)
+            finish()
+        }
+    }
 
+    override fun onGetSplashFailure(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT)
+        Log.d("editors", message)
     }
 }

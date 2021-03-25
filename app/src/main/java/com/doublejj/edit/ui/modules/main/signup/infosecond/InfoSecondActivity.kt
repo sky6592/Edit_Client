@@ -48,7 +48,7 @@ class InfoSecondActivity : AppCompatActivity(), InfoSecondView {
 
         //문자(한글,영어), 숫자, 특수문자 중 2가지 포함(8-15자)
         val pwPattern =
-            "^(?=.*[a-zA-Z0-9가-힣])(?=.*[a-zA-Z~!`@#\$%^&*()_+=])(?=.*[0-9!@#\$%^&*]).{8,15}$"
+            "^(?=.*[a-zA-Z0-9])(?=.*[a-zA-Z~!`@#\$%^&*()_+=])(?=.*[0-9!@#\$%^&*]).{8,15}$"
 
         //이메일 입력
         mBinding.etEmailInfoSecond.addTextChangedListener(object : TextWatcher {

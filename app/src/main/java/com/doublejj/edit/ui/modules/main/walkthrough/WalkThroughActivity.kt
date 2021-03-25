@@ -22,12 +22,9 @@ class WalkThroughActivity : AppCompatActivity() {
         mBinding.walkThroughActivity = this
 
         val imgModel = arrayListOf(
-            WalkThroughModel(R.drawable.walkthorugh_img1, R.string.tv_walk_thorough_one.toString()),
-            WalkThroughModel(R.drawable.walkthorugh_img2, R.string.tv_walk_thorough_two.toString()),
-            WalkThroughModel(
-                R.drawable.walkthrough_img3,
-                R.string.tv_walk_thorough_three.toString()
-            )
+            WalkThroughModel(R.drawable.walkthorugh_img1),
+            WalkThroughModel(R.drawable.walkthorugh_img2),
+            WalkThroughModel(R.drawable.walkthorugh_img3)
         )
 
         mBinding.autoViewPagerWalkThrough.adapter = WalkThroughAdapter(this, imgModel)

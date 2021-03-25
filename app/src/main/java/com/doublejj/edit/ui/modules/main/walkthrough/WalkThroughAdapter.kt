@@ -22,15 +22,13 @@ class WalkThroughAdapter(
 
     override fun getCount(): Int = contents.size
 
-    //[how to use data binding in ViewPagerAdapter]
-    //https://github.com/shanonim/Kotlin-DataBinding-ViewPager/blob/master/app/src/main/java/com/shanonim/viewpagersample/CustomPagerAdapter.kt
-    //https://blog.yena.io/studynote/2019/11/13/Android-View-Pager-Basic.html
+    /** [how to use data binding in ViewPagerAdapter]
+        https://github.com/shanonim/Kotlin-DataBinding-ViewPager/blob/master/app/src/main/java/com/shanonim/viewpagersample/CustomPagerAdapter.kt
+        https://blog.yena.io/studynote/2019/11/13/Android-View-Pager-Basic.html **/
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
         val binding = ItemWalkThroughBinding.inflate(LayoutInflater.from(context), container, false)
 
         binding.ivItemWalkThrough.setImageResource(contents[position].img)
-        binding.tvItemWalkThrough.text = contents[position].str
-
         container.addView(binding.root)
         return binding.root
     }

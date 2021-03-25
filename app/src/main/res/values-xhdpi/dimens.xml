@@ -148,7 +148,7 @@
     <dimen name="size_card_home_sentence_box_height">120dp</dimen>
 
     //Common
-    <dimen name="padding_common">34dp</dimen>
+    <dimen name="padding_common">36dp</dimen>
     <dimen name="padding_20dp">20dp</dimen>
     <dimen name="btn_corners">5dp</dimen>
     <dimen name="tv_15sp">15sp</dimen>
@@ -170,6 +170,12 @@
     <dimen name="walk_through_log_in_margin_bottom">28dp</dimen>
     <dimen name="walk_through_img_margin_horizontal">37dp</dimen>
     <dimen name="walk_through_img_margin_vertical">200dp</dimen>
+
+    //Button
+    <dimen name="btn_radius">150dp</dimen>
+    <dimen name="btn_entire_radius">20dp</dimen>
+    <dimen name="btn_sign_up_weight">159dp</dimen>
+    <dimen name="btn_sign_up_height">50dp</dimen>
 
 
 </resources>
