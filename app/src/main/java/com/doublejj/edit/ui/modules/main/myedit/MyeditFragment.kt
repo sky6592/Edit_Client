@@ -20,6 +20,7 @@ import com.doublejj.edit.data.api.services.profile.info.ProfileInfoService
 import com.doublejj.edit.data.api.services.profile.info.ProfileInfoView
 import com.doublejj.edit.data.models.profile.info.ProfileInfoResponse
 import com.doublejj.edit.databinding.MyeditFragmentBinding
+import com.doublejj.edit.ui.modules.main.myedit.manage_coin.ManageCoinActivity
 import com.doublejj.edit.ui.modules.main.myedit.settings.SettingsActivity
 import com.doublejj.edit.ui.modules.main.myedit.profile.ProfileActivity
 import com.doublejj.edit.ui.modules.main.myedit.switch_position.SwitchToMentorActivity
@@ -88,7 +89,9 @@ class MyeditFragment : Fragment(), ProfileInfoView {
             startActivity(sendIntent)
         }
         binding.ibMenuCoin.setOnClickListener {
-            // TODO : 코인 페이지 (멘토)
+            // 코인 페이지 (멘토)
+            val sendIntent = Intent(activity, ManageCoinActivity::class.java)
+            startActivity(sendIntent)
         }
         binding.ibMenuSympathy.setOnClickListener {
             // TODO : 공감 페이지

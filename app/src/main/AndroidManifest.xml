@@ -16,6 +16,7 @@
         android:usesCleartextTraffic="true"
         android:windowSoftInputMode="adjustResize"
         tools:targetApi="m">
+        <activity android:name=".ui.modules.main.myedit.manage_coin.ManageCoinActivity" />
         <activity android:name=".ui.modules.main.myedit.switch_position.SwitchPositionCompleteActivity" />
         <activity
             android:name=".ui.modules.main.myedit.switch_position.SwitchToMentorReasonActivity"
