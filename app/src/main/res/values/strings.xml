@@ -502,6 +502,7 @@
     <string name="tv_info_email_check">이메일 인증을 진행합니다.\n메일 주소를 확인해주세요!</string>
     <string name="tv_caption_email_check">인증을 진행할 이메일이 아니라면 다시 입력해주세요!</string>
     <string name="tv_bottom_email_check">회원가입 완료까지 얼마 남지 않았어요! :)</string>
+    <string name="btn_email_check">인증 메일 발송</string>
 
     <!-- Walk Through -->
     <string name="tv_walk_thorough_one">스스로 자소서를 완성하는\n힘을 기를 수 있게 합니다.</string>

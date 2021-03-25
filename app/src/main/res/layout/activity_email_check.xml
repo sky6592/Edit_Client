@@ -127,9 +127,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/very_light_pink"
-                android:enabled="false"
-                android:text="@string/tv_next_info"
-                android:textColor="@color/white" />
+                android:fontFamily="@font/noto_sans_kr_regular"
+                android:imeOptions="actionSearch"
+                android:text="@string/btn_email_check"
+                android:textColor="@color/white"/>
         </LinearLayout>
     </LinearLayout>
 </layout>

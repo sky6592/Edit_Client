@@ -116,6 +116,7 @@ class InfoFirstActivity : AppCompatActivity(), InfoFirstView {
                         mBinding.btnInfoFirst.setBackgroundResource(R.color.very_light_pink)
                     } else {
                         mNickNameSpacingFlag = false
+                        mNickNameLengthFlag = false
 
                     }
 

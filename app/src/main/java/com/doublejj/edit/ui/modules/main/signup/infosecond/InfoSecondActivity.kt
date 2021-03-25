@@ -45,7 +45,6 @@ class InfoSecondActivity : AppCompatActivity(), InfoSecondView {
 //        Log.d("sky", arrayList.toString())
 
         val emailPatternTest = android.util.Patterns.EMAIL_ADDRESS
-
         //문자(한글,영어), 숫자, 특수문자 중 2가지 포함(8-15자)
         val pwPattern =
             "^(?=.*[a-zA-Z0-9])(?=.*[a-zA-Z~!`@#\$%^&*()_+=])(?=.*[0-9!@#\$%^&*]).{8,15}$"
@@ -61,13 +60,6 @@ class InfoSecondActivity : AppCompatActivity(), InfoSecondView {
             @SuppressLint("ResourceAsColor")
             override fun afterTextChanged(s: Editable?) {
                 if (s != null) {
-                    //엔터 입력 : 다른 내용 입력 되어있는지 확인
-//                    if (s.toString().contains("\n")) {
-//                        //s.toString().trim()
-//                        if (mPwFlag && mRePwFlag) {
-//                            mBinding.btnInfoSecond.setBackgroundResource(R.color.purple)
-//                        }
-//                    }
                     //띄어쓰기 정규식
                     if (s.toString().contains(" ") || s.toString().isEmpty()) {
                         mBinding.btnInfoSecond.setBackgroundResource(R.color.very_light_pink)
@@ -79,8 +71,6 @@ class InfoSecondActivity : AppCompatActivity(), InfoSecondView {
                     } else {
                         mEmailSpacingFlag = false
                     }
-
-
                     //이메일 정규식 - 중복확인을 누르세요!
                     if (emailPatternTest.matcher(s.toString()).matches()) {
                         mBinding.tvEmailCaptionInfoFirst.setTextColor(R.color.purple)

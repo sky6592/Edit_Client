@@ -15,19 +15,34 @@ import com.doublejj.edit.data.models.emailcheck.EmailCheckResponse
 import com.doublejj.edit.databinding.ActivityEmailCheckBinding
 
 class EmailCheckActivity : AppCompatActivity(), EmailCheckVIew {
+    private val TAG = "sky"
 
     private lateinit var mBinding: ActivityEmailCheckBinding
 
-    @SuppressLint("ResourceAsColor")
+    private var mEmailFlag: Boolean = false
+
+    @SuppressLint("ResourceAsColor", "SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_email_check)
 
-        var arrayList = intent.getSerializableExtra("arrayList") as ArrayList<String>
-        Log.d("sky", arrayList.toString())
+        val emailPattern = android.util.Patterns.EMAIL_ADDRESS
 
-        //입력한 이메일 세팅
-        mBinding.etEmailCheck.setText(arrayList[3])
+//        var arrayList = intent.getSerializableExtra("arrayList") as ArrayList<String>
+//        Log.d(TAG, arrayList.toString())
+//
+//
+//        //입력한 이메일 세팅
+//        mBinding.etEmailCheck.setText(arrayList[3])
+        mBinding.etEmailCheck.setText("789_skymert@naver.com")
+        if (mBinding.etEmailCheck.text.isNotEmpty()) {
+            Log.d(TAG, "main - if")
+            mEmailFlag = true
+        } else {
+            Log.d(TAG, "main - else")
+            mEmailFlag = false
+        }
+
 
         mBinding.etEmailCheck.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
@@ -41,35 +56,49 @@ class EmailCheckActivity : AppCompatActivity(), EmailCheckVIew {
             override fun afterTextChanged(s: Editable?) {
                 //이메일 작성여부 확인
                 if (s != null) {
-                    mBinding.btnEmailCheck.setBackgroundColor(R.color.purple)
-                } else {
-                    mBinding.btnEmailCheck.setBackgroundColor(R.color.very_light_pink)
-                }
+                    //이메일 정규식 - 중복확인을 누르세요!
+                    if (emailPattern.matcher(s.toString()).matches()) {
+                        mEmailFlag = true
+                        mBinding.btnEmailCheck.setBackgroundResource(R.color.purple)
+                        mBinding.tvCaptionEmailCheck.text =
+                            getString(R.string.tv_caption_email_check)
+                    } else {
+                        mEmailFlag = false
+                        mBinding.tvCaptionEmailCheck.text =
+                            getString(R.string.tv_email_result_wrong_info)
+                        mBinding.btnEmailCheck.setBackgroundResource(R.color.very_light_pink)
+                        mBinding.tvCaptionEmailCheck.text =
+                            getString(R.string.tv_email_result_wrong_info)
+                    }
+                    Log.d(TAG, s.toString())
 
-//                if ()
+                }
             }
 
         })
 
         // 인증 메일 발송 - 버튼
         mBinding.btnEmailCheck.setOnClickListener {
-            if (mBinding.etEmailCheck.text.toString() != null) {
+            if (mEmailFlag) {
+                it.setBackgroundResource(R.color.purple)
                 val email = mBinding.etEmailCheck.text.toString()
                 val postRequest = EmailCheckRequest(email = email)
                 EmailCheckService(this).tryPostEmailCheck(postRequest)
+
             } else {
-                mBinding.btnEmailCheck.setBackgroundColor(R.color.very_light_pink)
+                it.setBackgroundResource(R.color.very_light_pink)
+
             }
 
         }
-
     }
 
     override fun onPostEmailCheckSuccess(response: EmailCheckResponse) {
-        TODO("Not yet implemented")
+        Log.d(TAG, response.message.toString())
+
     }
 
     override fun onPostEmailCheckFailure(message: String) {
-        TODO("Not yet implemented")
+        Log.d(TAG, message)
     }
 }
