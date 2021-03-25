@@ -39,7 +39,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     style="@style/CustomTextViewMidBlack"
-                    android:text="@string/tv_account_withdrawal"
+                    android:text="@string/tv_switch_position_toolbar"
                     android:textSize="@dimen/size_tv_title_15dp"
                     android:fontFamily="@font/noto_sans_kr_medium"
                     android:background="@color/transparent"

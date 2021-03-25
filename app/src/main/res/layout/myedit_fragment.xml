@@ -485,6 +485,7 @@
 
                         <!--  logout section  -->
                         <android.widget.Button
+                            android:id="@+id/btn_logout"
                             android:layout_width="@dimen/size_112dp"
                             android:layout_height="@dimen/size_36dp"
                             android:background="@drawable/shape_btn_purple_active_round"

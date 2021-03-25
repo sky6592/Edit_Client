@@ -22,6 +22,7 @@ import com.doublejj.edit.data.models.profile.info.ProfileInfoResponse
 import com.doublejj.edit.databinding.MyeditFragmentBinding
 import com.doublejj.edit.ui.modules.main.myedit.settings.SettingsActivity
 import com.doublejj.edit.ui.modules.main.myedit.profile.ProfileActivity
+import com.doublejj.edit.ui.modules.main.myedit.switch_position.MenteeToMentorActivity
 import com.doublejj.edit.ui.utils.snackbar.CustomSnackbar
 import com.google.android.material.snackbar.Snackbar
 
@@ -102,6 +103,20 @@ class MyeditFragment : Fragment(), ProfileInfoView {
         }
         binding.ibMenuTemp.setOnClickListener {
             // TODO : 임시 저장 페이지
+        }
+
+        /** position buttons **/
+        binding.llBtnCertificateMentor.setOnClickListener {
+            when (sSharedPreferences.getString(USER_POSITION, "MENTEE")) {
+                "MENTEE" -> {
+                    startActivity(Intent(activity, MenteeToMentorActivity::class.java))
+                }
+            }
+        }
+
+        /** logout buttons **/
+        binding.btnLogout.setOnClickListener {
+            // TODO : 로그아웃 API 적용
         }
 
         return binding.root
