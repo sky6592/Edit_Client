@@ -15,7 +15,6 @@
         android:theme="@style/Theme.Edit"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
-<<<<<<< HEAD
         <activity android:name=".ui.modules.main.signup.entercode.EnterCodeActivity"
             android:windowSoftInputMode="adjustResize">
 
@@ -34,25 +33,21 @@
         </activity>
         <activity android:name=".ui.modules.main.login.LogInActivity" />
         <activity android:name=".ui.modules.main.signup.slecttype.SelectTypeActivity" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".ui.modules.main.signup.infosecond.InfoSecondActivity" />
         <activity android:name=".ui.modules.main.signup.infofirst.InfoFirstActivity">
 
         </activity>
-=======
-        <activity android:name=".ui.modules.main.myedit.settings.profile.change_profile.ChangeProfileActivity"></activity>
-        <activity android:name=".ui.modules.main.signup.read.ReadActivity" />
-        <activity android:name=".ui.modules.main.signup.slectjopgroup.JobGroupActivity" />
-        <activity android:name=".ui.modules.main.login.LogInActivity" />
-        <activity android:name=".ui.modules.main.signup.slecttype.SelectTypeActivity" />
-        <activity android:name=".ui.modules.main.signup.infosecond.InfoSecondActivity"></activity>
-        <activity android:name=".ui.modules.main.signup.infofirst.InfoFirstActivity" />
->>>>>>> d37cee6 (feat: Add change profile)
+        <activity android:name=".ui.modules.main.myedit.settings.profile.change_password.ChangePasswordCompleteActivity" />
+        <activity
+            android:name=".ui.modules.main.myedit.settings.profile.change_password.ChangeNewPasswordActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ui.modules.main.myedit.settings.profile.change_password.ChangePasswordActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".ui.modules.main.myedit.settings.profile.change_profile.ChangeProfileActivity" />
+
         <activity android:name=".ui.modules.main.signin.SignInActivity" />
         <activity android:name=".ui.modules.main.myedit.settings.profile.ProfileActivity" />
         <activity android:name=".ui.modules.main.myedit.settings.withdrawal.WithdrawalCompleteActivity" />
@@ -65,17 +60,16 @@
             android:name=".ui.modules.main.home.writing_sentence.WritingSentenceActivity"
             android:windowSoftInputMode="adjustResize" />
         <activity android:name=".ui.modules.main.home.writing_comment.WritingCommentActivity" />
-<<<<<<< HEAD
-        <activity android:name=".ui.modules.main.walkthrough.WalkThroughActivity"></activity>
-        <activity android:name=".ui.modules.main.splash.SplashActivity">
-=======
-        <activity android:name=".ui.modules.main.walkthrough.WalkThroughActivity" />
-        <activity android:name=".ui.modules.main.splash.SplashActivity"></activity>
-        <activity android:name=".ui.modules.main.MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
->>>>>>> d37cee6 (feat: Add change profile)
 
+        <activity android:name=".ui.modules.main.walkthrough.WalkThroughActivity" />
+        <activity android:name=".ui.modules.main.splash.SplashActivity">
+                <intent-filter>
+                        <action android:name="android.intent.action.MAIN" />
+
+                        <category android:name="android.intent.category.LAUNCHER" />
+                </intent-filter>
+        </activity>
+        <activity android:name=".ui.modules.main.MainActivity">
         </activity>
     </application>
 

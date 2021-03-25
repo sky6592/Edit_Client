@@ -36,6 +36,7 @@ class SplashActivity : AppCompatActivity(), SplashView {
         Log.d("editors","Splash - API성공")
         /** Success : Go Main **/
         if (response.code == 1000) {
+
             var intentMain = Intent(this, MainActivity::class.java)
             startActivity(intentMain)
             finish()
