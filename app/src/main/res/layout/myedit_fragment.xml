@@ -433,7 +433,7 @@
                                     android:layout_weight="1"
                                     android:layout_marginStart="@dimen/size_20dp"
                                     android:layout_marginLeft="@dimen/size_20dp" />
-                                <ImageButton
+                                <ImageView
                                     android:layout_width="@dimen/size_icon_button_24dp"
                                     android:layout_height="@dimen/size_icon_button_24dp"
                                     android:src="@drawable/icon_expand"
@@ -468,7 +468,7 @@
                                     android:layout_weight="1"
                                     android:layout_marginStart="@dimen/size_20dp"
                                     android:layout_marginLeft="@dimen/size_20dp" />
-                                <ImageButton
+                                <ImageView
                                     android:layout_width="@dimen/size_icon_button_24dp"
                                     android:layout_height="@dimen/size_icon_button_24dp"
                                     android:src="@drawable/icon_expand"
