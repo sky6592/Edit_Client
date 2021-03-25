@@ -20,8 +20,7 @@ class ChangePasswordCompleteActivity : AppCompatActivity() {
 
         /** toolbar buttons **/
         binding.ibBack.setOnClickListener {
-            // TODO : 내 정보로 돌아가기
-            // TODO : 액티비티 여러개 종료
+            // 내 정보로 돌아가기
             sActivityList.actFinish()
         }
 
@@ -32,8 +31,7 @@ class ChangePasswordCompleteActivity : AppCompatActivity() {
         binding.tvCompleteTitle.setText(spanStr)
         
         binding.btnConfirm.setOnClickListener {
-            // TODO : 내 정보로 돌아가기
-            // TODO : 액티비티 여러개 종료
+            // 내 정보로 돌아가기
             sActivityList.actFinish()
         }
     }
