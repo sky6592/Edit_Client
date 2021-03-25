@@ -3,6 +3,7 @@ package com.doublejj.edit
 import android.app.Application
 import android.content.SharedPreferences
 import com.doublejj.edit.data.api.interceptors.XAccessTokenInterceptor
+import com.doublejj.edit.ui.utils.ActivityList
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -23,6 +24,9 @@ class ApplicationClass : Application() {
 
         // Retrofit 인스턴스, 앱 실행 시 한번만 생성하여 사용
         lateinit var sRetrofit: Retrofit
+        
+        // Activity List 관리 클래스
+        lateinit var sActivityList: ActivityList
 
         // User 관련 정보 키 값 (mentor or mentee)
         const val USER_POSITION = "USER-POSITION"
@@ -41,6 +45,9 @@ class ApplicationClass : Application() {
 
         // Retrofit 인스턴스 최초 생성
         initRetrofitInstance()
+
+        // ActivityList 인스턴스 최초 생성
+        sActivityList = ActivityList()
     }
 
     // 레트로핏 인스턴스를 생성하고, 레트로핏에 각종 설정값들을 지정해줍니다.

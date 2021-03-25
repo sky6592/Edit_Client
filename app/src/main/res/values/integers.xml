@@ -2,4 +2,6 @@
 <resources>
     <integer name="length_limit_today_sentence">10</integer>
     <integer name="length_limit_sentence">90</integer>
+    <integer name="length_min_password">8</integer>
+    <integer name="length_max_password">16</integer>
 </resources>
