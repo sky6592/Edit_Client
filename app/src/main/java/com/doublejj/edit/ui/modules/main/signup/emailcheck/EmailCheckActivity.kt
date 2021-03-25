@@ -1,6 +1,7 @@
 package com.doublejj.edit.ui.modules.main.signup.emailcheck
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
@@ -13,6 +14,7 @@ import com.doublejj.edit.data.api.services.emailcheck.EmailCheckVIew
 import com.doublejj.edit.data.models.emailcheck.EmailCheckRequest
 import com.doublejj.edit.data.models.emailcheck.EmailCheckResponse
 import com.doublejj.edit.databinding.ActivityEmailCheckBinding
+import com.doublejj.edit.ui.modules.main.signup.entercode.EnterCodeActivity
 
 class EmailCheckActivity : AppCompatActivity(), EmailCheckVIew {
     private val TAG = "sky"
@@ -21,6 +23,9 @@ class EmailCheckActivity : AppCompatActivity(), EmailCheckVIew {
 
     private var mEmailFlag: Boolean = false
 
+    private lateinit var mArrayList: ArrayList<String>
+
+
     @SuppressLint("ResourceAsColor", "SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,13 +33,12 @@ class EmailCheckActivity : AppCompatActivity(), EmailCheckVIew {
 
         val emailPattern = android.util.Patterns.EMAIL_ADDRESS
 
-//        var arrayList = intent.getSerializableExtra("arrayList") as ArrayList<String>
-//        Log.d(TAG, arrayList.toString())
-//
-//
-//        //입력한 이메일 세팅
-//        mBinding.etEmailCheck.setText(arrayList[3])
-        mBinding.etEmailCheck.setText("789_skymert@naver.com")
+        mArrayList = intent.getSerializableExtra("arrayList") as ArrayList<String>
+        Log.d(TAG, mArrayList.toString())
+
+
+        //입력한 이메일 세팅
+        mBinding.etEmailCheck.setText(mArrayList!![3])
         if (mBinding.etEmailCheck.text.isNotEmpty()) {
             Log.d(TAG, "main - if")
             mEmailFlag = true
@@ -87,7 +91,6 @@ class EmailCheckActivity : AppCompatActivity(), EmailCheckVIew {
 
             } else {
                 it.setBackgroundResource(R.color.very_light_pink)
-
             }
 
         }
@@ -95,7 +98,10 @@ class EmailCheckActivity : AppCompatActivity(), EmailCheckVIew {
 
     override fun onPostEmailCheckSuccess(response: EmailCheckResponse) {
         Log.d(TAG, response.message.toString())
-
+        val intent = Intent(this, EnterCodeActivity::class.java)
+        intent.putExtra("arrayList", mArrayList)
+        startActivity(intent)
+        finish()
     }
 
     override fun onPostEmailCheckFailure(message: String) {

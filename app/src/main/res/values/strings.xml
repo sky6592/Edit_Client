@@ -504,6 +504,20 @@
     <string name="tv_bottom_email_check">회원가입 완료까지 얼마 남지 않았어요! :)</string>
     <string name="btn_email_check">인증 메일 발송</string>
 
+    <!-- Enter Code -->
+    <string name="tv_info_enter_code">인증 메일이 발송되었어요.\n인증 코드를 입력해주세요!</string>
+    <string name="tv_code">인증코드</string>
+    <string name="tv_caption_enter_code">혹시 인증 메일이 도착하지 않았다면, 스팸 메일함을 확인해주세요.</string>
+    <string name="btn_enter_code">확인</string>
+    <string name="tv_timer_enter_code">03:00</string>
+    <string name="tv_2044_enter_code">인증 시간이 만료되었습니다.</string>
+    <string name="tv_3018_enter_code">인증에 실패했습니다!</string>
+    <string name="tv_dialog_2044_title_enter_code">인증 시간이 초과되었어요!</string>
+    <string name="tv_dialog_2044_content_enter_code">시간이 초과되어 재인증이 필요합니다.\n확인을 누르시면 이전 단계로 돌아갑니다!</string>
+    <string name="tv_dialog_3018_content_enter_code">인증번호가 틀렸습니다.\다시한번 입력해주세요!</string>
+    <string name="tv_dialog_check">확인</string>
+    <string name="tv_dialog_dismiss_none"></string>
+
     <!-- Walk Through -->
     <string name="tv_walk_thorough_one">스스로 자소서를 완성하는\n힘을 기를 수 있게 합니다.</string>
     <string name="tv_walk_thorough_two">누구나 멘토, 멘티가 될 수 있지만\n아무나 멘토, 멘티가 될 수는 없다.</string>

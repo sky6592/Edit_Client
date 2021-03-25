@@ -40,7 +40,7 @@ class InfoSecondActivity : AppCompatActivity(), InfoSecondView {
 
         //Intent - ArrayList 저장
         var arrayList = intent.getSerializableExtra("arrayList") as ArrayList<String>
-//        var check = "test"
+//        var    check = "test"
 //        arrayList.add(check)
 //        Log.d("sky", arrayList.toString())
 
