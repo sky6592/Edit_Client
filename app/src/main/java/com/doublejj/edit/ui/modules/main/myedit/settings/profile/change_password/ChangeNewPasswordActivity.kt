@@ -92,7 +92,7 @@ class ChangeNewPasswordActivity : AppCompatActivity(), ChangeNewPasswordView {
 
         binding.btnNext.setOnClickListener {
             if (binding.btnNext.isEnabled) {
-                // TODO : 서버 비밀번호랑 새로운 비밀번호랑 같은지 확인해서 같다면 비밀번호 수정 API
+                // 비밀번호 수정 API
                 ChangeNewPasswordService(this).tryPatchChangeNewPassword(
                     ChangeNewPasswordRequest(
                         password = binding.etNewPassword.text.toString(),
@@ -106,13 +106,15 @@ class ChangeNewPasswordActivity : AppCompatActivity(), ChangeNewPasswordView {
     override fun onChangeNewPasswordSuccess(response: ChangeNewPasswordResponse) {
         if (response.isSuccess) {
             if (response.code == 1000) {
-                // TODO : 다음 화면으로 이동
+                // 수정에 성공했다면 완료 화면으로 이동
                 val sendIntent = Intent(this, ChangePasswordCompleteActivity::class.java)
                 sendIntent.putExtra("nickName", response.result.nickName)
                 startActivity(sendIntent)
             }
             else {
-                // TODO : 다르다면 이동하지 않고 캡션에 다르다고 캡션 텍스트, 색상 바꿔주기
+                // 다르다면 이동하지 않고 캡션 텍스트, 색상 바꿔주기
+                binding.tvReenterPasswordCaption.text = response.message.toString()
+                binding.tvReenterPasswordCaption.setTextColor(ContextCompat.getColor(applicationContext, R.color.red_light))
             }
         }
     }

@@ -36,9 +36,6 @@ class SettingsActivity : AppCompatActivity() {
         }
         binding.llBtnAccountWithdrawal.setOnClickListener { 
             val intent = Intent(this, WithdrawalActivity::class.java)
-            // TODO : 닉네임 받아서 테스트 교체
-            val nickName = "테스트"
-            intent.putExtra("nickName", nickName)
             startActivity(intent)
         }
     }
