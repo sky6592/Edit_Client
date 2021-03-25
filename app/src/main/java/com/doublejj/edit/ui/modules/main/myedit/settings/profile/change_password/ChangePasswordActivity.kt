@@ -76,12 +76,12 @@ class ChangePasswordActivity : AppCompatActivity(), AuthPasswordView {
     override fun onAuthPasswordSuccess(response: ResultStringResponse) {
         if (response.isSuccess) {
             if (response.result == "YES") {
-                // TODO : 같다면 다음 화면으로 이동
+                // 같다면 다음 화면으로 이동
                 val sendIntent = Intent(this, ChangeNewPasswordActivity::class.java)
                 startActivity(sendIntent)
             }
             else {
-                // TODO : 다르다면 이동하지 않고 캡션 텍스트, 색상 바꿔주기
+                // 다르다면 이동하지 않고 캡션 텍스트, 색상 바꿔주기
                 binding.tvPasswordCaption.text = getString(R.string.tv_password_input_not_correct)
                 binding.tvPasswordCaption.setTextColor(ContextCompat.getColor(applicationContext, R.color.red_light))
             }
