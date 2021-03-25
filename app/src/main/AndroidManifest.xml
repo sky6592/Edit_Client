@@ -16,6 +16,15 @@
         android:usesCleartextTraffic="true"
         android:windowSoftInputMode="adjustResize"
         tools:targetApi="m">
+        <activity android:name=".ui.modules.main.myedit.switch_position.SwitchPositionCompleteActivity" />
+        <activity
+            android:name=".ui.modules.main.myedit.switch_position.SwitchToMentorReasonActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ui.modules.main.myedit.switch_position.SwitchToMenteeReasonActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".ui.modules.main.myedit.switch_position.SwitchToMentorActivity" />
+        <activity android:name=".ui.modules.main.myedit.switch_position.SwitchToMenteeActivity" />
         <activity android:name=".ui.modules.main.myedit.profile.change_password.ChangePasswordCompleteActivity" />
         <activity
             android:name=".ui.modules.main.myedit.profile.change_password.ChangeNewPasswordActivity"

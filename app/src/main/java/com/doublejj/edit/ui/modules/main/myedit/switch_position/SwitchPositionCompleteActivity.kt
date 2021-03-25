@@ -5,18 +5,18 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import com.doublejj.edit.R
-import com.doublejj.edit.databinding.ActivityMenteeToMentorCompleteBinding
+import com.doublejj.edit.databinding.ActivitySwitchPositionCompleteBinding
 import com.doublejj.edit.ui.modules.main.splash.SplashActivity
 import com.doublejj.edit.ui.utils.span.CustomSpannableString
 
-class MenteeToMentorCompleteActivity : AppCompatActivity() {
+class SwitchPositionCompleteActivity : AppCompatActivity() {
     private val TAG: String = javaClass.simpleName.toString()
-    private lateinit var binding: ActivityMenteeToMentorCompleteBinding
+    private lateinit var binding: ActivitySwitchPositionCompleteBinding
     private lateinit var nickName: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_mentee_to_mentor_complete)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_switch_position_complete)
 
         /** toolbar buttons **/
         binding.ibBack.setOnClickListener {
@@ -32,7 +32,7 @@ class MenteeToMentorCompleteActivity : AppCompatActivity() {
         val spanStr = CustomSpannableString(applicationContext).getPurpleActiveColorText(textTitle, nickName, R.color.purple_active)
         binding.tvCompleteTitle.setText(spanStr)
         
-        binding.btnInitial.setOnClickListener { 
+        binding.btnRelogin.setOnClickListener { 
             // 초기화면으로 가기
             val sendIntent = Intent(this, SplashActivity::class.java)
             sendIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)

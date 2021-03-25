@@ -7,17 +7,17 @@ import androidx.databinding.DataBindingUtil
 import com.doublejj.edit.ApplicationClass.Companion.USER_NICKNAME
 import com.doublejj.edit.ApplicationClass.Companion.sSharedPreferences
 import com.doublejj.edit.R
-import com.doublejj.edit.databinding.ActivityMenteeToMentorBinding
+import com.doublejj.edit.databinding.ActivitySwitchToMentorBinding
 import com.doublejj.edit.ui.utils.span.CustomSpannableString
 
-class MenteeToMentorActivity : AppCompatActivity() {
+class SwitchToMentorActivity : AppCompatActivity() {
     private val TAG: String = javaClass.simpleName.toString()
-    private lateinit var binding: ActivityMenteeToMentorBinding
+    private lateinit var binding: ActivitySwitchToMentorBinding
     private lateinit var nickName: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_mentee_to_mentor)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_switch_to_mentor)
 
         /** toolbar buttons **/
         binding.ibBack.setOnClickListener {
@@ -31,7 +31,7 @@ class MenteeToMentorActivity : AppCompatActivity() {
         binding.tvEncourageTitle.setText(spanStr)
 
         binding.btnNext.setOnClickListener {
-            val sendIntent = Intent(this, MenteeToMentorReasonActivity::class.java)
+            val sendIntent = Intent(this, SwitchToMentorReasonActivity::class.java)
             sendIntent.putExtra("nickName", nickName)
             startActivity(sendIntent)
         }

@@ -22,7 +22,8 @@ import com.doublejj.edit.data.models.profile.info.ProfileInfoResponse
 import com.doublejj.edit.databinding.MyeditFragmentBinding
 import com.doublejj.edit.ui.modules.main.myedit.settings.SettingsActivity
 import com.doublejj.edit.ui.modules.main.myedit.profile.ProfileActivity
-import com.doublejj.edit.ui.modules.main.myedit.switch_position.MenteeToMentorActivity
+import com.doublejj.edit.ui.modules.main.myedit.switch_position.SwitchToMentorActivity
+import com.doublejj.edit.ui.modules.main.myedit.switch_position.SwitchToMenteeActivity
 import com.doublejj.edit.ui.utils.snackbar.CustomSnackbar
 import com.google.android.material.snackbar.Snackbar
 
@@ -107,10 +108,12 @@ class MyeditFragment : Fragment(), ProfileInfoView {
 
         /** position buttons **/
         binding.llBtnCertificateMentor.setOnClickListener {
+            // TODO : 멘토 인증 페이지
+        }
+        binding.llBtnSwitchPosition.setOnClickListener {
             when (sSharedPreferences.getString(USER_POSITION, "MENTEE")) {
-                "MENTEE" -> {
-                    startActivity(Intent(activity, MenteeToMentorActivity::class.java))
-                }
+                "MENTEE" -> startActivity(Intent(activity, SwitchToMentorActivity::class.java))
+                "MENTOR" -> startActivity(Intent(activity, SwitchToMenteeActivity::class.java))
             }
         }
 
@@ -134,7 +137,8 @@ class MyeditFragment : Fragment(), ProfileInfoView {
         ))
 
         // 멘토 인증하기 버튼 업데이트
-        if (!sSharedPreferences.getBoolean(MENTOR_AUTH_CONFIRM, false)) {
+        if (sSharedPreferences.getString(USER_POSITION, "MENTEE") == "MENTOR"
+            && !sSharedPreferences.getBoolean(MENTOR_AUTH_CONFIRM, false)) {
             // 인증 받지 않은 멘토라면 인증하기 버튼 보이기
             binding.llBtnCertificateMentor.visibility = View.VISIBLE
         }

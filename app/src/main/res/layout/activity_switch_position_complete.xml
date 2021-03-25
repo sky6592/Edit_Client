@@ -56,7 +56,7 @@
             android:id="@+id/tv_complete_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/tv_account_withdrawal_complete_title"
+            android:text="@string/tv_switch_position_complete_title"
             android:textSize="@dimen/size_18dp"
             android:textColor="@color/mid_black"
             android:fontFamily="@font/noto_sans_kr_bold"
@@ -79,7 +79,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/tv_account_withdrawal_compolete_content"
+            android:text="@string/tv_switch_position_complete_mentee_content"
             android:textSize="@dimen/size_12dp"
             android:textColor="@color/mid_black"
             android:fontFamily="@font/noto_sans_kr_medium"
@@ -92,11 +92,11 @@
 
 
         <Button
-            android:id="@+id/btn_initial"
+            android:id="@+id/btn_relogin"
             android:layout_width="match_parent"
             android:layout_height="@dimen/size_50dp"
             android:background="@drawable/selector_btn_bg_purple_active_gray_rectangle"
-            android:text="@string/btn_initial_screen"
+            android:text="@string/btn_relogin"
             android:textColor="@color/white"
             android:textSize="@dimen/size_15dp"
             android:includeFontPadding="false"
