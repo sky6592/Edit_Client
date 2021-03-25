@@ -16,14 +16,14 @@
         android:usesCleartextTraffic="true"
         android:windowSoftInputMode="adjustResize"
         tools:targetApi="m">
-        <activity android:name=".ui.modules.main.myedit.settings.profile.change_password.ChangePasswordCompleteActivity" />
+        <activity android:name=".ui.modules.main.myedit.profile.change_password.ChangePasswordCompleteActivity" />
         <activity
-            android:name=".ui.modules.main.myedit.settings.profile.change_password.ChangeNewPasswordActivity"
+            android:name=".ui.modules.main.myedit.profile.change_password.ChangeNewPasswordActivity"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".ui.modules.main.myedit.settings.profile.change_password.ChangePasswordActivity"
+            android:name=".ui.modules.main.myedit.profile.change_password.ChangePasswordActivity"
             android:windowSoftInputMode="adjustPan" />
-        <activity android:name=".ui.modules.main.myedit.settings.profile.change_profile.ChangeProfileActivity" />
+        <activity android:name=".ui.modules.main.myedit.profile.change_profile.ChangeProfileActivity" />
         <activity android:name=".ui.modules.main.signup.read.ReadActivity" />
         <activity android:name=".ui.modules.main.signup.slectjopgroup.JobGroupActivity" />
         <activity android:name=".ui.modules.main.login.LogInActivity" />
@@ -31,7 +31,7 @@
         <activity android:name=".ui.modules.main.signup.infosecond.InfoSecondActivity" />
         <activity android:name=".ui.modules.main.signup.infofirst.InfoFirstActivity" />
         <activity android:name=".ui.modules.main.signin.SignInActivity" />
-        <activity android:name=".ui.modules.main.myedit.settings.profile.ProfileActivity" />
+        <activity android:name=".ui.modules.main.myedit.profile.ProfileActivity" />
         <activity android:name=".ui.modules.main.myedit.settings.withdrawal.WithdrawalCompleteActivity" />
         <activity
             android:name=".ui.modules.main.myedit.settings.withdrawal.WithdrawalReasonActivity"

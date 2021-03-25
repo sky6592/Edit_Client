@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import com.doublejj.edit.ApplicationClass
+import com.doublejj.edit.ApplicationClass.Companion.MENTOR_AUTH_CONFIRM
 import com.doublejj.edit.ApplicationClass.Companion.USER_COLOR
 import com.doublejj.edit.ApplicationClass.Companion.USER_EMOTION
 import com.doublejj.edit.ApplicationClass.Companion.USER_NICKNAME
@@ -20,7 +21,7 @@ import com.doublejj.edit.data.api.services.profile.info.ProfileInfoView
 import com.doublejj.edit.data.models.profile.info.ProfileInfoResponse
 import com.doublejj.edit.databinding.MyeditFragmentBinding
 import com.doublejj.edit.ui.modules.main.myedit.settings.SettingsActivity
-import com.doublejj.edit.ui.modules.main.myedit.settings.profile.ProfileActivity
+import com.doublejj.edit.ui.modules.main.myedit.profile.ProfileActivity
 import com.doublejj.edit.ui.utils.snackbar.CustomSnackbar
 import com.google.android.material.snackbar.Snackbar
 
@@ -56,7 +57,16 @@ class MyeditFragment : Fragment(), ProfileInfoView {
                 binding.llBtnMenuCommentList.visibility = View.VISIBLE
                 binding.llBtnMenuSentence.visibility = View.GONE
                 binding.llBtnMenuComplete.visibility = View.GONE
-                binding.llBtnCertificateMentor.visibility = View.VISIBLE
+
+                // 멘토 인증하기 버튼 업데이트
+                if (!sSharedPreferences.getBoolean(MENTOR_AUTH_CONFIRM, false)) {
+                    // 인증 받지 않은 멘토라면 인증하기 버튼 보이기
+                    binding.llBtnCertificateMentor.visibility = View.VISIBLE
+                }
+                else {
+                    // 인증 받은 멘토라면 인증하기 버튼 감추기
+                    binding.llBtnCertificateMentor.visibility = View.GONE
+                }
             }
         }
 
@@ -99,7 +109,7 @@ class MyeditFragment : Fragment(), ProfileInfoView {
 
     override fun onResume() {
         super.onResume()
-
+        // 프로필 캐릭터 업데이트
         binding.tvNickname.text = sSharedPreferences.getString(USER_NICKNAME, null)
         binding.tvPosition.text = (requireContext().applicationContext as ApplicationClass).getPostionToString(
             sSharedPreferences.getString(USER_POSITION, null))
@@ -107,6 +117,16 @@ class MyeditFragment : Fragment(), ProfileInfoView {
             sSharedPreferences.getString(USER_COLOR, null).toString(),
             sSharedPreferences.getString(USER_EMOTION, null).toString()
         ))
+
+        // 멘토 인증하기 버튼 업데이트
+        if (!sSharedPreferences.getBoolean(MENTOR_AUTH_CONFIRM, false)) {
+            // 인증 받지 않은 멘토라면 인증하기 버튼 보이기
+            binding.llBtnCertificateMentor.visibility = View.VISIBLE
+        }
+        else {
+            // 인증 받은 멘토라면 인증하기 버튼 감추기
+            binding.llBtnCertificateMentor.visibility = View.GONE
+        }
     }
 
     override fun onProfileInfoSuccess(response: ProfileInfoResponse) {

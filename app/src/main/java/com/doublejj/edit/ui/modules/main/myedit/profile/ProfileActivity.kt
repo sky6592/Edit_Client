@@ -1,4 +1,4 @@
-package com.doublejj.edit.ui.modules.main.myedit.settings.profile
+package com.doublejj.edit.ui.modules.main.myedit.profile
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -6,8 +6,8 @@ import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import com.doublejj.edit.R
 import com.doublejj.edit.databinding.ActivityProfileBinding
-import com.doublejj.edit.ui.modules.main.myedit.settings.profile.change_password.ChangePasswordActivity
-import com.doublejj.edit.ui.modules.main.myedit.settings.profile.change_profile.ChangeProfileActivity
+import com.doublejj.edit.ui.modules.main.myedit.profile.change_password.ChangePasswordActivity
+import com.doublejj.edit.ui.modules.main.myedit.profile.change_profile.ChangeProfileActivity
 
 class ProfileActivity : AppCompatActivity() {
     private val TAG: String = javaClass.simpleName.toString()

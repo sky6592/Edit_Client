@@ -1,4 +1,4 @@
-package com.doublejj.edit.ui.modules.main.myedit.settings.profile.change_password
+package com.doublejj.edit.ui.modules.main.myedit.profile.change_password
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
