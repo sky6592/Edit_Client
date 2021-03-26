@@ -18,8 +18,10 @@ class SelectTypeActivity : AppCompatActivity() {
         mArrayList = intent.getSerializableExtra("arrayList") as ArrayList<String>
 
         mBinding.btnSelectType.setOnClickListener {
+            //로그확인
             Log.d("sky",mBinding.ivMenteeSelect.isPressed.toString())
             Log.d("sky",mBinding.ivMentorSelect.isPressed.toString())
+
 
             val intentJobGroup = Intent(this, JobGroupActivity::class.java)
             if (mBinding.ivMentorSelect.isPressed) {
