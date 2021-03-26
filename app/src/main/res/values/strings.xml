@@ -244,12 +244,10 @@
     <string name="btn_logout">로그아웃</string>
     <string name="tv_application_status_title">신청 현황 안내</string>
     <string name="tv_switch_position_proceeding">
-        관리자가 검토 중입니다.\n
-        조금만 기다려주세요!
+        관리자가 검토 중입니다.\n조금만 기다려주세요!
     </string>
     <string name="tv_switch_position_reject">
-        멘토/멘티 신청이 반려되었습니다.\n
-        변경을 다시 신청하실 수 있어요.
+        멘토/멘티 신청이 반려되었습니다.\n변경을 다시 신청하실 수 있어요.
     </string>
     <string name="btn_reapply">재신청</string>
 
@@ -257,12 +255,10 @@
     <string name="tv_menu_comment_list">코멘트 목록</string>
     <string name="tv_mentor_certification">멘토 인증하기</string>
     <string name="tv_mentor_certification_welcome_title">
-        님의\n
-        멘토 활동을 환영합니다!
+        님의\n멘토 활동을 환영합니다!
     </string>
     <string name="tv_mentor_certification_welcome_content">
-        멘토 활동을 위한 간단한 교육이 진행됩니다!\n
-        이후 인증을 거쳐 멘토 활동을 시작하게 됩니다.
+        멘토 활동을 위한 간단한 교육이 진행됩니다!\n이후 인증을 거쳐 멘토 활동을 시작하게 됩니다.
     </string>
     <string name="tv_mentor_certification_training_step_title">아래 내용을 꼭 읽어주세요!</string>
     <string name="tv_mentor_certification_training_step_one_title">구체적인 문장으로 적어주세요!</string>
@@ -273,87 +269,63 @@
         - 애매모호한 표현으로 기록된 문장 (X)
     </string>
     <string name="tv_mentor_certification_training_step_two_subtitle">
-        - 감정과 주장을 뒷받침하는 구체적 근거 (O)\n
-        - 멘토의 감정, 주장으로만 작성된 문장 (X)
+        - 감정과 주장을 뒷받침하는 구체적 근거 (O)\n- 멘토의 감정, 주장으로만 작성된 문장 (X)
     </string>
     <string name="tv_mentor_certification_training_step_three_subtitle">
-        - 작성해야하는 글자 수의 70% 이상 작성 (O)\n
-        - 다른 회사의 지원서 내용 또는 단어 (X)\n
-        - 지원하는 회사와 관련없는 내용 (X)
+        - 작성해야하는 글자 수의 70% 이상 작성 (O)\n- 다른 회사의 지원서 내용 또는 단어 (X)\n- 지원하는 회사와 관련없는 내용 (X)
     </string>
     <string name="tv_mentor_certification_training_step_ex">예시 문장)</string>
     <string name="tv_mentor_certification_training_step_guide">코멘트 가이드)</string>
     <string name="tv_mentor_certification_training_step_one_ex">저는 취업에 대해 수도없이 떨어진 경험을 기반으로 실무와 프로젝트 경험이 중요하다는 것을 느끼게 되었습니다.</string>
     <string name="tv_mentor_certification_training_step_one_guide_number">
-        1.\n
-        2.\n\n
-        3.
+        1.\n2.\n\n3.
     </string>
     <string name="tv_mentor_certification_training_step_one_guide_text">
-        어떤 취업 준비를 했을까요?\n
-        수도없이 떨어진 경험의 한 두가지를 뒷받침 해주는\n
-        글이 필요합니다.\n
-        떨어진 경험을 통해 본인이 느낀 감정을 적어야합니다.
+        어떤 취업 준비를 했을까요?\n수도없이 떨어진 경험의 한 두가지를 뒷받침 해주는\n글이 필요합니다.\n떨어진 경험을 통해 본인이 느낀 감정을 적어야합니다.
     </string>
     <string name="tv_mentor_certification_training_step_two_ex">OO 대회를 통하여 팀원들과 함께 아이디어를 선정하는 것이 즐거웠습니다.</string>
     <string name="tv_mentor_certification_training_step_two_guide_number">
-        1.\n\n
-        2.\n\n
+        1.\n\n2.\n\n
     </string>
     <string name="tv_mentor_certification_training_step_two_guide_text">
-        어떤 아이디어를 선정하였는지에 대한 글이 꼭 뒷받침 되어야 합니다.\n
-        ‘즐거웠다’는 감정을 뒷받침할 수 있는 근거가 \n
-        필요합니다.
+        어떤 아이디어를 선정하였는지에 대한 글이 꼭 뒷받침 되어야 합니다.\n‘즐거웠다’는 감정을 뒷받침할 수 있는 근거가 \n필요합니다.
     </string>
     <string name="tv_mentor_certification_training_step_three_ex">나는 성실한 어머니 밑에서 ‘늘 항상 부지런해야한다’는 말을 많이 들었다.</string>
     <string name="tv_mentor_certification_training_step_three_guide_number">
-        1.\n
-        2.\n
-        3.
+        1.\n2.\n3.
     </string>
     <string name="tv_mentor_certification_training_step_three_guide_text">
-        자소서에서 반말은 금해야 합니다.\n
-        자소서에도 보이지 않는 예의가 존재합니다.\n
-        문장에 예의가 없어보인다면 성실하지 않은 것으로\n
-        간주할 수 있습니다.
+        자소서에서 반말은 금해야 합니다.\n자소서에도 보이지 않는 예의가 존재합니다.\n문장에 예의가 없어보인다면 성실하지 않은 것으로\n간주할 수 있습니다.
     </string>
     <string name="tv_mentor_certification_training_step_four_guide_number">
-        -\n\n\n
-        -\n\n\n
-        -\n\n\n
-        -\n\n
+        -\n\n\n-\n\n\n\n-\n\n\n-\n\n
     </string>
     <string name="tv_mentor_certification_training_step_four_guide_text">
-        Edit ‘에딧’은 누구나 멘토가 될 수 있지만\n
-        아무나 멘토가 될 수는 없다고 생각합니다.\n\n
-        나의 코멘트가 상대방에게 ‘스스로 작성할 수 있는 힘’을 기를 수 있게 한다는 것을 기억해주세요.\n\n
-        부족한 자소서라도 넓은 마음으로 방향성을 제시해주세요.\n\n
-        자소서 문장을 보고 비판의 글을 남기는 것은 에딧의 취지와는 맞지 않습니다.
+        Edit ‘에딧’은 누구나 멘토가 될 수 있지만\n아무나 멘토가 될 수는 없다고 생각합니다.\n\n나의 코멘트가 상대방에게 ‘스스로 작성할 수 있는 힘’을 기를 수 있게 한다는 것을 기억해주세요.\n\n부족한 자소서라도 넓은 마음으로 방향성을 제시해주세요.\n\n자소서 문장을 보고 비판의 글을 남기는 것은 에딧의 취지와는 맞지 않습니다.
     </string>
     <string name="tv_mentor_certification_id_title">
-        님,\n
-        인증 수단을 선택해주세요.
+        님,\n인증 수단을 선택해주세요.
     </string>
     <string name="tv_idcard">사원증 / 명함</string>
     <string name="tv_mentor_certification_id_content_first">
-        사원증과 명함은\n
-        이미지 파일로 업로드 해주세요.
+        사원증과 명함은\n이미지 파일로 업로드 해주세요.
     </string>
     <string name="tv_mentor_certification_id_content_second">(인증 수단은 추후에 추가될 예정입니다!)</string>
     <string name="tv_mentor_certification_image_title">
-        님,\n
-        사진을 선택해주세요.
+        님,\n사진을 선택해주세요.
     </string>
+    <string name="tv_next_four_per_one">다음으로 (1/4)</string>
+    <string name="tv_next_four_per_two">다음으로 (2/4)</string>
+    <string name="tv_next_four_per_three">다음으로 (3/4)</string>
+    <string name="tv_next_four_per_four">다음으로 (4/4)</string>
     <string name="tv_get_image">사진 가져오기</string>
     <string name="btn_reselect">다시 선택</string>
     <string name="btn_select">선택 완료</string>
     <string name="tv_mentor_certification_complete_title">
-        님,\n
-        멘토 인증 신청이 완료되었습니다.
+        님,\n멘토 인증 신청이 완료되었습니다.
     </string>
     <string name="tv_mentor_certification_complete_content_first">
-        승인까지 1-2일 정도가 소요될 수 있습니다.\n
-        승인 전까지 코멘트 작성과 같은 멘토 활동은 어렵습니다!
+        승인까지 1-2일 정도가 소요될 수 있습니다.\n승인 전까지 코멘트 작성과 같은 멘토 활동은 어렵습니다!
     </string>
     <string name="tv_mentor_certification_complete_content_second">(승인이 된 이후에는 자동으로 멘토 활동 권한이 부여됩니다.)</string>
     <string name="tv_setting_toolbar_title">설정</string>
@@ -366,17 +338,13 @@
     <string name="btn_next">다음으로</string>
     <string name="btn_initial_screen">초기 화면으로</string>
     <string name="tv_account_withdrawal_encourage_title">
-        님,\n
-        정말 에딧에서 탈퇴하시겠어요?
+        님,\n정말 에딧에서 탈퇴하시겠어요?
     </string>
     <string name="tv_account_withdrawal_encourage_content">
-        탈퇴하기 전 확인해주세요!\n\n
-        탈퇴할 경우 모든 활동 내역이 삭제되며,\n
-        탈퇴한 계정으로 로그인을 할 수 없습니다.
+        탈퇴하기 전 확인해주세요!\n\n탈퇴할 경우 모든 활동 내역이 삭제되며,\n탈퇴한 계정으로 로그인을 할 수 없습니다.
     </string>
     <string name="tv_account_withdrawal_reason_title">
-        님,\n
-        탈퇴 사유를 알려주세요!
+        님,\n탈퇴 사유를 알려주세요!
     </string>
     <string name="tv_withdrawal_etc_title">기타 의견</string>
     <string name="spinner_withdrawal_0">자소서 컨텐츠 부족</string>
@@ -385,12 +353,10 @@
     <string name="spinner_withdrawal_3">기타</string>
     <string name="et_withdrawal_etc_hint">내용을 입력해주세요. (10자 이상)</string>
     <string name="tv_account_withdrawal_complete_title">
-        님,\n
-        에딧 탈퇴가 완료되었습니다.
+        님,\n에딧 탈퇴가 완료되었습니다.
     </string>
     <string name="tv_account_withdrawal_compolete_content">
-        에딧을 사용해주셔서 감사합니다.\n
-        다음에 더 좋은 서비스로 만나요!
+        에딧을 사용해주셔서 감사합니다.\n다음에 더 좋은 서비스로 만나요!
     </string>
 
 
@@ -401,9 +367,7 @@
 
     <string name="tv_to_be_develop_title">개발 중입니다!</string>
     <string name="tv_to_be_develop_coin_content">
-        코인으로 상품을 교환할 수 있는 서비스를
-        제공하기 위해 열심히 개발 중입니다.
-        조금만 더 기다려주세요!
+        코인으로 상품을 교환할 수 있는 서비스를\n제공하기 위해 열심히 개발 중입니다.\n조금만 더 기다려주세요!
     </string>
 
     <string-array name="array_sentence_type">

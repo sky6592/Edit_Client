@@ -4,6 +4,10 @@
     package="com.doublejj.edit">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-feature android:name="android.hardware.camera" android:required="true"/>
 
     <application
         android:name=".ApplicationClass"
@@ -16,6 +20,13 @@
         android:usesCleartextTraffic="true"
         android:windowSoftInputMode="adjustResize"
         tools:targetApi="m">
+        <activity android:name=".ui.modules.main.myedit.certificate_mentor.CertificateMentorCompleteActivity" />
+        <activity android:name=".ui.modules.main.myedit.certificate_mentor.CertificateIdcardActivity" />
+        <activity android:name=".ui.modules.main.myedit.certificate_mentor.TrainingFourActivity" />
+        <activity android:name=".ui.modules.main.myedit.certificate_mentor.TrainingThreeActivity" />
+        <activity android:name=".ui.modules.main.myedit.certificate_mentor.TrainingTwoActivity" />
+        <activity android:name=".ui.modules.main.myedit.certificate_mentor.TrainingOneActivity" />
+        <activity android:name=".ui.modules.main.myedit.certificate_mentor.CertificateMentorActivity" />
         <activity android:name=".ui.modules.main.myedit.manage_coin.ManageCoinActivity" />
         <activity android:name=".ui.modules.main.myedit.switch_position.SwitchPositionCompleteActivity" />
         <activity

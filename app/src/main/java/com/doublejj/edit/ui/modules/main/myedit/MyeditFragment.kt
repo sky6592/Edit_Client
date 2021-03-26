@@ -20,6 +20,7 @@ import com.doublejj.edit.data.api.services.profile.info.ProfileInfoService
 import com.doublejj.edit.data.api.services.profile.info.ProfileInfoView
 import com.doublejj.edit.data.models.profile.info.ProfileInfoResponse
 import com.doublejj.edit.databinding.MyeditFragmentBinding
+import com.doublejj.edit.ui.modules.main.myedit.certificate_mentor.CertificateMentorActivity
 import com.doublejj.edit.ui.modules.main.myedit.manage_coin.ManageCoinActivity
 import com.doublejj.edit.ui.modules.main.myedit.settings.SettingsActivity
 import com.doublejj.edit.ui.modules.main.myedit.profile.ProfileActivity
@@ -112,6 +113,7 @@ class MyeditFragment : Fragment(), ProfileInfoView {
         /** position buttons **/
         binding.llBtnCertificateMentor.setOnClickListener {
             // TODO : 멘토 인증 페이지
+            startActivity(Intent(activity, CertificateMentorActivity::class.java))
         }
         binding.llBtnSwitchPosition.setOnClickListener {
             when (sSharedPreferences.getString(USER_POSITION, "MENTEE")) {
