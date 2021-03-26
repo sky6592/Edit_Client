@@ -495,8 +495,23 @@
     <string name="tv_job_group">직군</string>
 
     <!-- Read -->
-    <string name="tv_info_read">이것만은 지켜주세요!</string>
-    <string name="tv_info_last_read">아래 사항들을 꼭 읽어주세요.</string>
+    <string name="tv_info_read">이것만은 지켜주세요!\n아래 사항들을 꼭 읽어주세요.</string>
+    <string name="tv_one_title_read">1. 에딧의 방향성</string>
+    <string name="tv_one_content_read">
+        1) Edit (이하 ‘에딧’)은 완성되지 않은 자소서를 공유하여 멘토의 코멘트를 통한 스스로 자소서를 완성할 수 있도록 돕는 플랫폼 입니다.\n
+        2) 에딧은 여러분이 스스로 자소서를 작성할 수 있도록 도움을 드리는 어플입니다.\n
+        3) 멘토는 자소서 문장을 완성할 수 있도록 방향을 제시합니다.\n
+        4) 멘티는 문장 단위로 자소서를 게시하고, 코멘트를 통해서 도움을 받게 됩니다. 자소서의 완성은 유저 스스로가 하게 됩니다.\n
+        3) 완성되지 않은 자소서라도 표절은 금지입니다.</string>
+    <string name="tv_two_title_read">2. 성희롱, 욕설 등 모욕감을 주는 글</string>
+    <string name="tv_two_content_read">
+        1) 상대방에게 성적인 모욕감, 혐오감을 주는 글을 작성하면 안됩니다.\n\n
+        2) 자소서 문장을 향한 모욕감, 혐오감을 주어서는 안됩니다. 누구나 처음은 미숙할 수 밖에 없다는 걸 기억해주세요.\n\n
+        3) 위의 내용들은 신고의 대상이 될 수 있습니다.</string>
+    <string name="tv_three_title_read">3. 개인정보 관련</string>
+    <string name="tv_three_content_read">
+        1) 에딧 내에서의 개인정보 요구는 금지하고 있습니다.\n\n
+        2) 다른 유저가 나의 개인정보를 요구한다면 신고해주세요.</string>
 
     <!-- Email Check -->
     <string name="tv_info_email_check">이메일 인증을 진행합니다.\n메일 주소를 확인해주세요!</string>

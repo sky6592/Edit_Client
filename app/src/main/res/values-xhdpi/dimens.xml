@@ -162,6 +162,7 @@
     <dimen name="tv_17sp">17sp</dimen>
     <dimen name="tv_18sp">18sp</dimen>
     <dimen name="stroke_2px">2px</dimen>
+    <dimen name="tv_13sp">13sp</dimen>
 
 
     //walk_through

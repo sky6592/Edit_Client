@@ -24,17 +24,24 @@
             android:windowSoftInputMode="adjustResize">
 
         </activity>
-        <activity android:name=".ui.modules.main.signup.read.ReadActivity" />
-        <activity android:name=".ui.modules.main.signup.slectjopgroup.JobGroupActivity" />
+        <activity android:name=".ui.modules.main.signup.read.ReadActivity"
+            android:windowSoftInputMode="adjustResize">
+
+        </activity>
+        <activity android:name=".ui.modules.main.signup.slectjopgroup.JobGroupActivity" >
+
+        </activity>
         <activity android:name=".ui.modules.main.login.LogInActivity" />
-        <activity android:name=".ui.modules.main.signup.slecttype.SelectTypeActivity" />
-        <activity android:name=".ui.modules.main.signup.infosecond.InfoSecondActivity" />
-        <activity android:name=".ui.modules.main.signup.infofirst.InfoFirstActivity">
+        <activity android:name=".ui.modules.main.signup.slecttype.SelectTypeActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".ui.modules.main.signup.infosecond.InfoSecondActivity" />
+        <activity android:name=".ui.modules.main.signup.infofirst.InfoFirstActivity">
+
         </activity>
         <activity android:name=".ui.modules.main.signin.SignInActivity" />
         <activity android:name=".ui.modules.main.myedit.settings.profile.ProfileActivity" />
@@ -49,7 +56,9 @@
             android:windowSoftInputMode="adjustResize" />
         <activity android:name=".ui.modules.main.home.writing_comment.WritingCommentActivity" />
         <activity android:name=".ui.modules.main.walkthrough.WalkThroughActivity"></activity>
-        <activity android:name=".ui.modules.main.splash.SplashActivity"></activity>
+        <activity android:name=".ui.modules.main.splash.SplashActivity">
+
+        </activity>
         <activity android:name=".ui.modules.main.MainActivity" />
     </application>
 
