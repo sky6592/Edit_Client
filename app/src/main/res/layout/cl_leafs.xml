@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="@dimen/size_360dp"
+    android:layout_height="@dimen/size_128dp">
+    <ImageView
+        android:id="@+id/iv_waited_comment_leaf_tripple"
+        android:layout_width="@dimen/size_76dp"
+        android:layout_height="@dimen/size_79dp"
+        android:src="@drawable/ic_graphic_leaf_triple"
+
+        android:layout_marginTop="@dimen/size_11dp"
+        android:layout_marginBottom="@dimen/size_11dp"
+        android:layout_marginStart="@dimen/size_57dp"
+        android:layout_marginLeft="@dimen/size_57dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+    <ImageView
+        android:id="@+id/iv_waited_comment_leaf_double"
+        android:layout_width="@dimen/size_77dp"
+        android:layout_height="@dimen/size_86dp"
+        android:src="@drawable/ic_graphic_leaf_double"
+
+        android:layout_marginTop="@dimen/size_11dp"
+        android:layout_marginEnd="@dimen/size_87dp"
+        android:layout_marginRight="@dimen/size_87dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+    <ImageView
+        android:id="@+id/iv_waited_comment_flower_red_0"
+        android:layout_width="@dimen/size_54dp"
+        android:layout_height="@dimen/size_54dp"
+        android:src="@drawable/ic_graphic_flower_red"
+        android:rotation="19"
+
+        android:layout_marginTop="@dimen/size_7dp"
+        android:layout_marginStart="@dimen/size_18dp"
+        android:layout_marginLeft="@dimen/size_18dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+    <ImageView
+        android:id="@+id/iv_waited_comment_flower_red_1"
+        android:layout_width="@dimen/size_43dp"
+        android:layout_height="@dimen/size_43dp"
+        android:src="@drawable/ic_graphic_flower_red"
+        android:rotation="-19"
+
+        android:layout_marginTop="@dimen/size_57dp"
+        android:layout_marginStart="@dimen/size_139dp"
+        android:layout_marginLeft="@dimen/size_139dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+    <ImageView
+        android:id="@+id/iv_waited_comment_flower_red_2"
+        android:layout_width="@dimen/size_54dp"
+        android:layout_height="@dimen/size_54dp"
+        android:src="@drawable/ic_graphic_flower_red"
+        android:rotation="38"
+
+        android:layout_marginTop="@dimen/size_5dp"
+        android:layout_marginEnd="@dimen/size_20dp"
+        android:layout_marginRight="@dimen/size_20dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+    <ImageView
+        android:id="@+id/iv_waited_comment_flower_yellow_0"
+        android:layout_width="@dimen/size_33dp"
+        android:layout_height="@dimen/size_35dp"
+        android:src="@drawable/ic_graphic_flower_yellow"
+        android:rotation="-12"
+
+        android:layout_marginTop="@dimen/size_25dp"
+        android:layout_marginStart="@dimen/size_159dp"
+        android:layout_marginLeft="@dimen/size_159dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+    <ImageView
+        android:id="@+id/iv_waited_comment_flower_yellow_1"
+        android:layout_width="@dimen/size_33dp"
+        android:layout_height="@dimen/size_35dp"
+        android:src="@drawable/ic_graphic_flower_yellow"
+
+        android:layout_marginTop="@dimen/size_54dp"
+        android:layout_marginEnd="@dimen/size_45dp"
+        android:layout_marginRight="@dimen/size_45dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
