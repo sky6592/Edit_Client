@@ -69,7 +69,7 @@ class TodaySentenceFragment : Fragment(), TodaySentenceView, SentenceLimitView {
 
     fun setAdapter() {
         // TODO : 페이징 적용하기
-        TodaySentenceService(this).tryGetTodaySentence(page = 0)
+        TodaySentenceService(this).tryGetTodaySentence(page = 1)
         binding.rvSentence.layoutManager = LinearLayoutManager(context)
 
         // TODO : response에 새로 추가된 mine 처리 (내 글인 경우)

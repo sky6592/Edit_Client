@@ -111,7 +111,7 @@ class OpenCommentFragment : Fragment(), CommentsOfSentenceView {
 
         CommentsOfSentenceService(this).tryGetCommentsOfSentence(
             sentenceId = sentenceId,
-            page = 0
+            page = 1
         )
     }
 

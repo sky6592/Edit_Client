@@ -49,7 +49,7 @@ class AdoptionCompletedFragment : Fragment(), AdoptionCompletedView {
 
     fun setAdapter() {
         // TODO : 페이징 적용하기
-        AdoptionCompletedService(this).tryGetAdoptionCompletedSentence(page = 0)
+        AdoptionCompletedService(this).tryGetAdoptionCompletedSentence(page = 1)
         binding.rvSentence.layoutManager = LinearLayoutManager(context)
     }
 
