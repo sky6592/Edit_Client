@@ -18,10 +18,15 @@ import com.doublejj.edit.ui.utils.dialog.CustomDialogClickListener
 import com.doublejj.edit.ui.utils.dialog.CustomRadioDialogFragment
 import com.doublejj.edit.ui.utils.snackbar.CustomSnackbar
 import com.google.android.material.snackbar.Snackbar
+import java.util.regex.Pattern
 
 class ChangeJobActivity : AppCompatActivity(), ChangeJobView {
     private val TAG: String = javaClass.simpleName.toString()
     private lateinit var binding: ActivityChangeJobBinding
+
+    // 직군 기타 입력 정규식 : 영문 대소문자, 숫자, 한글 (숫자, 특수문자 불가)
+    val jobPattern = "^([a-zA-Zㄱ-ㅎ가-힇]*)$"
+
     private var selectedId: Int? = null
     private var selectedStr: String? = null
     private var etcStr: String? = null
@@ -95,7 +100,16 @@ class ChangeJobActivity : AppCompatActivity(), ChangeJobView {
 
             // gets triggered during an input
             override fun afterTextChanged(s: Editable?) {
-                binding.btnSave.isEnabled = binding.etInputJobEtc.text.toString().length >= 10
+                // if not matches pattern
+                if (!Pattern.matches(jobPattern, s.toString())) {
+                    binding.tvInputJobEtcCaption.setTextColor(ContextCompat.getColor(applicationContext, R.color.red_light))
+                    binding.btnSave.isEnabled = false
+                }
+                // if matches pattern
+                else {
+                    binding.tvInputJobEtcCaption.setTextColor(ContextCompat.getColor(applicationContext, R.color.gray_shadow))
+                    binding.btnSave.isEnabled = true
+                }
             }
         })
 

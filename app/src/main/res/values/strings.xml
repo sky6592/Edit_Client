@@ -178,9 +178,9 @@
     <string name="tv_change_job">직군 변경</string>
     <string name="tv_input_etc">기타 입력</string>
     <string name="tv_change_reason_title">변경 사유</string>
-    <string name="tv_change_job_title">
-        변경하실 직군을\n선택해주세요.
-    </string>
+    <string name="tv_change_job_title">변경하실 직군을\n선택해주세요.</string>
+    <string name="tv_change_job_etc_hint">직군을 입력해주세요.</string>
+    <string name="tv_change_job_etc_caption">영문, 한글만 입력 가능합니다. (숫자, 특수문자 불가)</string>
     <string name="spinner_job_0">개발</string>
     <string name="spinner_job_1">경영</string>
     <string name="spinner_job_2">기획</string>
