@@ -34,7 +34,7 @@ class ProfileActivity : AppCompatActivity() {
             val sendIntent = Intent(this, ChangePasswordActivity::class.java)
             startActivity(sendIntent)
         }
-        binding.llBtnChangePosition.setOnClickListener {
+        binding.llBtnChangeJob.setOnClickListener {
             // 직군 변경 페이지
             val sendIntent = Intent(this, ChangeJobActivity::class.java)
             startActivity(sendIntent)

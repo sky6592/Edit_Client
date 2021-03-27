@@ -22,8 +22,10 @@ import com.doublejj.edit.data.models.profile.info.ProfileInfoResponse
 import com.doublejj.edit.databinding.MyeditFragmentBinding
 import com.doublejj.edit.ui.modules.main.myedit.certificate_mentor.CertificateMentorActivity
 import com.doublejj.edit.ui.modules.main.myedit.manage_coin.ManageCoinActivity
+import com.doublejj.edit.ui.modules.main.myedit.profile.ProfileActivity
 import com.doublejj.edit.ui.modules.main.myedit.settings.SettingsActivity
-import com.doublejj.edit.ui.modules.main.myedit.settings.profile.ProfileActivity
+import com.doublejj.edit.ui.modules.main.myedit.switch_position.SwitchToMenteeActivity
+import com.doublejj.edit.ui.modules.main.myedit.switch_position.SwitchToMentorActivity
 import com.doublejj.edit.ui.utils.snackbar.CustomSnackbar
 import com.google.android.material.snackbar.Snackbar
 

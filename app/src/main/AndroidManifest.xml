@@ -62,33 +62,16 @@
             android:name=".ui.modules.main.myedit.profile.change_password.ChangePasswordActivity"
             android:windowSoftInputMode="adjustPan" />
         <activity android:name=".ui.modules.main.myedit.profile.change_profile.ChangeProfileActivity" />
-        <activity android:name=".ui.modules.main.signup.read.ReadActivity" />
         <activity android:name=".ui.modules.main.signup.slectjopgroup.JobGroupActivity" />
-        <activity android:name=".ui.modules.main.login.LogInActivity"
-            android:windowSoftInputMode="adjustResize">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity
+            android:name=".ui.modules.main.login.LogInActivity"
+            android:windowSoftInputMode="adjustResize" />
         <activity android:name=".ui.modules.main.signup.slecttype.SelectTypeActivity" >
-
         </activity>
         <activity android:name=".ui.modules.main.walkthrough.WalkThroughActivity" />
 
         <activity android:name=".ui.modules.main.signup.infosecond.InfoSecondActivity" />
-        <activity android:name=".ui.modules.main.signup.infofirst.InfoFirstActivity">
-
-        </activity>
-        <activity android:name=".ui.modules.main.myedit.settings.profile.change_password.ChangePasswordCompleteActivity" />
-        <activity
-            android:name=".ui.modules.main.myedit.settings.profile.change_password.ChangeNewPasswordActivity"
-            android:windowSoftInputMode="adjustPan" />
-        <activity
-            android:name=".ui.modules.main.myedit.settings.profile.change_password.ChangePasswordActivity"
-            android:windowSoftInputMode="adjustPan" />
-        <activity android:name=".ui.modules.main.myedit.settings.profile.change_profile.ChangeProfileActivity" />
+        <activity android:name=".ui.modules.main.signup.infofirst.InfoFirstActivity" />
 
         <activity android:name=".ui.modules.main.signin.SignInActivity" />
         <activity android:name=".ui.modules.main.myedit.profile.ProfileActivity" />
@@ -106,7 +89,6 @@
         <activity android:name=".ui.modules.main.splash.SplashActivity">
                 <intent-filter>
                         <action android:name="android.intent.action.MAIN" />
-
                         <category android:name="android.intent.category.LAUNCHER" />
                 </intent-filter>
         </activity>
