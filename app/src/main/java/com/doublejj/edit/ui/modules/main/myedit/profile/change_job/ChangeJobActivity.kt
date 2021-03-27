@@ -90,12 +90,10 @@ class ChangeJobActivity : AppCompatActivity(), ChangeJobView {
         binding.etInputJobEtc.addTextChangedListener(object : TextWatcher {
             // gets triggered immediately after something is typed
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-                binding.btnSave.isEnabled = binding.etInputJobEtc.text.toString().length >= 10
             }
 
             // gets triggered before the next input
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                binding.btnSave.isEnabled = binding.etInputJobEtc.text.toString().length >= 10
             }
 
             // gets triggered during an input
