@@ -14,10 +14,14 @@ import com.doublejj.edit.ApplicationClass.Companion.USER_COLOR
 import com.doublejj.edit.ApplicationClass.Companion.USER_EMOTION
 import com.doublejj.edit.ApplicationClass.Companion.USER_NICKNAME
 import com.doublejj.edit.ApplicationClass.Companion.USER_POSITION
+import com.doublejj.edit.ApplicationClass.Companion.X_ACCESS_TOKEN
 import com.doublejj.edit.ApplicationClass.Companion.sSharedPreferences
 import com.doublejj.edit.R
+import com.doublejj.edit.data.api.services.logout.LogoutService
+import com.doublejj.edit.data.api.services.logout.LogoutView
 import com.doublejj.edit.data.api.services.profile.info.ProfileInfoService
 import com.doublejj.edit.data.api.services.profile.info.ProfileInfoView
+import com.doublejj.edit.data.models.BaseResponse
 import com.doublejj.edit.data.models.profile.info.ProfileInfoResponse
 import com.doublejj.edit.databinding.MyeditFragmentBinding
 import com.doublejj.edit.ui.modules.main.myedit.certificate_mentor.CertificateMentorActivity
@@ -26,10 +30,11 @@ import com.doublejj.edit.ui.modules.main.myedit.profile.ProfileActivity
 import com.doublejj.edit.ui.modules.main.myedit.settings.SettingsActivity
 import com.doublejj.edit.ui.modules.main.myedit.switch_position.SwitchToMenteeActivity
 import com.doublejj.edit.ui.modules.main.myedit.switch_position.SwitchToMentorActivity
+import com.doublejj.edit.ui.modules.main.splash.SplashActivity
 import com.doublejj.edit.ui.utils.snackbar.CustomSnackbar
 import com.google.android.material.snackbar.Snackbar
 
-class MyeditFragment : Fragment(), ProfileInfoView {
+class MyeditFragment : Fragment(), ProfileInfoView, LogoutView {
     private val TAG: String = javaClass.simpleName.toString()
     private lateinit var binding: MyeditFragmentBinding
     private lateinit var viewModel: MyeditViewModel
@@ -124,7 +129,8 @@ class MyeditFragment : Fragment(), ProfileInfoView {
 
         /** logout buttons **/
         binding.btnLogout.setOnClickListener {
-            // TODO : 로그아웃 API 적용
+            // 로그아웃 API 적용
+            LogoutService(this).tryPostLogout()
         }
 
         return binding.root
@@ -167,9 +173,35 @@ class MyeditFragment : Fragment(), ProfileInfoView {
             binding.tvPosition.text = (requireContext().applicationContext as ApplicationClass).getPostionToString(response.result.userRole)
             binding.ivProfile.setImageResource((requireContext().applicationContext as ApplicationClass).getCharacterResId(response.result.colorName, response.result.emotionName))
         }
+        else {
+            CustomSnackbar.make(binding.root, response.message.toString(), Snackbar.LENGTH_SHORT)
+        }
     }
 
     override fun onProfileInfoFailure(message: String) {
+        CustomSnackbar.make(binding.root, message, Snackbar.LENGTH_SHORT)
+    }
+
+    override fun onPostLogoutSuccess(response: BaseResponse) {
+        if (response.isSuccess) {
+            val editor = sSharedPreferences.edit()
+            editor.putString(X_ACCESS_TOKEN, null)
+            editor.putString(USER_POSITION, null)
+            editor.putString(MENTOR_AUTH_CONFIRM, null)
+            editor.putString(USER_NICKNAME, null)
+            editor.putString(USER_EMOTION, null)
+            editor.putString(USER_COLOR, null)
+            editor.commit()
+            editor.apply()
+
+            // 초기화면으로 가기
+            val sendIntent = Intent(activity, SplashActivity::class.java)
+            sendIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+            startActivity(sendIntent)
+        }
+    }
+
+    override fun onPostLogoutFailure(message: String) {
         CustomSnackbar.make(binding.root, message, Snackbar.LENGTH_SHORT)
     }
 }
