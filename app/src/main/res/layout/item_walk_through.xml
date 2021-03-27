@@ -1,34 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical">
-
-    <!--  tv는 imageView로 변경하기  -->
-    <TextView
-        android:id="@+id/tv_item_walk_through"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="38dp"
-        android:layout_marginTop="62dp"
-        android:layout_marginRight="127dp"
-        android:fontFamily="@font/noto_sans_kr_regular"
-        android:lineSpacingExtra="10sp"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        tools:text="스스로 자소서를 완성하는\n힘을 기를 수 있게 합니다. " />
+        android:orientation="vertical">
 
-    <ImageView
-        android:id="@+id/iv_item_walk_through"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center"
-        android:src="@drawable/walkthorugh_img1" />
-
-</LinearLayout>
+        <ImageView
+            android:id="@+id/iv_item_walk_through"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:src="@drawable/walkthorugh_img1" />
+    </LinearLayout>
 </layout>

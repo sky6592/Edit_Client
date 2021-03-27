@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+    <data>
 
-
+        <variable
+            name="LogInActivity"
+            type="com.doublejj.edit.ui.modules.main.login.LogInActivity" />
+    </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/const_log_in"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <!--Logo-->
         <ImageView
             android:id="@+id/iv_log_in"
@@ -62,7 +68,7 @@
                     android:textSize="@dimen/tv_15sp" />
 
                 <TextView
-                    android:id="@+id/tv_nick_name_caption_log_in"
+                    android:id="@+id/tv_email_caption_log_in"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/margin_10dp"
@@ -108,13 +114,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/noto_sans_kr_regular"
-                    android:text="@string/tv_pw_caption_info"
+                    android:text="@string/tv_pw_caption_info_log_in"
                     android:textColor="@color/very_light_pink"
                     android:textSize="@dimen/tv_10sp" />
             </LinearLayout>
         </LinearLayout>
 
-        <!--Find Email & PW-->
+        <!--Find Email PW-->
         <LinearLayout
             android:id="@+id/linear_find_log_in"
             android:layout_width="match_parent"
@@ -143,13 +149,15 @@
                     android:textSize="@dimen/tv_10sp" />
 
                 <TextView
-                    android:id="@+id/tv_find_email"
+                    android:id="@+id/tv_find_email_log_in"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/noto_sans_kr_regular"
+                    android:onClick="onClick"
                     android:text="@string/tv_find_email"
                     android:textColor="@color/black"
                     android:textSize="@dimen/tv_10sp"
+                    android:clickable="true"
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -171,10 +179,12 @@
                     android:textSize="@dimen/tv_10sp" />
 
                 <TextView
-                    android:id="@+id/tv_find_pw"
+                    android:id="@+id/tv_find_pw_log_in"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/noto_sans_kr_regular"
+                    android:onClick="onClick"
+                    android:clickable="true"
                     android:text="@string/tv_find_pw"
                     android:textColor="@color/black"
                     android:textSize="@dimen/tv_10sp"
@@ -184,16 +194,15 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_log_in"
+            style="@android:style/ButtonBar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/very_light_pink"
             android:fontFamily="@font/noto_sans_kr_regular"
             android:text="@string/tv_log_in"
             android:textColor="@color/white"
-            style="@android:style/ButtonBar"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
-

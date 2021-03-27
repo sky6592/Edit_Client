@@ -14,7 +14,7 @@
             android:id="@+id/linear_read"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/shadow_bg"
+            android:background="@drawable/shadow_below_bg"
             android:gravity="center_vertical"
             android:orientation="horizontal"
             android:paddingHorizontal="@dimen/padding_common"
@@ -82,49 +82,145 @@
                 android:text="@string/tv_info_read"
                 android:textColor="@color/black"
                 android:textSize="@dimen/tv_18sp" />
-
-            <TextView
-                android:id="@+id/tv_info_last_read"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/noto_sans_kr_bold"
-                android:gravity="center"
-                android:text="@string/tv_info_last_read"
-                android:textColor="@color/black"
-                android:textSize="@dimen/tv_18sp" />
-
         </LinearLayout>
 
         <!--스크롤뷰설치하기!!!-->
-        <LinearLayout
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="top"
-            android:orientation="vertical"
-            android:paddingHorizontal="@dimen/padding_common">
+            android:layout_weight="1">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/noto_sans_kr_regular"
-                android:text="@string/tv_job_group"
-                android:textColor="@color/black"
-                android:textSize="@dimen/tv_15sp" />
-
-            <Spinner
-                android:id="@+id/spinner_job_group"
+            <!--스크롤뷰 자식뷰-->
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:background="@drawable/shape_et_btn_info" />
-        </LinearLayout>
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingHorizontal="@dimen/padding_20dp">
+
+                <!--1번-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="41dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_one_title_read"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/noto_sans_kr_medium"
+                        android:textColor="@color/purple"
+                        android:textSize="@dimen/tv_13sp"
+                        android:textStyle="normal"
+                        tools:text="@string/tv_one_title_read" />
+
+                    <TextView
+                        android:id="@+id/tv_one_content_read"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/noto_sans_kr_regular"
+                        android:lineSpacingExtra="5sp"
+                        android:paddingLeft="@dimen/size_15dp"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/tv_12sp"
+                        android:textStyle="normal"
+                        tools:text="@string/tv_one_content_read" />
+                </LinearLayout>
+
+                <!--2번-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="41dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_two_title_read"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/noto_sans_kr_medium"
+                        android:textColor="@color/purple"
+                        android:textSize="@dimen/tv_13sp"
+                        android:textStyle="normal"
+                        tools:text="@string/tv_two_title_read" />
+
+                    <TextView
+                        android:id="@+id/tv_two_content_read"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/noto_sans_kr_regular"
+                        android:lineSpacingExtra="5sp"
+                        android:paddingLeft="@dimen/size_15dp"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/tv_12sp"
+                        android:textStyle="normal"
+                        tools:text="@string/tv_two_content_read" />
+                </LinearLayout>
+
+                <!--3번-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="41dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_three_title_read"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/noto_sans_kr_medium"
+                        android:textColor="@color/purple"
+                        android:textSize="@dimen/tv_13sp"
+                        android:textStyle="normal"
+                        tools:text="@string/tv_three_title_read" />
+
+                    <TextView
+                        android:id="@+id/tv_three_content_read"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/noto_sans_kr_regular"
+                        android:lineSpacingExtra="5sp"
+                        android:paddingLeft="@dimen/size_15dp"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/tv_12sp"
+                        android:textStyle="normal"
+                        tools:text="@string/tv_three_content_read" />
+                </LinearLayout>
+            </LinearLayout>
+
+        </ScrollView>
 
         <!--Next Button-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="bottom">
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/margin_20dp"
+                android:gravity="top"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="false"
+                    android:gravity="center|center_horizontal" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/noto_sans_kr_regular"
+                    android:lineSpacingExtra="5sp"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/tv_12sp"
+                    android:gravity="center_vertical"
+                    android:textStyle="normal"
+                    tools:text="@string/tv_check_info_read" />
+
+            </LinearLayout>
 
             <!-- Button -->
             <androidx.appcompat.widget.AppCompatButton
@@ -132,7 +228,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/very_light_pink"
-                android:enabled="false"
                 android:text="@string/tv_next_info"
                 android:textColor="@color/white" />
         </LinearLayout>

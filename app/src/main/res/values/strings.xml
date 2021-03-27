@@ -148,6 +148,8 @@
     <string name="tv_dialog_dismiss">취소</string>
     <string name="tv_dialog_agree">동의</string>
     <string name="tv_dialog_select">선택하기</string>
+    <string name="tv_dialog_title_find_email">가입하신 메일 계정입니다.</string>
+    <string name="tv_dialog_content_find_email">개인정보 보호를 위해 일부는 *로 표기됩니다.</string>
 
 
     <!--  myedit_fragment  -->
@@ -441,7 +443,9 @@
     <string name="tv_pw_info">비밀번호</string>
     <string name="hint_pw_info">비밀번호를 입력해주세요.</string>
     <string name="tv_pw_caption_info">8자 이상 15자 이하 비밀번호 입력\n(문자,숫자,기호 중 2가지 조합)</string>
+    <string name="tv_pw_caption_info_log_in">8자 이상의 비밀번호를 입력해주세요. (문자, 숫자, 기호 조합 가능)</string>
     <string name="tv_pw_wrong_caption_info">8자 이상 15자 이하 비밀번호 다시입력\n(문자,숫자,기호 중 2가지 조합)</string>
+    <string name="tv_pw_result_info">비밀번호 입력감사합니다!</string>
 
 
     <string name="tv_re_pw_info">비밀번호 재입력</string>
@@ -470,6 +474,7 @@
     <string name="tv_find_email"><u>이메일 찾기</u></string>
     <string name="tv_info_find_pw">비밀번호를 잊으셨나요?</string>
     <string name="tv_find_pw"><u>비밀번호 찾기</u></string>
+    <string name="tv_check_log_in">로그인 정보를 확인해주세요</string>
 
     <!-- Select Type -->
     <string name="tv_nick_name_select_type">닉네임</string>
@@ -486,9 +491,50 @@
     <string name="tv_job_group">직군</string>
 
     <!-- Read -->
-    <string name="tv_info_read">이것만은 지켜주세요!</string>
-    <string name="tv_info_last_read">아래 사항들을 꼭 읽어주세요.</string>
+    <string name="tv_info_read">이것만은 지켜주세요!\n아래 사항들을 꼭 읽어주세요.</string>
+    <string name="tv_one_title_read">1. 에딧의 방향성</string>
+    <string name="tv_one_content_read">
+        1) Edit (이하 ‘에딧’)은 완성되지 않은 자소서를 공유하여 멘토의 코멘트를 통한 스스로 자소서를 완성할 수 있도록 돕는 플랫폼 입니다.\n
+        2) 에딧은 여러분이 스스로 자소서를 작성할 수 있도록 도움을 드리는 어플입니다.\n
+        3) 멘토는 자소서 문장을 완성할 수 있도록 방향을 제시합니다.\n
+        4) 멘티는 문장 단위로 자소서를 게시하고, 코멘트를 통해서 도움을 받게 됩니다. 자소서의 완성은 유저 스스로가 하게 됩니다.\n
+        3) 완성되지 않은 자소서라도 표절은 금지입니다.</string>
+    <string name="tv_two_title_read">2. 성희롱, 욕설 등 모욕감을 주는 글</string>
+    <string name="tv_two_content_read">
+        1) 상대방에게 성적인 모욕감, 혐오감을 주는 글을 작성하면 안됩니다.\n\n
+        2) 자소서 문장을 향한 모욕감, 혐오감을 주어서는 안됩니다. 누구나 처음은 미숙할 수 밖에 없다는 걸 기억해주세요.\n\n
+        3) 위의 내용들은 신고의 대상이 될 수 있습니다.</string>
+    <string name="tv_three_title_read">3. 개인정보 관련</string>
+    <string name="tv_three_content_read">
+        1) 에딧 내에서의 개인정보 요구는 금지하고 있습니다.\n\n
+        2) 다른 유저가 나의 개인정보를 요구한다면 신고해주세요.</string>
+    <string name="tv_check_info_read">에딧의 가이드를 모두 읽고, 이해했습니다.</string>
 
+    <!-- Email Check -->
+    <string name="tv_info_email_check">이메일 인증을 진행합니다.\n메일 주소를 확인해주세요!</string>
+    <string name="tv_caption_email_check">인증을 진행할 이메일이 아니라면 다시 입력해주세요!</string>
+    <string name="tv_bottom_email_check">회원가입 완료까지 얼마 남지 않았어요! :)</string>
+    <string name="btn_email_check">인증 메일 발송</string>
+
+    <!-- Find Email -->
+    <string name="tv_title_email_find">에딧에 가입했던\n정보를 입력해주세요. </string>
+    <string name="btn_email_find">이메일 찾기</string>
+    <string name="tv_name_result_email_find">이름 입력감사합니다!</string>
+    <string name="tv_check_info_find_email">정보를 다시 확인해주세요!</string>
+
+    <!-- Enter Code -->
+    <string name="tv_info_enter_code">인증 메일이 발송되었어요.\n인증 코드를 입력해주세요!</string>
+    <string name="tv_code">인증코드</string>
+    <string name="tv_caption_enter_code">혹시 인증 메일이 도착하지 않았다면, 스팸 메일함을 확인해주세요.</string>
+    <string name="btn_enter_code">확인</string>
+    <string name="tv_timer_enter_code">03:00</string>
+    <string name="tv_2044_enter_code">인증 시간이 만료되었습니다.</string>
+    <string name="tv_3018_enter_code">인증에 실패했습니다!</string>
+    <string name="tv_dialog_2044_title_enter_code">인증 시간이 초과되었어요!</string>
+    <string name="tv_dialog_2044_content_enter_code">시간이 초과되어 재인증이 필요합니다.\n확인을 누르시면 이전 단계로 돌아갑니다!</string>
+    <string name="tv_dialog_3018_content_enter_code">인증번호가 틀렸습니다.\다시한번 입력해주세요!</string>
+    <string name="tv_dialog_check">확인</string>
+    <string name="tv_dialog_dismiss_none"></string>
 
     <!-- Walk Through -->
     <string name="tv_walk_thorough_one">스스로 자소서를 완성하는\n힘을 기를 수 있게 합니다.</string>

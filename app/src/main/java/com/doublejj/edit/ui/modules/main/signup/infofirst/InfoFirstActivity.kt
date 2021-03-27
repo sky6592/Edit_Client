@@ -30,7 +30,6 @@ class InfoFirstActivity : AppCompatActivity(), InfoFirstView {
 
     private var mNickNameLengthFlag: Boolean = false
 
-    //@SuppressLint("ClickableViewAccessibility")
     @SuppressLint("ResourceAsColor")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -90,12 +89,6 @@ class InfoFirstActivity : AppCompatActivity(), InfoFirstView {
 
 
                 }
-//                else {
-//                    //빈공란 정규식
-//                    mBinding.tvNameCaptionInfoFirst.setTextColor(R.color.purple)
-//                    mBinding.tvNameCaptionInfoFirst.text =
-//                        getString(R.string.tv_name_caption_info)
-//                }
             }
         })
 
@@ -118,9 +111,12 @@ class InfoFirstActivity : AppCompatActivity(), InfoFirstView {
                             getString(R.string.tv_caption_spacing_info)
                         mNickNameSpacingFlag = true
                         mNickNameFlag = false
+                        mNickNameLengthFlag = true
                         mBinding.btnInfoFirst.setBackgroundResource(R.color.very_light_pink)
                     } else {
                         mNickNameSpacingFlag = false
+                        mNickNameLengthFlag = false
+
                     }
 
                     //엔터 입력 : 다른 내용 입력 되어있는지 확인
@@ -244,14 +240,16 @@ class InfoFirstActivity : AppCompatActivity(), InfoFirstView {
             )
 
             //입력내용 저장
-            var name = mBinding.etNameInfoFirst.text.toString().replace(" ", "")
-            var nickname = mBinding.etNickNameInfoFirst.text.toString().replace(" ", "")
-            var phone = mBinding.etPhoneInfoFirst.text.toString().replace(" ", "")
+            var name = mBinding.etNameInfoFirst.text.trim().toString()
+            var nickname = mBinding.etNickNameInfoFirst.text.trim().toString()
+            var phone = mBinding.etPhoneInfoFirst.text.trim().toString()
 
             var arrayList = ArrayList<String>()
             arrayList.add(name)
             arrayList.add(nickname)
             arrayList.add(phone)
+
+            Log.d("sky", arrayList.toString())
 
             //최종 넘기기
             if (mNameFlag && mNickNameFlag && mPhoneFlag) {
@@ -261,7 +259,7 @@ class InfoFirstActivity : AppCompatActivity(), InfoFirstView {
                 mPhoneFlag = false
 
                 val intent = Intent(this, InfoSecondActivity::class.java)
-                intent.putExtra("arrayList",arrayList)
+                intent.putExtra("arrayList", arrayList)
                 startActivity(intent)
                 finish()
             }

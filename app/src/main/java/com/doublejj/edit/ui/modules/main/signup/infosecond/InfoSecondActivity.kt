@@ -15,8 +15,10 @@ import com.doublejj.edit.data.api.services.infosecond.InfoSecondView
 import com.doublejj.edit.data.models.infosecond.InfoSecondRequest
 import com.doublejj.edit.data.models.infosecond.InfoSecondResponse
 import com.doublejj.edit.databinding.ActivityInfoSecondBinding
+import com.doublejj.edit.ui.modules.main.signup.emailcheck.EmailCheckActivity
 import com.doublejj.edit.ui.modules.main.signup.infofirst.InfoFirstActivity
 import com.doublejj.edit.ui.modules.main.signup.slecttype.SelectTypeActivity
+import com.doublejj.edit.ui.utils.dialog.CustomDialogFragment
 
 
 class InfoSecondActivity : AppCompatActivity(), InfoSecondView {
@@ -38,17 +40,14 @@ class InfoSecondActivity : AppCompatActivity(), InfoSecondView {
 
         //Intent - ArrayList 저장
         var arrayList = intent.getSerializableExtra("arrayList") as ArrayList<String>
-        for (str in arrayList) {
-            arrayList.add(str)
-            Log.d("sky",arrayList.add(str).toString())
-        }
-
+//        var    check = "test"
+//        arrayList.add(check)
+//        Log.d("sky", arrayList.toString())
 
         val emailPatternTest = android.util.Patterns.EMAIL_ADDRESS
-
         //문자(한글,영어), 숫자, 특수문자 중 2가지 포함(8-15자)
         val pwPattern =
-            "^(?=.*[a-zA-Z0-9가-힣])(?=.*[a-zA-Z~!`@#\$%^&*()_+=])(?=.*[0-9!@#\$%^&*]).{8,15}$"
+            "^(?=.*[a-zA-Z0-9])(?=.*[a-zA-Z~!`@#\$%^&*()_+=])(?=.*[0-9!@#\$%^&*]).{8,15}$"
 
         //이메일 입력
         mBinding.etEmailInfoSecond.addTextChangedListener(object : TextWatcher {
@@ -61,13 +60,6 @@ class InfoSecondActivity : AppCompatActivity(), InfoSecondView {
             @SuppressLint("ResourceAsColor")
             override fun afterTextChanged(s: Editable?) {
                 if (s != null) {
-                    //엔터 입력 : 다른 내용 입력 되어있는지 확인
-//                    if (s.toString().contains("\n")) {
-//                        //s.toString().trim()
-//                        if (mPwFlag && mRePwFlag) {
-//                            mBinding.btnInfoSecond.setBackgroundResource(R.color.purple)
-//                        }
-//                    }
                     //띄어쓰기 정규식
                     if (s.toString().contains(" ") || s.toString().isEmpty()) {
                         mBinding.btnInfoSecond.setBackgroundResource(R.color.very_light_pink)
@@ -79,8 +71,6 @@ class InfoSecondActivity : AppCompatActivity(), InfoSecondView {
                     } else {
                         mEmailSpacingFlag = false
                     }
-
-
                     //이메일 정규식 - 중복확인을 누르세요!
                     if (emailPatternTest.matcher(s.toString()).matches()) {
                         mBinding.tvEmailCaptionInfoFirst.setTextColor(R.color.purple)
@@ -101,7 +91,7 @@ class InfoSecondActivity : AppCompatActivity(), InfoSecondView {
         //이메일 중복확인
         mBinding.btnDoubleCheck.setOnClickListener {
             if (mEmailBtnFlag) {
-                mBinding.etEmailInfoSecond.toString().replace(" ", "")
+                mBinding.etEmailInfoSecond.text.trim().toString()
 
                 //이메일 중복 API
                 val email = mBinding.etEmailInfoSecond.text.toString()
@@ -242,7 +232,6 @@ class InfoSecondActivity : AppCompatActivity(), InfoSecondView {
 
         })
 
-
         //다음으로 버튼 클릭
         mBinding.btnInfoSecond.setOnClickListener {
             Log.d("sky", "btnInfoSecond - In")
@@ -257,17 +246,24 @@ class InfoSecondActivity : AppCompatActivity(), InfoSecondView {
             var rePw = mBinding.etRePwInfoFirst.text.toString().replace(" ", "")
             Log.d("sky", "값 : $email, $pw, $rePw")
 
+            arrayList.add(email)
+            arrayList.add(pw)
+            arrayList.add(rePw)
+
+
             if (mEmailFlag && mPwFlag && mRePwFlag) {
                 mEmailFlag = false
                 mPwFlag = false
                 mRePwFlag = false
+                mEmailSpacingFlag = false
+                mPwSpacingFlag = false
+                mRePwSpacingFlag = false
 
-                val intent = Intent(this, SelectTypeActivity::class.java)
-                intent.putExtra("email", email)
-                intent.putExtra("pw", pw)
-                intent.putExtra("rePw", rePw)
-                startActivity(Intent(this, SelectTypeActivity::class.java))
+                val intent = Intent(this, EmailCheckActivity::class.java)
+                intent.putExtra("arrayList", arrayList)
+                startActivity(intent)
                 finish()
+                Log.d("sky - array", arrayList.toString())
             } else {
                 //다이얼로그 : 입력을 다시 확인해주세요!
             }
