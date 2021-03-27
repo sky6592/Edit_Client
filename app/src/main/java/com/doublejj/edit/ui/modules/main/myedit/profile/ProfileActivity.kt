@@ -6,6 +6,7 @@ import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import com.doublejj.edit.R
 import com.doublejj.edit.databinding.ActivityProfileBinding
+import com.doublejj.edit.ui.modules.main.myedit.profile.change_job.ChangeJobActivity
 import com.doublejj.edit.ui.modules.main.myedit.profile.change_password.ChangePasswordActivity
 import com.doublejj.edit.ui.modules.main.myedit.profile.change_profile.ChangeProfileActivity
 
@@ -34,9 +35,9 @@ class ProfileActivity : AppCompatActivity() {
             startActivity(sendIntent)
         }
         binding.llBtnChangePosition.setOnClickListener {
-            // TODO : 직군 변경 페이지
-            /*val sendIntent = Intent(this, ChangePositionActivity::class.java)
-            startActivity(sendIntent)*/
+            // 직군 변경 페이지
+            val sendIntent = Intent(this, ChangeJobActivity::class.java)
+            startActivity(sendIntent)
         }
     }
 

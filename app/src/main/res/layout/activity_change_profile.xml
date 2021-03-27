@@ -394,7 +394,6 @@
                     android:textColor="@color/white"
                     android:fontFamily="@font/noto_sans_kr_medium"
                     android:layout_gravity="center"
-                    android:layout_marginTop="@dimen/size_43dp"
                     android:layout_marginBottom="@dimen/size_35dp" />
 
             </LinearLayout>

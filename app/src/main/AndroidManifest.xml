@@ -20,6 +20,11 @@
         android:usesCleartextTraffic="true"
         android:windowSoftInputMode="adjustResize"
         tools:targetApi="m">
+        <activity
+            android:name=".ui.modules.main.myedit.profile.change_job.ChangeJobActivity"
+            android:windowSoftInputMode="adjustPan"/>
+        <activity android:name=".ui.modules.main.myedit.certificate_mentor.CertificateRejectActivity" />
+        <activity android:name=".ui.modules.main.myedit.certificate_mentor.CertificateInProgressActivity" />
         <activity android:name=".ui.modules.main.myedit.certificate_mentor.CertificateMentorCompleteActivity" />
         <activity android:name=".ui.modules.main.myedit.certificate_mentor.CertificateIdcardActivity" />
         <activity android:name=".ui.modules.main.myedit.certificate_mentor.TrainingFourActivity" />

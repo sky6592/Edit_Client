@@ -78,8 +78,7 @@
     <string name="tv_writing_comment_toolbar_title">코멘트 입력하기</string>
     <string name="tv_writing_comment_input_title">멘토 코멘트 입력</string>
     <string name="tv_writing_comment_input_hint">
-        해당 자소서에 대한 의견을 작성해주세요.\n
-        (40자 이상 작성 필수)
+        해당 자소서에 대한 의견을 작성해주세요.\n(40자 이상 작성 필수)
     </string>
     <string name="tv_writing_comment_notice_first">한 번 등록한 코멘트는 수정이 어렵습니다. 신중히 확인 후 등록해주세요!</string>
     <string name="tv_writing_comment_notice_second">코멘트 삭제는 ‘나의 에딧 &gt; 작성한 코멘트’에서 가능합니다.</string>
@@ -95,8 +94,7 @@
 
     <string name="tv_open_comment_zero_title">아직 코멘트가 없습니다.</string>
     <string name="tv_open_comment_zero_content">
-        멘토님이 작성해주신 코멘트 한 줄이\n
-        멘티님께는 큰 도움이 됩니다!
+        멘토님이 작성해주신 코멘트 한 줄이\n멘티님께는 큰 도움이 됩니다!
     </string>
 
     <string name="tv_open_comment_completion">문장 완성하기</string>
@@ -118,33 +116,27 @@
     <string name="tv_dialog_self_writing_content">코멘트가 아직 없거나, 채택한 코멘트가 없는 경우 문장 완성을 할 수 없어요.</string>
     <string name="tv_dialog_open_comment_title">코멘트를 삭제하시겠어요?</string>
     <string name="tv_dialog_open_comment_content">
-        삭제된 코멘트는 복구할 수 없습니다.\n
-        정말 삭제하시겠어요?
+        삭제된 코멘트는 복구할 수 없습니다.\n정말 삭제하시겠어요?
     </string>
     <string name="tv_dialog_open_sentence_title">문장을 삭제하시겠어요?</string>
     <string name="tv_dialog_open_sentence_content">
-        삭제된 문장은 복구할 수 없습니다.\n
-        정말 삭제하시겠어요?
+        삭제된 문장은 복구할 수 없습니다.\n정말 삭제하시겠어요?
     </string>
     <string name="tv_dialog_sentence_report_title">이 글을 신고하시겠어요?</string>
     <string name="tv_dialog_sentence_report_content">
-        해당 글이 에딧의 가이드에 어긋나거나\n
-        불쾌감을 줄 경우 신고해주세요.
+        해당 글이 에딧의 가이드에 어긋나거나\n불쾌감을 줄 경우 신고해주세요.
     </string>
     <string name="tv_dialog_sentence_temp_title">임시 저장하시겠어요?</string>
     <string name="tv_dialog_sentence_temp_content">
-        임시 저장 목록에 문장을 저장하고\n
-        나중에 다시 작업할 수 있어요.
+        임시 저장 목록에 문장을 저장하고\n나중에 다시 작업할 수 있어요.
     </string>
     <string name="tv_dialog_sentence_submit_title">등록하시겠어요?</string>
     <string name="tv_dialog_sentence_submit_content">
-        등록 이후에는 수정이 어렵습니다.\n
-        신중하게 확인 후 등록해주세요!
+        등록 이후에는 수정이 어렵습니다.\n신중하게 확인 후 등록해주세요!
     </string>
     <string name="tv_dialog_sentence_complete_title">완성하시겠어요?</string>
     <string name="tv_dialog_sentence_complete_content">
-        완성 이후에는 수정이 어렵습니다.\n
-        신중하게 확인 후 등록해주세요!
+        완성 이후에는 수정이 어렵습니다.\n신중하게 확인 후 등록해주세요!
     </string>
     <string name="tv_dialog_withdrawal_title">정보 삭제에 동의하시나요?</string>
     <string name="tv_dialog_withdrawal_content">탈퇴 이후에는 모든 서비스를 사용할 수 없으며, 복구가 불가능합니다.</string>
@@ -165,8 +157,7 @@
     <string name="btn_save">저장하기</string>
     <string name="tv_change_password">비밀번호 변경</string>
     <string name="tv_change_password_input_old_title">
-        본인 확인을 위해\n
-        비밀번호를 입력해주세요.
+        본인 확인을 위해\n비밀번호를 입력해주세요.
     </string>
     <string name="tv_password">비밀번호</string>
     <string name="tv_password_new">새 비밀번호</string>
@@ -177,19 +168,31 @@
     <string name="tv_password_input_not_correct">입력하신 비밀번호가 일치하지 않습니다.</string>
     <string name="tv_password_input_reg">영문, 숫자를 포함한 8~16자 조합으로 입력해주세요.</string>
     <string name="tv_change_password_input_new_title">
-        변경하실 비밀번호를\n
-        입력해주세요.
+        변경하실 비밀번호를\n입력해주세요.
     </string>
     <string name="tv_change_password_complete_title">
-        님,\n
-        변경이 완료되었습니다.
+        님,\n변경이 완료되었습니다.
     </string>
     <string name="tv_change_job">직군 변경</string>
+    <string name="tv_input_etc">기타 입력</string>
     <string name="tv_change_reason_title">변경 사유</string>
     <string name="tv_change_job_title">
-        변경하실 직군을\n
-        선택해주세요.
+        변경하실 직군을\n선택해주세요.
     </string>
+    <string name="spinner_job_0">개발</string>
+    <string name="spinner_job_1">경영</string>
+    <string name="spinner_job_2">기획</string>
+    <string name="spinner_job_3">디자인</string>
+    <string name="spinner_job_4">마케팅 / 홍보</string>
+    <string name="spinner_job_5">사무 / 서비스</string>
+    <string name="spinner_job_6">생산 / 기술</string>
+    <string name="spinner_job_7">영업</string>
+    <string name="spinner_job_8">인사 / 교육</string>
+    <string name="spinner_job_9">재무 / 회계</string>
+    <string name="spinner_job_10">총무</string>
+    <string name="spinner_job_11">C/S</string>
+    <string name="spinner_job_12">기타 (직접 입력)</string>
+
     <string name="tv_change_job_select">직군 선택</string>
     <string name="tv_menu_sympathy_list">공감 목록</string>
     <string name="tv_menu_sentence_list">자소서 목록</string>
@@ -225,12 +228,10 @@
     <string name="spinner_mentor_to_mentee_2">멘티 활동에 대한 궁금증</string>
     <string name="spinner_mentor_to_mentee_3">멘토 활동에 대한 부담감</string>
     <string name="tv_switch_position_complete_title">
-        님,\n
-        변경 신청이 완료되었습니다.
+        님,\n변경 신청이 완료되었습니다.
     </string>
     <string name="tv_switch_position_complete_mentee_content">
-        어플을 종료한 후, 다시 로그인하시면\n
-        정상적으로 적용됩니다!
+        어플을 종료한 후, 다시 로그인하시면\n정상적으로 적용됩니다!
     </string>
     <!--<string name="tv_switch_position_complete_mentor_content_first">
         승인까지 1~2일 정도가 소요될 수 있습니다.\n
