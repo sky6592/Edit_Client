@@ -20,6 +20,7 @@ import com.doublejj.edit.ui.modules.main.assistance.email.EmailFindActivity
 import com.doublejj.edit.ui.modules.main.assistance.pw.PwFindActivity
 import com.doublejj.edit.ui.utils.snackbar.CustomSnackbar
 import com.google.android.material.snackbar.Snackbar
+import com.doublejj.edit.ApplicationClass
 
 class LogInActivity : AppCompatActivity(), LogInView {
 
@@ -36,6 +37,7 @@ class LogInActivity : AppCompatActivity(), LogInView {
         //비밀번호 정규식
         val pwPattern =
             "^(?=.*[a-zA-Z0-9])(?=.*[a-zA-Z~!`@#\$%^&*()_+=])(?=.*[0-9~!`@#\$%^&*()_+=]).{8,15}$"
+
 
         //이메일 입력
         mBinding.etEmailLogIn.addTextChangedListener(object : TextWatcher {
@@ -164,23 +166,29 @@ class LogInActivity : AppCompatActivity(), LogInView {
 
     override fun onPostLoginSuccess(response: LoginResponse) {
         if (response.code == 1000) {
+            val editor = ApplicationClass.sSharedPreferences.edit()
+            editor.putString(ApplicationClass.X_ACCESS_TOKEN, response.result.jwt)
+            editor.commit()
+            editor.apply()
             val intentMain = Intent(this, MainActivity::class.java)
             startActivity(intentMain)
             //모든화면종료
             finishAffinity()
-
         } else {
             CustomSnackbar.make(
                 mBinding.root, "onPostLoginSuccess" +
                         response.message.toString(),
                 Snackbar.LENGTH_LONG
-            )
-                .show()
+            ).show()
         }
     }
 
     override fun onPostLoginFailure(message: String) {
-        CustomSnackbar.make(mBinding.root, "onPostLoginFailure : " + message, Snackbar.LENGTH_LONG)
+        CustomSnackbar.make(
+            mBinding.root,
+            message,
+            Snackbar.LENGTH_LONG,
+        )
             .show()
     }
 }
