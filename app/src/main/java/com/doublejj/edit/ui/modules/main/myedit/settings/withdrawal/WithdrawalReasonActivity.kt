@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.util.TypedValue
 import android.view.View
 import android.view.ViewGroup
@@ -13,16 +14,24 @@ import android.widget.ArrayAdapter
 import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import com.doublejj.edit.R
+import com.doublejj.edit.data.api.services.withdrawal.WithdrawalService
+import com.doublejj.edit.data.api.services.withdrawal.WithdrawalView
+import com.doublejj.edit.data.models.ResultStringResponse
+import com.doublejj.edit.data.models.withdrawal.WithdrawalRequest
+import com.doublejj.edit.data.models.withdrawal.WithdrawalResponse
 import com.doublejj.edit.databinding.ActivityWithdrawalReasonBinding
 import com.doublejj.edit.ui.utils.dialog.CustomDialogClickListener
 import com.doublejj.edit.ui.utils.dialog.CustomDialogFragment
+import com.doublejj.edit.ui.utils.snackbar.CustomSnackbar
 import com.doublejj.edit.ui.utils.span.CustomSpannableString
+import com.google.android.material.snackbar.Snackbar
 
 class WithdrawalReasonActivity : AppCompatActivity() {
     private val TAG: String = javaClass.simpleName.toString()
     private lateinit var binding: ActivityWithdrawalReasonBinding
     private var withdrawalContent: Int? = null
     private var etcWithdrawalContent: String? = null
+    private lateinit var nickName: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,7 +43,7 @@ class WithdrawalReasonActivity : AppCompatActivity() {
         }
 
         // apply span to nickname
-        val nickName = intent.getStringExtra("nickName") ?: ""
+        nickName = intent.getStringExtra("nickName") ?: ""
         val textTitle = nickName + binding.tvReasonTitle.text.toString()
         val spanStr = CustomSpannableString(applicationContext).getPurpleActiveColorText(textTitle, nickName, R.color.purple_active)
         binding.tvReasonTitle.text = spanStr
@@ -99,34 +108,6 @@ class WithdrawalReasonActivity : AppCompatActivity() {
                 withdrawalContent = null
             }
         }
-        binding.btnNext.setOnClickListener {
-            if (binding.btnNext.isEnabled) {
-                val dialog = CustomDialogFragment(
-                    R.string.tv_dialog_withdrawal_title,
-                    R.string.tv_dialog_withdrawal_content,
-                    R.string.tv_dialog_agree,
-                    R.string.tv_dialog_dismiss
-                )
-                dialog.setDialogClickListener(object : CustomDialogClickListener {
-                    override fun onPositiveClick() {
-                        // TODO : 회원탈퇴 API 적용
-
-                        // TODO : 회원 탈퇴 API View에서 화면 이동
-                        val sendIntent = Intent(this@WithdrawalReasonActivity, WithdrawalCompleteActivity::class.java)
-                        sendIntent.putExtra("nickName", nickName)
-                        sendIntent.putExtra("withdrawalContent", getSelectedString(withdrawalContent!!))
-                        if (withdrawalContent == 3 && binding.etInputWithdrawalEtcContent.length() >= 10) {
-                            etcWithdrawalContent = binding.etInputWithdrawalEtcContent.text.toString()
-                        }
-                        sendIntent.putExtra("etcWithdrawalContent", etcWithdrawalContent?:"NONE")
-                        startActivity(sendIntent)
-                    }
-                    override fun onNegativeClick() {
-                    }
-                })
-                dialog.show(supportFragmentManager, "CustomDialog")
-            }
-        }
 
         binding.etInputWithdrawalEtcContent.addTextChangedListener(object : TextWatcher {
             // gets triggered immediately after something is typed
@@ -144,6 +125,53 @@ class WithdrawalReasonActivity : AppCompatActivity() {
                 binding.btnNext.isEnabled = binding.etInputWithdrawalEtcContent.text.toString().length >= 10
             }
         })
+
+        binding.btnNext.setOnClickListener {
+            if (binding.btnNext.isEnabled) {
+                val dialog = CustomDialogFragment(
+                    R.string.tv_dialog_withdrawal_title,
+                    R.string.tv_dialog_withdrawal_content,
+                    R.string.tv_dialog_agree,
+                    R.string.tv_dialog_dismiss
+                )
+
+                dialog.setDialogClickListener(object : CustomDialogClickListener, WithdrawalView {
+                    override fun onPositiveClick() {
+                        // 기타 선택 후 의견이 유효하도록 NONE 처리
+                        if (withdrawalContent == 3 && binding.etInputWithdrawalEtcContent.length() >= 10) {
+                            etcWithdrawalContent = binding.etInputWithdrawalEtcContent.text.toString()
+                        }
+                        else {
+                            etcWithdrawalContent = "NONE"
+                        }
+
+                        // 회원탈퇴 API
+                        WithdrawalService(this).tryDeleteWithdrawal(
+                            WithdrawalRequest(
+                                withdrawalContent = getSelectedString(withdrawalContent!!),
+                                etcWithdrawalContent = etcWithdrawalContent!!
+                            )
+                        )
+                    }
+                    override fun onNegativeClick() {
+                    }
+
+                    override fun onWithdrawalSuccess(response: WithdrawalResponse) {
+                        if (response.isSuccess) {
+                            // dialog에서 activity로 전환하기 위해 dialog 밖의 activity 넘겨줌
+                            val sendIntent = Intent(this@WithdrawalReasonActivity, WithdrawalCompleteActivity::class.java)
+                            sendIntent.putExtra("nickName", nickName)
+                            startActivity(sendIntent)
+                        }
+                    }
+
+                    override fun onWithdrawalFailure(message: String) {
+                        CustomSnackbar.make(binding.root, message, Snackbar.LENGTH_SHORT)
+                    }
+                })
+                dialog.show(supportFragmentManager, "CustomDialog")
+            }
+        }
     }
 
     fun getSelectedString(index: Int) : String {
@@ -154,4 +182,5 @@ class WithdrawalReasonActivity : AppCompatActivity() {
     fun dipToPixels(dipValue: Float) : Int {
         return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dipValue, resources.displayMetrics).toInt()
     }
+
 }
