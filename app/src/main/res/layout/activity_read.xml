@@ -87,7 +87,8 @@
         <!--스크롤뷰설치하기!!!-->
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
 
             <!--스크롤뷰 자식뷰-->
             <LinearLayout
@@ -193,8 +194,33 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="bottom">
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/margin_20dp"
+                android:gravity="top"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="false"
+                    android:gravity="center|center_horizontal" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/noto_sans_kr_regular"
+                    android:lineSpacingExtra="5sp"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/tv_12sp"
+                    android:gravity="center_vertical"
+                    android:textStyle="normal"
+                    tools:text="@string/tv_check_info_read" />
+
+            </LinearLayout>
 
             <!-- Button -->
             <androidx.appcompat.widget.AppCompatButton

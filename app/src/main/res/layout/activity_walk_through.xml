@@ -45,7 +45,7 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:layout_width="@dimen/btn_sign_up_weight"
-            android:layout_height="@dimen/btn_sign_up_height"
+            android:layout_height="37dp"
             android:background="@drawable/shadow_radius_sign_up_bg"
             android:fontFamily="@font/noto_sans_kr_medium"
             android:gravity="center_vertical|center_horizontal"

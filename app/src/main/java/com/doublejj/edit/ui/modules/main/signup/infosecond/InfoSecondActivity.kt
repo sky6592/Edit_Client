@@ -91,7 +91,7 @@ class InfoSecondActivity : AppCompatActivity(), InfoSecondView {
         //이메일 중복확인
         mBinding.btnDoubleCheck.setOnClickListener {
             if (mEmailBtnFlag) {
-                mBinding.etEmailInfoSecond.toString().replace(" ", "")
+                mBinding.etEmailInfoSecond.text.trim().toString()
 
                 //이메일 중복 API
                 val email = mBinding.etEmailInfoSecond.text.toString()
@@ -232,7 +232,6 @@ class InfoSecondActivity : AppCompatActivity(), InfoSecondView {
 
         })
 
-
         //다음으로 버튼 클릭
         mBinding.btnInfoSecond.setOnClickListener {
             Log.d("sky", "btnInfoSecond - In")
@@ -261,10 +260,10 @@ class InfoSecondActivity : AppCompatActivity(), InfoSecondView {
                 mRePwSpacingFlag = false
 
                 val intent = Intent(this, EmailCheckActivity::class.java)
-                intent.putExtra("arrayList",arrayList)
+                intent.putExtra("arrayList", arrayList)
                 startActivity(intent)
                 finish()
-                Log.d("sky - array",arrayList.toString())
+                Log.d("sky - array", arrayList.toString())
             } else {
                 //다이얼로그 : 입력을 다시 확인해주세요!
             }

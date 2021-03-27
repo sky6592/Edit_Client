@@ -30,7 +30,6 @@ class InfoFirstActivity : AppCompatActivity(), InfoFirstView {
 
     private var mNickNameLengthFlag: Boolean = false
 
-    //@SuppressLint("ClickableViewAccessibility")
     @SuppressLint("ResourceAsColor")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -241,9 +240,9 @@ class InfoFirstActivity : AppCompatActivity(), InfoFirstView {
             )
 
             //입력내용 저장
-            var name = mBinding.etNameInfoFirst.text.toString().replace(" ", "")
-            var nickname = mBinding.etNickNameInfoFirst.text.toString().replace(" ", "")
-            var phone = mBinding.etPhoneInfoFirst.text.toString().replace(" ", "")
+            var name = mBinding.etNameInfoFirst.text.trim().toString()
+            var nickname = mBinding.etNickNameInfoFirst.text.trim().toString()
+            var phone = mBinding.etPhoneInfoFirst.text.trim().toString()
 
             var arrayList = ArrayList<String>()
             arrayList.add(name)

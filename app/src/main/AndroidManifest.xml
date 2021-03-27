@@ -19,22 +19,29 @@
             android:windowSoftInputMode="adjustResize">
 
         </activity>
+        <activity android:name=".ui.modules.main.assistance.pw.PwFindActivity"></activity>
+        <activity android:name=".ui.modules.main.assistance.email.EmailFindActivity"
+            android:windowSoftInputMode="adjustResize"/>
         <activity
             android:name=".ui.modules.main.signup.emailcheck.EmailCheckActivity"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".ui.modules.main.signup.read.ReadActivity"
+            android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".ui.modules.main.signup.slectjopgroup.JobGroupActivity" />
+        <activity android:name=".ui.modules.main.login.LogInActivity"
             android:windowSoftInputMode="adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
-        <activity android:name=".ui.modules.main.signup.read.ReadActivity"
-            android:windowSoftInputMode="adjustResize">
-
-        </activity>
-        <activity android:name=".ui.modules.main.signup.slectjopgroup.JobGroupActivity" >
-
-        </activity>
-        <activity android:name=".ui.modules.main.login.LogInActivity" />
         <activity android:name=".ui.modules.main.signup.slecttype.SelectTypeActivity" >
 
         </activity>
+        <activity android:name=".ui.modules.main.walkthrough.WalkThroughActivity" />
+
         <activity android:name=".ui.modules.main.signup.infosecond.InfoSecondActivity" />
         <activity android:name=".ui.modules.main.signup.infofirst.InfoFirstActivity">
 
@@ -61,7 +68,6 @@
             android:windowSoftInputMode="adjustResize" />
         <activity android:name=".ui.modules.main.home.writing_comment.WritingCommentActivity" />
 
-        <activity android:name=".ui.modules.main.walkthrough.WalkThroughActivity" />
         <activity android:name=".ui.modules.main.splash.SplashActivity">
                 <intent-filter>
                         <action android:name="android.intent.action.MAIN" />

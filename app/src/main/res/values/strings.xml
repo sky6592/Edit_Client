@@ -156,6 +156,8 @@
     <string name="tv_dialog_dismiss">취소</string>
     <string name="tv_dialog_agree">동의</string>
     <string name="tv_dialog_select">선택하기</string>
+    <string name="tv_dialog_title_find_email">가입하신 메일 계정입니다.</string>
+    <string name="tv_dialog_content_find_email">개인정보 보호를 위해 일부는 *로 표기됩니다.</string>
 
 
     <!--  myedit_fragment  -->
@@ -450,7 +452,9 @@
     <string name="tv_pw_info">비밀번호</string>
     <string name="hint_pw_info">비밀번호를 입력해주세요.</string>
     <string name="tv_pw_caption_info">8자 이상 15자 이하 비밀번호 입력\n(문자,숫자,기호 중 2가지 조합)</string>
+    <string name="tv_pw_caption_info_log_in">8자 이상의 비밀번호를 입력해주세요. (문자, 숫자, 기호 조합 가능)</string>
     <string name="tv_pw_wrong_caption_info">8자 이상 15자 이하 비밀번호 다시입력\n(문자,숫자,기호 중 2가지 조합)</string>
+    <string name="tv_pw_result_info">비밀번호 입력감사합니다!</string>
 
 
     <string name="tv_re_pw_info">비밀번호 재입력</string>
@@ -479,6 +483,7 @@
     <string name="tv_find_email"><u>이메일 찾기</u></string>
     <string name="tv_info_find_pw">비밀번호를 잊으셨나요?</string>
     <string name="tv_find_pw"><u>비밀번호 찾기</u></string>
+    <string name="tv_check_log_in">로그인 정보를 확인해주세요</string>
 
     <!-- Select Type -->
     <string name="tv_nick_name_select_type">닉네임</string>
@@ -512,12 +517,19 @@
     <string name="tv_three_content_read">
         1) 에딧 내에서의 개인정보 요구는 금지하고 있습니다.\n\n
         2) 다른 유저가 나의 개인정보를 요구한다면 신고해주세요.</string>
+    <string name="tv_check_info_read">에딧의 가이드를 모두 읽고, 이해했습니다.</string>
 
     <!-- Email Check -->
     <string name="tv_info_email_check">이메일 인증을 진행합니다.\n메일 주소를 확인해주세요!</string>
     <string name="tv_caption_email_check">인증을 진행할 이메일이 아니라면 다시 입력해주세요!</string>
     <string name="tv_bottom_email_check">회원가입 완료까지 얼마 남지 않았어요! :)</string>
     <string name="btn_email_check">인증 메일 발송</string>
+
+    <!-- Find Email -->
+    <string name="tv_title_email_find">에딧에 가입했던\n정보를 입력해주세요. </string>
+    <string name="btn_email_find">이메일 찾기</string>
+    <string name="tv_name_result_email_find">이름 입력감사합니다!</string>
+    <string name="tv_check_info_find_email">정보를 다시 확인해주세요!</string>
 
     <!-- Enter Code -->
     <string name="tv_info_enter_code">인증 메일이 발송되었어요.\n인증 코드를 입력해주세요!</string>

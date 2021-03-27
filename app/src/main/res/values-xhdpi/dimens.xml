@@ -184,5 +184,8 @@
     <dimen name="btn_sign_up_weight">159dp</dimen>
     <dimen name="btn_sign_up_height">50dp</dimen>
 
+    //dialog
+    <dimen name="card_view_height_217dp">217dp</dimen>
+
 
 </resources>

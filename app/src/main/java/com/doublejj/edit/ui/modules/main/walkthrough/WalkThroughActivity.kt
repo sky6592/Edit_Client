@@ -8,7 +8,6 @@ import com.doublejj.edit.R
 import com.doublejj.edit.data.models.walkthrough.WalkThroughModel
 import com.doublejj.edit.databinding.ActivityWalkThroughBinding
 import com.doublejj.edit.ui.modules.main.login.LogInActivity
-import com.doublejj.edit.ui.modules.main.signin.SignInActivity
 import com.doublejj.edit.ui.modules.main.signup.infofirst.InfoFirstActivity
 import pl.pzienowicz.autoscrollviewpager.AutoScrollViewPager
 
@@ -39,6 +38,7 @@ class WalkThroughActivity : AppCompatActivity() {
 
     fun onMoveSignUp() {
         return startActivity(Intent(this, InfoFirstActivity::class.java))
+
     }
 
     fun onMoveLogIn() {
