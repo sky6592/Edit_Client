@@ -57,10 +57,13 @@ class AdoptionCompletedFragment : Fragment(), AdoptionCompletedView {
         if (response.isSuccess) {
             binding.rvSentence.adapter = SentenceAdapter(requireContext(), response.result, requireActivity().supportFragmentManager)
         }
+        else {
+            CustomSnackbar.make(requireView(), response.message.toString(), Snackbar.LENGTH_SHORT).show()
+        }
     }
 
     override fun onGetAdoptionCompletedSentenceFailure(message: String) {
-        CustomSnackbar.make(requireView(), message, Snackbar.LENGTH_SHORT)
+        CustomSnackbar.make(requireView(), message, Snackbar.LENGTH_SHORT).show()
     }
 
     override fun onDetach() {

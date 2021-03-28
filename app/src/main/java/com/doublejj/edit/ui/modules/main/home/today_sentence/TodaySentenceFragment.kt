@@ -9,6 +9,9 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.doublejj.edit.ApplicationClass
+import com.doublejj.edit.ApplicationClass.Companion.USER_COLOR
+import com.doublejj.edit.ApplicationClass.Companion.USER_EMOTION
 import com.doublejj.edit.ApplicationClass.Companion.USER_POSITION
 import com.doublejj.edit.ApplicationClass.Companion.sSharedPreferences
 import com.doublejj.edit.R
@@ -49,6 +52,12 @@ class TodaySentenceFragment : Fragment(), TodaySentenceView, SentenceLimitView {
         binding.ibRefresh.setOnClickListener {
             // TODO : refresh data
         }
+        
+        // 내 프로필 캐릭터로 바꾸기
+        val charColor = sSharedPreferences.getString(USER_COLOR, "purple").toString()
+        val charEmotion = sSharedPreferences.getString(USER_EMOTION, "bigSmile").toString()
+        val characterResId = (requireContext().applicationContext as ApplicationClass).getCharacterResId(charColor, charEmotion)
+        binding.ivMyCharacter.setImageResource(characterResId)
 
         binding.etInputSentence.setOnClickListener {
             when (sSharedPreferences.getString(USER_POSITION, "MENTEE")) {
@@ -90,7 +99,7 @@ class TodaySentenceFragment : Fragment(), TodaySentenceView, SentenceLimitView {
 
     override fun onGetSentenceLimitSuccess(response: ResultResponse) {
         if (response.isSuccess) {
-            if (response.result < resources.getInteger(R.integer.length_limit_today_sentence)) {
+            if (response.result!! < resources.getInteger(R.integer.length_limit_today_sentence)) {
                 // 문장 작성 가능
                 startActivity(Intent(activity, WritingSentenceActivity::class.java))
             }
@@ -99,6 +108,9 @@ class TodaySentenceFragment : Fragment(), TodaySentenceView, SentenceLimitView {
                 // TODO : 스낵바 위치 bnv 위로 올리기
                 CustomSnackbar.make(binding.root, getString(R.string.snackbar_limit_over),Snackbar.LENGTH_LONG).show()
             }
+        }
+        else {
+            CustomSnackbar.make(binding.root, response.message.toString(), Snackbar.LENGTH_SHORT)
         }
     }
 

@@ -54,13 +54,8 @@ class OpenCommentFragment : Fragment(), CommentsOfSentenceView {
         /** floating button **/
         when (sSharedPreferences.getString(USER_POSITION, "MENTEE")) {
             "MENTEE" -> {
-                // TODO : 멘토 테스트 코드
-                binding.fabMentor.visibility = View.VISIBLE
-                binding.fabMentor.isEnabled = true
-
-            /*// TODO : 테스팅 후 정상 코드로 돌리기
                 binding.fabMentor.visibility = View.GONE
-                binding.fabMentor.isEnabled = false*/
+                binding.fabMentor.isEnabled = false
             }
             "MENTOR" -> {
                 binding.fabMentor.visibility = View.VISIBLE
