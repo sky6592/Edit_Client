@@ -158,6 +158,9 @@
     <string name="tv_dialog_select">선택하기</string>
     <string name="tv_dialog_title_find_email">가입하신 메일 계정입니다.</string>
     <string name="tv_dialog_content_find_email">개인정보 보호를 위해 일부는 *로 표기됩니다.</string>
+    <string name="tv_dialog_title_find_pw">메일이 전송되었습니다.</string>
+    <string name="tv_dialog_wrong_title_find_pw">메일 전송 실패!</string>
+    <string name="tv_dialog_content_find_pw">해당 이메일로 임시 비밀번호를 보내드렸습니다.\n확인해주세요!</string>
 
 
     <!--  myedit_fragment  -->

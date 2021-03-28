@@ -48,6 +48,7 @@ class EmailCheckActivity : AppCompatActivity(), EmailCheckVIew {
         }
 
 
+        //이메일 입력
         mBinding.etEmailCheck.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
             }

@@ -148,7 +148,6 @@ class LogInActivity : AppCompatActivity(), LogInView {
             }
             Log.d("sky", "btn in - $mEmailBtnFlag + $mPwBtnFlag")
         }
-
     }
 
     fun onClick(v: View) {
