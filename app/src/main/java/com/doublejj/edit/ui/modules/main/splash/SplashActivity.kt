@@ -26,21 +26,34 @@ class SplashActivity : AppCompatActivity(), SplashView {
 
         mBinding.animationView.addAnimatorUpdateListener {
             if (mBinding.animationView.isAnimating) {
-                Log.d("editors","addAnimatorUpdateListener")
+                Log.d("editors", "addAnimatorUpdateListener")
                 SplashService(this).tryGetSplash()
             }
         }
     }
 
     override fun onGetSplashSuccess(response: SplashResponse) {
-        Log.d("editors","Splash - API성공")
+        Log.d("editors", "Splash - API성공")
         /** Success : Go Main **/
         if (response.code == 1000) {
-
+            //jwt값 저장되어있는지 확인
+            val spf = this.getSharedPreferences("EDIT", MODE_PRIVATE)
+            val editor = ApplicationClass.sSharedPreferences.edit()
+            val jwt = spf.getString(ApplicationClass.X_ACCESS_TOKEN, "")
+            editor.putString(ApplicationClass.X_ACCESS_TOKEN, jwt)
+            //멘토 인증 여부
+            editor.putBoolean(
+                ApplicationClass.MENTOR_AUTH_CONFIRM,
+                response.result.isCertificatedMentor
+            )
+            editor.commit()
+            editor.apply()
+            //가입자(멘토/멘티)
             var intentMain = Intent(this, MainActivity::class.java)
             startActivity(intentMain)
             finish()
         } else {
+            //미가입자
             var intentWalkThrough = Intent(this, WalkThroughActivity::class.java)
             startActivity(intentWalkThrough)
             finish()

@@ -167,6 +167,7 @@ class LogInActivity : AppCompatActivity(), LogInView {
         if (response.code == 1000) {
             val editor = ApplicationClass.sSharedPreferences.edit()
             editor.putString(ApplicationClass.X_ACCESS_TOKEN, response.result.jwt)
+//            editor.putBoolean(ApplicationClass.MENTOR_AUTH_CONFIRM,"가져온 값")
             editor.commit()
             editor.apply()
             val intentMain = Intent(this, MainActivity::class.java)
