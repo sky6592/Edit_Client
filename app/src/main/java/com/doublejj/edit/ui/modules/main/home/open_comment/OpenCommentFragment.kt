@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.doublejj.edit.ApplicationClass.Companion.MENTOR_AUTH_CONFIRM
 import com.doublejj.edit.ApplicationClass.Companion.USER_POSITION
 import com.doublejj.edit.ApplicationClass.Companion.sSharedPreferences
 import com.doublejj.edit.R
@@ -52,19 +53,21 @@ class OpenCommentFragment : Fragment(), CommentsOfSentenceView {
         }
 
         /** floating button **/
+        val mentorAuth = sSharedPreferences.getBoolean(MENTOR_AUTH_CONFIRM, false)
         when (sSharedPreferences.getString(USER_POSITION, "MENTEE")) {
             "MENTEE" -> {
-                // TODO : 멘토 테스트 코드
-                binding.fabMentor.visibility = View.VISIBLE
-                binding.fabMentor.isEnabled = true
-
-            /*// TODO : 테스팅 후 정상 코드로 돌리기
                 binding.fabMentor.visibility = View.GONE
-                binding.fabMentor.isEnabled = false*/
+                binding.fabMentor.isEnabled = false
             }
             "MENTOR" -> {
-                binding.fabMentor.visibility = View.VISIBLE
-                binding.fabMentor.isEnabled = true
+                if (mentorAuth) {
+                    binding.fabMentor.visibility = View.VISIBLE
+                    binding.fabMentor.isEnabled = true
+                }
+                else {
+                    binding.fabMentor.visibility = View.GONE
+                    binding.fabMentor.isEnabled = false
+                }
             }
         }
 
@@ -85,7 +88,7 @@ class OpenCommentFragment : Fragment(), CommentsOfSentenceView {
             )
             dialog.setDialogClickListener(object : CustomDialogClickListener {
                 override fun onPositiveClick() {
-                    // TODO : 해당 카드 신고 처리
+                    // 해당 카드 신고 처리
                     CustomSnackbar.make(it, getString(R.string.snackbar_report), Snackbar.LENGTH_LONG).show()
                 }
                 override fun onNegativeClick() {
@@ -107,11 +110,11 @@ class OpenCommentFragment : Fragment(), CommentsOfSentenceView {
 
     fun getComments() {
         // TODO : 무한스크롤 처리
-        val sentenceId = requireArguments().getLong("coverLetterId").toInt()
+        val sentenceId = requireArguments().getLong("coverLetterId")
 
         CommentsOfSentenceService(this).tryGetCommentsOfSentence(
             sentenceId = sentenceId,
-            page = 0
+            page = 1
         )
     }
 

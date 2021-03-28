@@ -9,7 +9,7 @@ import retrofit2.http.Query
 interface CommentsOfSentenceRetrofitInterface {
     @GET("/api/cover-letters/{cover-letter-id}/comments")
     fun getCommentsOfSentence(
-        @Path("cover-letter-id") sentenceId: Int,
+        @Path("cover-letter-id") sentenceId: Long,
         @Query("page") page: Int
     ) : Call<LookupCommentResponse>
 }

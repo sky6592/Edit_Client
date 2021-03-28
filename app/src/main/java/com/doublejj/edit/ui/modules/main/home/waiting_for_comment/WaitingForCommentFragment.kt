@@ -49,7 +49,7 @@ class WaitingForCommentFragment : Fragment(), WaitingForCommentView {
 
     fun setAdapter() {
         // TODO : 페이징 적용하기
-        WaitingForCommentService(this).tryGetWaitingCommentSentence(page = 0)
+        WaitingForCommentService(this).tryGetWaitingCommentSentence(page = 1)
         binding.rvSentence.layoutManager = LinearLayoutManager(context)
     }
 

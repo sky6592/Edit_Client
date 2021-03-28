@@ -34,9 +34,9 @@ class OpenCommentAdapter(
 
     override fun onBindViewHolder(holder: OpenCommentAdapter.ViewHolder, position: Int) {
         var commentData = commentDataList.get(position)
-        /*// TODO : response에 userProfile 추가되면 주석 풀고 프로필 적용
-        val characterResId = (context.applicationContext as ApplicationClass).getCharacterResId(commentData.userProfile)
-        holder.ivCharacter.setImageResource(characterResId)*/
+        // TODO : response에 userProfile 추가되면 주석 풀고 프로필 적용
+//        val characterResId = (context as ApplicationClass).getCharacterResId(commentData.userProfile)
+//        holder.ivCharacter.setImageResource(characterResId)
         holder.tvSentenceWriter.text = commentData.nickName
         holder.tvOccupationType.text = commentData.jobName
         holder.ibMenu.setOnClickListener {

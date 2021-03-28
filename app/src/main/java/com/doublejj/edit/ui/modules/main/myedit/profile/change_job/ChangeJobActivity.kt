@@ -114,6 +114,7 @@ class ChangeJobActivity : AppCompatActivity(), ChangeJobView {
         binding.btnSave.setOnClickListener {
             if (binding.btnSave.isEnabled) {
                 etcStr = binding.etInputJobEtc.text.toString()
+                if (selectedId == R.id.rb_job_12) selectedStr = "기타"
                 if (etcStr == "" || etcStr == null || selectedId != R.id.rb_job_12) etcStr = "NONE"
                 if (selectedId != null) {
                     // 직군 변경 API 적용

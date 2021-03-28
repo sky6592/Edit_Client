@@ -6,16 +6,22 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.RecyclerView
+import com.doublejj.edit.ApplicationClass
 import com.doublejj.edit.R
-import com.doublejj.edit.data.api.services.lookup_comments_of_sentence.CommentsOfSentenceService
 import com.doublejj.edit.data.api.services.report_sentence.ReportSentenceService
 import com.doublejj.edit.data.api.services.report_sentence.ReportSentenceView
+import com.doublejj.edit.data.api.services.sentence.DeletePublishedSentenceService
+import com.doublejj.edit.data.api.services.sentence.DeletePublishedSentenceView
+import com.doublejj.edit.data.api.services.sentence.SympathizeSentenceService
+import com.doublejj.edit.data.api.services.sentence.SympathizeSentenceView
 import com.doublejj.edit.data.models.ResultResponse
-import com.doublejj.edit.data.models.lookup_comments_of_sentence.LookupCommentResponse
+import com.doublejj.edit.data.models.report_sentence.ReportSentenceRequest
 import com.doublejj.edit.data.models.sentence.SentenceData
+import com.doublejj.edit.data.models.sentence.SympathizeSentenceResponse
 import com.doublejj.edit.ui.modules.main.home.open_comment.OpenCommentFragment
 import com.doublejj.edit.ui.utils.dialog.CustomDialogClickListener
 import com.doublejj.edit.ui.utils.dialog.CustomDialogFragment
@@ -26,7 +32,8 @@ class SentenceAdapter(
     val context: Context,
     var sentenceDataList: MutableList<SentenceData>,
     val fm: FragmentManager
-) : RecyclerView.Adapter<SentenceAdapter.ViewHolder>(), ReportSentenceView {
+) : RecyclerView.Adapter<SentenceAdapter.ViewHolder>(),
+    ReportSentenceView, DeletePublishedSentenceView, SympathizeSentenceView {
     lateinit var parentView: ViewGroup
 
     override fun onCreateViewHolder(
@@ -43,34 +50,72 @@ class SentenceAdapter(
 
     override fun onBindViewHolder(holder: SentenceAdapter.ViewHolder, position: Int) {
         var sentenceData = sentenceDataList.get(position)
-        /*// TODO : response에 userProfile 추가되면 주석 풀고 프로필 적용
+
+        // 프로필 적용
         val characterResId = (context.applicationContext as ApplicationClass).getCharacterResId(sentenceData.userProfile)
-        holder.ivCharacter.setImageResource(characterResId)*/
+        holder.ivCharacter.setImageResource(characterResId)
+
         holder.tvSentenceWriter.text = sentenceData.nickName
         holder.tvOccupationType.text = sentenceData.jobName
+
+        // 내 문장일 경우 신고대신 삭제 처리
+        if (sentenceData.isMine) {
+            holder.ibMenu.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.icon_delete))
+        }
         holder.ibMenu.setOnClickListener {
-            val dialog = CustomDialogFragment(
-                R.string.tv_dialog_sentence_report_title,
-                R.string.tv_dialog_sentence_report_content,
-                R.string.tv_dialog_report,
-                R.string.tv_dialog_dismiss
-            )
+            var dialog: CustomDialogFragment
+            if (sentenceData.isMine) {
+                dialog = CustomDialogFragment(
+                    R.string.tv_dialog_open_sentence_title,
+                    R.string.tv_dialog_open_sentence_content,
+                    R.string.tv_dialog_delete,
+                    R.string.tv_dialog_dismiss
+                )
+            }
+            else {
+                dialog = CustomDialogFragment(
+                    R.string.tv_dialog_sentence_report_title,
+                    R.string.tv_dialog_sentence_report_content,
+                    R.string.tv_dialog_report,
+                    R.string.tv_dialog_dismiss
+                )
+            }
             dialog.setDialogClickListener(object : CustomDialogClickListener {
                 override fun onPositiveClick() {
-                    // 해당 카드 신고 처리
-                    ReportSentenceService(this@SentenceAdapter).tryReportSentence(sentenceData.coverLetterId)
+                    // 내 문장일 경우 문장 삭제 API
+                    if (sentenceData.isMine) {
+                        // 문장 삭제 API
+                        DeletePublishedSentenceService(this@SentenceAdapter).tryDeletePublishedSentence(
+                            sentenceData.coverLetterId
+                        )
+
+                        // 리스트에서도 문장 삭제
+                        sentenceDataList.remove(sentenceData)
+                        // TODO : refresh()로 다시 리스트 보여주기
+//                        refresh()
+                    }
+                    // 내 문장이 아닐 경우
+                    else {
+                        // 해당 문장 신고 API
+                        ReportSentenceService(this@SentenceAdapter).tryReportSentence(
+                            ReportSentenceRequest(sentenceData.coverLetterId)
+                        )
+                    }
                 }
                 override fun onNegativeClick() {
                 }
+
             })
             dialog.show(fm, "CustomDialog")
         }
+
         holder.tvSelfWritingType.text = sentenceData.coverLetterCategoryName
         holder.tvSentenceContent.text = sentenceData.coverLetterContent
-        holder.tbSympathy.isChecked = sentenceData.sympathy
+        holder.tbSympathy.isChecked = sentenceData.isSympathy
         holder.tvSympathyCount.text = sentenceData.sympathiesCount.toString()
         holder.llBtnSympathy.setOnClickListener {
-            // TODO : 해당 카드 공감 처리
+            // 공감 처리
+            SympathizeSentenceService(this).tryPatchSympathizeSentence(sentenceData.coverLetterId)
             val sympathyState = holder.tbSympathy.isChecked
             holder.tbSympathy.isChecked = !sympathyState
             if (!sympathyState) {
@@ -86,8 +131,7 @@ class SentenceAdapter(
             // TODO : 해당 카드의 코멘트 보기 화면으로 이동
             val bundle = Bundle()
             bundle.putLong("coverLetterId", sentenceData.coverLetterId)
-            /*// TODO : response에 userProfile 추가되면 주석 풀고 프로필 적용
-            bundle.putInt("ivCharacter", characterResId)*/
+            bundle.putInt("ivCharacter", characterResId)
             bundle.putString("tvSentenceWriter", sentenceData.nickName)
             bundle.putString("tvOccupationType", sentenceData.jobName)
             bundle.putString("tvSelfWritingType", sentenceData.coverLetterCategoryName)
@@ -101,7 +145,6 @@ class SentenceAdapter(
                 .addToBackStack(null)
                 .commit()
         }
-        // TODO : 내 문장 mine 처리
     }
 
     override fun getItemCount(): Int {
@@ -112,11 +155,37 @@ class SentenceAdapter(
         if (response.isSuccess) {
             CustomSnackbar.make(parentView, context.getString(R.string.snackbar_report), Snackbar.LENGTH_LONG).show()
         }
+        else {
+            CustomSnackbar.make(parentView, response.message.toString(), Snackbar.LENGTH_LONG).show()
+        }
     }
-
     override fun onReportSentenceFailure(message: String) {
         CustomSnackbar.make(parentView, message, Snackbar.LENGTH_SHORT).show()
     }
+
+    override fun onDeletePublishedSentenceSuccess(response: ResultResponse) {
+        if (response.isSuccess) {
+            CustomSnackbar.make(parentView, context.getString(R.string.snackbar_sentence_list_delete_mentee), Snackbar.LENGTH_LONG).show()
+        }
+        else {
+            CustomSnackbar.make(parentView, response.message.toString(), Snackbar.LENGTH_LONG).show()
+        }
+    }
+    override fun onDeletePublishedSentenceFailure(message: String) {
+        CustomSnackbar.make(parentView, message, Snackbar.LENGTH_SHORT).show()
+    }
+
+    override fun onSympathizeSentenceSuccess(response: SympathizeSentenceResponse) {
+        if (response.isSuccess) {
+        }
+        else {
+            CustomSnackbar.make(parentView, response.message.toString(), Snackbar.LENGTH_LONG).show()
+        }
+    }
+    override fun onSympathizeSentenceFailure(message: String) {
+        CustomSnackbar.make(parentView, message, Snackbar.LENGTH_SHORT).show()
+    }
+
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var ivCharacter: ImageView = itemView.findViewById(R.id.iv_character)
@@ -130,5 +199,4 @@ class SentenceAdapter(
         val tvSympathyCount: TextView = itemView.findViewById(R.id.tv_sympathy_count)
         val llBtnOpenComment: LinearLayout = itemView.findViewById(R.id.ll_btn_open_comment)
     }
-
 }
