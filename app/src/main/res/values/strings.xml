@@ -161,7 +161,8 @@
     <string name="tv_dialog_title_find_pw">메일이 전송되었습니다.</string>
     <string name="tv_dialog_wrong_title_find_pw">메일 전송 실패!</string>
     <string name="tv_dialog_content_find_pw">해당 이메일로 임시 비밀번호를 보내드렸습니다.\n확인해주세요!</string>
-
+    <string name="tv_dialog_title_back_press">회원가입을 취소하시나요?</string>
+    <string name="tv_dialog_content_back_press">확인을 누르면 입력한 내용이 모두 저장되지 않습니다!</string>
 
     <!--  myedit_fragment  -->
     <string name="tv_menu_profile">내 정보</string>
@@ -428,6 +429,7 @@
     <string name="tv_caption_spacing_info">띄어쓰기는 제외해주세요</string>
     <string name="tv_phone_caption_result_info">핸드폰 입력 감사합니다!</string>
     <string name="tv_NickName_caption_result_info">닉네임 입력 감사합니다!</string>
+    <string name="tv_NickName_caption_result_wrong_info">닉네임 입력을 다시해주세요!</string>
     <string name="tv_NickName_caption_btn_info">닉네임 사용이 가능합니다!</string>
     <string name="tv_NickName_caption_fail_info">중복된 닉네임입니다!</string>
 
@@ -491,7 +493,7 @@
     <!-- Select Type -->
     <string name="tv_nick_name_select_type">닉네임</string>
     <string name="tv_info_one_select_type">님,</string>
-    <string name="tv_info_two_select_type">역할을 선택해주세요.</string>
+    <string name="tv_info_two_select_type">님,\n역할을 선택해주세요.</string>
     <string name="tv_total_select_type">닉네임님,\n역할을 선택해주세요.</string>
     <string name="tv_mentor">멘토</string>
     <string name="tv_mentor_info">문장에 대한 코멘트를\n작성합니다.</string>
@@ -499,7 +501,7 @@
     <string name="tv_mentee_info">문장 단위로 자소서를\n작성합니다.</string>
 
     <!-- Job Group -->
-    <string name="tv_info_job_group">직군을 선택해주세요.</string>
+    <string name="tv_info_job_group">님,\n직군을 선택해주세요.</string>
     <string name="tv_job_group">직군</string>
 
     <!-- Read -->

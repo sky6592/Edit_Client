@@ -52,35 +52,19 @@
                 android:gravity="center"
                 android:orientation="horizontal">
 
+                <!--직군을 선택해주세요!-->
                 <TextView
-                    android:id="@+id/tv_nick_name_job_group"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/tv_info_two_job_group"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/noto_sans_kr_bold"
-                    android:text="@string/tv_nick_name_select_type"
-                    android:textColor="@color/purple"
-                    android:textSize="@dimen/tv_18sp" />
-
-                <TextView
-                    android:id="@+id/tv_info_one_job_group"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/noto_sans_kr_bold"
-                    android:text="@string/tv_info_one_select_type"
+                    android:gravity="center"
+                    android:text="@string/tv_info_job_group"
                     android:textColor="@color/black"
                     android:textSize="@dimen/tv_18sp" />
             </LinearLayout>
 
-            <!--직을 선택해주세요!-->
-            <TextView
-                android:id="@+id/tv_info_two_job_group"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/noto_sans_kr_bold"
-                android:gravity="center"
-                android:text="@string/tv_info_job_group"
-                android:textColor="@color/black"
-                android:textSize="@dimen/tv_18sp" />
+
         </LinearLayout>
 
         <!--Spinner-->
@@ -104,8 +88,8 @@
                 android:id="@+id/spinner_job_group"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:spinnerMode="dialog"
-                android:background="@drawable/shape_et_btn_info" />
+                android:background="@drawable/shape_et_btn_info"
+                android:spinnerMode="dialog" />
         </LinearLayout>
 
         <!--Next Button-->

@@ -236,7 +236,7 @@ class PwFindActivity : AppCompatActivity(), PwFindView {
             binding.tvDialogContentEmailFind.text =
                 getString(R.string.tv_dialog_content_find_pw)
             //Dialog - 확인 버튼
-            builder.setPositiveButton("확인") { _, i ->
+            builder.setPositiveButton(getString(R.string.tv_dialog_confirm)) { _, i ->
 
             }
             builder.setView(binding.root).show()
@@ -247,7 +247,7 @@ class PwFindActivity : AppCompatActivity(), PwFindView {
             //Dialog - Content
             binding.tvDialogContentEmailFind.text = response.message
             //Dialog - 확인 버튼
-            builder.setPositiveButton("확인") { _, i ->
+            builder.setPositiveButton(getString(R.string.tv_dialog_confirm)) { _, i ->
 
             }
             builder.setView(binding.root).show()

@@ -47,49 +47,25 @@
             android:layout_marginTop="@dimen/margin_20dp"
             android:orientation="vertical">
 
-            <!--닉네임님-->
+            <!--닉네임 선택 안내-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
                 android:gravity="center"
                 android:orientation="horizontal">
-
+                <!--설명-->
                 <TextView
-                    android:id="@+id/tv_nick_name_select_type"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/tv_info_two_select_type"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:bufferType="spannable"
                     android:fontFamily="@font/noto_sans_kr_bold"
-                    android:text="@string/tv_nick_name_select_type"
-                    android:textColor="@color/purple"
-                    android:textSize="@dimen/tv_18sp" />
-
-                <TextView
-                    android:id="@+id/tv_info_one_select_type"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/noto_sans_kr_bold"
-                    android:text="@string/tv_info_one_select_type"
+                    android:gravity="center"
+                    android:text="@string/tv_info_two_select_type"
                     android:textColor="@color/black"
                     android:textSize="@dimen/tv_18sp" />
             </LinearLayout>
-
-            <!--역할을 선택해주세요!-->
-            <TextView
-                android:id="@+id/tv_info_two_select_type"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/noto_sans_kr_bold"
-                android:gravity="center"
-                android:text="@string/tv_info_two_select_type"
-                android:textColor="@color/black"
-                android:textSize="@dimen/tv_18sp" />
         </LinearLayout>
-
-        <!--        <View-->
-        <!--            android:layout_width="match_parent"-->
-        <!--            android:layout_height="0dp"-->
-        <!--            android:layout_weight="1" />-->
 
         <!--Choose Type-->
         <LinearLayout
@@ -111,10 +87,7 @@
                     android:id="@+id/iv_mentor_select"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:focusableInTouchMode="true"
-                    android:src="@drawable/selector_mentor" />
+                    android:src="@drawable/icon_mentor" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -146,10 +119,7 @@
                     android:id="@+id/iv_mentee_select"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:focusableInTouchMode="true"
-                    android:src="@drawable/selector_mentee" />
+                    android:src="@drawable/icon_mentee" />
 
                 <TextView
                     android:layout_width="wrap_content"

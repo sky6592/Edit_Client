@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
+import androidx.appcompat.app.AlertDialog
 import androidx.databinding.DataBindingUtil
 import com.doublejj.edit.R
 import com.doublejj.edit.data.api.services.infofirst.InfoFirstService
@@ -14,7 +15,9 @@ import com.doublejj.edit.data.api.services.infofirst.InfoFirstView
 import com.doublejj.edit.data.models.infofirst.InfoFirstRequest
 import com.doublejj.edit.data.models.infofirst.InfoFirstResponse
 import com.doublejj.edit.databinding.ActivityInfoFirstBinding
+import com.doublejj.edit.databinding.DialogEmailFindBinding
 import com.doublejj.edit.ui.modules.main.signup.infosecond.InfoSecondActivity
+import com.doublejj.edit.ui.modules.main.walkthrough.WalkThroughActivity
 
 class InfoFirstActivity : AppCompatActivity(), InfoFirstView {
 
@@ -271,16 +274,22 @@ class InfoFirstActivity : AppCompatActivity(), InfoFirstView {
         //닉네임 중복여부 성공
         Log.d("sky", "onPostInfoFirstSuccess - api성공")
 
-        //다이얼로그!!
 
-        runOnUiThread {
+        if (response.code == 1000) {
             mNickNameFlag = true
-            mBinding.tvNickNameCaptionInfoFirst.text = ""
+            mBinding.tvNickNameCaptionInfoFirst.setTextColor(R.color.purple)
+            mBinding.tvNickNameCaptionInfoFirst.text =
+                getString(R.string.tv_NickName_caption_result_info)
 
             //입력 완료여부 정규식
             if (mNameFlag && mNickNameFlag && mPhoneFlag) {
                 mBinding.btnInfoFirst.setBackgroundResource(R.color.purple)
             }
+        } else {
+            mNickNameFlag = false
+            mBinding.tvNickNameCaptionInfoFirst.setTextColor(R.color.purple)
+            mBinding.tvNickNameCaptionInfoFirst.text =
+                getString(R.string.tv_NickName_caption_result_wrong_info)
         }
 
         Log.d(
@@ -293,16 +302,27 @@ class InfoFirstActivity : AppCompatActivity(), InfoFirstView {
     override fun onPostInfoFirstFailure(message: String) {
         //닉네임 중복여부 실패
         Log.d("sky", "onPostInfoFirstFailure - api실패")
-        runOnUiThread {
-            mNickNameFlag = false
-            mBinding.tvNickNameCaptionInfoFirst.setTextColor(R.color.purple)
-            mBinding.tvNickNameCaptionInfoFirst.text =
-                getString(R.string.tv_NickName_caption_fail_info)
-        }
     }
 
     override fun onBackPressed() {
-        super.onBackPressed()
-        //다이얼로그 만들기
+        //super.onBackPressed()
+        val builder = AlertDialog.Builder(this)
+        val binding: DialogEmailFindBinding = DialogEmailFindBinding.inflate(layoutInflater)
+        //Dialog - Title
+        binding.tvDialogTitleEmailFind.text =
+            getString(R.string.tv_dialog_title_back_press)
+        //Dialog - Content
+        binding.tvDialogContentEmailFind.text =
+            getString(R.string.tv_dialog_content_back_press)
+        //Dialog - 확인 버튼
+        builder.setPositiveButton(getString(R.string.tv_dialog_confirm)) { _, _ ->
+            val intentWalkThrough = Intent(this, WalkThroughActivity::class.java)
+            startActivity(intentWalkThrough)
+            finishAffinity()
+        }
+        builder.setNegativeButton(getString(R.string.tv_dialog_dismiss)) { _, _ ->
+
+        }
+        builder.setView(binding.root).show()
     }
 }
