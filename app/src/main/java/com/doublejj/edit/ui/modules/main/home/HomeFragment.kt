@@ -87,6 +87,11 @@ class HomeFragment : Fragment(), MainOneshotView, SentenceLimitView {
                 .commit()
         }
 
+        // TODO : 테스트 코드 지우기 sSharedPreferences에 제대로 들어오는지 단순 확인용!
+        val isMentor = sSharedPreferences.getString(USER_POSITION, "MENTEE") == "MENTOR"
+        val isMentorAuth = sSharedPreferences.getBoolean(MENTOR_AUTH_CONFIRM, false)
+        Log.d("mentor", "isMentor: $isMentor, isMentorAuth: $isMentorAuth")
+
         when (sSharedPreferences.getString(USER_POSITION, "MENTEE")) {
             "MENTEE" -> {
                 binding.fabMentee.visibility = View.VISIBLE
@@ -187,6 +192,43 @@ class HomeFragment : Fragment(), MainOneshotView, SentenceLimitView {
                 binding.tvSentenceContent4.text = sentences.sympathiesCoverLetters.get(idx).coverLetterContent
             }
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+/*
+        val isMentor = sSharedPreferences.getString(USER_POSITION, "MENTEE")
+        val isMentorAuth = sSharedPreferences.getBoolean(MENTOR_AUTH_CONFIRM, false)
+        Log.d("homeFragment", "isMentor: $isMentor, isMentorAuth: $isMentorAuth")
+
+        when (sSharedPreferences.getString(USER_POSITION, "MENTEE")) {
+            "MENTEE" -> {
+                binding.fabMentee.visibility = View.VISIBLE
+            }
+            "MENTOR" -> {
+                binding.fabMentee.visibility = View.GONE
+                // TODO : 첫 home 화면에서 아직 멘토 인증 안했다면 스낵바 띄우기 & 지우기
+                if (!sSharedPreferences.getBoolean(MENTOR_AUTH_CONFIRM, false)) {
+//                    CustomSnackbar.make(binding.root, getString(R.string.snackbar_description_mentor), Snackbar.LENGTH_INDEFINITE).show()
+                }
+            }
+        }*/
+
+        /*// TODO : 멘티라면 fab 버튼 활성화, 스낵바 비활성화
+        if (isMentor == "MENTEE") {
+            binding.fabMentee.visibility = View.VISIBLE
+            binding.fabMentee.isEnabled = true
+            binding.
+        }
+        // TODO : 멘토라면 fab 버튼 비활성화, 스낵바 비활성화
+        else {
+            binding.fabMentee.visibility = View.GONE
+            binding.fabMentee.isEnabled = false
+            // TODO : 멘토인데 인증받은 멘토라면 스낵바 활성화
+            if ()
+        }*/
+
+//        Log.d("fab", "isMentor: $isMentor, isMentorAuth: $isMentorAuth")
     }
 
     override fun onGetMainSentencesSuccess(response: MainOneshotResponse) {

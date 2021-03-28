@@ -3,6 +3,7 @@ package com.doublejj.edit.ui.modules.main.myedit
 import android.content.Intent
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -31,7 +32,7 @@ import com.doublejj.edit.ui.modules.main.myedit.settings.SettingsActivity
 import com.doublejj.edit.ui.modules.main.myedit.switch_position.SwitchToMenteeActivity
 import com.doublejj.edit.ui.modules.main.myedit.switch_position.SwitchToMentorActivity
 import com.doublejj.edit.ui.modules.main.splash.SplashActivity
-import com.doublejj.edit.ui.utils.dialog.LoadingDialog
+import com.doublejj.edit.ui.utils.dialog.CustomLoadingDialog
 import com.doublejj.edit.ui.utils.snackbar.CustomSnackbar
 import com.google.android.material.snackbar.Snackbar
 
@@ -114,7 +115,6 @@ class MyeditFragment : Fragment(), ProfileInfoView, LogoutView {
         }
         binding.ibMenuTemp.setOnClickListener {
             // TODO : 임시 저장 페이지
-            val loadingDialog = LoadingDialog(requireContext()).show()
         }
 
         /** position buttons **/
@@ -133,6 +133,7 @@ class MyeditFragment : Fragment(), ProfileInfoView, LogoutView {
         binding.btnLogout.setOnClickListener {
             // 로그아웃 API 적용
             LogoutService(this).tryPostLogout()
+            CustomLoadingDialog(requireContext()).show()
         }
 
         return binding.root
@@ -152,6 +153,7 @@ class MyeditFragment : Fragment(), ProfileInfoView, LogoutView {
         // 멘토 인증하기 버튼 업데이트
         val isMentor = sSharedPreferences.getString(USER_POSITION, "MENTEE") == "MENTOR"
         val isMentorAuth = sSharedPreferences.getBoolean(MENTOR_AUTH_CONFIRM, false)
+        // TODO : 원래 코드 살리기 isMentorAuth 기본 값이 false여야함!!
         if (isMentor) {
             if (!isMentorAuth) {
                 // 인증 받지 않은 멘토라면 인증하기 버튼 보이기
@@ -179,12 +181,16 @@ class MyeditFragment : Fragment(), ProfileInfoView, LogoutView {
             binding.ivProfile.setImageResource((requireContext().applicationContext as ApplicationClass).getCharacterResId(response.result.colorName, response.result.emotionName))
         }
         else {
-            CustomSnackbar.make(binding.root, response.message.toString(), Snackbar.LENGTH_SHORT)
+            CustomSnackbar.make(binding.root, response.message.toString(), Snackbar.LENGTH_SHORT).show()
         }
+
+        CustomLoadingDialog(requireContext()).dismiss()
     }
 
     override fun onProfileInfoFailure(message: String) {
-        CustomSnackbar.make(binding.root, message, Snackbar.LENGTH_SHORT)
+        CustomSnackbar.make(binding.root, message, Snackbar.LENGTH_SHORT).show()
+
+        CustomLoadingDialog(requireContext()).dismiss()
     }
 
     override fun onPostLogoutSuccess(response: BaseResponse) {
@@ -203,10 +209,18 @@ class MyeditFragment : Fragment(), ProfileInfoView, LogoutView {
             val sendIntent = Intent(activity, SplashActivity::class.java)
             sendIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
             startActivity(sendIntent)
+
         }
+        else {
+            CustomSnackbar.make(binding.root, response.message.toString(), Snackbar.LENGTH_SHORT).show()
+        }
+
+        CustomLoadingDialog(requireContext()).dismiss()
     }
 
     override fun onPostLogoutFailure(message: String) {
-        CustomSnackbar.make(binding.root, message, Snackbar.LENGTH_SHORT)
+        CustomSnackbar.make(binding.root, message, Snackbar.LENGTH_SHORT).show()
+
+        CustomLoadingDialog(requireContext()).dismiss()
     }
 }

@@ -43,6 +43,7 @@ class MainActivity : AppCompatActivity() {
 
         // set transaction of sfm
         transaction = supportFragmentManager.beginTransaction()
+
         transaction.add(R.id.fl_main, homeFragment, tagList[0])
         transaction.add(R.id.fl_main, rankingFragment, tagList[1])
         transaction.add(R.id.fl_main, myeditFragment, tagList[2])
@@ -58,16 +59,22 @@ class MainActivity : AppCompatActivity() {
 
             when(it.itemId) {
                 resList[0] -> {
+                    viewModel.lastActivityIndex = 0
+//                    transaction.replace(R.id.fl_main, homeFragment)
                     transaction.show(homeFragment)
                     transaction.hide(rankingFragment)
                     transaction.hide(myeditFragment)
                 }
                 resList[1] -> {
+                    viewModel.lastActivityIndex = 1
+//                    transaction.replace(R.id.fl_main, rankingFragment)
                     transaction.show(rankingFragment)
                     transaction.hide(homeFragment)
                     transaction.hide(myeditFragment)
                 }
                 resList[2] -> {
+                    viewModel.lastActivityIndex = 2
+//                    transaction.replace(R.id.fl_main, myeditFragment)
                     transaction.show(myeditFragment)
                     transaction.hide(homeFragment)
                     transaction.hide(rankingFragment)
@@ -79,13 +86,52 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    /*override fun onResume() {
+        super.onResume()
+
+        // TODO : onResume일 때 fragment 재포커싱
+        val fragIndex = viewModel.lastActivityIndex
+        binding.bnvMain.menu.findItem(resList[fragIndex]).isChecked = true
+        val transaction: FragmentTransaction = supportFragmentManager.beginTransaction()
+
+        when(fragIndex) {
+            0 -> {
+                viewModel.lastActivityIndex = 0
+                transaction.replace(R.id.fl_main, myeditFragment)
+//                transaction.show(homeFragment)
+//                transaction.hide(rankingFragment)
+//                transaction.hide(myeditFragment)
+            }
+            1 -> {
+                viewModel.lastActivityIndex = 1
+//                transaction.show(rankingFragment)
+//                transaction.hide(homeFragment)
+//                transaction.hide(myeditFragment)
+            }
+            2 -> {
+                viewModel.lastActivityIndex = 2
+//                transaction.show(myeditFragment)
+//                transaction.hide(homeFragment)
+//                transaction.hide(rankingFragment)
+            }
+        }
+        transaction.commit()
+
+        // TODO : onResume일 때 데이터 처리
+    }*/
+
     override fun onBackPressed() {
         val currentTime = System.currentTimeMillis()
         val gapTime = currentTime - backButtonTime
 
         if (gapTime in 0..2000) {
             // 2초 안에 두번 뒤로가기 누를 시 앱 종료
-            if (this.fragmentCount <= 0) finish()
+            if (this.fragmentCount <= 0) {
+                finish()
+                homeFragment.onDetach()
+                rankingFragment.onDetach()
+                myeditFragment.onDetach()
+            }
         }
         else {
             backButtonTime = currentTime

@@ -4,17 +4,20 @@ import android.app.Dialog
 import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
-import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.animation.AnimationUtils
 import androidx.databinding.DataBindingUtil
 import com.doublejj.edit.R
 import com.doublejj.edit.databinding.DialogLoadingBinding
 
-class LoadingDialog(context: Context) : Dialog(context) {
-    private lateinit var binding: DialogLoadingBinding
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+class CustomLoadingDialog(context: Context) : Dialog(context) {
+    private var binding: DialogLoadingBinding
+
+    companion object {
+        fun make(context: Context) = CustomLoadingDialog(context)
+    }
+
+    init {
         val inflater = LayoutInflater.from(context)
         binding = DataBindingUtil.inflate(inflater, R.layout.dialog_loading, null, false)
         setContentView(binding.root)

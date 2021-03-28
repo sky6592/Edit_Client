@@ -1,13 +1,11 @@
 package com.doublejj.edit.ui.modules.main.splash
 
-import android.app.Application
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
-import com.airbnb.lottie.LottieAnimationView
 import com.doublejj.edit.ApplicationClass
 import com.doublejj.edit.R
 import com.doublejj.edit.data.api.services.splash.SplashService
@@ -15,7 +13,6 @@ import com.doublejj.edit.data.api.services.splash.SplashView
 import com.doublejj.edit.data.models.splash.SplashResponse
 import com.doublejj.edit.databinding.ActivitySplashBinding
 import com.doublejj.edit.ui.modules.main.MainActivity
-import com.doublejj.edit.ui.modules.main.signup.infofirst.InfoFirstActivity
 import com.doublejj.edit.ui.modules.main.walkthrough.WalkThroughActivity
 
 class SplashActivity : AppCompatActivity(), SplashView {
@@ -36,6 +33,11 @@ class SplashActivity : AppCompatActivity(), SplashView {
         Log.d("editors","Splash - API성공")
         /** Success : Go Main **/
         if (response.code == 1000) {
+            val editor = ApplicationClass.sSharedPreferences.edit()
+            editor.putString(ApplicationClass.USER_POSITION, response.result.userRole)
+            editor.putBoolean(ApplicationClass.MENTOR_AUTH_CONFIRM, response.result.isCertificatedMentor)
+            editor.commit()
+            editor.apply()
 
             var intentMain = Intent(this, MainActivity::class.java)
             startActivity(intentMain)
