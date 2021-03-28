@@ -84,8 +84,9 @@ class WritingCommentActivity : AppCompatActivity() {
             }
         }
 
-        *//** edittext **//*
-        binding.etInputSentence.filters = arrayOf(
+        */
+        /** edittext **/
+        /*binding.etInputSentence.filters = arrayOf(
             InputFilter.LengthFilter(resources.getInteger(R.integer.length_limit_sentence))
         )
 
@@ -125,9 +126,10 @@ class WritingCommentActivity : AppCompatActivity() {
                 binding.tvInputSentenceWithoutSpaceCount.setTextColor(ContextCompat.getColor(applicationContext, colorResId))
                 binding.tvInputSentenceWithoutSpaceCount.text = withoutSpaces.toString()
             }
-        })
+        })*/
 
-        *//** Save sentence temporary API **//*
+        /** Save sentence temporary API **/
+        /*
         binding.btnSaveTemp.setOnClickListener {
             val dialog = CustomDialogFragment(
                 R.string.tv_dialog_sentence_temp_title,

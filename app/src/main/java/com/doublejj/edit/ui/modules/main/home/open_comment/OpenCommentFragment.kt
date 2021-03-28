@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.doublejj.edit.ApplicationClass.Companion.MENTOR_AUTH_CONFIRM
 import com.doublejj.edit.ApplicationClass.Companion.USER_POSITION
 import com.doublejj.edit.ApplicationClass.Companion.sSharedPreferences
 import com.doublejj.edit.R
@@ -52,14 +53,21 @@ class OpenCommentFragment : Fragment(), CommentsOfSentenceView {
         }
 
         /** floating button **/
+        val mentorAuth = sSharedPreferences.getBoolean(MENTOR_AUTH_CONFIRM, false)
         when (sSharedPreferences.getString(USER_POSITION, "MENTEE")) {
             "MENTEE" -> {
                 binding.fabMentor.visibility = View.GONE
                 binding.fabMentor.isEnabled = false
             }
             "MENTOR" -> {
-                binding.fabMentor.visibility = View.VISIBLE
-                binding.fabMentor.isEnabled = true
+                if (mentorAuth) {
+                    binding.fabMentor.visibility = View.VISIBLE
+                    binding.fabMentor.isEnabled = true
+                }
+                else {
+                    binding.fabMentor.visibility = View.GONE
+                    binding.fabMentor.isEnabled = false
+                }
             }
         }
 

@@ -94,7 +94,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         style="@style/CustomTextViewMidBlack"
-                        android:text="@string/tv_card_writer"
+                        android:text="@null"
                         android:textStyle="bold"
                         android:textSize="@dimen/size_tv_card_writer_14dp"
                         android:textColor="@color/purple_active"
@@ -152,7 +152,7 @@
                         android:layout_height="wrap_content"
 
                         style="@style/CustomTextViewMidBlack"
-                        android:text="@string/tv_occupation_type"
+                        android:text="@null"
                         android:textSize="@dimen/size_11dp"
                         android:fontFamily="@font/noto_sans_kr_medium"
 
@@ -194,7 +194,7 @@
                         android:layout_height="wrap_content"
 
                         style="@style/CustomTextViewMidBlack"
-                        android:text="@string/spinner_self_writing_3"
+                        android:text="@null"
                         android:textSize="@dimen/size_11dp"
                         android:fontFamily="@font/noto_sans_kr_medium"
 
@@ -209,7 +209,7 @@
                         android:layout_height="wrap_content"
 
                         style="@style/CustomTextViewMidBlack"
-                        android:text="@string/tv_sentence_content_example"
+                        android:text="@null"
                         android:textSize="@dimen/size_13dp"
                         android:maxLines="4"
                         android:lineSpacingExtra="@dimen/size_5dp"
