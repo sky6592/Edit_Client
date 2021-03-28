@@ -1,5 +1,4 @@
 package com.doublejj.edit.ui.modules.main.home.writing_comment
-
 import android.app.Activity
 import android.os.Bundle
 import android.util.Log
@@ -19,21 +18,17 @@ import com.doublejj.edit.ui.utils.dialog.CustomDialogFragment
 import com.doublejj.edit.ui.utils.dialog.CustomLoadingDialog
 import com.doublejj.edit.ui.utils.snackbar.CustomSnackbar
 import com.google.android.material.snackbar.Snackbar
-
 class WritingCommentActivity : AppCompatActivity() {
     private val TAG: String = javaClass.simpleName.toString()
     private lateinit var binding: ActivityWritingCommentBinding
     private var writingRequest = WritingCommentRequest("", "", "", "", "", -1L)
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_writing_comment)
-
         /** toolbar buttons **/
         binding.ibBack.setOnClickListener {
             finish()
         }
-
         /** sentence **/
         writingRequest.coverLetterId = intent.getLongExtra("coverLetterId", -1L)
         binding.ivCharacter.setImageDrawable(ContextCompat.getDrawable(applicationContext, intent.getIntExtra("ivCharacter", R.drawable.selector_char_purple_active_0)))
@@ -41,7 +36,6 @@ class WritingCommentActivity : AppCompatActivity() {
         binding.tvOccupationType.text = intent.getStringExtra("tvOccupationType").toString()
         binding.tvSelfWritingType.text = intent.getStringExtra("tvSelfWritingType").toString()
         binding.tvSentenceContent.text = intent.getStringExtra("tvSentenceContent").toString()
-        
         /** select evaluation **/
         // 문장에 대한 전체 평가 선택 값
         binding.rgEval0.setOnCheckedChangeListener { group, checkedId ->
@@ -75,7 +69,6 @@ class WritingCommentActivity : AppCompatActivity() {
                 R.id.rb_good_3 -> writingRequest.concretenessLogic = getString(R.string.tv_open_comment_evaluation_good)
             }
         }
-
         /** Save sentence temporary API **/
         /*
         binding.btnSaveTemp.setOnClickListener {
@@ -96,18 +89,15 @@ class WritingCommentActivity : AppCompatActivity() {
                             WritingSentenceService(this).tryPostWritingSentence(writingRequest)
                         }
                     }
-
                     override fun onNegativeClick() {
                         // TODO : 취소 할건지 삭제 할건지 확인할 것
                     }
-
                     override fun onPostWritingSentenceSuccess(response: ResultResponse) {
                         if (response.isSuccess) {
                             finish()
                             finish()
                         }
                     }
-
                     override fun onPostWritingSentenceFailure(message: String) {
                         CustomSnackbar.make(binding.root, message, Snackbar.LENGTH_SHORT).show()
                     }
@@ -115,12 +105,10 @@ class WritingCommentActivity : AppCompatActivity() {
                 dialog.show(supportFragmentManager, "CustomDialog")
             }
         }*/
-
         /** Submit sentence API **/
         binding.btnSubmit.setOnClickListener {
             var isCheckedAll = true
             var isOverMinimum = true
-
             // 모든 항목 평가했는지 체크
             if (writingRequest.sentenceEvaluation == "" ||
                 writingRequest.activity == "" ||
@@ -152,16 +140,12 @@ class WritingCommentActivity : AppCompatActivity() {
                             writingRequest.activity != "" &&
                             writingRequest.sincerity != "" &&
                             writingRequest.concretenessLogic != "") {
-
                             WritingCommentService(this).tryPostWritingComment(writingRequest)
-
                             CustomLoadingDialog(this@WritingCommentActivity).show()
                         }
                     }
-
                     override fun onNegativeClick() {
                     }
-
                     override fun onWritingCommentSuccess(response: BaseResponse) {
                         if (response.isSuccess) {
                             finish()
@@ -170,13 +154,10 @@ class WritingCommentActivity : AppCompatActivity() {
                         else {
                             CustomSnackbar.make(binding.root, response.message.toString(), Snackbar.LENGTH_SHORT).show()
                         }
-
                         CustomLoadingDialog(this@WritingCommentActivity).dismiss()
                     }
-
                     override fun onWritingCommentFailure(message: String) {
                         CustomSnackbar.make(binding.root, message, Snackbar.LENGTH_SHORT).show()
-
                         CustomLoadingDialog(this@WritingCommentActivity).dismiss()
                     }
                 })
@@ -184,7 +165,6 @@ class WritingCommentActivity : AppCompatActivity() {
             }
         }
     }
-
     override fun onDestroy() {
         super.onDestroy()
     }

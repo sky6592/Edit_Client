@@ -1,5 +1,4 @@
 package com.doublejj.edit.ui.modules.main.home.open_comment
-
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -25,27 +24,22 @@ import com.doublejj.edit.ui.utils.dialog.CustomDialogClickListener
 import com.doublejj.edit.ui.utils.dialog.CustomDialogFragment
 import com.doublejj.edit.ui.utils.snackbar.CustomSnackbar
 import com.google.android.material.snackbar.Snackbar
-
 class OpenCommentFragment : Fragment(), CommentsOfSentenceView {
     private lateinit var binding: OpenCommentFragmentBinding
     private lateinit var viewModel: OpenCommentViewModel
     var sentenceId: Long = -1
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.open_comment_fragment, container, false)
         viewModel = ViewModelProvider(this).get(OpenCommentViewModel::class.java)
-
         binding.openCommentViewModel = viewModel
         binding.lifecycleOwner = this
         (activity as MainActivity).increaseFragmentCount()
-
         /** get comments from server **/
         sentenceId = requireArguments().getLong("coverLetterId")
         getComments(sentenceId)
-
         /** toolbar buttons **/
         binding.ibBack.setOnClickListener {
             requireActivity().supportFragmentManager.popBackStack()
@@ -54,7 +48,6 @@ class OpenCommentFragment : Fragment(), CommentsOfSentenceView {
             // refresh data
             onResume()
         }
-
         /** floating button **/
         val mentorAuth = sSharedPreferences.getBoolean(MENTOR_AUTH_CONFIRM, false)
         when (sSharedPreferences.getString(USER_POSITION, "MENTEE")) {
@@ -73,7 +66,6 @@ class OpenCommentFragment : Fragment(), CommentsOfSentenceView {
                 }
             }
         }
-
         /** mentee's sentence **/
         placeSentenceFromBundle()
         binding.ibMenu.setOnClickListener {
@@ -93,9 +85,7 @@ class OpenCommentFragment : Fragment(), CommentsOfSentenceView {
             })
             dialog.show(requireActivity().supportFragmentManager, "CustomDialog")
         }
-
         binding.fabMentor.setOnClickListener {
-
             if (binding.fabMentor.isEnabled) {
                 val sendIntent = Intent(activity, WritingCommentActivity::class.java)
                 sendIntent.putExtra("ivCharacter", requireArguments().getInt("ivCharacter"))
@@ -110,7 +100,6 @@ class OpenCommentFragment : Fragment(), CommentsOfSentenceView {
         }
         return binding.root
     }
-
     fun placeSentenceFromBundle() {
         binding.ivCharacter.setImageResource(requireArguments().getInt("ivCharacter"))
         binding.tvSentenceWriter.text = requireArguments().getString("tvSentenceWriter")
@@ -120,25 +109,19 @@ class OpenCommentFragment : Fragment(), CommentsOfSentenceView {
         val isMine = requireArguments().getBoolean("isMine")
         if (isMine) binding.ibMenu.setImageDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.icon_delete))
     }
-
     fun getComments(sentenceId: Long) {
         // TODO : 무한스크롤 처리
-
         CommentsOfSentenceService(this).tryGetCommentsOfSentence(
             sentenceId = sentenceId,
             page = 1
         )
     }
-
     fun setAdapter(commentDataList: MutableList<CommentData>) {
         // 내 문장인지 같이 전달
         val isMine = requireArguments().getBoolean("isMine")
-
         binding.rvComment.layoutManager = LinearLayoutManager(context)
         binding.rvComment.adapter = OpenCommentAdapter(requireContext(), commentDataList, isMine, requireActivity().supportFragmentManager)
-
     }
-
     override fun onGetCommentsOfSentenceSuccess(response: LookupCommentResponse) {
         if (response.isSuccess) {
             val commentDataList = response.result.commentInfos
@@ -156,16 +139,13 @@ class OpenCommentFragment : Fragment(), CommentsOfSentenceView {
             CustomSnackbar.make(binding.root, response.message.toString(), Snackbar.LENGTH_SHORT).show()
         }
     }
-
     override fun onGetCommentsOfSentenceFailure(message: String) {
         CustomSnackbar.make(binding.root, message, Snackbar.LENGTH_SHORT).show()
     }
-
     override fun onResume() {
         super.onResume()
         getComments(sentenceId)
     }
-
     override fun onDetach() {
         super.onDetach()
         (activity as MainActivity).decreaseFragmentCount()
