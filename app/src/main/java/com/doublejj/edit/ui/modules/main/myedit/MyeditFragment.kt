@@ -31,6 +31,7 @@ import com.doublejj.edit.ui.modules.main.myedit.settings.SettingsActivity
 import com.doublejj.edit.ui.modules.main.myedit.switch_position.SwitchToMenteeActivity
 import com.doublejj.edit.ui.modules.main.myedit.switch_position.SwitchToMentorActivity
 import com.doublejj.edit.ui.modules.main.splash.SplashActivity
+import com.doublejj.edit.ui.utils.dialog.LoadingDialog
 import com.doublejj.edit.ui.utils.snackbar.CustomSnackbar
 import com.google.android.material.snackbar.Snackbar
 
@@ -113,6 +114,7 @@ class MyeditFragment : Fragment(), ProfileInfoView, LogoutView {
         }
         binding.ibMenuTemp.setOnClickListener {
             // TODO : 임시 저장 페이지
+            val loadingDialog = LoadingDialog(requireContext()).show()
         }
 
         /** position buttons **/
@@ -148,14 +150,17 @@ class MyeditFragment : Fragment(), ProfileInfoView, LogoutView {
         ))
 
         // 멘토 인증하기 버튼 업데이트
-        if (sSharedPreferences.getString(USER_POSITION, "MENTEE") == "MENTOR"
-            && !sSharedPreferences.getBoolean(MENTOR_AUTH_CONFIRM, false)) {
-            // 인증 받지 않은 멘토라면 인증하기 버튼 보이기
-            binding.llBtnCertificateMentor.visibility = View.VISIBLE
-        }
-        else {
-            // 인증 받은 멘토라면 인증하기 버튼 감추기
-            binding.llBtnCertificateMentor.visibility = View.GONE
+        val isMentor = sSharedPreferences.getString(USER_POSITION, "MENTEE") == "MENTOR"
+        val isMentorAuth = sSharedPreferences.getBoolean(MENTOR_AUTH_CONFIRM, false)
+        if (isMentor) {
+            if (!isMentorAuth) {
+                // 인증 받지 않은 멘토라면 인증하기 버튼 보이기
+                binding.llBtnCertificateMentor.visibility = View.VISIBLE
+            }
+            else {
+                // 인증 받은 멘토라면 인증하기 버튼 감추기
+                binding.llBtnCertificateMentor.visibility = View.GONE
+            }
         }
     }
 
@@ -187,7 +192,7 @@ class MyeditFragment : Fragment(), ProfileInfoView, LogoutView {
             val editor = sSharedPreferences.edit()
             editor.putString(X_ACCESS_TOKEN, null)
             editor.putString(USER_POSITION, null)
-            editor.putString(MENTOR_AUTH_CONFIRM, null)
+            editor.putBoolean(MENTOR_AUTH_CONFIRM, false)
             editor.putString(USER_NICKNAME, null)
             editor.putString(USER_EMOTION, null)
             editor.putString(USER_COLOR, null)

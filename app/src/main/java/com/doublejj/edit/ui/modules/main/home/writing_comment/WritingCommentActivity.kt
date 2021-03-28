@@ -86,115 +86,105 @@ class WritingCommentActivity : AppCompatActivity() {
 
         */
         /** edittext **/
-        /*binding.etInputSentence.filters = arrayOf(
-            InputFilter.LengthFilter(resources.getInteger(R.integer.length_limit_sentence))
-        )
-
-        binding.etInputSentence.addTextChangedListener(object : TextWatcher {
+        // TODO : 40자 이상 작성
+//        binding.etInputComment.filters = arrayOf(
+//            InputFilter.LengthFilter(resources.getInteger(R.integer.length_limit_sentence))
+//        )
+        /*binding.etInputComment.addTextChangedListener(object : TextWatcher {
             // gets triggered immediately after something is typed
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-                // include spaces
-                binding.tvInputSentenceIncludeSpaceCount.text = s.toString().length.toString()
-                // without spaces
-                binding.tvInputSentenceWithoutSpaceCount.text = s.toString().replace(" ", "").length.toString()
             }
 
             // gets triggered before the next input
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                // include spaces
-                binding.tvInputSentenceIncludeSpaceCount.text = s.toString().length.toString()
-                // without spaces
-                binding.tvInputSentenceWithoutSpaceCount.text = s.toString().replace(" ", "").length.toString()
             }
 
             // gets triggered during an input
             override fun afterTextChanged(s: Editable?) {
-                val limitCount = resources.getInteger(R.integer.length_limit_sentence)
-                val includeSpaces = s.toString().length
-                val withoutSpaces = s.toString().replace(" ", "").length
-                var colorResId: Int
+//                val limitCount = resources.getInteger(R.integer.length_limit_sentence)
 
-                // include spaces
-                if (includeSpaces >= limitCount) colorResId = R.color.red_light
-                else colorResId = R.color.purple_active
-                binding.tvInputSentenceIncludeSpaceCount.setTextColor(ContextCompat.getColor(applicationContext, colorResId))
-                binding.tvInputSentenceIncludeSpaceCount.text = includeSpaces.toString()
-
-                // without spaces
-                if (withoutSpaces >= limitCount) colorResId = R.color.red_light
-                else colorResId = R.color.purple_active
-                binding.tvInputSentenceWithoutSpaceCount.setTextColor(ContextCompat.getColor(applicationContext, colorResId))
-                binding.tvInputSentenceWithoutSpaceCount.text = withoutSpaces.toString()
             }
         })*/
+
 
         /** Save sentence temporary API **/
         /*
         binding.btnSaveTemp.setOnClickListener {
-            val dialog = CustomDialogFragment(
-                R.string.tv_dialog_sentence_temp_title,
-                R.string.tv_dialog_sentence_temp_content,
-                R.string.tv_dialog_temp,
-                R.string.tv_dialog_delete
-            )
-            dialog.setDialogClickListener(object : CustomDialogClickListener, WritingSentenceView {
-                override fun onPositiveClick() {
-                    writingRequest.coverLetterContent = binding.etInputSentence.text.toString()
-                    if (writingRequest.coverLetterCategoryId != null && writingRequest.coverLetterContent != null) {
-                        WritingSentenceService(this).tryPostWritingSentence(writingRequest)
+            if (binding.etInputComment.text.toString().length < 40) {
+                CustomSnackbar.make(binding.root, getString(R.string.tv_writing_comment_input_caption), Snackbar.LENGTH_SHORT)
+            }
+            else {
+                val dialog = CustomDialogFragment(
+                    R.string.tv_dialog_sentence_temp_title,
+                    R.string.tv_dialog_sentence_temp_content,
+                    R.string.tv_dialog_temp,
+                    R.string.tv_dialog_delete
+                )
+                dialog.setDialogClickListener(object : CustomDialogClickListener, WritingSentenceView {
+                    override fun onPositiveClick() {
+                        writingRequest.coverLetterContent = binding.etInputSentence.text.toString()
+                        if (writingRequest.coverLetterCategoryId != null && writingRequest.coverLetterContent != null) {
+                            WritingSentenceService(this).tryPostWritingSentence(writingRequest)
+                        }
                     }
-                }
 
-                override fun onNegativeClick() {
-                    // TODO : 취소 할건지 삭제 할건지 확인할 것
-                }
-
-                override fun onPostWritingSentenceSuccess(response: ResultResponse) {
-                    if (response.isSuccess) {
-                        finish()
-                        finish()
+                    override fun onNegativeClick() {
+                        // TODO : 취소 할건지 삭제 할건지 확인할 것
                     }
-                }
 
-                override fun onPostWritingSentenceFailure(message: String) {
-                    CustomSnackbar.make(binding.root, message, Snackbar.LENGTH_SHORT)
-                }
-            })
-            dialog.show(supportFragmentManager, "CustomDialog")
+                    override fun onPostWritingSentenceSuccess(response: ResultResponse) {
+                        if (response.isSuccess) {
+                            finish()
+                            finish()
+                        }
+                    }
+
+                    override fun onPostWritingSentenceFailure(message: String) {
+                        CustomSnackbar.make(binding.root, message, Snackbar.LENGTH_SHORT)
+                    }
+                })
+                dialog.show(supportFragmentManager, "CustomDialog")
+            }
         }
 
-        *//** Submit sentence API **//*
+        *//** Submit sentence API **/
         binding.btnSubmit.setOnClickListener {
-            val dialog = CustomDialogFragment(
-                R.string.tv_dialog_sentence_submit_title,
-                R.string.tv_dialog_sentence_submit_content,
-                R.string.tv_dialog_submit,
-                R.string.tv_dialog_dismiss
-            )
-            dialog.setDialogClickListener(object : CustomDialogClickListener, WritingSentenceView {
-                override fun onPositiveClick() {
-                    writingRequest.coverLetterContent = binding.etInputSentence.text.toString()
-                    if (writingRequest.coverLetterCategoryId != null && writingRequest.coverLetterContent != null) {
-                        WritingSentenceService(this).tryPostWritingSentence(writingRequest)
+            if (binding.etInputComment.text.toString().length < 40) {
+                CustomSnackbar.make(binding.root, getString(R.string.tv_writing_comment_input_caption), Snackbar.LENGTH_SHORT)
+            }
+            else {
+                val dialog = CustomDialogFragment(
+                    R.string.tv_dialog_sentence_submit_title,
+                    R.string.tv_dialog_sentence_submit_content,
+                    R.string.tv_dialog_submit,
+                    R.string.tv_dialog_dismiss
+                )
+                dialog.setDialogClickListener(object : CustomDialogClickListener, WritingSentenceView {
+                    override fun onPositiveClick() {
+                        // TODO : 코멘트 등록하기 API 적용
+//                        writingRequest.coverLetterContent = binding.etInputSentence.text.toString()
+//                        if (writingRequest.coverLetterCategoryId != null && writingRequest.coverLetterContent != null) {
+//                            WritingSentenceService(this).tryPostWritingSentence(writingRequest)
+//                        }
                     }
-                }
 
-                override fun onNegativeClick() {
-                }
-
-                override fun onPostWritingSentenceSuccess(response: ResultResponse) {
-                    if (response.isSuccess) {
-                        finish()
-                        finish()
+                    override fun onNegativeClick() {
                     }
-                }
 
-                override fun onPostWritingSentenceFailure(message: String) {
-                    CustomSnackbar.make(binding.root, message, Snackbar.LENGTH_SHORT)
-                }
-            })
-            dialog.show(supportFragmentManager, "CustomDialog")
-        }*/
+                    override fun onPostWritingSentenceSuccess(response: ResultResponse) {
+                        if (response.isSuccess) {
+                            finish()
+                            finish()
+                        }
+                    }
+
+                    override fun onPostWritingSentenceFailure(message: String) {
+                        CustomSnackbar.make(binding.root, message, Snackbar.LENGTH_SHORT)
+                    }
+                })
+                dialog.show(supportFragmentManager, "CustomDialog")
+            }
+        }
     }
 
     fun dipToPixels(dipValue: Float) : Int {
