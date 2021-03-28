@@ -80,7 +80,7 @@ class OpenCommentFragment : Fragment(), CommentsOfSentenceView {
             )
             dialog.setDialogClickListener(object : CustomDialogClickListener {
                 override fun onPositiveClick() {
-                    // TODO : 해당 카드 신고 처리
+                    // 해당 카드 신고 처리
                     CustomSnackbar.make(it, getString(R.string.snackbar_report), Snackbar.LENGTH_LONG).show()
                 }
                 override fun onNegativeClick() {
@@ -102,7 +102,7 @@ class OpenCommentFragment : Fragment(), CommentsOfSentenceView {
 
     fun getComments() {
         // TODO : 무한스크롤 처리
-        val sentenceId = requireArguments().getLong("coverLetterId").toInt()
+        val sentenceId = requireArguments().getLong("coverLetterId")
 
         CommentsOfSentenceService(this).tryGetCommentsOfSentence(
             sentenceId = sentenceId,

@@ -2,7 +2,6 @@ package com.doublejj.edit.ui.modules.main.home.today_sentence
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,6 +14,8 @@ import com.doublejj.edit.ApplicationClass
 import com.doublejj.edit.R
 import com.doublejj.edit.data.api.services.report_sentence.ReportSentenceService
 import com.doublejj.edit.data.api.services.report_sentence.ReportSentenceView
+import com.doublejj.edit.data.api.services.sentence.DeletePublishedSentenceService
+import com.doublejj.edit.data.api.services.sentence.DeletePublishedSentenceView
 import com.doublejj.edit.data.api.services.sentence.SympathizeSentenceService
 import com.doublejj.edit.data.api.services.sentence.SympathizeSentenceView
 import com.doublejj.edit.data.models.ResultResponse
@@ -31,7 +32,8 @@ class SentenceAdapter(
     val context: Context,
     var sentenceDataList: MutableList<SentenceData>,
     val fm: FragmentManager
-) : RecyclerView.Adapter<SentenceAdapter.ViewHolder>(), SympathizeSentenceView {
+) : RecyclerView.Adapter<SentenceAdapter.ViewHolder>(),
+    ReportSentenceView, DeletePublishedSentenceView, SympathizeSentenceView {
     lateinit var parentView: ViewGroup
 
     override fun onCreateViewHolder(
@@ -56,7 +58,7 @@ class SentenceAdapter(
         holder.tvSentenceWriter.text = sentenceData.nickName
         holder.tvOccupationType.text = sentenceData.jobName
 
-        // TODO : 내 문장일 경우 신고대신 삭제 처리
+        // 내 문장일 경우 신고대신 삭제 처리
         if (sentenceData.isMine) {
             holder.ibMenu.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.icon_delete))
         }
@@ -78,34 +80,31 @@ class SentenceAdapter(
                     R.string.tv_dialog_dismiss
                 )
             }
-            dialog.setDialogClickListener(object : CustomDialogClickListener, ReportSentenceView {
+            dialog.setDialogClickListener(object : CustomDialogClickListener {
                 override fun onPositiveClick() {
                     // 내 문장일 경우 문장 삭제 API
                     if (sentenceData.isMine) {
-                        // TODO : 문장 삭제 API
+                        // 문장 삭제 API
+                        DeletePublishedSentenceService(this@SentenceAdapter).tryDeletePublishedSentence(
+                            sentenceData.coverLetterId
+                        )
+
+                        // 리스트에서도 문장 삭제
+                        sentenceDataList.remove(sentenceData)
+                        // TODO : refresh()로 다시 리스트 보여주기
+//                        refresh()
                     }
-                    // 내 문장이 아닐 경우 해당 문장 신고 API
+                    // 내 문장이 아닐 경우
                     else {
-                        Log.d("lala", "coverLetterId: ${sentenceData.coverLetterId}")
-                        ReportSentenceService(this).tryReportSentence(
-                            ReportSentenceRequest(sentenceData.coverLetterId))
+                        // 해당 문장 신고 API
+                        ReportSentenceService(this@SentenceAdapter).tryReportSentence(
+                            ReportSentenceRequest(sentenceData.coverLetterId)
+                        )
                     }
                 }
                 override fun onNegativeClick() {
                 }
 
-                override fun onReportSentenceSuccess(response: ResultResponse) {
-                    if (response.isSuccess) {
-//                        CustomSnackbar.make(parentView, context.getString(R.string.snackbar_report), Snackbar.LENGTH_LONG).show()
-                    }
-                    else {
-//                        CustomSnackbar.make(parentView, response.message.toString(), Snackbar.LENGTH_LONG).show()
-                    }
-                }
-
-                override fun onReportSentenceFailure(message: String) {
-//                    CustomSnackbar.make(parentView, message, Snackbar.LENGTH_SHORT).show()
-                }
             })
             dialog.show(fm, "CustomDialog")
         }
@@ -116,7 +115,7 @@ class SentenceAdapter(
         holder.tvSympathyCount.text = sentenceData.sympathiesCount.toString()
         holder.llBtnSympathy.setOnClickListener {
             // 공감 처리
-            SympathizeSentenceService(this).tryPatchSympathizeSentence(sentenceData.coverLetterId.toInt())
+            SympathizeSentenceService(this).tryPatchSympathizeSentence(sentenceData.coverLetterId)
             val sympathyState = holder.tbSympathy.isChecked
             holder.tbSympathy.isChecked = !sympathyState
             if (!sympathyState) {
@@ -152,6 +151,30 @@ class SentenceAdapter(
         return sentenceDataList.size
     }
 
+    override fun onReportSentenceSuccess(response: ResultResponse) {
+        if (response.isSuccess) {
+            CustomSnackbar.make(parentView, context.getString(R.string.snackbar_report), Snackbar.LENGTH_LONG).show()
+        }
+        else {
+            CustomSnackbar.make(parentView, response.message.toString(), Snackbar.LENGTH_LONG).show()
+        }
+    }
+    override fun onReportSentenceFailure(message: String) {
+        CustomSnackbar.make(parentView, message, Snackbar.LENGTH_SHORT).show()
+    }
+
+    override fun onDeletePublishedSentenceSuccess(response: ResultResponse) {
+        if (response.isSuccess) {
+            CustomSnackbar.make(parentView, context.getString(R.string.snackbar_sentence_list_delete_mentee), Snackbar.LENGTH_LONG).show()
+        }
+        else {
+            CustomSnackbar.make(parentView, response.message.toString(), Snackbar.LENGTH_LONG).show()
+        }
+    }
+    override fun onDeletePublishedSentenceFailure(message: String) {
+        CustomSnackbar.make(parentView, message, Snackbar.LENGTH_SHORT).show()
+    }
+
     override fun onSympathizeSentenceSuccess(response: SympathizeSentenceResponse) {
         if (response.isSuccess) {
         }
@@ -159,7 +182,6 @@ class SentenceAdapter(
             CustomSnackbar.make(parentView, response.message.toString(), Snackbar.LENGTH_LONG).show()
         }
     }
-
     override fun onSympathizeSentenceFailure(message: String) {
         CustomSnackbar.make(parentView, message, Snackbar.LENGTH_SHORT).show()
     }
@@ -177,5 +199,4 @@ class SentenceAdapter(
         val tvSympathyCount: TextView = itemView.findViewById(R.id.tv_sympathy_count)
         val llBtnOpenComment: LinearLayout = itemView.findViewById(R.id.ll_btn_open_comment)
     }
-
 }

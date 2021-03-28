@@ -8,6 +8,6 @@ import retrofit2.http.Path
 interface SympathizeSentenceRetrofitInterface {
     @PATCH("/api/cover-letters/{cover-letter-id}/sympathize-cover-letters")
     fun patchSympathizeSentence(
-        @Path("cover-letter-id") sentenceId: Int
+        @Path("cover-letter-id") sentenceId: Long
     ) : Call<SympathizeSentenceResponse>
 }

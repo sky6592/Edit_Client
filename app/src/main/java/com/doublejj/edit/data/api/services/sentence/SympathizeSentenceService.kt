@@ -8,7 +8,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class SympathizeSentenceService(val view: SympathizeSentenceView) {
-    fun tryPatchSympathizeSentence(sentenceId: Int) {
+    fun tryPatchSympathizeSentence(sentenceId: Long) {
         val retrofitInterface = sRetrofit.create(SympathizeSentenceRetrofitInterface::class.java)
         retrofitInterface
             .patchSympathizeSentence(sentenceId)
