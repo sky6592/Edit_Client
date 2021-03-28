@@ -104,8 +104,8 @@ class OpenCommentAdapter(
                         // 해당 코멘트 신고 처리
                         ReportCommentService(this).tryReportComment(
                             ReportCommentRequest(
-                            commentId = commentData.commentId
-                        ))
+                                commentId = commentData.commentId
+                            ))
                     }
                     override fun onNegativeClick() {
                     }
@@ -152,7 +152,7 @@ class OpenCommentAdapter(
                 var isAppreciated = commentData.isAppreciated
                 holder.tbThanks.isChecked = !isAppreciated
                 commentData.isAppreciated = !isAppreciated
-                
+
                 // 감사해요 API 적용
                 ThanksCommentService(this).tryThanksComment(
                     commentId = commentData.commentId

@@ -306,6 +306,8 @@ class HomeFragment : Fragment(), MainOneshotView, SentenceLimitView {
     override fun onGetSentenceLimitFailure(message: String) {
         CustomSnackbar.make(binding.root, message, Snackbar.LENGTH_SHORT).show()
     }
+    
+    // TODO : onResume()일 때 sSharedPreferences 업데이트
 
     override fun onDetach() {
         super.onDetach()
