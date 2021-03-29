@@ -17,16 +17,11 @@ import com.doublejj.edit.ApplicationClass.Companion.USER_POSITION
 import com.doublejj.edit.ApplicationClass.Companion.X_ACCESS_TOKEN
 import com.doublejj.edit.ApplicationClass.Companion.sSharedPreferences
 import com.doublejj.edit.R
-<<<<<<< HEAD
 import com.doublejj.edit.data.api.services.logout.LogoutService
 import com.doublejj.edit.data.api.services.logout.LogoutView
 import com.doublejj.edit.data.api.services.profile.info.ProfileInfoService
 import com.doublejj.edit.data.api.services.profile.info.ProfileInfoView
 import com.doublejj.edit.data.models.BaseResponse
-=======
-import com.doublejj.edit.data.api.services.profile.info.ProfileInfoService
-import com.doublejj.edit.data.api.services.profile.info.ProfileInfoView
->>>>>>> c711e7e (feat: Add add change profile api)
 import com.doublejj.edit.data.models.profile.info.ProfileInfoResponse
 import com.doublejj.edit.databinding.MyeditFragmentBinding
 import com.doublejj.edit.ui.modules.main.myedit.certificate_mentor.CertificateMentorActivity
@@ -144,22 +139,14 @@ class MyeditFragment : Fragment(), ProfileInfoView, LogoutView {
 
     override fun onResume() {
         super.onResume()
-<<<<<<< HEAD
         // 프로필 캐릭터 업데이트
         binding.tvNickname.text = sSharedPreferences.getString(USER_NICKNAME, null)
         binding.tvPosition.text = (requireContext().applicationContext as ApplicationClass).getPostionToString(
             sSharedPreferences.getString(USER_POSITION, null).toString())
-=======
-
-        binding.tvNickname.text = sSharedPreferences.getString(USER_NICKNAME, null)
-        binding.tvPosition.text = (requireContext().applicationContext as ApplicationClass).getPostionToString(
-            sSharedPreferences.getString(USER_POSITION, null))
->>>>>>> c711e7e (feat: Add add change profile api)
         binding.ivProfile.setImageResource((requireContext().applicationContext as ApplicationClass).getCharacterResId(
             sSharedPreferences.getString(USER_COLOR, null).toString(),
             sSharedPreferences.getString(USER_EMOTION, null).toString()
         ))
-<<<<<<< HEAD
 
         // 멘토 인증하기 버튼 업데이트
         if (sSharedPreferences.getString(USER_POSITION, "MENTEE") == "MENTOR"
@@ -171,8 +158,6 @@ class MyeditFragment : Fragment(), ProfileInfoView, LogoutView {
             // 인증 받은 멘토라면 인증하기 버튼 감추기
             binding.llBtnCertificateMentor.visibility = View.GONE
         }
-=======
->>>>>>> c711e7e (feat: Add add change profile api)
     }
 
     override fun onProfileInfoSuccess(response: ProfileInfoResponse) {
