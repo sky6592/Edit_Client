@@ -49,7 +49,7 @@ class BestSympathyFragment : Fragment(), BestSympathyView {
 
     fun setAdapter() {
         // TODO : 페이징 적용하기
-        BestSympathyService(this).tryGetBestSympathySentence(page = 0)
+        BestSympathyService(this).tryGetBestSympathySentence(page = 1)
         binding.rvSentence.layoutManager = LinearLayoutManager(context)
     }
 

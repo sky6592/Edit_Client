@@ -1,7 +1,7 @@
 package com.doublejj.edit
 
-import android.app.Application
 import android.content.SharedPreferences
+import androidx.multidex.MultiDexApplication
 import com.doublejj.edit.data.api.interceptors.XAccessTokenInterceptor
 import com.doublejj.edit.ui.utils.ActivityList
 import okhttp3.OkHttpClient
@@ -10,7 +10,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
-class ApplicationClass : Application() {
+class ApplicationClass : MultiDexApplication() {
     companion object {
         // 서버 주소
 //        const val API_URL = "https://app.team-edit.shop/" // product server

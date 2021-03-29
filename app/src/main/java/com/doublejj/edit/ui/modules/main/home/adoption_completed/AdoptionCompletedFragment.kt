@@ -49,7 +49,7 @@ class AdoptionCompletedFragment : Fragment(), AdoptionCompletedView {
 
     fun setAdapter() {
         // TODO : 페이징 적용하기
-        AdoptionCompletedService(this).tryGetAdoptionCompletedSentence(page = 0)
+        AdoptionCompletedService(this).tryGetAdoptionCompletedSentence(page = 1)
         binding.rvSentence.layoutManager = LinearLayoutManager(context)
     }
 
@@ -57,10 +57,13 @@ class AdoptionCompletedFragment : Fragment(), AdoptionCompletedView {
         if (response.isSuccess) {
             binding.rvSentence.adapter = SentenceAdapter(requireContext(), response.result, requireActivity().supportFragmentManager)
         }
+        else {
+            CustomSnackbar.make(requireView(), response.message.toString(), Snackbar.LENGTH_SHORT).show()
+        }
     }
 
     override fun onGetAdoptionCompletedSentenceFailure(message: String) {
-        CustomSnackbar.make(requireView(), message, Snackbar.LENGTH_SHORT)
+        CustomSnackbar.make(requireView(), message, Snackbar.LENGTH_SHORT).show()
     }
 
     override fun onDetach() {

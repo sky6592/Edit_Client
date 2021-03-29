@@ -1,4 +1,4 @@
-package com.doublejj.edit.ui.modules.main.myedit.settings.profile.change_profile
+package com.doublejj.edit.ui.modules.main.myedit.profile.change_profile
 
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity

@@ -8,7 +8,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class CommentsOfSentenceService(val view: CommentsOfSentenceView) {
-    fun tryGetCommentsOfSentence(sentenceId: Int, page: Int) {
+    fun tryGetCommentsOfSentence(sentenceId: Long, page: Int) {
         val retrofitInterface = sRetrofit.create(CommentsOfSentenceRetrofitInterface::class.java)
         retrofitInterface
             .getCommentsOfSentence(sentenceId, page)

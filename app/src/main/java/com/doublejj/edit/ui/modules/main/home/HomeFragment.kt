@@ -212,11 +212,16 @@ class HomeFragment : Fragment(), MainOneshotView, SentenceLimitView {
                 CustomSnackbar.make(binding.root, getString(R.string.snackbar_limit_over),Snackbar.LENGTH_LONG).show()
             }
         }
+        else {
+            CustomSnackbar.make(binding.root, response.message.toString(), Snackbar.LENGTH_SHORT).show()
+        }
     }
 
     override fun onGetSentenceLimitFailure(message: String) {
-        CustomSnackbar.make(binding.root, message, Snackbar.LENGTH_SHORT)
+        CustomSnackbar.make(binding.root, message, Snackbar.LENGTH_SHORT).show()
     }
+    
+    // TODO : onResume()일 때 sSharedPreferences 업데이트
 
     override fun onDetach() {
         super.onDetach()
