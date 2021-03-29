@@ -1,8 +1,8 @@
 package com.doublejj.edit.ui.modules.main.home.writing_comment
 
+import android.app.Activity
 import android.os.Bundle
 import android.util.Log
-import android.util.TypedValue
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
@@ -12,6 +12,8 @@ import com.doublejj.edit.data.api.services.comment.WritingCommentView
 import com.doublejj.edit.data.models.BaseResponse
 import com.doublejj.edit.data.models.writing_comment.WritingCommentRequest
 import com.doublejj.edit.databinding.ActivityWritingCommentBinding
+import com.doublejj.edit.ui.modules.main.MainActivity
+import com.doublejj.edit.ui.modules.main.home.open_comment.OpenCommentFragment
 import com.doublejj.edit.ui.utils.dialog.CustomDialogClickListener
 import com.doublejj.edit.ui.utils.dialog.CustomDialogFragment
 import com.doublejj.edit.ui.utils.dialog.CustomLoadingDialog
@@ -181,5 +183,9 @@ class WritingCommentActivity : AppCompatActivity() {
                 dialog.show(supportFragmentManager, "CustomDialog")
             }
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
     }
 }

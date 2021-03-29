@@ -91,8 +91,8 @@ class SentenceAdapter(
 
                         // 리스트에서도 문장 삭제
                         sentenceDataList.remove(sentenceData)
-                        // TODO : refresh()로 다시 리스트 보여주기
-//                        refresh()
+                        // TODO : 삭제 후 리스트에서 바로 지우기
+                        notifyDataSetChanged()
                     }
                     // 내 문장이 아닐 경우
                     else {
@@ -125,6 +125,7 @@ class SentenceAdapter(
                 sentenceData.sympathiesCount -= 1
             }
             holder.tvSympathyCount.text = sentenceData.sympathiesCount.toString()
+            notifyDataSetChanged()
         }
         // TODO : ToggleButton 혼자만 눌리는 이슈 해결하기
         holder.llBtnOpenComment.setOnClickListener {

@@ -69,7 +69,9 @@ class OpenCommentAdapter(
                         DeleteCommentService(this).tryDeleteComment(
                             commentId = commentData.commentId
                         )
-                        // TODO : 삭제 후 리스트에서 바로 지우기
+                        // 삭제 후 리스트에서 바로 지우기
+                        commentDataList.remove(commentData)
+                        notifyDataSetChanged()
                     }
                     override fun onNegativeClick() {
                     }
@@ -135,7 +137,6 @@ class OpenCommentAdapter(
         holder.tvCommentContent.text = commentData.commentContent
 
         // 내 문장에 코멘트를 달아줬다면 감사합니다, 채택하기 visible
-        Log.d("lalala", "isMySentence: $isMySentence")
         if (isMySentence) {
             holder.tbThanks.visibility = View.VISIBLE
             holder.llBtnThanks.visibility = View.VISIBLE
@@ -145,22 +146,23 @@ class OpenCommentAdapter(
             if (commentData.isAdopted == "YES") {
                 holder.tbAdoption.isChecked = true
             }
+            if (commentData.isAppreciated) {
+                holder.tbThanks.isChecked = true
+            }
 
-            /*// TODO : 감사해요 체크 여부 확인 (response에 변수 추가되면 주석 풀기)
-            var isThanked = false
-            if (commentData.isThanked=="YES") isThanked = true
-            holder.tbThanks.isChecked = isThanked*/
+            // 감사해요 체크 여부 확인
             holder.llBtnThanks.setOnClickListener {
-                // TODO : 감사해요 버튼 효과 처리
-                var state = holder.tbThanks.isChecked
-                holder.tbThanks.isChecked = !state
-                /*// TODO : (response에 감사해요 변수 추가되면 주석 풀기)
-                commentData.isThanked = !state*/
+                // 감사해요 버튼 효과 처리
+                var isAppreciated = commentData.isAppreciated
+                holder.tbThanks.isChecked = !isAppreciated
+                commentData.isAppreciated = !isAppreciated
                 
                 // 감사해요 API 적용
                 ThanksCommentService(this).tryThanksComment(
                     commentId = commentData.commentId
                 )
+                commentDataList.set(position, commentData)
+                notifyDataSetChanged()
             }
 
             holder.llBtnAdoption.setOnClickListener {
@@ -168,13 +170,15 @@ class OpenCommentAdapter(
                 AdoptCommentService(this).tryAdoptComment(
                     commentId = commentData.commentId
                 )
-                if (adoptedClickCount == 1) {
-                    // TODO : 채택하기 버튼 효과 처리
+                if (adoptedClickCount == position) {
+                    // TODO : 채택하기 버튼 효과 처리 (한번 눌렀을 때 제대로 눌리게)
+                    // TODO : 서버에서 채택하기 취소 안되게 구현됨
                     holder.tbAdoption.isChecked = true
                     commentData.isAdopted = "YES"
                     Log.d("lalala", "isAdoptedBefore: $adoptedClickCount, isAdopted: ${commentData.isAdopted}")
                 }
-
+                commentDataList.set(position, commentData)
+                notifyDataSetChanged()
             }
             // TODO : ToggleButton 혼자만 눌리는 이슈 해결하기
         }

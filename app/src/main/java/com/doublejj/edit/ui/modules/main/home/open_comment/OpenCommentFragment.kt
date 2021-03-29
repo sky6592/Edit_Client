@@ -29,6 +29,7 @@ import com.google.android.material.snackbar.Snackbar
 class OpenCommentFragment : Fragment(), CommentsOfSentenceView {
     private lateinit var binding: OpenCommentFragmentBinding
     private lateinit var viewModel: OpenCommentViewModel
+    var sentenceId: Long = -1
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,14 +43,16 @@ class OpenCommentFragment : Fragment(), CommentsOfSentenceView {
         (activity as MainActivity).increaseFragmentCount()
 
         /** get comments from server **/
-        getComments()
+        sentenceId = requireArguments().getLong("coverLetterId")
+        getComments(sentenceId)
 
         /** toolbar buttons **/
         binding.ibBack.setOnClickListener {
             requireActivity().supportFragmentManager.popBackStack()
         }
         binding.ibRefresh.setOnClickListener {
-            // TODO : refresh data
+            // refresh data
+            onResume()
         }
 
         /** floating button **/
@@ -92,6 +95,7 @@ class OpenCommentFragment : Fragment(), CommentsOfSentenceView {
         }
 
         binding.fabMentor.setOnClickListener {
+
             if (binding.fabMentor.isEnabled) {
                 val sendIntent = Intent(activity, WritingCommentActivity::class.java)
                 sendIntent.putExtra("ivCharacter", requireArguments().getInt("ivCharacter"))
@@ -104,7 +108,6 @@ class OpenCommentFragment : Fragment(), CommentsOfSentenceView {
                 startActivity(sendIntent)
             }
         }
-
         return binding.root
     }
 
@@ -118,9 +121,8 @@ class OpenCommentFragment : Fragment(), CommentsOfSentenceView {
         if (isMine) binding.ibMenu.setImageDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.icon_delete))
     }
 
-    fun getComments() {
+    fun getComments(sentenceId: Long) {
         // TODO : 무한스크롤 처리
-        val sentenceId = requireArguments().getLong("coverLetterId")
 
         CommentsOfSentenceService(this).tryGetCommentsOfSentence(
             sentenceId = sentenceId,
@@ -134,6 +136,7 @@ class OpenCommentFragment : Fragment(), CommentsOfSentenceView {
 
         binding.rvComment.layoutManager = LinearLayoutManager(context)
         binding.rvComment.adapter = OpenCommentAdapter(requireContext(), commentDataList, isMine, requireActivity().supportFragmentManager)
+
     }
 
     override fun onGetCommentsOfSentenceSuccess(response: LookupCommentResponse) {
@@ -156,6 +159,11 @@ class OpenCommentFragment : Fragment(), CommentsOfSentenceView {
 
     override fun onGetCommentsOfSentenceFailure(message: String) {
         CustomSnackbar.make(binding.root, message, Snackbar.LENGTH_SHORT).show()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        getComments(sentenceId)
     }
 
     override fun onDetach() {
