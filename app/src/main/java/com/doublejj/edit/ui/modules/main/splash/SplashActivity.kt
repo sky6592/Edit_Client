@@ -26,7 +26,6 @@ class SplashActivity : AppCompatActivity(), SplashView {
             }
 
             override fun onAnimationEnd(animation: Animator?) {
-                Log.d("sky", "addAnimatorUpdateListener")
                 SplashService(this@SplashActivity).tryGetSplash()
             }
 

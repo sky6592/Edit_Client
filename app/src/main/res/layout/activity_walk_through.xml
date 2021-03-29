@@ -27,14 +27,16 @@
                 android:id="@+id/auto_view_pager_walk_through"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
+
         </LinearLayout>
+
         <!-- dp 모두 dimens에 넣어야함!-->
         <com.tbuonomo.viewpagerdotsindicator.DotsIndicator
             android:id="@+id/dots_indicator_walk_thorugh"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginBottom="30dp"
+            android:layout_marginBottom="50dp"
             app:dotsColor="@color/lavender"
             app:dotsCornerRadius="8dp"
             app:dotsSize="16dp"
@@ -43,29 +45,20 @@
             app:progressMode="true"
             app:selectedDotColor="@color/purple" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:layout_width="@dimen/btn_sign_up_weight"
-            android:layout_height="37dp"
-            android:background="@drawable/shadow_radius_sign_up_bg"
-            android:fontFamily="@font/noto_sans_kr_medium"
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_10dp"
+            android:background="@drawable/sign_up_btn"
             android:gravity="center_vertical|center_horizontal"
-            android:onClick="@{()->walkThroughActivity.onMoveSignUp()}"
-            android:text="@string/tv_sign_up_info"
-            android:textAlignment="center"
-            android:textColor="@color/purple"
-            android:textSize="@dimen/tv_15sp" />
+            android:onClick="@{()->walkThroughActivity.onMoveSignUp()}" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:layout_width="@dimen/btn_sign_up_weight"
-            android:layout_height="@dimen/btn_sign_up_height"
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:background="@drawable/shadow_radius_log_in_bg"
-            android:fontFamily="@font/noto_sans_kr_medium"
-            android:onClick="@{()->walkThroughActivity.onMoveLogIn()}"
-            android:text="@string/tv_log_in"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="@dimen/tv_15sp" />
+            android:background="@drawable/walk_through_sign_in_imgbtn"
+            android:onClick="@{()->walkThroughActivity.onMoveLogIn()}" />
 
     </LinearLayout>
 </layout>

@@ -274,8 +274,9 @@ class InfoFirstActivity : AppCompatActivity(), InfoFirstView {
         //닉네임 중복여부 성공
         Log.d("sky", "onPostInfoFirstSuccess - api성공")
 
-
-        if (response.code == 1000) {
+        //성공
+        if (response.code == 1000 && response.result.duplicationCheck == "NO") {
+            //중복없음
             mNickNameFlag = true
             mBinding.tvNickNameCaptionInfoFirst.setTextColor(R.color.purple)
             mBinding.tvNickNameCaptionInfoFirst.text =
@@ -289,7 +290,7 @@ class InfoFirstActivity : AppCompatActivity(), InfoFirstView {
             mNickNameFlag = false
             mBinding.tvNickNameCaptionInfoFirst.setTextColor(R.color.purple)
             mBinding.tvNickNameCaptionInfoFirst.text =
-                getString(R.string.tv_NickName_caption_result_wrong_info)
+                getString(R.string.tv_NickName_caption_duplication_result_info)
         }
 
         Log.d(
