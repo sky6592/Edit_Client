@@ -1,7 +1,6 @@
 package com.doublejj.edit.ui.modules.main.home.open_comment
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -60,12 +59,14 @@ class OpenCommentActivity : AppCompatActivity(), CommentsOfSentenceView {
     }
 
     fun getComments(sentenceId: Long) {
+        // 코멘트 포함
         // TODO : 무한스크롤 처리
-
         CommentsOfSentenceService(this).tryGetCommentsOfSentence(
             sentenceId = sentenceId,
             page = 1
         )
+
+
     }
 
     fun setAdapter(commentDataList: MutableList<CommentData>) {

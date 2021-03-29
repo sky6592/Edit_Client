@@ -26,6 +26,7 @@ import com.doublejj.edit.data.models.profile.info.ProfileInfoResponse
 import com.doublejj.edit.databinding.MyeditFragmentBinding
 import com.doublejj.edit.ui.modules.main.myedit.certificate_mentor.CertificateMentorActivity
 import com.doublejj.edit.ui.modules.main.myedit.manage_coin.ManageCoinActivity
+import com.doublejj.edit.ui.modules.main.myedit.my_sentence_completed.MySentenceCompletedActivity
 import com.doublejj.edit.ui.modules.main.myedit.my_sentence_not_adopted.MySentenceNotAdoptedActivity
 import com.doublejj.edit.ui.modules.main.myedit.profile.ProfileActivity
 import com.doublejj.edit.ui.modules.main.myedit.settings.SettingsActivity
@@ -105,16 +106,20 @@ class MyeditFragment : Fragment(), ProfileInfoView, LogoutView {
             // TODO : 공감 페이지
         }
         binding.ibMenuSentence.setOnClickListener {
-            // TODO : 자소서 목록 페이지 (멘티)
+            // 자소서 목록 페이지 (멘티)
             val sendIntent = Intent(activity, MySentenceNotAdoptedActivity::class.java)
             startActivity(sendIntent)
         }
         binding.ibMenuComplete.setOnClickListener {
-            // TODO : 자소서 완성 페이지 (멘티)
+            // 자소서 완성 페이지 (멘티)
+            val sendIntent = Intent(activity, MySentenceCompletedActivity::class.java)
+            startActivity(sendIntent)
         }
         binding.ibMenuCommentList.setOnClickListener {
             // TODO : 코멘트 목록 페이지 (멘토)
         }
+        
+        // TODO : 임시저장 추후 업데이트
         binding.ibMenuTemp.setOnClickListener {
             // TODO : 임시 저장 페이지
         }

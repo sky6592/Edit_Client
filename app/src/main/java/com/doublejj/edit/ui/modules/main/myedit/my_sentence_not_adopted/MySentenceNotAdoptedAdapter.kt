@@ -11,14 +11,11 @@ import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
 import com.doublejj.edit.ApplicationClass
 import com.doublejj.edit.R
-import com.doublejj.edit.data.api.services.lookup_comments_of_sentence.CommentsOfSentenceService
-import com.doublejj.edit.data.api.services.lookup_comments_of_sentence.CommentsOfSentenceView
 import com.doublejj.edit.data.api.services.my_sentence_not_adopted.SentenceToCompleteService
 import com.doublejj.edit.data.api.services.my_sentence_not_adopted.SentenceToCompleteView
 import com.doublejj.edit.data.api.services.sentence.DeletePublishedSentenceService
 import com.doublejj.edit.data.api.services.sentence.DeletePublishedSentenceView
 import com.doublejj.edit.data.models.ResultResponse
-import com.doublejj.edit.data.models.lookup_comments_of_sentence.LookupCommentResponse
 import com.doublejj.edit.data.models.my_sentence_not_adopted.MySentenceNotAdoptedResult
 import com.doublejj.edit.data.models.my_sentence_not_adopted.SentenceToCompleteResponse
 import com.doublejj.edit.ui.modules.main.home.open_comment.OpenCommentActivity
@@ -106,8 +103,6 @@ class MySentenceNotAdoptedAdapter(
             sendIntent.putExtra("originalCoverLetterCategoryName", sentenceData.coverLetterCategoryName)
             sendIntent.putExtra("originalCoverLetterContent", sentenceData.coverLetterContent)
 
-            Log.d("lalala", "sentenceId: ${sentenceData.coverLetterId}, nickName: ${sentenceData.nickName}")
-
             context.startActivity(sendIntent)
         }
     }
@@ -125,6 +120,8 @@ class MySentenceNotAdoptedAdapter(
             sendIntent.putExtra("originalCoverLetterContent", response.result.originalCoverLetterContent)
             sendIntent.putExtra("adoptedCommentContent", response.result.adoptedCommentContent)
 
+            // 채택한 코멘트 포함 여부
+            sendIntent.putExtra("includeAdoptedComment", true)
             context.startActivity(sendIntent)
 
             // TODO : 삭제 후 리스트에서 바로 지우기 (보류)

@@ -39,6 +39,7 @@ class CompleteWritingSentenceActivity : AppCompatActivity() {
         binding.tvCommentContent.text = intent.getStringExtra("adoptedCommentContent")
         writingRequest.originalCoverLetterId = intent.getLongExtra("originalCoverLetterId", 0L)
 
+
         /** edittext **/
         binding.etInputSentence.filters = arrayOf(
             InputFilter.LengthFilter(resources.getInteger(R.integer.length_limit_sentence))
@@ -84,6 +85,21 @@ class CompleteWritingSentenceActivity : AppCompatActivity() {
                 binding.btnSubmit.isEnabled = binding.etInputSentence.text.toString().isNotEmpty()
             }
         })
+
+        /** more comments **/
+        binding.tvMoreComment.setOnClickListener {
+            // 해당 문장의 코멘트 보기 화면으로 이동
+            /*val sendIntent = Intent(context, OpenCommentActivity::class.java)
+            sendIntent.putExtra("originalCoverLetterId", sentenceData.coverLetterId)
+            sendIntent.putExtra("ivCharacter", sentenceData.userProfile)
+            sendIntent.putExtra("nickName", sentenceData.nickName)
+            sendIntent.putExtra("jobName", sentenceData.jobName)
+            sendIntent.putExtra("originalCoverLetterCategoryName", sentenceData.coverLetterCategoryName)
+            sendIntent.putExtra("originalCoverLetterContent", sentenceData.coverLetterContent)
+            
+            context.startActivity(sendIntent)*/
+        }
+
 
         /** Save sentence temporary API **//*
         binding.btnSaveTemp.setOnClickListener {

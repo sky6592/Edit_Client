@@ -171,7 +171,6 @@ class OpenCommentAdapter(
                     // TODO : 서버에서 채택하기 취소 안되게 구현됨
                     holder.tbAdoption.isChecked = true
                     commentData.isAdopted = "YES"
-                    Log.d("lalala", "isAdoptedBefore: $adoptedClickCount, isAdopted: ${commentData.isAdopted}")
                 }
                 commentDataList.set(position, commentData)
                 notifyDataSetChanged()
