@@ -103,16 +103,24 @@ class ApplicationClass : MultiDexApplication() {
         when (emotion) {
             "relief" -> resPath += "0"
             "bigSmile" -> resPath += "1"
+<<<<<<< HEAD
 
             "suprise" -> resPath += "2"
+=======
+            "surprise" -> resPath += "2"
+>>>>>>> c711e7e (feat: Add add change profile api)
             "happy" -> resPath += "3"
             "smallSmile" -> resPath += "4"
             "wink" -> resPath += "5"
         }
         return applicationContext.resources!!.getIdentifier(resPath, "drawable", packageName)
     }
+<<<<<<< HEAD
 
     fun getPostionToString(position: String) : String {
+=======
+    fun getPostionToString(position: String?) : String {
+>>>>>>> c711e7e (feat: Add add change profile api)
         return when (position) {
             "MENTEE" -> "멘티님"
             else -> "멘토님"
