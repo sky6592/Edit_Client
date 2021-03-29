@@ -87,11 +87,6 @@ class HomeFragment : Fragment(), MainOneshotView, SentenceLimitView {
                 .commit()
         }
 
-        // TODO : 테스트 코드 지우기 sSharedPreferences에 제대로 들어오는지 단순 확인용!
-        val isMentor = sSharedPreferences.getString(USER_POSITION, "MENTEE") == "MENTOR"
-        val isMentorAuth = sSharedPreferences.getBoolean(MENTOR_AUTH_CONFIRM, false)
-        Log.d("mentor", "isMentor: $isMentor, isMentorAuth: $isMentorAuth")
-
         when (sSharedPreferences.getString(USER_POSITION, "MENTEE")) {
             "MENTEE" -> {
                 binding.fabMentee.visibility = View.VISIBLE

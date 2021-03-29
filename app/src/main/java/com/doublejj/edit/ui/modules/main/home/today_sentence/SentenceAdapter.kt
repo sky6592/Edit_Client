@@ -12,14 +12,14 @@ import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.RecyclerView
 import com.doublejj.edit.ApplicationClass
 import com.doublejj.edit.R
-import com.doublejj.edit.data.api.services.report_sentence.ReportSentenceService
-import com.doublejj.edit.data.api.services.report_sentence.ReportSentenceView
+import com.doublejj.edit.data.api.services.sentence.ReportSentenceService
+import com.doublejj.edit.data.api.services.sentence.ReportSentenceView
 import com.doublejj.edit.data.api.services.sentence.DeletePublishedSentenceService
 import com.doublejj.edit.data.api.services.sentence.DeletePublishedSentenceView
 import com.doublejj.edit.data.api.services.sentence.SympathizeSentenceService
 import com.doublejj.edit.data.api.services.sentence.SympathizeSentenceView
 import com.doublejj.edit.data.models.ResultResponse
-import com.doublejj.edit.data.models.report_sentence.ReportSentenceRequest
+import com.doublejj.edit.data.models.sentence.ReportSentenceRequest
 import com.doublejj.edit.data.models.sentence.SentenceData
 import com.doublejj.edit.data.models.sentence.SympathizeSentenceResponse
 import com.doublejj.edit.ui.modules.main.home.open_comment.OpenCommentFragment
@@ -128,7 +128,7 @@ class SentenceAdapter(
         }
         // TODO : ToggleButton 혼자만 눌리는 이슈 해결하기
         holder.llBtnOpenComment.setOnClickListener {
-            // TODO : 해당 카드의 코멘트 보기 화면으로 이동
+            // 해당 카드의 코멘트 보기 화면으로 이동
             val bundle = Bundle()
             bundle.putLong("coverLetterId", sentenceData.coverLetterId)
             bundle.putInt("ivCharacter", characterResId)
@@ -136,6 +136,7 @@ class SentenceAdapter(
             bundle.putString("tvOccupationType", sentenceData.jobName)
             bundle.putString("tvSelfWritingType", sentenceData.coverLetterCategoryName)
             bundle.putString("tvSentenceContent", sentenceData.coverLetterContent)
+            bundle.putBoolean("isMine", sentenceData.isMine)
 
             fm.beginTransaction()
                 .add(R.id.fl_home, OpenCommentFragment().apply {

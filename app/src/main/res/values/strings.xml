@@ -80,7 +80,8 @@
     <string name="tv_writing_comment_toolbar_title">코멘트 입력하기</string>
     <string name="tv_writing_comment_input_title">멘토 코멘트 입력</string>
     <string name="tv_writing_comment_input_hint">해당 자소서에 대한 의견을 작성해주세요.\n(40자 이상 작성 필수)</string>
-    <string name="tv_writing_comment_input_caption">코멘트를 40자 이상 입력해주세요.</string>
+    <string name="tv_writing_comment_input_caption_0">코멘트를 40자 이상 입력해주세요.</string>
+    <string name="tv_writing_comment_input_caption_1">모든 항목을 평가해주세요.</string>
     <string name="tv_writing_comment_notice_first">한 번 등록한 코멘트는 수정이 어렵습니다. 신중히 확인 후 등록해주세요!</string>
     <string name="tv_writing_comment_notice_second">코멘트 삭제는 ‘나의 에딧 &gt; 작성한 코멘트’에서 가능합니다.</string>
 
@@ -116,13 +117,9 @@
     <string name="tv_dialog_self_writing_title">문장 완성을 할 수 없어요!</string>
     <string name="tv_dialog_self_writing_content">코멘트가 아직 없거나, 채택한 코멘트가 없는 경우 문장 완성을 할 수 없어요.</string>
     <string name="tv_dialog_open_comment_title">코멘트를 삭제하시겠어요?</string>
-    <string name="tv_dialog_open_comment_content">
-        삭제된 코멘트는 복구할 수 없습니다.\n정말 삭제하시겠어요?
-    </string>
+    <string name="tv_dialog_open_comment_content">삭제된 코멘트는 복구할 수 없습니다.\n정말 삭제하시겠어요?</string>
     <string name="tv_dialog_open_sentence_title">문장을 삭제하시겠어요?</string>
-    <string name="tv_dialog_open_sentence_content">
-        삭제된 문장은 복구할 수 없습니다.\n정말 삭제하시겠어요?
-    </string>
+    <string name="tv_dialog_open_sentence_content">삭제된 문장은 복구할 수 없습니다.\n정말 삭제하시겠어요?</string>
     <string name="tv_dialog_sentence_report_title">이 글을 신고하시겠어요?</string>
     <string name="tv_dialog_sentence_report_content">
         해당 글이 에딧의 가이드에 어긋나거나\n불쾌감을 줄 경우 신고해주세요.

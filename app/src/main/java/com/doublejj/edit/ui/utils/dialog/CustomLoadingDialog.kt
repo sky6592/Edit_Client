@@ -25,7 +25,7 @@ class CustomLoadingDialog(context: Context) : Dialog(context) {
         setCanceledOnTouchOutside(false)
         setCancelable(false)
 
-        window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        this.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
 
         val anim = AnimationUtils.loadAnimation(context, R.anim.loading)
         binding.cvLogo.animation = anim

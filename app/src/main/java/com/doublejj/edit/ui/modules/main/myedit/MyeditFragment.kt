@@ -3,7 +3,6 @@ package com.doublejj.edit.ui.modules.main.myedit
 import android.content.Intent
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -153,7 +152,6 @@ class MyeditFragment : Fragment(), ProfileInfoView, LogoutView {
         // 멘토 인증하기 버튼 업데이트
         val isMentor = sSharedPreferences.getString(USER_POSITION, "MENTEE") == "MENTOR"
         val isMentorAuth = sSharedPreferences.getBoolean(MENTOR_AUTH_CONFIRM, false)
-        // TODO : 원래 코드 살리기 isMentorAuth 기본 값이 false여야함!!
         if (isMentor) {
             if (!isMentorAuth) {
                 // 인증 받지 않은 멘토라면 인증하기 버튼 보이기

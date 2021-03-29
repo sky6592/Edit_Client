@@ -2,11 +2,11 @@ package com.doublejj.edit.ui.modules.main.home.open_comment
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -71,12 +71,6 @@ class OpenCommentFragment : Fragment(), CommentsOfSentenceView {
             }
         }
 
-        binding.fabMentor.setOnClickListener {
-            if (binding.fabMentor.isEnabled) {
-                startActivity(Intent(activity, WritingCommentActivity::class.java))
-            }
-        }
-
         /** mentee's sentence **/
         placeSentenceFromBundle()
         binding.ibMenu.setOnClickListener {
@@ -97,6 +91,20 @@ class OpenCommentFragment : Fragment(), CommentsOfSentenceView {
             dialog.show(requireActivity().supportFragmentManager, "CustomDialog")
         }
 
+        binding.fabMentor.setOnClickListener {
+            if (binding.fabMentor.isEnabled) {
+                val sendIntent = Intent(activity, WritingCommentActivity::class.java)
+                sendIntent.putExtra("ivCharacter", requireArguments().getInt("ivCharacter"))
+                sendIntent.putExtra("coverLetterId", requireArguments().getLong("coverLetterId"))
+                sendIntent.putExtra("tvSentenceWriter", requireArguments().getString("tvSentenceWriter"))
+                sendIntent.putExtra("tvOccupationType", requireArguments().getString("tvOccupationType"))
+                sendIntent.putExtra("tvSelfWritingType", requireArguments().getString("tvSelfWritingType"))
+                sendIntent.putExtra("tvSentenceContent", requireArguments().getString("tvSentenceContent"))
+                sendIntent.putExtra("isMine", requireArguments().getBoolean("isMine"))
+                startActivity(sendIntent)
+            }
+        }
+
         return binding.root
     }
 
@@ -106,6 +114,8 @@ class OpenCommentFragment : Fragment(), CommentsOfSentenceView {
         binding.tvOccupationType.text = requireArguments().getString("tvOccupationType")
         binding.tvSelfWritingType.text = requireArguments().getString("tvSelfWritingType")
         binding.tvSentenceContent.text = requireArguments().getString("tvSentenceContent")
+        val isMine = requireArguments().getBoolean("isMine")
+        if (isMine) binding.ibMenu.setImageDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.icon_delete))
     }
 
     fun getComments() {
@@ -126,21 +136,23 @@ class OpenCommentFragment : Fragment(), CommentsOfSentenceView {
     override fun onGetCommentsOfSentenceSuccess(response: LookupCommentResponse) {
         if (response.isSuccess) {
             val commentDataList = response.result.commentInfos
-            Log.d("ok", "size: ${commentDataList.size}")
             if (commentDataList.size > 0) {
-                binding.llZeroComment.visibility = View.GONE
+                binding.llZeroComment.visibility = View.INVISIBLE
                 binding.rvComment.visibility = View.VISIBLE
                 setAdapter(commentDataList)
             }
             else {
                 binding.llZeroComment.visibility = View.VISIBLE
-                binding.rvComment.visibility = View.GONE
+                binding.rvComment.visibility = View.INVISIBLE
             }
+        }
+        else {
+            CustomSnackbar.make(binding.root, response.message.toString(), Snackbar.LENGTH_SHORT).show()
         }
     }
 
     override fun onGetCommentsOfSentenceFailure(message: String) {
-        CustomSnackbar.make(binding.root, message, Snackbar.LENGTH_SHORT)
+        CustomSnackbar.make(binding.root, message, Snackbar.LENGTH_SHORT).show()
     }
 
     override fun onDetach() {

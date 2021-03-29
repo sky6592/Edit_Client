@@ -10,7 +10,14 @@ import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
 import com.doublejj.edit.ApplicationClass
 import com.doublejj.edit.R
+import com.doublejj.edit.data.api.services.comment.DeleteCommentService
+import com.doublejj.edit.data.api.services.comment.DeleteCommentView
+import com.doublejj.edit.data.api.services.comment.ReportCommentService
+import com.doublejj.edit.data.api.services.comment.ReportCommentView
+import com.doublejj.edit.data.models.BaseResponse
+import com.doublejj.edit.data.models.ResultResponse
 import com.doublejj.edit.data.models.comment.CommentData
+import com.doublejj.edit.data.models.comment.ReportCommentRequest
 import com.doublejj.edit.ui.utils.dialog.CustomDialogClickListener
 import com.doublejj.edit.ui.utils.dialog.CustomDialogFragment
 import com.doublejj.edit.ui.utils.snackbar.CustomSnackbar
@@ -34,28 +41,83 @@ class OpenCommentAdapter(
 
     override fun onBindViewHolder(holder: OpenCommentAdapter.ViewHolder, position: Int) {
         var commentData = commentDataList.get(position)
-        // TODO : response에 userProfile 추가되면 주석 풀고 프로필 적용
-//        val characterResId = (context as ApplicationClass).getCharacterResId(commentData.userProfile)
-//        holder.ivCharacter.setImageResource(characterResId)
+
+        val characterResId = (context.applicationContext as ApplicationClass).getCharacterResId(commentData.userProfile)
+        holder.ivCharacter.setImageResource(characterResId)
         holder.tvSentenceWriter.text = commentData.nickName
         holder.tvOccupationType.text = commentData.jobName
+
+        val isMine = commentData.isMine
+        if (isMine) holder.ibMenu.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.icon_delete))
         holder.ibMenu.setOnClickListener {
-            val dialog = CustomDialogFragment(
-                R.string.tv_dialog_sentence_report_title,
-                R.string.tv_dialog_sentence_report_content,
-                R.string.tv_dialog_report,
-                R.string.tv_dialog_dismiss
-            )
-            dialog.setDialogClickListener(object : CustomDialogClickListener {
-                override fun onPositiveClick() {
-                    // TODO : 해당 카드 신고 처리
-//                    commentData.commentId
-                    CustomSnackbar.make(it, context.getString(R.string.snackbar_report), Snackbar.LENGTH_LONG).show()
-                }
-                override fun onNegativeClick() {
-                }
-            })
-            dialog.show(fm, "CustomDialog")
+            // 내 코멘트라면 삭제하기
+            if (isMine) {
+                val dialog = CustomDialogFragment(
+                    R.string.tv_dialog_open_comment_title,
+                    R.string.tv_dialog_open_comment_content,
+                    R.string.tv_dialog_delete,
+                    R.string.tv_dialog_dismiss
+                )
+                dialog.setDialogClickListener(object : CustomDialogClickListener, DeleteCommentView {
+                    override fun onPositiveClick() {
+                        // 해당 코멘트 삭제 처리
+                        DeleteCommentService(this).tryDeleteComment(
+                            commentId = commentData.commentId
+                        )
+                        // TODO : 삭제 후 리스트에서 바로 지우기
+                    }
+                    override fun onNegativeClick() {
+                    }
+
+                    override fun onDeleteCommentSuccess(response: BaseResponse) {
+                        if (response.isSuccess) {
+                            CustomSnackbar.make(it, context.getString(R.string.snackbar_comment_list_delete_mentor), Snackbar.LENGTH_LONG).show()
+                        }
+                        else {
+                            CustomSnackbar.make(it, response.message.toString(), Snackbar.LENGTH_LONG).show()
+                        }
+                    }
+                    override fun onDeleteCommentFailure(message: String) {
+                        CustomSnackbar.make(it, message, Snackbar.LENGTH_LONG).show()
+                    }
+                })
+                dialog.show(fm, "CustomDialog")
+            }
+            // 내 코멘트가 아니라면 신고하기
+            else {
+                val dialog = CustomDialogFragment(
+                    R.string.tv_dialog_sentence_report_title,
+                    R.string.tv_dialog_sentence_report_content,
+                    R.string.tv_dialog_report,
+                    R.string.tv_dialog_dismiss
+                )
+                dialog.setDialogClickListener(object : CustomDialogClickListener,
+                    ReportCommentView {
+                    override fun onPositiveClick() {
+                        // 해당 코멘트 신고 처리
+                        ReportCommentService(this).tryReportComment(
+                            ReportCommentRequest(
+                            commentId = commentData.commentId
+                        )
+                        )
+                    }
+                    override fun onNegativeClick() {
+                    }
+
+                    override fun onReportCommentSuccess(response: ResultResponse) {
+                        if (response.isSuccess) {
+                            CustomSnackbar.make(it, context.getString(R.string.snackbar_report), Snackbar.LENGTH_LONG).show()
+                        }
+                        else {
+                            CustomSnackbar.make(it, response.message.toString(), Snackbar.LENGTH_LONG).show()
+                        }
+                    }
+                    override fun onReportCommentFailure(message: String) {
+                        CustomSnackbar.make(it, message, Snackbar.LENGTH_LONG).show()
+                    }
+                })
+                dialog.show(fm, "CustomDialog")
+            }
         }
 
         holder.tvEvaluationSentence.text = commentData.sentenceEvaluation
@@ -69,13 +131,13 @@ class OpenCommentAdapter(
         holder.tvCommentContent.text = commentData.commentContent
 
         // TODO : 내 문장에 코멘트를 달아줬다면 감사합니다, 채택하기 visible
-        /*if (commentData.userId == sSharedPreferences.getLong(USER_ID, "0")) {
+        if (commentData.isMine) {
             holder.tbThanks.visibility = View.VISIBLE
             holder.llBtnThanks.visibility = View.VISIBLE
             holder.tbAdoption.visibility = View.VISIBLE
             holder.llBtnAdoption.visibility = View.VISIBLE
 
-            holder.tbThanks.isChecked = commentData.isThanked
+            holder.tbThanks.isChecked = commentData.isAdopted
             holder.llBtnThanks.setOnClickListener {
                 // TODO : 해당 카드 감사해요 처리
                 val state = holder.tbThanks.isChecked
@@ -90,7 +152,7 @@ class OpenCommentAdapter(
                 commentData.isAdopted = !state
             }
             // TODO : ToggleButton 혼자만 눌리는 이슈 해결하기
-        }*/
+        }
     }
 
     override fun getItemCount(): Int {
