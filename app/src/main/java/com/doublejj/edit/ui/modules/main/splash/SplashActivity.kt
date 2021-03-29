@@ -1,13 +1,11 @@
 package com.doublejj.edit.ui.modules.main.splash
 
-import android.app.Application
+import android.animation.Animator
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import com.airbnb.lottie.LottieAnimationView
 import com.doublejj.edit.ApplicationClass
 import com.doublejj.edit.R
 import com.doublejj.edit.data.api.services.splash.SplashService
@@ -15,7 +13,6 @@ import com.doublejj.edit.data.api.services.splash.SplashView
 import com.doublejj.edit.data.models.splash.SplashResponse
 import com.doublejj.edit.databinding.ActivitySplashBinding
 import com.doublejj.edit.ui.modules.main.MainActivity
-import com.doublejj.edit.ui.modules.main.signup.infofirst.InfoFirstActivity
 import com.doublejj.edit.ui.modules.main.walkthrough.WalkThroughActivity
 
 class SplashActivity : AppCompatActivity(), SplashView {
@@ -24,16 +21,27 @@ class SplashActivity : AppCompatActivity(), SplashView {
         super.onCreate(savedInstanceState)
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_splash)
 
-        mBinding.animationView.addAnimatorUpdateListener {
-            if (mBinding.animationView.isAnimating) {
-                Log.d("editors", "addAnimatorUpdateListener")
-                SplashService(this).tryGetSplash()
+        mBinding.animationView.addAnimatorListener(object : Animator.AnimatorListener {
+            override fun onAnimationStart(animation: Animator?) {
             }
-        }
+
+            override fun onAnimationEnd(animation: Animator?) {
+                Log.d("sky", "addAnimatorUpdateListener")
+                SplashService(this@SplashActivity).tryGetSplash()
+            }
+
+            override fun onAnimationCancel(animation: Animator?) {
+            }
+
+            override fun onAnimationRepeat(animation: Animator?) {
+            }
+
+        })
+
     }
 
     override fun onGetSplashSuccess(response: SplashResponse) {
-        Log.d("editors", "Splash - API성공")
+        Log.d("sky", "Splash - API성공")
         /** Success : Go Main **/
         if (response.code == 1000) {
             //jwt값 저장되어있는지 확인
@@ -62,7 +70,6 @@ class SplashActivity : AppCompatActivity(), SplashView {
     }
 
     override fun onGetSplashFailure(message: String) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT)
-        Log.d("editors", message)
+        Log.d("sky", message)
     }
 }

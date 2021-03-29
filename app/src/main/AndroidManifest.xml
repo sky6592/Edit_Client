@@ -4,10 +4,13 @@
     package="com.doublejj.edit">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.CAMERA"/>
-    <uses-feature android:name="android.hardware.camera" android:required="true"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
 
     <application
         android:name=".ApplicationClass"
@@ -25,7 +28,7 @@
         <activity android:name=".ui.modules.main.assistance.pw.PwFindActivity" />
         <activity
             android:name=".ui.modules.main.assistance.email.EmailFindActivity"
-            android:windowSoftInputMode="adjustResize"/>
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".ui.modules.main.signup.emailcheck.EmailCheckActivity"
             android:windowSoftInputMode="adjustResize" />
@@ -34,7 +37,7 @@
             android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".ui.modules.main.myedit.profile.change_job.ChangeJobActivity"
-            android:windowSoftInputMode="adjustPan"/>
+            android:windowSoftInputMode="adjustPan" />
         <activity android:name=".ui.modules.main.myedit.certificate_mentor.CertificateRejectActivity" />
         <activity android:name=".ui.modules.main.myedit.certificate_mentor.CertificateInProgressActivity" />
         <activity android:name=".ui.modules.main.myedit.certificate_mentor.CertificateMentorCompleteActivity" />
@@ -66,8 +69,7 @@
         <activity
             android:name=".ui.modules.main.login.LogInActivity"
             android:windowSoftInputMode="adjustResize" />
-        <activity android:name=".ui.modules.main.signup.slecttype.SelectTypeActivity" >
-        </activity>
+        <activity android:name=".ui.modules.main.signup.slecttype.SelectTypeActivity"></activity>
         <activity android:name=".ui.modules.main.walkthrough.WalkThroughActivity" />
 
         <activity android:name=".ui.modules.main.signup.infosecond.InfoSecondActivity" />
@@ -87,13 +89,11 @@
         <activity android:name=".ui.modules.main.home.writing_comment.WritingCommentActivity" />
 
         <activity android:name=".ui.modules.main.splash.SplashActivity">
-                <intent-filter>
-                        <action android:name="android.intent.action.MAIN" />
-                        <category android:name="android.intent.category.LAUNCHER" />
-                </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
-        <activity android:name=".ui.modules.main.MainActivity">
-        </activity>
+        <activity android:name=".ui.modules.main.MainActivity"></activity>
     </application>
-
 </manifest>
