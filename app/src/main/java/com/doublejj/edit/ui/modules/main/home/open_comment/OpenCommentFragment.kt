@@ -129,8 +129,11 @@ class OpenCommentFragment : Fragment(), CommentsOfSentenceView {
     }
 
     fun setAdapter(commentDataList: MutableList<CommentData>) {
+        // 내 문장인지 같이 전달
+        val isMine = requireArguments().getBoolean("isMine")
+
         binding.rvComment.layoutManager = LinearLayoutManager(context)
-        binding.rvComment.adapter = OpenCommentAdapter(requireContext(), commentDataList, requireActivity().supportFragmentManager)
+        binding.rvComment.adapter = OpenCommentAdapter(requireContext(), commentDataList, isMine, requireActivity().supportFragmentManager)
     }
 
     override fun onGetCommentsOfSentenceSuccess(response: LookupCommentResponse) {

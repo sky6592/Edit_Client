@@ -1,6 +1,7 @@
 package com.doublejj.edit.ui.modules.main.home.open_comment
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,29 +11,33 @@ import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
 import com.doublejj.edit.ApplicationClass
 import com.doublejj.edit.R
-import com.doublejj.edit.data.api.services.comment.DeleteCommentService
-import com.doublejj.edit.data.api.services.comment.DeleteCommentView
-import com.doublejj.edit.data.api.services.comment.ReportCommentService
-import com.doublejj.edit.data.api.services.comment.ReportCommentView
+import com.doublejj.edit.data.api.services.comment.*
 import com.doublejj.edit.data.models.BaseResponse
 import com.doublejj.edit.data.models.ResultResponse
 import com.doublejj.edit.data.models.comment.CommentData
 import com.doublejj.edit.data.models.comment.ReportCommentRequest
+import com.doublejj.edit.data.models.comment.ThanksCommentResponse
 import com.doublejj.edit.ui.utils.dialog.CustomDialogClickListener
 import com.doublejj.edit.ui.utils.dialog.CustomDialogFragment
+import com.doublejj.edit.ui.utils.dialog.CustomLoadingDialog
 import com.doublejj.edit.ui.utils.snackbar.CustomSnackbar
 import com.google.android.material.snackbar.Snackbar
 
 class OpenCommentAdapter(
     val context: Context,
     var commentDataList: MutableList<CommentData>,
+    val isMySentence: Boolean,
     val fm: FragmentManager
-) : RecyclerView.Adapter<OpenCommentAdapter.ViewHolder>() {
+) : RecyclerView.Adapter<OpenCommentAdapter.ViewHolder>(),
+    ThanksCommentView, AdoptCommentView {
+    lateinit var parentView: ViewGroup
+    var adoptedClickCount = 0
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
     ): OpenCommentAdapter.ViewHolder {
+        parentView = parent
         val inflater = LayoutInflater.from(parent.context)
         val itemView: View = inflater.inflate(R.layout.layout_comment, parent, false)
 
@@ -98,8 +103,7 @@ class OpenCommentAdapter(
                         ReportCommentService(this).tryReportComment(
                             ReportCommentRequest(
                             commentId = commentData.commentId
-                        )
-                        )
+                        ))
                     }
                     override fun onNegativeClick() {
                     }
@@ -130,26 +134,47 @@ class OpenCommentAdapter(
         holder.tvEvaluationActivity.setTextColor(ContextCompat.getColor(context, (context.applicationContext as ApplicationClass).getEvaluationColorId(commentData.activity)))
         holder.tvCommentContent.text = commentData.commentContent
 
-        // TODO : 내 문장에 코멘트를 달아줬다면 감사합니다, 채택하기 visible
-        if (commentData.isMine) {
+        // 내 문장에 코멘트를 달아줬다면 감사합니다, 채택하기 visible
+        Log.d("lalala", "isMySentence: $isMySentence")
+        if (isMySentence) {
             holder.tbThanks.visibility = View.VISIBLE
             holder.llBtnThanks.visibility = View.VISIBLE
             holder.tbAdoption.visibility = View.VISIBLE
             holder.llBtnAdoption.visibility = View.VISIBLE
 
-            holder.tbThanks.isChecked = commentData.isAdopted
-            holder.llBtnThanks.setOnClickListener {
-                // TODO : 해당 카드 감사해요 처리
-                val state = holder.tbThanks.isChecked
-                holder.tbThanks.isChecked = !state
-                commentData.isThanked = !state
+            if (commentData.isAdopted == "YES") {
+                holder.tbAdoption.isChecked = true
             }
-            holder.tbAdoption.isChecked = commentData.isAdopted
+
+            /*// TODO : 감사해요 체크 여부 확인 (response에 변수 추가되면 주석 풀기)
+            var isThanked = false
+            if (commentData.isThanked=="YES") isThanked = true
+            holder.tbThanks.isChecked = isThanked*/
+            holder.llBtnThanks.setOnClickListener {
+                // TODO : 감사해요 버튼 효과 처리
+                var state = holder.tbThanks.isChecked
+                holder.tbThanks.isChecked = !state
+                /*// TODO : (response에 감사해요 변수 추가되면 주석 풀기)
+                commentData.isThanked = !state*/
+                
+                // 감사해요 API 적용
+                ThanksCommentService(this).tryThanksComment(
+                    commentId = commentData.commentId
+                )
+            }
+
             holder.llBtnAdoption.setOnClickListener {
-                // TODO : 해당 카드 채택하기 처리
-                val state = holder.tbAdoption.isChecked
-                holder.tbAdoption.isChecked = !state
-                commentData.isAdopted = !state
+                // 채택하기 API 적용
+                AdoptCommentService(this).tryAdoptComment(
+                    commentId = commentData.commentId
+                )
+                if (adoptedClickCount == 1) {
+                    // TODO : 채택하기 버튼 효과 처리
+                    holder.tbAdoption.isChecked = true
+                    commentData.isAdopted = "YES"
+                    Log.d("lalala", "isAdoptedBefore: $adoptedClickCount, isAdopted: ${commentData.isAdopted}")
+                }
+
             }
             // TODO : ToggleButton 혼자만 눌리는 이슈 해결하기
         }
@@ -157,6 +182,40 @@ class OpenCommentAdapter(
 
     override fun getItemCount(): Int {
         return commentDataList.size
+    }
+
+    override fun onThanksCommentSuccess(response: ThanksCommentResponse) {
+        if (response.isSuccess) {
+        }
+        else {
+            CustomSnackbar.make(parentView, response.message.toString(), Snackbar.LENGTH_SHORT).show()
+        }
+
+        CustomLoadingDialog(parentView.context).dismiss()
+    }
+
+    override fun onThanksCommentFailure(message: String) {
+        CustomSnackbar.make(parentView, message, Snackbar.LENGTH_SHORT).show()
+
+        CustomLoadingDialog(parentView.context).dismiss()
+    }
+
+    override fun onAdoptCommentSuccess(response: ResultResponse) {
+        if (response.isSuccess) {
+            this.adoptedClickCount += 1
+        }
+        else {
+            this.adoptedClickCount += 1
+            CustomSnackbar.make(parentView, response.message.toString(), Snackbar.LENGTH_SHORT).show()
+        }
+
+        CustomLoadingDialog(parentView.context).dismiss()
+    }
+
+    override fun onAdoptCommentFailure(message: String) {
+        CustomSnackbar.make(parentView, message, Snackbar.LENGTH_SHORT).show()
+
+        CustomLoadingDialog(parentView.context).dismiss()
     }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
