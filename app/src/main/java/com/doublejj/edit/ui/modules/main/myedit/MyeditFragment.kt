@@ -34,6 +34,7 @@ import com.doublejj.edit.ui.modules.main.splash.SplashActivity
 import com.doublejj.edit.ui.utils.snackbar.CustomSnackbar
 import com.google.android.material.snackbar.Snackbar
 
+
 class MyeditFragment : Fragment(), ProfileInfoView, LogoutView {
     private val TAG: String = javaClass.simpleName.toString()
     private lateinit var binding: MyeditFragmentBinding
@@ -141,7 +142,7 @@ class MyeditFragment : Fragment(), ProfileInfoView, LogoutView {
         // 프로필 캐릭터 업데이트
         binding.tvNickname.text = sSharedPreferences.getString(USER_NICKNAME, null)
         binding.tvPosition.text = (requireContext().applicationContext as ApplicationClass).getPostionToString(
-            sSharedPreferences.getString(USER_POSITION, null))
+            sSharedPreferences.getString(USER_POSITION, null).toString())
         binding.ivProfile.setImageResource((requireContext().applicationContext as ApplicationClass).getCharacterResId(
             sSharedPreferences.getString(USER_COLOR, null).toString(),
             sSharedPreferences.getString(USER_EMOTION, null).toString()
