@@ -89,9 +89,8 @@ class SentenceAdapter(
                             sentenceData.coverLetterId
                         )
 
-                        // 리스트에서도 문장 삭제
+                        // 삭제 후 리스트에서 바로 지우기
                         sentenceDataList.remove(sentenceData)
-                        // TODO : 삭제 후 리스트에서 바로 지우기
                         notifyDataSetChanged()
                     }
                     // 내 문장이 아닐 경우
@@ -111,21 +110,26 @@ class SentenceAdapter(
 
         holder.tvSelfWritingType.text = sentenceData.coverLetterCategoryName
         holder.tvSentenceContent.text = sentenceData.coverLetterContent
+
         holder.tbSympathy.isChecked = sentenceData.isSympathy
         holder.tvSympathyCount.text = sentenceData.sympathiesCount.toString()
+
         holder.llBtnSympathy.setOnClickListener {
             // 공감 처리
-            SympathizeSentenceService(this).tryPatchSympathizeSentence(sentenceData.coverLetterId)
-            val sympathyState = holder.tbSympathy.isChecked
+            val sympathyState = sentenceData.isSympathy
             holder.tbSympathy.isChecked = !sympathyState
-            if (!sympathyState) {
-                sentenceData.sympathiesCount += 1
-            }
-            else {
-                sentenceData.sympathiesCount -= 1
-            }
+            if (!sympathyState) sentenceData.sympathiesCount += 1
+            else sentenceData.sympathiesCount -= 1
+            sentenceData.isSympathy = !sympathyState
             holder.tvSympathyCount.text = sentenceData.sympathiesCount.toString()
+
+            // 공감 API 적용
+            SympathizeSentenceService(this).tryPatchSympathizeSentence(sentenceData.coverLetterId)
+            sentenceDataList.set(position, sentenceData)
             notifyDataSetChanged()
+
+            holder.tbSympathy.isChecked = sentenceData.isSympathy
+            holder.tvSympathyCount.text = sentenceData.sympathiesCount.toString()
         }
         // TODO : ToggleButton 혼자만 눌리는 이슈 해결하기
         holder.llBtnOpenComment.setOnClickListener {

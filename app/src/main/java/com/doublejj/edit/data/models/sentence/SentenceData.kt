@@ -11,6 +11,6 @@ data class SentenceData(
     @SerializedName("coverLetterContent") val coverLetterContent: String,
     @SerializedName("completedCoverLetterContent") val completedCoverLetterContent: String,
     @SerializedName("sympathiesCount") var sympathiesCount: Long,
-    @SerializedName("isSympathy") val isSympathy: Boolean,
+    @SerializedName("isSympathy") var isSympathy: Boolean,
     @SerializedName("isMine") val isMine: Boolean
 )

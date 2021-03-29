@@ -143,12 +143,8 @@ class OpenCommentAdapter(
             holder.tbAdoption.visibility = View.VISIBLE
             holder.llBtnAdoption.visibility = View.VISIBLE
 
-            if (commentData.isAdopted == "YES") {
-                holder.tbAdoption.isChecked = true
-            }
-            if (commentData.isAppreciated) {
-                holder.tbThanks.isChecked = true
-            }
+            holder.tbAdoption.isChecked = commentData.isAdopted == "YES"
+            holder.tbThanks.isChecked = commentData.isAppreciated
 
             // 감사해요 체크 여부 확인
             holder.llBtnThanks.setOnClickListener {
