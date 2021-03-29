@@ -22,6 +22,7 @@
         android:theme="@style/Theme.Edit"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
+        <activity android:name=".ui.modules.main.home.open_comment.OpenCommentActivity" />
         <activity android:name=".ui.modules.main.myedit.my_sentence_not_adopted.CompleteWritingSentenceActivity" />
         <activity android:name=".ui.modules.main.myedit.my_sentence_not_adopted.MySentenceNotAdoptedActivity" />
         <activity

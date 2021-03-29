@@ -1,6 +1,5 @@
 package com.doublejj.edit.ui.modules.main.myedit.my_sentence_not_adopted
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
@@ -9,20 +8,21 @@ import android.text.TextWatcher
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import com.doublejj.edit.R
-import com.doublejj.edit.data.api.services.writing_sentence.WritingSentenceService
-import com.doublejj.edit.data.api.services.writing_sentence.WritingSentenceView
+import com.doublejj.edit.data.api.services.my_sentence_not_adopted.CompletingSentenceService
+import com.doublejj.edit.data.api.services.my_sentence_not_adopted.CompletingSentenceView
 import com.doublejj.edit.data.models.ResultResponse
-import com.doublejj.edit.data.models.writing_sentence.WritingSentenceRequest
+import com.doublejj.edit.data.models.my_sentence_not_adopted.CompletingSentenceRequest
 import com.doublejj.edit.databinding.ActivityCompleteWritingSentenceBinding
 import com.doublejj.edit.ui.utils.dialog.CustomDialogClickListener
 import com.doublejj.edit.ui.utils.dialog.CustomDialogFragment
+import com.doublejj.edit.ui.utils.dialog.CustomLoadingDialog
 import com.doublejj.edit.ui.utils.snackbar.CustomSnackbar
 import com.google.android.material.snackbar.Snackbar
 
 class CompleteWritingSentenceActivity : AppCompatActivity() {
     private val TAG: String = javaClass.simpleName.toString()
     private lateinit var binding: ActivityCompleteWritingSentenceBinding
-    private var writingRequest = WritingSentenceRequest(null, null)
+    private var writingRequest = CompletingSentenceRequest(null, null)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,10 +34,10 @@ class CompleteWritingSentenceActivity : AppCompatActivity() {
         }
 
         /** set sentence, comment **/
-        val originalCoverLetterId = intent.getLongExtra("originalCoverLetterId", 0L)
         binding.tvSelfWritingType.text = intent.getStringExtra("originalCoverLetterCategoryName")
-        binding.tvBeforeSentenceTitle.text = intent.getStringExtra("originalCoverLetterContent")
-        binding.tvBeforeCommentTitle.text = intent.getStringExtra("adoptedCommentContent")
+        binding.tvSentenceContent.text = intent.getStringExtra("originalCoverLetterContent")
+        binding.tvCommentContent.text = intent.getStringExtra("adoptedCommentContent")
+        writingRequest.originalCoverLetterId = intent.getLongExtra("originalCoverLetterId", 0L)
 
         /** edittext **/
         binding.etInputSentence.filters = arrayOf(
@@ -79,6 +79,9 @@ class CompleteWritingSentenceActivity : AppCompatActivity() {
                 else colorResId = R.color.purple_active
                 binding.tvInputSentenceWithoutSpaceCount.setTextColor(ContextCompat.getColor(applicationContext, colorResId))
                 binding.tvInputSentenceWithoutSpaceCount.text = withoutSpaces.toString()
+
+                // enabled button
+                binding.btnSubmit.isEnabled = binding.etInputSentence.text.toString().isNotEmpty()
             }
         })
 
@@ -118,32 +121,39 @@ class CompleteWritingSentenceActivity : AppCompatActivity() {
 
         /** Submit sentence API **/
         binding.btnSubmit.setOnClickListener {
+
             val dialog = CustomDialogFragment(
                 R.string.tv_dialog_sentence_complete_title,
                 R.string.tv_dialog_sentence_complete_content,
                 R.string.tv_dialog_submit,
                 R.string.tv_dialog_dismiss
             )
-            dialog.setDialogClickListener(object : CustomDialogClickListener, WritingSentenceView {
+            dialog.setDialogClickListener(object : CustomDialogClickListener, CompletingSentenceView {
                 override fun onPositiveClick() {
                     writingRequest.coverLetterContent = binding.etInputSentence.text.toString()
-                    if (writingRequest.coverLetterCategoryId != null && writingRequest.coverLetterContent != null) {
-                        WritingSentenceService(this).tryPostWritingSentence(writingRequest)
+                    if (writingRequest.originalCoverLetterId != null && writingRequest.coverLetterContent != null) {
+                        CompletingSentenceService(this).tryPostCompletingSentence(writingRequest)
                     }
                 }
 
                 override fun onNegativeClick() {
                 }
 
-                override fun onPostWritingSentenceSuccess(response: ResultResponse) {
+                override fun onPostCompletingSentenceSuccess(response: ResultResponse) {
                     if (response.isSuccess) {
                         finish()
-                        finish()
                     }
+                    else {
+                        CustomSnackbar.make(binding.root, response.message.toString(), Snackbar.LENGTH_SHORT).show()
+                    }
+
+                    CustomLoadingDialog(applicationContext).dismiss()
                 }
 
-                override fun onPostWritingSentenceFailure(message: String) {
+                override fun onPostCompletingSentenceFailure(message: String) {
                     CustomSnackbar.make(binding.root, message, Snackbar.LENGTH_SHORT).show()
+
+                    CustomLoadingDialog(applicationContext).dismiss()
                 }
             })
             dialog.show(supportFragmentManager, "CustomDialog")

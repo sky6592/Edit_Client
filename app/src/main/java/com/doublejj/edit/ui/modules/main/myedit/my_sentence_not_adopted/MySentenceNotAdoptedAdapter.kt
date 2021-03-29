@@ -2,25 +2,29 @@ package com.doublejj.edit.ui.modules.main.myedit.my_sentence_not_adopted
 
 import android.content.Context
 import android.content.Intent
-import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
-import androidx.core.content.ContextCompat.startActivity
 import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.RecyclerView
 import com.doublejj.edit.ApplicationClass
 import com.doublejj.edit.R
+import com.doublejj.edit.data.api.services.lookup_comments_of_sentence.CommentsOfSentenceService
+import com.doublejj.edit.data.api.services.lookup_comments_of_sentence.CommentsOfSentenceView
+import com.doublejj.edit.data.api.services.my_sentence_not_adopted.SentenceToCompleteService
+import com.doublejj.edit.data.api.services.my_sentence_not_adopted.SentenceToCompleteView
 import com.doublejj.edit.data.api.services.sentence.DeletePublishedSentenceService
 import com.doublejj.edit.data.api.services.sentence.DeletePublishedSentenceView
 import com.doublejj.edit.data.models.ResultResponse
+import com.doublejj.edit.data.models.lookup_comments_of_sentence.LookupCommentResponse
 import com.doublejj.edit.data.models.my_sentence_not_adopted.MySentenceNotAdoptedResult
-import com.doublejj.edit.ui.modules.main.home.open_comment.OpenCommentFragment
-import com.doublejj.edit.ui.modules.main.home.writing_comment.WritingCommentActivity
+import com.doublejj.edit.data.models.my_sentence_not_adopted.SentenceToCompleteResponse
+import com.doublejj.edit.ui.modules.main.home.open_comment.OpenCommentActivity
 import com.doublejj.edit.ui.utils.dialog.CustomDialogClickListener
 import com.doublejj.edit.ui.utils.dialog.CustomDialogFragment
+import com.doublejj.edit.ui.utils.dialog.CustomLoadingDialog
 import com.doublejj.edit.ui.utils.snackbar.CustomSnackbar
 import com.google.android.material.snackbar.Snackbar
 
@@ -29,7 +33,7 @@ class MySentenceNotAdoptedAdapter(
     var sentenceDataList: MutableList<MySentenceNotAdoptedResult>,
     val fm: FragmentManager
 ) : RecyclerView.Adapter<MySentenceNotAdoptedAdapter.ViewHolder>(),
-    DeletePublishedSentenceView {
+    SentenceToCompleteView, DeletePublishedSentenceView {
     lateinit var parentView: ViewGroup
 
     override fun onCreateViewHolder(
@@ -84,42 +88,78 @@ class MySentenceNotAdoptedAdapter(
         holder.tvSentenceContent.text = sentenceData.coverLetterContent
 
         holder.llBtnComplete.setOnClickListener {
-            // TODO : 채택여부 받아서 문장 완성할 수 있는지, 없는지 다이얼로그 띄우기
-
-            // success 부분에서
-            // 문장 완성하기 페이지로 이동
-            val sendIntent = Intent(context, CompleteWritingSentenceActivity::class.java)
-            sendIntent.putExtra("originalCoverLetterId", response.result.originalCoverLetterId)
-            sendIntent.putExtra("originalCoverLetterCategoryName", response.result.originalCoverLetterCategoryId)
-            sendIntent.putExtra("originalCoverLetterContent", response.result.originalCoverLetterContent)
-            sendIntent.putExtra("adoptedCommentContent", response.result.adoptedCommentContent)
-
-            context.startActivity(sendIntent)
+            // 채택여부 받아서 문장 완성할 수 있는지, 없는지 다이얼로그 띄우기
+            SentenceToCompleteService(this).tryGetSentenceToComplete(
+                sentenceData.coverLetterId,
+                position
+            )
         }
         // TODO : ToggleButton 혼자만 눌리는 이슈 해결하기
 
         holder.llBtnOpenComment.setOnClickListener {
-            // 해당 카드의 코멘트 보기 화면으로 이동
-            val bundle = Bundle()
-            bundle.putLong("coverLetterId", sentenceData.coverLetterId)
-            bundle.putInt("ivCharacter", characterResId)
-            bundle.putString("tvSentenceWriter", sentenceData.nickName)
-            bundle.putString("tvOccupationType", sentenceData.jobName)
-            bundle.putString("tvSelfWritingType", sentenceData.coverLetterCategoryName)
-            bundle.putString("tvSentenceContent", sentenceData.coverLetterContent)
+            // 해당 문장의 코멘트 보기 화면으로 이동
+            val sendIntent = Intent(context, OpenCommentActivity::class.java)
+            sendIntent.putExtra("originalCoverLetterId", sentenceData.coverLetterId)
+            sendIntent.putExtra("ivCharacter", sentenceData.userProfile)
+            sendIntent.putExtra("nickName", sentenceData.nickName)
+            sendIntent.putExtra("jobName", sentenceData.jobName)
+            sendIntent.putExtra("originalCoverLetterCategoryName", sentenceData.coverLetterCategoryName)
+            sendIntent.putExtra("originalCoverLetterContent", sentenceData.coverLetterContent)
 
-            fm.beginTransaction()
-                .add(R.id.fl_home, OpenCommentFragment().apply {
-                    arguments = bundle
-                })
-                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                .addToBackStack(null)
-                .commit()
+            Log.d("lalala", "sentenceId: ${sentenceData.coverLetterId}, nickName: ${sentenceData.nickName}")
+
+            context.startActivity(sendIntent)
         }
     }
 
     override fun getItemCount(): Int {
         return sentenceDataList.size
+    }
+
+    override fun onGetSentenceToCompleteSuccess(response: SentenceToCompleteResponse, position: Int) {
+        if (response.isSuccess) {
+            // 문장 완성하기 페이지로 이동
+            val sendIntent = Intent(context, CompleteWritingSentenceActivity::class.java)
+            sendIntent.putExtra("originalCoverLetterId", response.result.originalCoverLetterId)
+            sendIntent.putExtra("originalCoverLetterCategoryName", response.result.originalCoverLetterCategoryName)
+            sendIntent.putExtra("originalCoverLetterContent", response.result.originalCoverLetterContent)
+            sendIntent.putExtra("adoptedCommentContent", response.result.adoptedCommentContent)
+
+            context.startActivity(sendIntent)
+
+            // TODO : 삭제 후 리스트에서 바로 지우기 (보류)
+//            sentenceDataList.removeAt(response.position!!)
+            notifyDataSetChanged()
+        }
+        else {
+            if (response.code == 3330) {
+                val dialog = CustomDialogFragment(
+                    R.string.tv_dialog_self_writing_title,
+                    R.string.tv_dialog_self_writing_content,
+                    R.string.tv_dialog_check,
+                    null
+                )
+                dialog.setDialogClickListener(object : CustomDialogClickListener {
+                    override fun onPositiveClick() {
+                        // nothing
+                    }
+                    override fun onNegativeClick() {
+                    }
+                })
+                dialog.show(fm, "CustomDialog")
+            }
+            else {
+                CustomSnackbar.make(parentView, response.message.toString(), Snackbar.LENGTH_LONG).show()
+            }
+        }
+
+        CustomLoadingDialog(context).dismiss()
+    }
+
+    override fun onGetSentenceToCompleteFailure(message: String) {
+        CustomSnackbar.make(parentView, message, Snackbar.LENGTH_SHORT).show()
+
+        CustomLoadingDialog(context).dismiss()
     }
 
     override fun onDeletePublishedSentenceSuccess(response: ResultResponse) {
@@ -129,9 +169,13 @@ class MySentenceNotAdoptedAdapter(
         else {
             CustomSnackbar.make(parentView, response.message.toString(), Snackbar.LENGTH_LONG).show()
         }
+
+        CustomLoadingDialog(context).dismiss()
     }
     override fun onDeletePublishedSentenceFailure(message: String) {
         CustomSnackbar.make(parentView, message, Snackbar.LENGTH_SHORT).show()
+
+        CustomLoadingDialog(context).dismiss()
     }
 
 
