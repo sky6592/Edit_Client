@@ -33,7 +33,7 @@ class AdoptionCompletedFragment : Fragment(), AdoptionCompletedView {
         binding.lifecycleOwner = this
         (activity as MainActivity).increaseFragmentCount()
 
-        /** get comments from server **/
+        /** get sentences from server **/
         getSentences()
 
         /** set adapter **/

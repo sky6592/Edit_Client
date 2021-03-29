@@ -80,7 +80,7 @@ class WritingCommentActivity : AppCompatActivity() {
         /*
         binding.btnSaveTemp.setOnClickListener {
             if (binding.etInputComment.text.toString().length < 40) {
-                CustomSnackbar.make(binding.root, getString(R.string.tv_writing_comment_input_caption), Snackbar.LENGTH_SHORT)
+                CustomSnackbar.make(binding.root, getString(R.string.tv_writing_comment_input_caption), Snackbar.LENGTH_SHORT).show()
             }
             else {
                 val dialog = CustomDialogFragment(
@@ -109,7 +109,7 @@ class WritingCommentActivity : AppCompatActivity() {
                     }
 
                     override fun onPostWritingSentenceFailure(message: String) {
-                        CustomSnackbar.make(binding.root, message, Snackbar.LENGTH_SHORT)
+                        CustomSnackbar.make(binding.root, message, Snackbar.LENGTH_SHORT).show()
                     }
                 })
                 dialog.show(supportFragmentManager, "CustomDialog")

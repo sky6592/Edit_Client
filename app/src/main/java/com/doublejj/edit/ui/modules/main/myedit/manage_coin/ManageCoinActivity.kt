@@ -34,9 +34,12 @@ class ManageCoinActivity : AppCompatActivity(), ManageCoinView {
             binding.tvCoinThanks.text = response.result.appreciateCount
             binding.tvCoinAdoption.text = response.result.adoptCount
         }
+        else {
+            CustomSnackbar.make(binding.root, response.message.toString(), Snackbar.LENGTH_SHORT).show()
+        }
     }
 
     override fun onGetManageCoinFailure(message: String) {
-        CustomSnackbar.make(binding.root, message, Snackbar.LENGTH_SHORT)
+        CustomSnackbar.make(binding.root, message, Snackbar.LENGTH_SHORT).show()
     }
 }

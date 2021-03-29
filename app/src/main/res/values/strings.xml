@@ -108,7 +108,7 @@
     <string name="snackbar_sentence_list_delete_mentee">선택하신 문장이 삭제되었습니다. :)</string>
     <string name="tv_sentence_completion_mentee_written_by_me_title">내가 작성한 문장</string>
     <string name="tv_sentence_completion_mentee_adopt_by_me_title">내가 채택한 코멘트</string>
-    <string name="tv_more_comment">+코멘트 더보기</string>
+    <string name="tv_more_comment">+ 코멘트 더보기</string>
     <string name="tv_open_sentence">문장 보기</string>
     <string name="snackbar_comment_list_delete_mentor">선택하신 코멘트가 삭제되었습니다. :)</string>
     <string name="tv_writing_comment_completion">코멘트 이어서 작성하기</string>
@@ -200,6 +200,7 @@
     <string name="tv_menu_temp_list">임시 저장</string>
     <string name="tv_switch_position">멘토/멘티 변경하기</string>
     <string name="tv_switch_position_toolbar">멘토/멘티 변경</string>
+    <string name="btn_complete">완성하기</string>
     <string name="tv_switch_position_title">
         님,\n
         정말 역할을 변경하시겠어요?

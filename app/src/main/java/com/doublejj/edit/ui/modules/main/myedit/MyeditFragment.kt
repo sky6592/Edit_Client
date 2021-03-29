@@ -26,6 +26,7 @@ import com.doublejj.edit.data.models.profile.info.ProfileInfoResponse
 import com.doublejj.edit.databinding.MyeditFragmentBinding
 import com.doublejj.edit.ui.modules.main.myedit.certificate_mentor.CertificateMentorActivity
 import com.doublejj.edit.ui.modules.main.myedit.manage_coin.ManageCoinActivity
+import com.doublejj.edit.ui.modules.main.myedit.my_sentence_not_adopted.MySentenceNotAdoptedActivity
 import com.doublejj.edit.ui.modules.main.myedit.profile.ProfileActivity
 import com.doublejj.edit.ui.modules.main.myedit.settings.SettingsActivity
 import com.doublejj.edit.ui.modules.main.myedit.switch_position.SwitchToMenteeActivity
@@ -105,6 +106,8 @@ class MyeditFragment : Fragment(), ProfileInfoView, LogoutView {
         }
         binding.ibMenuSentence.setOnClickListener {
             // TODO : 자소서 목록 페이지 (멘티)
+            val sendIntent = Intent(activity, MySentenceNotAdoptedActivity::class.java)
+            startActivity(sendIntent)
         }
         binding.ibMenuComplete.setOnClickListener {
             // TODO : 자소서 완성 페이지 (멘티)

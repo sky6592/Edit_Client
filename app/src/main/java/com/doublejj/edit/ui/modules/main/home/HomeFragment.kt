@@ -234,7 +234,7 @@ class HomeFragment : Fragment(), MainOneshotView, SentenceLimitView {
     }
 
     override fun onGetMainSentencesFailure(message: String) {
-        CustomSnackbar.make(binding.root, message, Snackbar.LENGTH_SHORT)
+        CustomSnackbar.make(binding.root, message, Snackbar.LENGTH_SHORT).show()
     }
 
     override fun onGetSentenceLimitSuccess(response: ResultResponse) {

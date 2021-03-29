@@ -33,7 +33,7 @@ class BestSympathyFragment : Fragment(), BestSympathyView {
         binding.lifecycleOwner = this
         (activity as MainActivity).increaseFragmentCount()
 
-        /** get comments from server **/
+        /** get sentences from server **/
         getSentences()
 
         /** set adapter **/
@@ -67,7 +67,7 @@ class BestSympathyFragment : Fragment(), BestSympathyView {
     }
 
     override fun onGetBestSympathySentenceFailure(message: String) {
-        CustomSnackbar.make(requireView(), message, Snackbar.LENGTH_SHORT)
+        CustomSnackbar.make(requireView(), message, Snackbar.LENGTH_SHORT).show()
     }
 
     override fun onResume() {

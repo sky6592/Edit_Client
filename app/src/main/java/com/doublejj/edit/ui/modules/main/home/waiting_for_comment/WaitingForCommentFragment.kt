@@ -33,7 +33,7 @@ class WaitingForCommentFragment : Fragment(), WaitingForCommentView {
         binding.lifecycleOwner = this
         (activity as MainActivity).increaseFragmentCount()
 
-        /** get comments from server **/
+        /** get sentences from server **/
         getSentences()
 
         /** set adapter **/
@@ -67,7 +67,7 @@ class WaitingForCommentFragment : Fragment(), WaitingForCommentView {
     }
 
     override fun onGetWaitingCommentSentenceFailure(message: String) {
-        CustomSnackbar.make(requireView(), message, Snackbar.LENGTH_SHORT)
+        CustomSnackbar.make(requireView(), message, Snackbar.LENGTH_SHORT).show()
     }
 
     override fun onResume() {

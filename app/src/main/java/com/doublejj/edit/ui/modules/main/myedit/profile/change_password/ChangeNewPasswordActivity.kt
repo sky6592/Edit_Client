@@ -120,7 +120,7 @@ class ChangeNewPasswordActivity : AppCompatActivity(), ChangeNewPasswordView {
     }
 
     override fun onChangeNewPasswordFailure(message: String) {
-        CustomSnackbar.make(binding.root, message, Snackbar.LENGTH_SHORT)
+        CustomSnackbar.make(binding.root, message, Snackbar.LENGTH_SHORT).show()
     }
 
     override fun onDestroy() {

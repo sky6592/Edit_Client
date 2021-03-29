@@ -50,7 +50,7 @@ class SplashActivity : AppCompatActivity(), SplashView {
     }
 
     override fun onGetSplashFailure(message: String) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT)
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
         Log.d("editors", message)
     }
 }

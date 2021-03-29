@@ -1,16 +1,11 @@
-package com.doublejj.edit.ui.modules.main.home.writing_sentence
+package com.doublejj.edit.ui.modules.main.myedit.my_sentence_not_adopted
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.InputFilter
 import android.text.TextWatcher
-import android.util.TypedValue
-import android.view.View
-import android.view.ViewGroup
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import com.doublejj.edit.R
@@ -18,72 +13,31 @@ import com.doublejj.edit.data.api.services.writing_sentence.WritingSentenceServi
 import com.doublejj.edit.data.api.services.writing_sentence.WritingSentenceView
 import com.doublejj.edit.data.models.ResultResponse
 import com.doublejj.edit.data.models.writing_sentence.WritingSentenceRequest
-import com.doublejj.edit.databinding.ActivityWritingSentenceBinding
+import com.doublejj.edit.databinding.ActivityCompleteWritingSentenceBinding
 import com.doublejj.edit.ui.utils.dialog.CustomDialogClickListener
 import com.doublejj.edit.ui.utils.dialog.CustomDialogFragment
 import com.doublejj.edit.ui.utils.snackbar.CustomSnackbar
 import com.google.android.material.snackbar.Snackbar
 
-class WritingSentenceActivity : AppCompatActivity() {
+class CompleteWritingSentenceActivity : AppCompatActivity() {
     private val TAG: String = javaClass.simpleName.toString()
-    private lateinit var binding: ActivityWritingSentenceBinding
+    private lateinit var binding: ActivityCompleteWritingSentenceBinding
     private var writingRequest = WritingSentenceRequest(null, null)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_writing_sentence)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_complete_writing_sentence)
 
         /** toolbar buttons **/
         binding.ibBack.setOnClickListener {
             finish()
         }
 
-        /** set adapter for spinner **/
-        val typeAdapter = object : ArrayAdapter<String>(this, R.layout.item_spinner) {
-            override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
-                val view = super.getView(position, convertView, parent)
-                if (position == count) {
-                    val tvItemSpinner = view.findViewById<TextView>(R.id.tv_item_spinner)
-                    // 마지막 position의 textView를 hint로 사용
-                    tvItemSpinner.text = ""
-                    // item의 마지막 값을 불러와 hint로 추가
-                    tvItemSpinner.hint = getItem(count)
-                }
-                return view
-            }
-
-            override fun getCount(): Int {
-                // 마지막 item은 hint로만 사용하기에 1 빼기
-                return super.getCount() - 1
-            }
-        }
-        // item과 hint 추가, adapter에 연결
-        val typeStringArray = resources.getStringArray(R.array.array_sentence_type)
-        typeAdapter.addAll(typeStringArray.toMutableList())
-        typeAdapter.add(getString(R.string.spinner_hint))
-        binding.spinnerSelectSentenceType.adapter = typeAdapter
-
-        // settings for adapter
-        binding.spinnerSelectSentenceType.setSelection(typeAdapter.count)
-        binding.spinnerSelectSentenceType.setPopupBackgroundResource(R.drawable.shape_white_bg_round_4dp)
-
-        // convert dp to px
-        binding.spinnerSelectSentenceType.dropDownVerticalOffset = dipToPixels(40f)
-
-        binding.spinnerSelectSentenceType.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(
-                parent: AdapterView<*>?,
-                view: View?,
-                position: Int,
-                id: Long
-            ) {
-                // 서버에 넣을 카테고리 값 1부터 시작
-                writingRequest.coverLetterCategoryId = (position+1).toLong()
-            }
-            override fun onNothingSelected(parent: AdapterView<*>?) {
-                writingRequest.coverLetterCategoryId = null
-            }
-        }
+        /** set sentence, comment **/
+        val originalCoverLetterId = intent.getLongExtra("originalCoverLetterId", 0L)
+        binding.tvSelfWritingType.text = intent.getStringExtra("originalCoverLetterCategoryName")
+        binding.tvBeforeSentenceTitle.text = intent.getStringExtra("originalCoverLetterContent")
+        binding.tvBeforeCommentTitle.text = intent.getStringExtra("adoptedCommentContent")
 
         /** edittext **/
         binding.etInputSentence.filters = arrayOf(
@@ -128,7 +82,7 @@ class WritingSentenceActivity : AppCompatActivity() {
             }
         })
 
-        /** Save sentence temporary API **/
+        /** Save sentence temporary API **//*
         binding.btnSaveTemp.setOnClickListener {
             val dialog = CustomDialogFragment(
                 R.string.tv_dialog_sentence_temp_title,
@@ -160,13 +114,13 @@ class WritingSentenceActivity : AppCompatActivity() {
                 }
             })
             dialog.show(supportFragmentManager, "CustomDialog")
-        }
+        }*/
 
         /** Submit sentence API **/
         binding.btnSubmit.setOnClickListener {
             val dialog = CustomDialogFragment(
-                R.string.tv_dialog_sentence_submit_title,
-                R.string.tv_dialog_sentence_submit_content,
+                R.string.tv_dialog_sentence_complete_title,
+                R.string.tv_dialog_sentence_complete_content,
                 R.string.tv_dialog_submit,
                 R.string.tv_dialog_dismiss
             )
@@ -194,10 +148,6 @@ class WritingSentenceActivity : AppCompatActivity() {
             })
             dialog.show(supportFragmentManager, "CustomDialog")
         }
-    }
-
-    fun dipToPixels(dipValue: Float) : Int {
-        return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dipValue, resources.displayMetrics).toInt()
     }
 
 }
