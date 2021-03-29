@@ -40,6 +40,7 @@ class SplashActivity : AppCompatActivity(), SplashView {
             val spf = this.getSharedPreferences("EDIT", MODE_PRIVATE)
             val editor = ApplicationClass.sSharedPreferences.edit()
             val jwt = spf.getString(ApplicationClass.X_ACCESS_TOKEN, "")
+            //jwt 유무 확인
             editor.putString(ApplicationClass.X_ACCESS_TOKEN, jwt)
             //멘토 인증 여부
             editor.putBoolean(
