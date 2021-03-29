@@ -1,4 +1,4 @@
-package com.doublejj.edit.ui.modules.main.myedit.settings.profile
+package com.doublejj.edit.ui.modules.main.myedit.profile
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -6,8 +6,9 @@ import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import com.doublejj.edit.R
 import com.doublejj.edit.databinding.ActivityProfileBinding
-import com.doublejj.edit.ui.modules.main.myedit.settings.profile.change_password.ChangePasswordActivity
-import com.doublejj.edit.ui.modules.main.myedit.settings.profile.change_profile.ChangeProfileActivity
+import com.doublejj.edit.ui.modules.main.myedit.profile.change_job.ChangeJobActivity
+import com.doublejj.edit.ui.modules.main.myedit.profile.change_password.ChangePasswordActivity
+import com.doublejj.edit.ui.modules.main.myedit.profile.change_profile.ChangeProfileActivity
 
 class ProfileActivity : AppCompatActivity() {
     private val TAG: String = javaClass.simpleName.toString()
@@ -33,10 +34,10 @@ class ProfileActivity : AppCompatActivity() {
             val sendIntent = Intent(this, ChangePasswordActivity::class.java)
             startActivity(sendIntent)
         }
-        binding.llBtnChangePosition.setOnClickListener {
-            // TODO : 직군 변경 페이지
-            /*val sendIntent = Intent(this, ChangePositionActivity::class.java)
-            startActivity(sendIntent)*/
+        binding.llBtnChangeJob.setOnClickListener {
+            // 직군 변경 페이지
+            val sendIntent = Intent(this, ChangeJobActivity::class.java)
+            startActivity(sendIntent)
         }
     }
 

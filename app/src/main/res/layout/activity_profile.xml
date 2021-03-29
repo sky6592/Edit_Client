@@ -136,7 +136,7 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/ll_btn_change_position"
+                    android:id="@+id/ll_btn_change_job"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
@@ -148,7 +148,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             style="@style/CustomTextViewMidBlack"
-                            android:text="@string/tv_change_position"
+                            android:text="@string/tv_change_job"
                             android:fontFamily="@font/noto_sans_kr_medium"
                             android:layout_gravity="left|center_vertical"
                             android:layout_weight="1"

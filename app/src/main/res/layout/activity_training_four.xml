@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar_title"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_toolbar_height"
+            app:contentInsetStart="@dimen/margin_component_inset_20dp"
+            app:contentInsetEnd="@dimen/margin_component_inset_20dp"
+            android:background="@color/white"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageButton
+                    android:id="@+id/ib_back"
+                    android:layout_width="@dimen/size_icon_button_24dp"
+                    android:layout_height="@dimen/size_icon_button_24dp"
+                    android:src="@drawable/icon_back"
+                    android:background="@color/transparent"
+                    android:scaleType="fitXY"
+
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent" />
+                <TextView
+                    android:id="@+id/tv_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/CustomTextViewMidBlack"
+                    android:text="@string/tv_mentor_certification"
+                    android:textSize="@dimen/size_tv_title_15dp"
+                    android:fontFamily="@font/noto_sans_kr_medium"
+                    android:background="@color/transparent"
+                    android:gravity="center"
+
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.appcompat.widget.Toolbar>
+
+        <TextView
+            android:id="@+id/tv_training_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tv_mentor_certification_training_step_title"
+            android:textSize="@dimen/size_18dp"
+            android:textColor="@color/mid_black"
+            android:fontFamily="@font/noto_sans_kr_bold"
+            android:includeFontPadding="false"
+            android:gravity="center"
+            android:layout_marginTop="@dimen/size_20dp"
+            app:layout_constraintTop_toBottomOf="@id/toolbar_title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_character"
+            android:layout_width="@dimen/size_64dp"
+            android:layout_height="@dimen/size_64dp"
+            app:cardCornerRadius="@dimen/size_32dp"
+            android:elevation="@dimen/size_10dp"
+            android:layout_marginTop="@dimen/size_23dp"
+            app:layout_constraintTop_toBottomOf="@id/tv_training_title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+            <ImageView
+                android:layout_width="@dimen/size_58dp"
+                android:layout_height="@dimen/size_58dp"
+                android:src="@drawable/icon_char_purple_active_5"
+                android:scaleType="centerInside"
+                android:layout_gravity="center" />
+        </androidx.cardview.widget.CardView>
+        <ImageView
+            android:layout_width="@dimen/size_53dp"
+            android:layout_height="@dimen/size_56dp"
+            android:src="@drawable/ic_graphic_leaf_double"
+            android:background="@color/transparent"
+            android:rotation="15"
+            android:layout_marginEnd="@dimen/size_16dp"
+            android:layout_marginRight="@dimen/size_16dp"
+            app:layout_constraintTop_toTopOf="@id/cv_character"
+            app:layout_constraintBottom_toBottomOf="@id/cv_character"
+            app:layout_constraintEnd_toStartOf="@id/cv_character" />
+        <ImageView
+            android:layout_width="@dimen/size_53dp"
+            android:layout_height="@dimen/size_56dp"
+            android:src="@drawable/ic_graphic_leaf_double"
+            android:background="@color/transparent"
+            android:rotation="-5"
+            android:layout_marginStart="@dimen/size_16dp"
+            android:layout_marginLeft="@dimen/size_16dp"
+            app:layout_constraintTop_toTopOf="@id/cv_character"
+            app:layout_constraintBottom_toBottomOf="@id/cv_character"
+            app:layout_constraintStart_toEndOf="@id/cv_character" />
+
+        <TextView
+            android:id="@+id/tv_training_step_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tv_mentor_certification_training_step_four_title"
+            android:textSize="@dimen/size_15dp"
+            android:textColor="@color/purple_active"
+            android:fontFamily="@font/noto_sans_kr_bold"
+            android:includeFontPadding="false"
+            android:gravity="center"
+            android:layout_marginTop="@dimen/size_44dp"
+            app:layout_constraintTop_toBottomOf="@id/cv_character"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_training_step_guide_number"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/tv_mentor_certification_training_step_four_guide_number"
+            android:textSize="@dimen/size_14dp"
+            android:textColor="@color/mid_black"
+            android:includeFontPadding="false"
+            android:layout_marginTop="@dimen/size_25dp"
+            android:layout_marginStart="@dimen/size_47dp"
+            android:layout_marginLeft="@dimen/size_47dp"
+            app:layout_constraintTop_toBottomOf="@id/tv_training_step_title"
+            app:layout_constraintStart_toStartOf="parent" />
+        <TextView
+            android:id="@+id/tv_training_step_guide_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/tv_mentor_certification_training_step_four_guide_text"
+            android:textSize="@dimen/size_14dp"
+            android:textColor="@color/mid_black"
+            android:includeFontPadding="false"
+            android:layout_marginStart="@dimen/size_4dp"
+            android:layout_marginLeft="@dimen/size_4dp"
+            android:layout_marginEnd="@dimen/size_47dp"
+            android:layout_marginRight="@dimen/size_47dp"
+            app:layout_constraintTop_toTopOf="@id/tv_training_step_guide_number"
+            app:layout_constraintStart_toEndOf="@id/tv_training_step_guide_number"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+
+        <Button
+            android:id="@+id/btn_next"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_50dp"
+            android:background="@drawable/selector_btn_bg_purple_active_gray_rectangle"
+            android:text="@string/tv_next_four_per_four"
+            android:textColor="@color/white"
+            android:textSize="@dimen/size_15dp"
+            android:includeFontPadding="false"
+            android:fontFamily="@font/noto_sans_kr_medium"
+            app:layout_constraintBottom_toBottomOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
