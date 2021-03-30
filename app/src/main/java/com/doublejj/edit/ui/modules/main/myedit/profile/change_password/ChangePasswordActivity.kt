@@ -23,7 +23,7 @@ class ChangePasswordActivity : AppCompatActivity(), AuthPasswordView {
     private lateinit var binding: ActivityChangePasswordBinding
 
     // 비밀번호 정규식 : 영문 대소문자, 숫자, 특수문자 중 2가지 포함(8-16자)
-    val pwPattern = "^(?=.*[a-zA-Z0-9])(?=.*[a-zA-Z~!`@#\$%^&*()_+=])(?=.*[0-9!@#\$%^&*]).{8,16}$"
+    val pwPattern = "^(?=.*[a-zA-Z0-9])(?=.*[a-zA-Z~!`@#\$%^&*()_+=])(?=.*[0-9!@#\$%^&*]).{8,15}$"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
