@@ -39,32 +39,25 @@
         </LinearLayout>
 
         <!--Choose Info-->
+
+        <!--닉네임님-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_20dp"
-            android:orientation="vertical">
+            android:layout_marginBottom="@dimen/margin_20dp"
+            android:gravity="center"
+            android:orientation="horizontal">
 
-            <!--닉네임님-->
-            <LinearLayout
+            <!--직군을 선택해주세요!-->
+            <TextView
+                android:id="@+id/tv_info_two_job_group"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/noto_sans_kr_bold"
                 android:gravity="center"
-                android:orientation="horizontal">
-
-                <!--직군을 선택해주세요!-->
-                <TextView
-                    android:id="@+id/tv_info_two_job_group"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/noto_sans_kr_bold"
-                    android:gravity="center"
-                    android:text="@string/tv_info_job_group"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/tv_18sp" />
-            </LinearLayout>
-
-
+                android:text="@string/tv_mentor_info_job_group"
+                android:textColor="@color/black"
+                android:textSize="@dimen/tv_18sp" />
         </LinearLayout>
 
         <!--Spinner-->
@@ -77,6 +70,7 @@
             android:paddingHorizontal="@dimen/padding_common">
 
             <TextView
+                android:id="@+id/tv_info_job_group"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/noto_sans_kr_regular"
@@ -84,12 +78,48 @@
                 android:textColor="@color/black"
                 android:textSize="@dimen/tv_15sp" />
 
-            <Spinner
-                android:id="@+id/spinner_job_group"
+            <TextView
+                android:id="@+id/tv_info_select_job_group"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_20dp"
                 android:background="@drawable/shape_et_btn_info"
-                android:spinnerMode="dialog" />
+                android:drawableRight="@drawable/icon_expand"
+                android:fontFamily="@font/noto_sans_kr_regular"
+                android:hint="@string/spinner_hint"
+                android:imeOptions="actionSearch"
+                android:inputType="textPersonName|textNoSuggestions"
+                android:paddingHorizontal="@dimen/hint_padding_10dp"
+                android:paddingVertical="@dimen/padding_2.5dp"
+                android:textColor="@color/black"
+                android:textSize="@dimen/tv_15sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/et_enter_job_group"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_5dp"
+                android:background="@drawable/shape_et_btn_info"
+                android:fontFamily="@font/noto_sans_kr_regular"
+                android:hint="@string/hint_name_info"
+                android:imeOptions="actionSearch"
+                android:inputType="textPersonName|textNoSuggestions"
+                android:maxLines="1"
+                android:paddingHorizontal="@dimen/hint_padding_10dp"
+                android:paddingVertical="@dimen/padding_2.5dp"
+                android:textSize="@dimen/tv_15sp"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/tv_caption_enter_job_group"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/noto_sans_kr_regular"
+                android:text="@string/tv_change_job_etc_caption"
+                android:textColor="@color/very_light_pink"
+                android:textSize="@dimen/tv_10sp"
+                android:visibility="gone" />
         </LinearLayout>
 
         <!--Next Button-->

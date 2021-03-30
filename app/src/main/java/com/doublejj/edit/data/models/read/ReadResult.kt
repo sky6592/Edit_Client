@@ -1,9 +1,8 @@
-package com.doublejj.edit.data.models.login
+package com.doublejj.edit.data.models.read
 
 import com.google.gson.annotations.SerializedName
 
-data class LogInResult(
+data class ReadResult(
     @SerializedName("jwt") val jwt: String,
     @SerializedName("userRole") val userRole: String,
-    @SerializedName("isCertificatedMentor") val isCertificatedMentor: Boolean
 )

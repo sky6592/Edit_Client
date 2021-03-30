@@ -216,6 +216,7 @@
     <dimen name="tv_18sp">18sp</dimen>
     <dimen name="stroke_2px">2px</dimen>
     <dimen name="tv_13sp">13sp</dimen>
+    <dimen name="padding_2.5dp">2.5dp</dimen>
 
 
     //walk_through

@@ -22,10 +22,12 @@
         android:theme="@style/Theme.Edit"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
+        <activity android:name=".ui.modules.main.signup.privacyagree.PrivacyAgreeActivity"></activity>
         <activity
             android:name=".ui.modules.main.signup.entercode.EnterCodeActivity"
             android:windowSoftInputMode="adjustResize" />
-        <activity android:name=".ui.modules.main.assistance.pw.PwFindActivity" />
+        <activity android:name=".ui.modules.main.assistance.pw.PwFindActivity"
+            android:windowSoftInputMode="adjustResize"/>
         <activity
             android:name=".ui.modules.main.assistance.email.EmailFindActivity"
             android:windowSoftInputMode="adjustResize" />
@@ -34,7 +36,7 @@
             android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".ui.modules.main.signup.read.ReadActivity"
-            android:windowSoftInputMode="adjustResize" />
+            android:windowSoftInputMode="adjustResize"></activity>
         <activity
             android:name=".ui.modules.main.myedit.profile.change_job.ChangeJobActivity"
             android:windowSoftInputMode="adjustPan" />
@@ -65,18 +67,20 @@
             android:name=".ui.modules.main.myedit.profile.change_password.ChangePasswordActivity"
             android:windowSoftInputMode="adjustPan" />
         <activity android:name=".ui.modules.main.myedit.profile.change_profile.ChangeProfileActivity" />
-        <activity android:name=".ui.modules.main.signup.slectjopgroup.JobGroupActivity" />
+        <activity
+            android:name=".ui.modules.main.signup.slectjopgroup.JobGroupActivity"
+            android:windowSoftInputMode="adjustResize"></activity>
         <activity
             android:name=".ui.modules.main.login.LogInActivity"
             android:windowSoftInputMode="adjustResize" />
-        <activity android:name=".ui.modules.main.signup.slecttype.SelectTypeActivity" >
-        </activity>
-
+        <activity android:name=".ui.modules.main.signup.slecttype.SelectTypeActivity" />
         <activity android:name=".ui.modules.main.walkthrough.WalkThroughActivity" />
-
-        <activity android:name=".ui.modules.main.signup.infosecond.InfoSecondActivity" />
-        <activity android:name=".ui.modules.main.signup.infofirst.InfoFirstActivity" />
-
+        <activity
+            android:name=".ui.modules.main.signup.infosecond.InfoSecondActivity"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".ui.modules.main.signup.infofirst.InfoFirstActivity"
+            android:windowSoftInputMode="adjustResize" />
         <activity android:name=".ui.modules.main.signin.SignInActivity" />
         <activity android:name=".ui.modules.main.myedit.profile.ProfileActivity" />
         <activity android:name=".ui.modules.main.myedit.settings.withdrawal.WithdrawalCompleteActivity" />
@@ -89,13 +93,14 @@
             android:name=".ui.modules.main.home.writing_sentence.WritingSentenceActivity"
             android:windowSoftInputMode="adjustResize" />
         <activity android:name=".ui.modules.main.home.writing_comment.WritingCommentActivity" />
-
         <activity android:name=".ui.modules.main.splash.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.modules.main.MainActivity"></activity>
+        <activity android:name=".ui.modules.main.MainActivity" />
     </application>
+
 </manifest>

@@ -44,9 +44,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_20dp"
+            android:gravity="center"
             android:orientation="vertical">
 
-            <!--닉네임님-->
+
+            <!--직군을 선택해주세요!-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -54,35 +56,28 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/tv_nick_name_read"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/noto_sans_kr_bold"
-                    android:text="@string/tv_nick_name_select_type"
-                    android:textColor="@color/purple"
-                    android:textSize="@dimen/tv_18sp" />
-
-                <TextView
                     android:id="@+id/tv_info_one_read"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/noto_sans_kr_bold"
-                    android:text="@string/tv_info_one_select_type"
+                    android:gravity="center"
+                    android:text="@string/tv_mentor_info_read"
                     android:textColor="@color/black"
                     android:textSize="@dimen/tv_18sp" />
             </LinearLayout>
 
-            <!--직군을 선택해주세요!-->
             <TextView
                 android:id="@+id/tv_info_two_read"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/noto_sans_kr_bold"
-                android:gravity="center"
-                android:text="@string/tv_info_read"
+                android:fontFamily="@font/noto_sans_kr_medium"
+                android:gravity="center_horizontal"
                 android:textColor="@color/black"
-                android:textSize="@dimen/tv_18sp" />
+                android:textSize="15sp"
+                android:textStyle="normal"
+                tools:text="@string/tv_info_bottom_read" />
         </LinearLayout>
+
 
         <!--스크롤뷰설치하기!!!-->
         <ScrollView
@@ -101,7 +96,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="41dp"
+                    android:layout_marginBottom="@dimen/size_30dp"
                     android:orientation="vertical">
 
                     <TextView
@@ -109,10 +104,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/noto_sans_kr_medium"
+                        android:text="@string/tv_one_title_read"
                         android:textColor="@color/purple"
                         android:textSize="@dimen/tv_13sp"
-                        android:textStyle="normal"
-                        tools:text="@string/tv_one_title_read" />
+                        android:textStyle="normal" />
 
                     <TextView
                         android:id="@+id/tv_one_content_read"
@@ -121,17 +116,17 @@
                         android:fontFamily="@font/noto_sans_kr_regular"
                         android:lineSpacingExtra="5sp"
                         android:paddingLeft="@dimen/size_15dp"
+                        android:text="@string/tv_one_content_read"
                         android:textColor="@color/black"
                         android:textSize="@dimen/tv_12sp"
-                        android:textStyle="normal"
-                        tools:text="@string/tv_one_content_read" />
+                        android:textStyle="normal" />
                 </LinearLayout>
 
                 <!--2번-->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="41dp"
+                    android:layout_marginBottom="@dimen/size_30dp"
                     android:orientation="vertical">
 
                     <TextView
@@ -139,10 +134,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/noto_sans_kr_medium"
+                        android:text="@string/tv_two_title_read"
                         android:textColor="@color/purple"
                         android:textSize="@dimen/tv_13sp"
-                        android:textStyle="normal"
-                        tools:text="@string/tv_two_title_read" />
+                        android:textStyle="normal" />
 
                     <TextView
                         android:id="@+id/tv_two_content_read"
@@ -151,17 +146,16 @@
                         android:fontFamily="@font/noto_sans_kr_regular"
                         android:lineSpacingExtra="5sp"
                         android:paddingLeft="@dimen/size_15dp"
+                        android:text="@string/tv_two_content_read"
                         android:textColor="@color/black"
                         android:textSize="@dimen/tv_12sp"
-                        android:textStyle="normal"
-                        tools:text="@string/tv_two_content_read" />
+                        android:textStyle="normal" />
                 </LinearLayout>
 
                 <!--3번-->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="41dp"
                     android:orientation="vertical">
 
                     <TextView
@@ -169,10 +163,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/noto_sans_kr_medium"
+                        android:text="@string/tv_three_title_read"
                         android:textColor="@color/purple"
                         android:textSize="@dimen/tv_13sp"
-                        android:textStyle="normal"
-                        tools:text="@string/tv_three_title_read" />
+                        android:textStyle="normal" />
 
                     <TextView
                         android:id="@+id/tv_three_content_read"
@@ -181,10 +175,10 @@
                         android:fontFamily="@font/noto_sans_kr_regular"
                         android:lineSpacingExtra="5sp"
                         android:paddingLeft="@dimen/size_15dp"
+                        android:text="@string/tv_three_content_read"
                         android:textColor="@color/black"
                         android:textSize="@dimen/tv_12sp"
-                        android:textStyle="normal"
-                        tools:text="@string/tv_three_content_read" />
+                        android:textStyle="normal" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -204,6 +198,7 @@
                 android:orientation="horizontal">
 
                 <CheckBox
+                    android:id="@+id/checkbox_read"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:checked="false"
@@ -213,22 +208,22 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:fontFamily="@font/noto_sans_kr_regular"
+                    android:gravity="center_vertical"
                     android:lineSpacingExtra="5sp"
                     android:textColor="@color/black"
                     android:textSize="@dimen/tv_12sp"
-                    android:gravity="center_vertical"
                     android:textStyle="normal"
-                    tools:text="@string/tv_check_info_read" />
+                    android:text="@string/tv_check_info_read" />
 
             </LinearLayout>
 
             <!-- Button -->
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btn_job_group"
+                android:id="@+id/btn_read"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/very_light_pink"
-                android:text="@string/tv_next_info"
+                android:text="@string/tv_btn_read"
                 android:textColor="@color/white" />
         </LinearLayout>
 

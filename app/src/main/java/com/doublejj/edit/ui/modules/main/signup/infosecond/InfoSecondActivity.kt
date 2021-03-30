@@ -6,7 +6,8 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
-import android.widget.Toast
+import android.view.View
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.doublejj.edit.R
@@ -15,10 +16,9 @@ import com.doublejj.edit.data.api.services.infosecond.InfoSecondView
 import com.doublejj.edit.data.models.infosecond.InfoSecondRequest
 import com.doublejj.edit.data.models.infosecond.InfoSecondResponse
 import com.doublejj.edit.databinding.ActivityInfoSecondBinding
+import com.doublejj.edit.databinding.DialogEmailFindBinding
 import com.doublejj.edit.ui.modules.main.signup.emailcheck.EmailCheckActivity
-import com.doublejj.edit.ui.modules.main.signup.infofirst.InfoFirstActivity
-import com.doublejj.edit.ui.modules.main.signup.slecttype.SelectTypeActivity
-import com.doublejj.edit.ui.utils.dialog.CustomDialogFragment
+import com.doublejj.edit.ui.modules.main.walkthrough.WalkThroughActivity
 
 
 class InfoSecondActivity : AppCompatActivity(), InfoSecondView {
@@ -40,11 +40,9 @@ class InfoSecondActivity : AppCompatActivity(), InfoSecondView {
 
         //Intent - ArrayList 저장
         var arrayList = intent.getSerializableExtra("arrayList") as ArrayList<String>
-//        var    check = "test"
-//        arrayList.add(check)
-//        Log.d("sky", arrayList.toString())
+        Log.d("sky", arrayList.toString())
 
-        val emailPatternTest = android.util.Patterns.EMAIL_ADDRESS
+        val emailPattern = android.util.Patterns.EMAIL_ADDRESS
         //문자(한글,영어), 숫자, 특수문자 중 2가지 포함(8-15자)
         val pwPattern =
             "^(?=.*[a-zA-Z0-9])(?=.*[a-zA-Z~!`@#\$%^&*()_+=])(?=.*[0-9!@#\$%^&*]).{8,15}$"
@@ -72,7 +70,7 @@ class InfoSecondActivity : AppCompatActivity(), InfoSecondView {
                         mEmailSpacingFlag = false
                     }
                     //이메일 정규식 - 중복확인을 누르세요!
-                    if (emailPatternTest.matcher(s.toString()).matches()) {
+                    if (emailPattern.matcher(s.toString()).matches()) {
                         mBinding.tvEmailCaptionInfoFirst.setTextColor(R.color.purple)
                         mBinding.tvEmailCaptionInfoFirst.text =
                             getString(R.string.tv_click_caption_info)
@@ -98,7 +96,6 @@ class InfoSecondActivity : AppCompatActivity(), InfoSecondView {
                 val postRequest = InfoSecondRequest(email = email)
                 //다이얼로그 넣어야함
                 InfoSecondService(this).tryPostEmail(postRequest)
-                mEmailBtnFlag = false
             } else {
                 mBinding.tvEmailCaptionInfoFirst.setTextColor(R.color.purple)
                 mBinding.tvEmailCaptionInfoFirst.text =
@@ -179,9 +176,6 @@ class InfoSecondActivity : AppCompatActivity(), InfoSecondView {
                 if (s != null) {
                     //엔터 입력 : 다른 내용 입력 되어있는지 확인
                     if (s.toString().contains("\n")) {
-                        //s.toString().replace("\n", "")
-                        //s.toString().trim()
-
                         if (mPwFlag && mRePwFlag) {
                             mBinding.btnInfoSecond.setBackgroundResource(R.color.purple)
                         }
@@ -204,7 +198,7 @@ class InfoSecondActivity : AppCompatActivity(), InfoSecondView {
 
                     //비밀번호 일치여부
                     if (mBinding.etPwInfoSecond.text.toString() == s.toString()) {
-                        mBinding.tvRePwCaptionInfoFirst.text = ""
+                        mBinding.tvRePwCaptionInfoFirst.text = getString(R.string.tv_pw_result_info)
                         mRePwFlag = true
 
                     } else {
@@ -216,11 +210,11 @@ class InfoSecondActivity : AppCompatActivity(), InfoSecondView {
                     //비밀번호 정규식
                     if (s.toString().matches(pwPattern.toRegex())) {
                         mBinding.tvRePwCaptionInfoFirst.text = ""
-                        mRePwFlag = true
+//                        mRePwFlag = true
                     } else {
                         mBinding.tvRePwCaptionInfoFirst.text =
                             getString(R.string.tv_pw_wrong_caption_info)
-                        mRePwFlag = false
+//                        mRePwFlag = false
                     }
                     //입력 완료여부 정규식
                     if (mEmailFlag && mPwFlag && mRePwFlag) {
@@ -234,22 +228,9 @@ class InfoSecondActivity : AppCompatActivity(), InfoSecondView {
 
         //다음으로 버튼 클릭
         mBinding.btnInfoSecond.setOnClickListener {
-            Log.d("sky", "btnInfoSecond - In")
-            Log.d(
-                "sky",
-                "중복버튼 :$mEmailFlag, $mPwFlag, $mRePwFlag"
-            )
-
-
-            var email = mBinding.etEmailInfoSecond.text.toString().replace(" ", "")
-            var pw = mBinding.etPwInfoSecond.text.toString().replace(" ", "")
-            var rePw = mBinding.etRePwInfoFirst.text.toString().replace(" ", "")
-            Log.d("sky", "값 : $email, $pw, $rePw")
-
-            arrayList.add(email)
-            arrayList.add(pw)
-            arrayList.add(rePw)
-
+            var email = mBinding.etEmailInfoSecond.text.trim().toString()
+            var pw = mBinding.etPwInfoSecond.text.trim().toString()
+            var rePw = mBinding.etRePwInfoFirst.text.trim().toString()
 
             if (mEmailFlag && mPwFlag && mRePwFlag) {
                 mEmailFlag = false
@@ -259,43 +240,68 @@ class InfoSecondActivity : AppCompatActivity(), InfoSecondView {
                 mPwSpacingFlag = false
                 mRePwSpacingFlag = false
 
+                arrayList.add(email)
+                arrayList.add(pw)
+                arrayList.add(rePw)
+
                 val intent = Intent(this, EmailCheckActivity::class.java)
                 intent.putExtra("arrayList", arrayList)
                 startActivity(intent)
                 finish()
                 Log.d("sky - array", arrayList.toString())
-            } else {
-                //다이얼로그 : 입력을 다시 확인해주세요!
             }
-
         }
     }
 
     //네트워크 통신
     @SuppressLint("ResourceType")
     override fun onPostInfoSecondSuccess(response: InfoSecondResponse) {
-        //다이얼로그 해제 넣기
         Log.d("sky", "onPostInfoSecondSuccess - api성공")
-        runOnUiThread {
-            mEmailFlag = true
-            //이메일 입력 감사합니다
-            mBinding.tvEmailCaptionInfoFirst.text = ""
 
+        //성공
+        if (response.code == 1000 && response.result.duplicationCheck == "NO") {
+            //이메일 중복없음
+            mEmailFlag = true
+            mBinding.tvEmailCaptionInfoFirst.setTextColor(R.color.purple)
+            mBinding.tvEmailCaptionInfoFirst.text = getString(R.string.tv_email_result_info)
             //입력 완료여부 정규식
             if (mEmailFlag && mPwFlag && mRePwFlag) {
                 mBinding.btnInfoSecond.setBackgroundResource(R.color.purple)
             }
+        } else {
+            mEmailFlag = false
+            mBinding.tvEmailCaptionInfoFirst.setTextColor(R.color.purple)
+            mBinding.tvEmailCaptionInfoFirst.text =
+                getString(R.string.tv_email_fail_info)
         }
     }
 
     @SuppressLint("ResourceType")
     override fun onPostInfoSecondFailure(message: String) {
-        //다이얼로그 해제 넣기
         Log.d("sky", "onPostInfoSecondFailure - api실패")
+    }
 
-        runOnUiThread {
-            mBinding.tvEmailCaptionInfoFirst.text = getString(R.string.tv_email_fail_info)
-            mBinding.tvEmailCaptionInfoFirst.setTextColor(R.color.purple)
+    override fun onBackPressed() {
+        //super.onBackPressed()
+        val builder = AlertDialog.Builder(this)
+        val binding: DialogEmailFindBinding = DialogEmailFindBinding.inflate(layoutInflater)
+
+        //Dialog - Title
+        binding.tvDialogTitleEmailFind.text =
+            getString(R.string.tv_dialog_title_back_press)
+        //Dialog - Content
+        binding.tvDialogContentEmailFind.text =
+            getString(R.string.tv_dialog_content_back_press)
+        binding.tvDialogApiEmailFind.visibility = View.GONE
+        //Dialog - 확인 버튼
+        builder.setPositiveButton(getString(R.string.tv_dialog_confirm)) { _, _ ->
+            val intentWalkThrough = Intent(this, WalkThroughActivity::class.java)
+            startActivity(intentWalkThrough)
+            finishAffinity()
         }
+        builder.setNegativeButton(getString(R.string.tv_dialog_dismiss)) { _, _ ->
+
+        }
+        builder.setView(binding.root).show()
     }
 }

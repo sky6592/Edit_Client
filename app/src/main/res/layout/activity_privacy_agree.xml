@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="activity"
+            type="com.doublejj.edit.ui.modules.main.signup.privacyagree.PrivacyAgreeActivity" />
+    </data>
+
+    <LinearLayout
+        android:id="@+id/linear_title_select_type"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!-- Title -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shadow_below_bg"
+            android:elevation="30dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingHorizontal="@dimen/padding_common"
+            android:paddingTop="@dimen/padding_common">
+
+            <ImageView
+                android:id="@+id/iv_back_privacy_agree"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{()->activity}"
+                android:clickable="true"
+                android:src="@drawable/ic_baseline_navigate_before_24" />
+
+            <!--  여기서부터 작업 -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/noto_sans_kr_bold"
+                android:gravity="center"
+                android:text="@string/tv_title_privacy_agree"
+                android:textColor="@color/black" />
+
+        </LinearLayout>
+
+
+        <!--Choose Info-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_20dp"
+            android:orientation="vertical">
+
+            <!--닉네임 선택 안내-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_20dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+                <!--설명-->
+                <TextView
+                    android:id="@+id/tv_info_privacy_agree"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:bufferType="spannable"
+                    android:fontFamily="@font/noto_sans_kr_bold"
+                    android:gravity="center"
+                    android:text="@string/tv_info_privacy_agree"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/tv_18sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!--Icons-->
+        <LinearLayout
+            android:id="@+id/linear_icons"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <!--icon 3개-->
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/icon_left_privacy_agree" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/margin_20dp"
+                android:src="@drawable/icon_center_privacy_agree" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/icon_right_privacy_agree" />
+        </LinearLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/iv_talk_privacy"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="@dimen/margin_20dp"
+                android:background="@drawable/talk_privacy_agree"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linear_icons"
+                tools:ignore="NotSibling" />
+
+            <ScrollView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:paddingHorizontal="@dimen/size_40dp"
+                android:paddingVertical="@dimen/size_50dp"
+                app:layout_constraintBottom_toBottomOf="@+id/iv_talk_privacy"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@id/iv_talk_privacy">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/noto_sans_kr_regular"
+                    android:lineSpacingExtra="6sp"
+                    android:text="@string/tv_content_privacy_agree"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
+                    android:textStyle="normal" />
+            </ScrollView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!--Next Button-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="bottom">
+
+            <!-- Button -->
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_privacy_agree"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/purple"
+                android:text="@string/tv_btn_privacy_agree"
+                android:textColor="@color/white" />
+        </LinearLayout>
+    </LinearLayout>
+</layout>

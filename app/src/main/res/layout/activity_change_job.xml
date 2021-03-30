@@ -83,7 +83,6 @@
                     android:text="@string/tv_job_group"
                     android:textSize="@dimen/size_15dp"
                     android:fontFamily="@font/noto_sans_kr_medium"
-
                     android:layout_marginTop="@dimen/size_26dp"
                     android:layout_marginStart="@dimen/margin_component_inset_20dp"
                     android:layout_marginLeft="@dimen/margin_component_inset_20dp"

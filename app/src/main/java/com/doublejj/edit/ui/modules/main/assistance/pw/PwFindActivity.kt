@@ -35,6 +35,11 @@ class PwFindActivity : AppCompatActivity(), PwFindView {
         super.onCreate(savedInstanceState)
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_pw_find)
 
+        //뒤로가기
+        mBinding.ivBackPwFind.setOnClickListener {
+            finish()
+        }
+
         //정규식
         val namePattern = "^[a-zA-Z가-힣]{2,10}$"
         val emailPattern = android.util.Patterns.EMAIL_ADDRESS
@@ -52,7 +57,7 @@ class PwFindActivity : AppCompatActivity(), PwFindView {
             override fun afterTextChanged(s: Editable?) {
                 if (s != null) {
                     //띄어쓰기 & 빈공란 정규식
-                    if (s.toString().contains(" ") || s.toString().isEmpty()) {
+                    if (s.toString().contains(" ")) {
                         mBinding.tvNameCaptionPwFind.setTextColor(R.color.purple)
                         mBinding.tvNameCaptionPwFind.text =
                             getString(R.string.tv_caption_spacing_info)
@@ -82,8 +87,15 @@ class PwFindActivity : AppCompatActivity(), PwFindView {
                         mBinding.tvNameCaptionPwFind.text =
                             getString(R.string.tv_name_result_email_find)
                         mNameFlag = true
+                        Log.d("sky", "정규식 들어옴 - $mNameFlag")
                     }
 
+                    //빈공란 정규식
+                    if (s.toString().isEmpty()) {
+                        mBinding.tvNameCaptionPwFind.setTextColor(R.color.purple)
+                        mBinding.tvNameCaptionPwFind.text =
+                            getString(R.string.tv_name_caption_info)
+                    }
                     //버튼 색상 확인
                     if (mNameFlag && mEmailFlag && mPhoneFlag) {
                         mBinding.btnPwFind.setBackgroundResource(R.color.purple)
@@ -104,7 +116,7 @@ class PwFindActivity : AppCompatActivity(), PwFindView {
             override fun afterTextChanged(s: Editable?) {
                 if (s != null) {
                     //띄어쓰기 정규식
-                    if (s.toString().contains(" ") || s.toString().isEmpty()) {
+                    if (s.toString().contains(" ")) {
                         mBinding.btnPwFind.setBackgroundResource(R.color.very_light_pink)
                         mBinding.tvCaptionEmailPwFind.setTextColor(R.color.purple)
                         mBinding.tvCaptionEmailPwFind.text =
@@ -127,8 +139,14 @@ class PwFindActivity : AppCompatActivity(), PwFindView {
                         mBinding.tvCaptionEmailPwFind.setTextColor(R.color.purple)
                         mBinding.tvCaptionEmailPwFind.text =
                             getString(R.string.tv_email_result_info)
+                        mEmailFlag = true
                     }
-
+                    //빈공란 정규식
+                    if (s.toString().isEmpty()) {
+                        mBinding.tvCaptionEmailPwFind.setTextColor(R.color.purple)
+                        mBinding.tvCaptionEmailPwFind.text =
+                            getString(R.string.tv_email_was_caption_info)
+                    }
                     //버튼 색상 확인
                     if (mNameFlag && mEmailFlag && mPhoneFlag) {
                         mBinding.btnPwFind.setBackgroundResource(R.color.purple)
@@ -201,13 +219,17 @@ class PwFindActivity : AppCompatActivity(), PwFindView {
 
         //다음으로 버튼 클릭
         mBinding.btnPwFind.setOnClickListener {
-            Log.d("sky", "이메일 엔 : $mEmailFlag, $mEmailFlag, $mPhoneFlag")
+            Log.d("sky", "이메일 엔 : $mNameFlag, $mEmailFlag, $mPhoneFlag")
             var name = mBinding.etNamePwFind.text.trim().toString()
             var email = mBinding.etEmailPwFind.text.trim().toString()
             var phoneNumber = mBinding.etPhonePwFind.text.trim().toString()
 
             Log.d("sky", "버튼클릭 : $name,$email,$phoneNumber")
             if (mNameFlag && mEmailFlag && mPhoneFlag) {
+                mNameFlag = false
+                mEmailFlag = false
+                mPhoneFlag = false
+
                 //로그인 api
                 val postRequest =
                     PwFindRequest(name = name, email = email, phoneNumber = phoneNumber)
@@ -225,6 +247,7 @@ class PwFindActivity : AppCompatActivity(), PwFindView {
     }
 
     override fun onPostPwFindSuccess(response: PwFindResponse) {
+
         val builder = AlertDialog.Builder(this)
         val binding: DialogEmailFindBinding = DialogEmailFindBinding.inflate(layoutInflater)
 

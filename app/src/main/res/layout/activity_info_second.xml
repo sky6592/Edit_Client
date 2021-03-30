@@ -67,7 +67,7 @@
                         android:imeOptions="actionSearch"
                         android:inputType="textPersonName"
                         android:paddingHorizontal="@dimen/hint_padding_10dp"
-                        android:paddingTop="@dimen/hint_padding_5dp"
+                        android:paddingVertical="@dimen/padding_2.5dp"
                         android:textSize="@dimen/tv_15sp" />
 
                     <androidx.appcompat.widget.AppCompatButton
@@ -121,7 +121,7 @@
                     android:imeOptions="actionSearch"
                     android:inputType="textPassword"
                     android:paddingHorizontal="@dimen/hint_padding_10dp"
-                    android:paddingTop="@dimen/hint_padding_5dp"
+                    android:paddingVertical="@dimen/padding_2.5dp"
                     android:textSize="@dimen/tv_15sp" />
 
                 <TextView
@@ -163,7 +163,7 @@
                     android:imeOptions="actionSearch"
                     android:inputType="textPassword"
                     android:paddingHorizontal="@dimen/hint_padding_10dp"
-                    android:paddingTop="@dimen/hint_padding_5dp"
+                    android:paddingVertical="@dimen/padding_2.5dp"
                     android:textSize="@dimen/tv_15sp" />
 
                 <TextView
@@ -186,7 +186,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/noto_sans_kr_regular"
             android:paddingHorizontal="@dimen/padding_common"
-            android:text="@string/tv_privacy_info"
+            android:text="@string/tv_privacy_info_first"
             android:textColor="@color/black"
             android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="parent"

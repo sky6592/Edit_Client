@@ -2,11 +2,16 @@ package com.doublejj.edit.ui.modules.main.signup.infofirst
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
+import android.text.Spannable
+import android.text.SpannableStringBuilder
 import android.text.TextWatcher
+import android.text.style.ForegroundColorSpan
 import android.util.Log
+import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.databinding.DataBindingUtil
 import com.doublejj.edit.R
@@ -17,6 +22,7 @@ import com.doublejj.edit.data.models.infofirst.InfoFirstResponse
 import com.doublejj.edit.databinding.ActivityInfoFirstBinding
 import com.doublejj.edit.databinding.DialogEmailFindBinding
 import com.doublejj.edit.ui.modules.main.signup.infosecond.InfoSecondActivity
+import com.doublejj.edit.ui.modules.main.signup.privacyagree.PrivacyAgreeActivity
 import com.doublejj.edit.ui.modules.main.walkthrough.WalkThroughActivity
 
 class InfoFirstActivity : AppCompatActivity(), InfoFirstView {
@@ -38,9 +44,22 @@ class InfoFirstActivity : AppCompatActivity(), InfoFirstView {
         super.onCreate(savedInstanceState)
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_info_first)
 
+        //정규식
         var namePattern = "^[a-zA-Z가-힣]{2,10}$"
         var nickNamePattern = "^[a-zA-Zㄱ-ㅎ가-힣0-9]{2,6}$"
         var phonePattern = "^01(?:0|1|[6-9])(\\d{3}|\\d{4})(\\d{4})$"
+
+
+        //이용약관(보라색)
+        val spannable = SpannableStringBuilder(mBinding.tvPrivacyInfoFirst.text)
+        spannable.setSpan(
+            ForegroundColorSpan(Color.parseColor("#5a32dc")),
+            0,
+            mBinding.tvPrivacyInfoFirst.text.length,
+            Spannable.SPAN_EXCLUSIVE_INCLUSIVE
+        )
+        mBinding.tvPrivacyInfoFirst.text = spannable
+
 
         // 이름 입력
         mBinding.etNameInfoFirst.addTextChangedListener(object : TextWatcher {
@@ -80,8 +99,9 @@ class InfoFirstActivity : AppCompatActivity(), InfoFirstView {
 
                     //이름 정규식
                     if (s.matches(namePattern.toRegex()) && !mNameSpacingFlag) {
-//                        mBinding.tvNameCaptionInfoFirst.setTextColor(R.color.very_light_pink)
-                        mBinding.tvNameCaptionInfoFirst.text = ""
+                        mBinding.tvNameCaptionInfoFirst.setTextColor(R.color.purple)
+                        mBinding.tvNameCaptionInfoFirst.text =
+                            getString(R.string.tv_name_caption_result_info)
                         mNameFlag = true
                     }
 
@@ -122,12 +142,7 @@ class InfoFirstActivity : AppCompatActivity(), InfoFirstView {
 
                     }
 
-                    //엔터 입력 : 다른 내용 입력 되어있는지 확인
-                    if (s.toString().contains("\n")) {
-                        if (mNameFlag && mPhoneFlag) {
-                            mBinding.btnInfoFirst.setBackgroundResource(R.color.purple)
-                        }
-                    }
+
 
                     if (s.toString().length > 6) {
                         mBinding.tvNickNameCaptionInfoFirst.setTextColor(R.color.purple)
@@ -145,6 +160,19 @@ class InfoFirstActivity : AppCompatActivity(), InfoFirstView {
                         mBinding.tvNickNameCaptionInfoFirst.text =
                             getString(R.string.tv_click_caption_info)
                     }
+
+                    //엔터 입력 : 다른 내용 입력 되어있는지 확인
+                    if (s.toString().contains("\n")) {
+                        if (mNameFlag && mPhoneFlag) {
+                            mBinding.btnInfoFirst.setBackgroundResource(R.color.purple)
+                        }
+                    }
+
+                    if (s.toString().contains("\n") && mNickNameFlag) {
+                        mBinding.tvNickNameCaptionInfoFirst.text =
+                            getString(R.string.tv_NickName_caption_result_info)
+                    }
+
                     //입력 완료여부 정규식
                     if (mNameFlag && mNickNameFlag && mPhoneFlag) {
                         mBinding.btnInfoFirst.setBackgroundResource(R.color.purple)
@@ -178,11 +206,9 @@ class InfoFirstActivity : AppCompatActivity(), InfoFirstView {
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-
-
             }
 
-            @SuppressLint("ResourceAsColor")
+            @SuppressLint("ResourceAsColor", "ResourceType")
             override fun afterTextChanged(s: Editable?) {
                 if (s != null) {
                     //띄어쓰기 작성
@@ -216,7 +242,9 @@ class InfoFirstActivity : AppCompatActivity(), InfoFirstView {
 
                     //핸드폰 정규식
                     if (s.matches(phonePattern.toRegex()) && !mPhoneSpacingFlag) {
-                        mBinding.tvPhoneCaptionInfoFirst.text = ""
+                        mBinding.tvPhoneCaptionInfoFirst.setText(R.color.purple)
+                        mBinding.tvPhoneCaptionInfoFirst.text =
+                            getString(R.string.tv_phone_caption_result_info)
                         mPhoneFlag = true
                     }
                     //빈공란 정규식
@@ -235,7 +263,7 @@ class InfoFirstActivity : AppCompatActivity(), InfoFirstView {
 
         })
 
-        //회원가입 버튼 클릭
+        //버튼 클릭
         mBinding.btnInfoFirst.setOnClickListener {
             Log.d(
                 "sky",
@@ -246,12 +274,7 @@ class InfoFirstActivity : AppCompatActivity(), InfoFirstView {
             var name = mBinding.etNameInfoFirst.text.trim().toString()
             var nickname = mBinding.etNickNameInfoFirst.text.trim().toString()
             var phone = mBinding.etPhoneInfoFirst.text.trim().toString()
-
             var arrayList = ArrayList<String>()
-            arrayList.add(name)
-            arrayList.add(nickname)
-            arrayList.add(phone)
-
             Log.d("sky", arrayList.toString())
 
             //최종 넘기기
@@ -261,7 +284,12 @@ class InfoFirstActivity : AppCompatActivity(), InfoFirstView {
                 mNickNameFlag = false
                 mPhoneFlag = false
 
-                val intent = Intent(this, InfoSecondActivity::class.java)
+                arrayList.add(name)
+                arrayList.add(nickname)
+                arrayList.add(phone)
+
+                //동의하기 화면으로 넘어감
+                val intent = Intent(this, PrivacyAgreeActivity::class.java)
                 intent.putExtra("arrayList", arrayList)
                 startActivity(intent)
                 finish()
@@ -309,12 +337,14 @@ class InfoFirstActivity : AppCompatActivity(), InfoFirstView {
         //super.onBackPressed()
         val builder = AlertDialog.Builder(this)
         val binding: DialogEmailFindBinding = DialogEmailFindBinding.inflate(layoutInflater)
+
         //Dialog - Title
         binding.tvDialogTitleEmailFind.text =
             getString(R.string.tv_dialog_title_back_press)
         //Dialog - Content
         binding.tvDialogContentEmailFind.text =
             getString(R.string.tv_dialog_content_back_press)
+        binding.tvDialogApiEmailFind.visibility = View.GONE
         //Dialog - 확인 버튼
         builder.setPositiveButton(getString(R.string.tv_dialog_confirm)) { _, _ ->
             val intentWalkThrough = Intent(this, WalkThroughActivity::class.java)

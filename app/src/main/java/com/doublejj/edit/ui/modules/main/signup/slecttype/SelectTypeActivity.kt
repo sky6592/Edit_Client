@@ -8,11 +8,15 @@ import android.text.Spannable
 import android.text.SpannableStringBuilder
 import android.text.style.ForegroundColorSpan
 import android.util.Log
+import android.view.View
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.doublejj.edit.R
 import com.doublejj.edit.databinding.ActivitySelectTypeBinding
+import com.doublejj.edit.databinding.DialogEmailFindBinding
 import com.doublejj.edit.ui.modules.main.signup.slectjopgroup.JobGroupActivity
+import com.doublejj.edit.ui.modules.main.walkthrough.WalkThroughActivity
 
 class SelectTypeActivity : AppCompatActivity() {
     private lateinit var mBinding: ActivitySelectTypeBinding
@@ -24,6 +28,31 @@ class SelectTypeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_select_type)
+
+        //< 클릭
+        mBinding.ivBackSelectType.setOnClickListener {
+            val builder = AlertDialog.Builder(this)
+            val binding: DialogEmailFindBinding = DialogEmailFindBinding.inflate(layoutInflater)
+
+            //Dialog - Title
+            binding.tvDialogTitleEmailFind.text =
+                getString(R.string.tv_dialog_title_back_press)
+            //Dialog - Content
+            binding.tvDialogContentEmailFind.text =
+                getString(R.string.tv_dialog_content_back_press)
+            binding.tvDialogApiEmailFind.visibility = View.GONE
+            //Dialog - 확인 버튼
+            builder.setPositiveButton(getString(R.string.tv_dialog_confirm)) { _, _ ->
+                val intentWalkThrough = Intent(this, WalkThroughActivity::class.java)
+                startActivity(intentWalkThrough)
+                finishAffinity()
+            }
+            builder.setNegativeButton(getString(R.string.tv_dialog_dismiss)) { _, _ ->
+
+            }
+            builder.setView(binding.root).show()
+        }
+
         mArrayList = intent.getSerializableExtra("arrayList") as ArrayList<String>
         val nickname = mArrayList[1]
 
@@ -93,5 +122,29 @@ class SelectTypeActivity : AppCompatActivity() {
                 finish()
             }
         }
+    }
+
+    override fun onBackPressed() {
+        //super.onBackPressed()
+        val builder = AlertDialog.Builder(this)
+        val binding: DialogEmailFindBinding = DialogEmailFindBinding.inflate(layoutInflater)
+
+        //Dialog - Title
+        binding.tvDialogTitleEmailFind.text =
+            getString(R.string.tv_dialog_title_back_press)
+        //Dialog - Content
+        binding.tvDialogContentEmailFind.text =
+            getString(R.string.tv_dialog_content_back_press)
+        binding.tvDialogApiEmailFind.visibility = View.GONE
+        //Dialog - 확인 버튼
+        builder.setPositiveButton(getString(R.string.tv_dialog_confirm)) { _, _ ->
+            val intentWalkThrough = Intent(this, WalkThroughActivity::class.java)
+            startActivity(intentWalkThrough)
+            finishAffinity()
+        }
+        builder.setNegativeButton(getString(R.string.tv_dialog_dismiss)) { _, _ ->
+
+        }
+        builder.setView(binding.root).show()
     }
 }

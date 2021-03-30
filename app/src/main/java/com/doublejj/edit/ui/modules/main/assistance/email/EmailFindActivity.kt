@@ -35,6 +35,10 @@ class EmailFindActivity : AppCompatActivity(), EmailFindView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_email_find)
+        //뒤로가기
+        mBinding.ivBackEmailFind.setOnClickListener {
+            finish()
+        }
 
         //정규식
         val namePattern = "^[a-zA-Z가-힣]{2,10}$"
