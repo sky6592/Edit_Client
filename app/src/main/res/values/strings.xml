@@ -7,6 +7,8 @@
     <string name="tv_bnv_ranking">랭킹</string>
     <string name="tv_bnv_myedit">나의 에딧</string>
 
+    <string name="tv_loading">LOADING...</string>
+
     <!-- Splash -->
     <string name="tv_splash">자소서 공유 플랫폼</string>
 
@@ -77,9 +79,9 @@
     <!--  writing_comment_activity  -->
     <string name="tv_writing_comment_toolbar_title">코멘트 입력하기</string>
     <string name="tv_writing_comment_input_title">멘토 코멘트 입력</string>
-    <string name="tv_writing_comment_input_hint">
-        해당 자소서에 대한 의견을 작성해주세요.\n(40자 이상 작성 필수)
-    </string>
+    <string name="tv_writing_comment_input_hint">해당 자소서에 대한 의견을 작성해주세요.\n(40자 이상 작성 필수)</string>
+    <string name="tv_writing_comment_input_caption_0">코멘트를 40자 이상 입력해주세요.</string>
+    <string name="tv_writing_comment_input_caption_1">모든 항목을 평가해주세요.</string>
     <string name="tv_writing_comment_notice_first">한 번 등록한 코멘트는 수정이 어렵습니다. 신중히 확인 후 등록해주세요!</string>
     <string name="tv_writing_comment_notice_second">코멘트 삭제는 ‘나의 에딧 &gt; 작성한 코멘트’에서 가능합니다.</string>
 
@@ -106,7 +108,7 @@
     <string name="snackbar_sentence_list_delete_mentee">선택하신 문장이 삭제되었습니다. :)</string>
     <string name="tv_sentence_completion_mentee_written_by_me_title">내가 작성한 문장</string>
     <string name="tv_sentence_completion_mentee_adopt_by_me_title">내가 채택한 코멘트</string>
-    <string name="tv_more_comment">+코멘트 더보기</string>
+    <string name="tv_more_comment">+ 코멘트 더보기</string>
     <string name="tv_open_sentence">문장 보기</string>
     <string name="snackbar_comment_list_delete_mentor">선택하신 코멘트가 삭제되었습니다. :)</string>
     <string name="tv_writing_comment_completion">코멘트 이어서 작성하기</string>
@@ -115,13 +117,9 @@
     <string name="tv_dialog_self_writing_title">문장 완성을 할 수 없어요!</string>
     <string name="tv_dialog_self_writing_content">코멘트가 아직 없거나, 채택한 코멘트가 없는 경우 문장 완성을 할 수 없어요.</string>
     <string name="tv_dialog_open_comment_title">코멘트를 삭제하시겠어요?</string>
-    <string name="tv_dialog_open_comment_content">
-        삭제된 코멘트는 복구할 수 없습니다.\n정말 삭제하시겠어요?
-    </string>
+    <string name="tv_dialog_open_comment_content">삭제된 코멘트는 복구할 수 없습니다.\n정말 삭제하시겠어요?</string>
     <string name="tv_dialog_open_sentence_title">문장을 삭제하시겠어요?</string>
-    <string name="tv_dialog_open_sentence_content">
-        삭제된 문장은 복구할 수 없습니다.\n정말 삭제하시겠어요?
-    </string>
+    <string name="tv_dialog_open_sentence_content">삭제된 문장은 복구할 수 없습니다.\n정말 삭제하시겠어요?</string>
     <string name="tv_dialog_sentence_report_title">이 글을 신고하시겠어요?</string>
     <string name="tv_dialog_sentence_report_content">
         해당 글이 에딧의 가이드에 어긋나거나\n불쾌감을 줄 경우 신고해주세요.
@@ -213,9 +211,12 @@
     <string name="tv_menu_sympathy_list">공감 목록</string>
     <string name="tv_menu_sentence_list">자소서 목록</string>
     <string name="tv_menu_sentence_complete_list">자소서 완성</string>
+    <string name="tv_before">Before</string>
+    <string name="tv_after">After</string>
     <string name="tv_menu_temp_list">임시 저장</string>
     <string name="tv_switch_position">멘토/멘티 변경하기</string>
     <string name="tv_switch_position_toolbar">멘토/멘티 변경</string>
+    <string name="btn_complete">완성하기</string>
     <string name="tv_switch_position_title">
         님,\n
         정말 역할을 변경하시겠어요?
@@ -265,6 +266,9 @@
     </string>
     <string name="tv_switch_position_reject">
         멘토/멘티 신청이 반려되었습니다.\n변경을 다시 신청하실 수 있어요.
+    </string>
+    <string name="tv_switch_position_logout">
+        멘토/멘티 신청이 승인되었습니다.\n로그아웃 후, 다시 로그인하시면\n정상적으로 적용됩니다!
     </string>
     <string name="btn_reapply">재신청</string>
 

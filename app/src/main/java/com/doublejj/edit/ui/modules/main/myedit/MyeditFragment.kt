@@ -17,29 +17,32 @@ import com.doublejj.edit.ApplicationClass.Companion.USER_POSITION
 import com.doublejj.edit.ApplicationClass.Companion.X_ACCESS_TOKEN
 import com.doublejj.edit.ApplicationClass.Companion.sSharedPreferences
 import com.doublejj.edit.R
+import com.doublejj.edit.data.api.services.certificate_mentor.AuthMentorStatusService
+import com.doublejj.edit.data.api.services.certificate_mentor.AuthMentorStatusView
 import com.doublejj.edit.data.api.services.logout.LogoutService
 import com.doublejj.edit.data.api.services.logout.LogoutView
 import com.doublejj.edit.data.api.services.profile.info.ProfileInfoService
 import com.doublejj.edit.data.api.services.profile.info.ProfileInfoView
 import com.doublejj.edit.data.models.BaseResponse
+import com.doublejj.edit.data.models.certificate_mentor.AuthMentorStatusResponse
 import com.doublejj.edit.data.models.profile.info.ProfileInfoResponse
 import com.doublejj.edit.databinding.MyeditFragmentBinding
+import com.doublejj.edit.ui.modules.main.myedit.certificate_mentor.CertificateLogoutActivity
 import com.doublejj.edit.ui.modules.main.myedit.certificate_mentor.CertificateMentorActivity
+import com.doublejj.edit.ui.modules.main.myedit.certificate_mentor.CertificateRejectActivity
 import com.doublejj.edit.ui.modules.main.myedit.manage_coin.ManageCoinActivity
+import com.doublejj.edit.ui.modules.main.myedit.my_sentence_completed.MySentenceCompletedActivity
+import com.doublejj.edit.ui.modules.main.myedit.my_sentence_not_adopted.MySentenceNotAdoptedActivity
 import com.doublejj.edit.ui.modules.main.myedit.profile.ProfileActivity
-<<<<<<< HEAD
 import com.doublejj.edit.ui.modules.main.myedit.settings.SettingsActivity
 import com.doublejj.edit.ui.modules.main.myedit.switch_position.SwitchToMenteeActivity
 import com.doublejj.edit.ui.modules.main.myedit.switch_position.SwitchToMentorActivity
 import com.doublejj.edit.ui.modules.main.splash.SplashActivity
-=======
-import com.doublejj.edit.ui.modules.main.myedit.switch_position.MenteeToMentorActivity
->>>>>>> 23c496a (feat: Add mentee to mentor layouts)
+import com.doublejj.edit.ui.utils.dialog.CustomLoadingDialog
 import com.doublejj.edit.ui.utils.snackbar.CustomSnackbar
 import com.google.android.material.snackbar.Snackbar
 
-
-class MyeditFragment : Fragment(), ProfileInfoView, LogoutView {
+class MyeditFragment : Fragment(), ProfileInfoView, LogoutView, AuthMentorStatusView {
     private val TAG: String = javaClass.simpleName.toString()
     private lateinit var binding: MyeditFragmentBinding
     private lateinit var viewModel: MyeditViewModel
@@ -108,45 +111,42 @@ class MyeditFragment : Fragment(), ProfileInfoView, LogoutView {
             // TODO : 공감 페이지
         }
         binding.ibMenuSentence.setOnClickListener {
-            // TODO : 자소서 목록 페이지 (멘티)
+            // 자소서 목록 페이지 (멘티)
+            val sendIntent = Intent(activity, MySentenceNotAdoptedActivity::class.java)
+            startActivity(sendIntent)
         }
         binding.ibMenuComplete.setOnClickListener {
-            // TODO : 자소서 완성 페이지 (멘티)
+            // 자소서 완성 페이지 (멘티)
+            val sendIntent = Intent(activity, MySentenceCompletedActivity::class.java)
+            startActivity(sendIntent)
         }
         binding.ibMenuCommentList.setOnClickListener {
             // TODO : 코멘트 목록 페이지 (멘토)
         }
+
+        // TODO : 임시저장 추후 업데이트
         binding.ibMenuTemp.setOnClickListener {
             // TODO : 임시 저장 페이지
         }
 
         /** position buttons **/
         binding.llBtnCertificateMentor.setOnClickListener {
-<<<<<<< HEAD
-            // TODO : 멘토 인증 페이지
-            startActivity(Intent(activity, CertificateMentorActivity::class.java))
+            // TODO : pending 중이 아니라면 멘토 인증 페이지
+            AuthMentorStatusService(this).tryGetAuthMentorStatus()
+//            CustomLoadingDialog(requireContext()).show()
         }
         binding.llBtnSwitchPosition.setOnClickListener {
             when (sSharedPreferences.getString(USER_POSITION, "MENTEE")) {
                 "MENTEE" -> startActivity(Intent(activity, SwitchToMentorActivity::class.java))
                 "MENTOR" -> startActivity(Intent(activity, SwitchToMenteeActivity::class.java))
-=======
-            when (sSharedPreferences.getString(USER_POSITION, "MENTEE")) {
-                "MENTEE" -> {
-                    startActivity(Intent(activity, MenteeToMentorActivity::class.java))
-                }
->>>>>>> 23c496a (feat: Add mentee to mentor layouts)
             }
         }
 
         /** logout buttons **/
         binding.btnLogout.setOnClickListener {
-<<<<<<< HEAD
             // 로그아웃 API 적용
             LogoutService(this).tryPostLogout()
-=======
-            // TODO : 로그아웃 API 적용
->>>>>>> 23c496a (feat: Add mentee to mentor layouts)
+            CustomLoadingDialog(requireContext()).show()
         }
 
         return binding.root
@@ -154,25 +154,29 @@ class MyeditFragment : Fragment(), ProfileInfoView, LogoutView {
 
     override fun onResume() {
         super.onResume()
+        CustomLoadingDialog(requireContext()).dismiss()
+
         // 프로필 캐릭터 업데이트
         binding.tvNickname.text = sSharedPreferences.getString(USER_NICKNAME, null)
         binding.tvPosition.text = (requireContext().applicationContext as ApplicationClass).getPostionToString(
-            sSharedPreferences.getString(USER_POSITION, null).toString())
+            sSharedPreferences.getString(USER_POSITION, null))
         binding.ivProfile.setImageResource((requireContext().applicationContext as ApplicationClass).getCharacterResId(
             sSharedPreferences.getString(USER_COLOR, null).toString(),
             sSharedPreferences.getString(USER_EMOTION, null).toString()
         ))
 
         // 멘토 인증하기 버튼 업데이트
-        if (sSharedPreferences.getString(USER_POSITION, "MENTEE") == "MENTOR"
-            && !sSharedPreferences.getBoolean(MENTOR_AUTH_CONFIRM, false)) {
-
-            // 인증 받지 않은 멘토라면 인증하기 버튼 보이기
-            binding.llBtnCertificateMentor.visibility = View.VISIBLE
-        }
-        else {
-            // 인증 받은 멘토라면 인증하기 버튼 감추기
-            binding.llBtnCertificateMentor.visibility = View.GONE
+        val isMentor = sSharedPreferences.getString(USER_POSITION, "MENTEE") == "MENTOR"
+        val isMentorAuth = sSharedPreferences.getBoolean(MENTOR_AUTH_CONFIRM, false)
+        if (isMentor) {
+            if (!isMentorAuth) {
+                // 인증 받지 않은 멘토라면 인증하기 버튼 보이기
+                binding.llBtnCertificateMentor.visibility = View.VISIBLE
+            }
+            else {
+                // 인증 받은 멘토라면 인증하기 버튼 감추기
+                binding.llBtnCertificateMentor.visibility = View.GONE
+            }
         }
     }
 
@@ -191,12 +195,65 @@ class MyeditFragment : Fragment(), ProfileInfoView, LogoutView {
             binding.ivProfile.setImageResource((requireContext().applicationContext as ApplicationClass).getCharacterResId(response.result.colorName, response.result.emotionName))
         }
         else {
-            CustomSnackbar.make(binding.root, response.message.toString(), Snackbar.LENGTH_SHORT)
+            CustomSnackbar.make(binding.root, response.message.toString(), Snackbar.LENGTH_SHORT).show()
         }
+
+        CustomLoadingDialog(requireContext()).dismiss()
     }
 
     override fun onProfileInfoFailure(message: String) {
-        CustomSnackbar.make(binding.root, message, Snackbar.LENGTH_SHORT)
+        CustomSnackbar.make(binding.root, message, Snackbar.LENGTH_SHORT).show()
+
+        CustomLoadingDialog(requireContext()).dismiss()
+    }
+
+    override fun onAuthMentorStatusSuccess(response: AuthMentorStatusResponse) {
+        if (response.isSuccess) {
+            val editor = sSharedPreferences.edit()
+            when (response.result.presentState) {
+                "YES" -> {
+                    CustomLoadingDialog(requireContext()).dismiss()
+                    editor.putBoolean(MENTOR_AUTH_CONFIRM, true)
+                    editor.commit()
+                    editor.apply()
+                    // 멘토 인증 완료 페이지로 이동
+                    startActivity(Intent(activity, CertificateLogoutActivity::class.java))
+                }
+                "NO" -> {
+                    CustomLoadingDialog(requireContext()).dismiss()
+                    editor.putBoolean(MENTOR_AUTH_CONFIRM, false)
+                    editor.commit()
+                    editor.apply()
+                    // 멘토 인증 거부 페이지로 이동
+                    startActivity(Intent(activity, CertificateRejectActivity::class.java))
+                }
+                "WAITING" -> {
+                    CustomLoadingDialog(requireContext()).dismiss()
+                    // 멘토 인증 대기 페이지로 이동
+                    editor.putBoolean(MENTOR_AUTH_CONFIRM, false)
+                    editor.commit()
+                    editor.apply()
+                    startActivity(Intent(activity, CertificateMentorActivity::class.java))
+                }
+            }
+        }
+        else {
+            if (response.code == 3026) {
+                CustomLoadingDialog(requireContext()).dismiss()
+                // 멘토 인증 페이지로 이동
+                startActivity(Intent(activity, CertificateMentorActivity::class.java))
+            }
+            else {
+                CustomLoadingDialog(requireContext()).dismiss()
+                CustomSnackbar.make(binding.root, response.message.toString(), Snackbar.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+    override fun onAuthMentorStatusFailure(message: String) {
+        CustomSnackbar.make(binding.root, message, Snackbar.LENGTH_SHORT).show()
+
+        CustomLoadingDialog(requireContext()).dismiss()
     }
 
     override fun onPostLogoutSuccess(response: BaseResponse) {
@@ -204,7 +261,7 @@ class MyeditFragment : Fragment(), ProfileInfoView, LogoutView {
             val editor = sSharedPreferences.edit()
             editor.putString(X_ACCESS_TOKEN, null)
             editor.putString(USER_POSITION, null)
-            editor.putString(MENTOR_AUTH_CONFIRM, null)
+            editor.putBoolean(MENTOR_AUTH_CONFIRM, false)
             editor.putString(USER_NICKNAME, null)
             editor.putString(USER_EMOTION, null)
             editor.putString(USER_COLOR, null)
@@ -215,10 +272,18 @@ class MyeditFragment : Fragment(), ProfileInfoView, LogoutView {
             val sendIntent = Intent(activity, SplashActivity::class.java)
             sendIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
             startActivity(sendIntent)
+
         }
+        else {
+            CustomSnackbar.make(binding.root, response.message.toString(), Snackbar.LENGTH_SHORT).show()
+        }
+
+        CustomLoadingDialog(requireContext()).dismiss()
     }
 
     override fun onPostLogoutFailure(message: String) {
-        CustomSnackbar.make(binding.root, message, Snackbar.LENGTH_SHORT)
+        CustomSnackbar.make(binding.root, message, Snackbar.LENGTH_SHORT).show()
+
+        CustomLoadingDialog(requireContext()).dismiss()
     }
 }

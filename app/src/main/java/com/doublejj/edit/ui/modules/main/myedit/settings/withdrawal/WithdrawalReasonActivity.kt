@@ -166,7 +166,7 @@ class WithdrawalReasonActivity : AppCompatActivity() {
                     }
 
                     override fun onWithdrawalFailure(message: String) {
-                        CustomSnackbar.make(binding.root, message, Snackbar.LENGTH_SHORT)
+                        CustomSnackbar.make(binding.root, message, Snackbar.LENGTH_SHORT).show()
                     }
                 })
                 dialog.show(supportFragmentManager, "CustomDialog")

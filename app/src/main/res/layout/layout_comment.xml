@@ -287,7 +287,6 @@
         style="@style/CustomTextViewMidBlack"
         android:text="@string/tv_sentence_comment_example"
         android:textSize="@dimen/size_13dp"
-        android:maxLines="4"
         android:lineSpacingExtra="@dimen/size_5dp"
 
         android:layout_marginTop="@dimen/size_14dp"

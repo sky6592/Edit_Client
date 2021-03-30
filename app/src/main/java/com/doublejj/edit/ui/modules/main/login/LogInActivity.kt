@@ -148,6 +148,7 @@ class LogInActivity : AppCompatActivity(), LogInView {
             }
             Log.d("sky", "btn in - $mEmailBtnFlag + $mPwBtnFlag")
         }
+
     }
 
     fun onClick(v: View) {
@@ -167,9 +168,11 @@ class LogInActivity : AppCompatActivity(), LogInView {
         if (response.code == 1000) {
             val editor = ApplicationClass.sSharedPreferences.edit()
             editor.putString(ApplicationClass.X_ACCESS_TOKEN, response.result.jwt)
-            editor.putBoolean(ApplicationClass.MENTOR_AUTH_CONFIRM,response.result.isCertificatedMentor)
+            editor.putString(ApplicationClass.USER_POSITION, response.result.userRole)
+            editor.putBoolean(ApplicationClass.MENTOR_AUTH_CONFIRM, response.result.isCertificatedMentor)
             editor.commit()
             editor.apply()
+
             val intentMain = Intent(this, MainActivity::class.java)
             startActivity(intentMain)
             //모든화면종료
@@ -188,7 +191,6 @@ class LogInActivity : AppCompatActivity(), LogInView {
             mBinding.root,
             message,
             Snackbar.LENGTH_LONG,
-        )
-            .show()
+        ).show()
     }
 }
