@@ -6,6 +6,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <uses-feature
         android:name="android.hardware.camera"
@@ -16,12 +17,12 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Edit"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
+        <activity android:name=".ui.modules.main.signup.privacyagree.PrivacyAgreeActivity"></activity>
         <activity
             android:name=".ui.modules.main.signup.entercode.EnterCodeActivity"
             android:windowSoftInputMode="adjustResize" />
@@ -35,11 +36,10 @@
             android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".ui.modules.main.signup.read.ReadActivity"
-            android:windowSoftInputMode="adjustResize" />
+            android:windowSoftInputMode="adjustResize"></activity>
         <activity
             android:name=".ui.modules.main.myedit.profile.change_job.ChangeJobActivity"
             android:windowSoftInputMode="adjustPan" />
-        <activity android:name=".ui.modules.main.myedit.certificate_mentor.CertificateLogoutActivity" />
         <activity android:name=".ui.modules.main.myedit.certificate_mentor.CertificateRejectActivity" />
         <activity android:name=".ui.modules.main.myedit.certificate_mentor.CertificateInProgressActivity" />
         <activity android:name=".ui.modules.main.myedit.certificate_mentor.CertificateMentorCompleteActivity" />
@@ -75,8 +75,12 @@
             android:windowSoftInputMode="adjustResize" />
         <activity android:name=".ui.modules.main.signup.slecttype.SelectTypeActivity" />
         <activity android:name=".ui.modules.main.walkthrough.WalkThroughActivity" />
-        <activity android:name=".ui.modules.main.signup.infosecond.InfoSecondActivity" />
-        <activity android:name=".ui.modules.main.signup.infofirst.InfoFirstActivity" />
+        <activity
+            android:name=".ui.modules.main.signup.infosecond.InfoSecondActivity"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".ui.modules.main.signup.infofirst.InfoFirstActivity"
+            android:windowSoftInputMode="adjustResize" />
         <activity android:name=".ui.modules.main.signin.SignInActivity" />
         <activity android:name=".ui.modules.main.myedit.profile.ProfileActivity" />
         <activity android:name=".ui.modules.main.myedit.settings.withdrawal.WithdrawalCompleteActivity" />
@@ -96,7 +100,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.modules.main.MainActivity" />
     </application>
 
 </manifest>

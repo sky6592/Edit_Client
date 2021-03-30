@@ -146,7 +146,7 @@ class ChangeJobActivity : AppCompatActivity(), ChangeJobView {
     }
 
     override fun onChangeJobFailure(message: String) {
-        CustomSnackbar.make(binding.root, message, Snackbar.LENGTH_SHORT).show()
+        CustomSnackbar.make(binding.root, message, Snackbar.LENGTH_SHORT)
     }
 
     override fun onDestroy() {

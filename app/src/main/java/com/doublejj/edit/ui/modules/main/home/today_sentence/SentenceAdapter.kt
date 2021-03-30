@@ -12,14 +12,14 @@ import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.RecyclerView
 import com.doublejj.edit.ApplicationClass
 import com.doublejj.edit.R
-import com.doublejj.edit.data.api.services.sentence.ReportSentenceService
-import com.doublejj.edit.data.api.services.sentence.ReportSentenceView
+import com.doublejj.edit.data.api.services.report_sentence.ReportSentenceService
+import com.doublejj.edit.data.api.services.report_sentence.ReportSentenceView
 import com.doublejj.edit.data.api.services.sentence.DeletePublishedSentenceService
 import com.doublejj.edit.data.api.services.sentence.DeletePublishedSentenceView
 import com.doublejj.edit.data.api.services.sentence.SympathizeSentenceService
 import com.doublejj.edit.data.api.services.sentence.SympathizeSentenceView
 import com.doublejj.edit.data.models.ResultResponse
-import com.doublejj.edit.data.models.sentence.ReportSentenceRequest
+import com.doublejj.edit.data.models.report_sentence.ReportSentenceRequest
 import com.doublejj.edit.data.models.sentence.SentenceData
 import com.doublejj.edit.data.models.sentence.SympathizeSentenceResponse
 import com.doublejj.edit.ui.modules.main.home.open_comment.OpenCommentFragment
@@ -89,9 +89,10 @@ class SentenceAdapter(
                             sentenceData.coverLetterId
                         )
 
-                        // 삭제 후 리스트에서 바로 지우기
+                        // 리스트에서도 문장 삭제
                         sentenceDataList.remove(sentenceData)
-                        notifyDataSetChanged()
+                        // TODO : refresh()로 다시 리스트 보여주기
+//                        refresh()
                     }
                     // 내 문장이 아닐 경우
                     else {
@@ -110,30 +111,24 @@ class SentenceAdapter(
 
         holder.tvSelfWritingType.text = sentenceData.coverLetterCategoryName
         holder.tvSentenceContent.text = sentenceData.coverLetterContent
-
         holder.tbSympathy.isChecked = sentenceData.isSympathy
         holder.tvSympathyCount.text = sentenceData.sympathiesCount.toString()
-
         holder.llBtnSympathy.setOnClickListener {
             // 공감 처리
-            val sympathyState = sentenceData.isSympathy
-            holder.tbSympathy.isChecked = !sympathyState
-            if (!sympathyState) sentenceData.sympathiesCount += 1
-            else sentenceData.sympathiesCount -= 1
-            sentenceData.isSympathy = !sympathyState
-            holder.tvSympathyCount.text = sentenceData.sympathiesCount.toString()
-
-            // 공감 API 적용
             SympathizeSentenceService(this).tryPatchSympathizeSentence(sentenceData.coverLetterId)
-            sentenceDataList.set(position, sentenceData)
-            notifyDataSetChanged()
-
-            holder.tbSympathy.isChecked = sentenceData.isSympathy
+            val sympathyState = holder.tbSympathy.isChecked
+            holder.tbSympathy.isChecked = !sympathyState
+            if (!sympathyState) {
+                sentenceData.sympathiesCount += 1
+            }
+            else {
+                sentenceData.sympathiesCount -= 1
+            }
             holder.tvSympathyCount.text = sentenceData.sympathiesCount.toString()
         }
         // TODO : ToggleButton 혼자만 눌리는 이슈 해결하기
         holder.llBtnOpenComment.setOnClickListener {
-            // 해당 카드의 코멘트 보기 화면으로 이동
+            // TODO : 해당 카드의 코멘트 보기 화면으로 이동
             val bundle = Bundle()
             bundle.putLong("coverLetterId", sentenceData.coverLetterId)
             bundle.putInt("ivCharacter", characterResId)
@@ -141,7 +136,6 @@ class SentenceAdapter(
             bundle.putString("tvOccupationType", sentenceData.jobName)
             bundle.putString("tvSelfWritingType", sentenceData.coverLetterCategoryName)
             bundle.putString("tvSentenceContent", sentenceData.coverLetterContent)
-            bundle.putBoolean("isMine", sentenceData.isMine)
 
             fm.beginTransaction()
                 .add(R.id.fl_home, OpenCommentFragment().apply {

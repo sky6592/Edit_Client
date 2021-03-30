@@ -1,9 +1,9 @@
-package com.doublejj.edit.data.api.services.sentence
+package com.doublejj.edit.data.api.services.report_sentence
 
 import com.doublejj.edit.ApplicationClass.Companion.sRetrofit
-import com.doublejj.edit.data.api.retrofitinterfaces.sentence.ReportSentenceRetrofitInterface
+import com.doublejj.edit.data.api.retrofitinterfaces.report_sentence.ReportSentenceRetrofitInterface
 import com.doublejj.edit.data.models.ResultResponse
-import com.doublejj.edit.data.models.sentence.ReportSentenceRequest
+import com.doublejj.edit.data.models.report_sentence.ReportSentenceRequest
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

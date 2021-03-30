@@ -162,6 +162,6 @@ class SwitchToMentorReasonActivity : AppCompatActivity(), SwitchPositionView {
     }
 
     override fun onSwitchPositionFailure(message: String) {
-        CustomSnackbar.make(binding.root, message, Snackbar.LENGTH_SHORT).show()
+        CustomSnackbar.make(binding.root, message, Snackbar.LENGTH_SHORT)
     }
 }
