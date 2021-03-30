@@ -38,6 +38,7 @@ class ChangeProfileActivity : AppCompatActivity(), ChangeProfileView {
         binding.tvNickname.text = sSharedPreferences.getString(USER_NICKNAME, null)
         binding.tvPosition.text = (applicationContext as ApplicationClass).getPostionToString(sSharedPreferences.getString(USER_POSITION, null).toString())
 
+
         // 캐릭터 표정 및 색상 선택에 따른 이미지 출력 변경
         selectedColor = sSharedPreferences.getString(USER_COLOR, "purple").toString()
         selectedEmotion = sSharedPreferences.getString(USER_EMOTION, "relief").toString()

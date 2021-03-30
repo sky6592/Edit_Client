@@ -31,6 +31,7 @@ import com.doublejj.edit.ui.modules.main.myedit.settings.SettingsActivity
 import com.doublejj.edit.ui.modules.main.myedit.switch_position.SwitchToMenteeActivity
 import com.doublejj.edit.ui.modules.main.myedit.switch_position.SwitchToMentorActivity
 import com.doublejj.edit.ui.modules.main.splash.SplashActivity
+import com.doublejj.edit.ui.modules.main.myedit.switch_position.MenteeToMentorActivity
 import com.doublejj.edit.ui.utils.snackbar.CustomSnackbar
 import com.google.android.material.snackbar.Snackbar
 
@@ -132,6 +133,7 @@ class MyeditFragment : Fragment(), ProfileInfoView, LogoutView {
         binding.btnLogout.setOnClickListener {
             // 로그아웃 API 적용
             LogoutService(this).tryPostLogout()
+            // TODO : 로그아웃 API 적용
         }
 
         return binding.root
@@ -151,6 +153,7 @@ class MyeditFragment : Fragment(), ProfileInfoView, LogoutView {
         // 멘토 인증하기 버튼 업데이트
         if (sSharedPreferences.getString(USER_POSITION, "MENTEE") == "MENTOR"
             && !sSharedPreferences.getBoolean(MENTOR_AUTH_CONFIRM, false)) {
+
             // 인증 받지 않은 멘토라면 인증하기 버튼 보이기
             binding.llBtnCertificateMentor.visibility = View.VISIBLE
         }

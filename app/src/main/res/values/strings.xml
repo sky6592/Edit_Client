@@ -201,6 +201,8 @@
 
     <string name="tv_mentor_change_job_select">직군 선택</string>
     <string name="tv_mentee_change_job_select">희망 직군 선택</string>
+
+    <string name="tv_change_job_select">직군 선택</string>
     <string name="tv_menu_sympathy_list">공감 목록</string>
     <string name="tv_menu_sentence_list">자소서 목록</string>
     <string name="tv_menu_sentence_complete_list">자소서 완성</string>
