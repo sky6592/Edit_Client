@@ -1,5 +1,4 @@
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
-<<<<<<< HEAD
     android:width="108dp"
     android:height="108dp"
     android:viewportWidth="108"
@@ -25,27 +24,5 @@
           android:fillType="nonZero"
           android:strokeColor="#00000000"/>
     </group>
-=======
-    android:width="192dp"
-    android:height="192dp"
-    android:viewportWidth="192"
-    android:viewportHeight="192">
-  <path
-      android:pathData="M0,0h192v192h-192z"
-      android:strokeWidth="1"
-      android:fillColor="#FFFFFF"
-      android:fillAlpha="0"
-      android:fillType="evenOdd"
-      android:strokeColor="#00000000"/>
-  <group>
-    <clip-path
-        android:pathData="M0,0h192v192h-192z"/>
-    <path
-        android:pathData="M111.322,145.137L111.322,125.177L70.838,125.177L70.838,104.152L103.998,104.152L103.998,84.191L70.838,84.191L70.838,65.827L109.857,65.827L109.857,46L47,46L47,145.137L111.322,145.137ZM142.884,147C151.007,147 157,140.48 157,132.229C157,123.979 151.007,117.592 142.884,117.592C134.627,117.592 128.768,123.979 128.768,132.229C128.768,140.48 134.627,147 142.884,147Z"
-        android:strokeWidth="1"
-        android:fillColor="#5A32DC"
-        android:fillType="nonZero"
-        android:strokeColor="#00000000"/>
->>>>>>> 23c496a (feat: Add mentee to mentor layouts)
   </group>
 </vector>

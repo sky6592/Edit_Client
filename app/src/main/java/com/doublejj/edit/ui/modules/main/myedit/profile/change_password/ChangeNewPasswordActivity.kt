@@ -22,8 +22,8 @@ class ChangeNewPasswordActivity : AppCompatActivity(), ChangeNewPasswordView {
     private val TAG: String = javaClass.simpleName.toString()
     private lateinit var binding: ActivityChangeNewPasswordBinding
 
-    // 비밀번호 정규식 : 영문 대소문자, 숫자, 특수문자 중 2가지 포함(8-16자)
-    val pwPattern = "^(?=.*[a-zA-Z0-9])(?=.*[a-zA-Z~!`@#\$%^&*()_+=])(?=.*[0-9!@#\$%^&*]).{8,16}$"
+    // 비밀번호 정규식 : 영문 대소문자, 숫자, 특수문자 중 2가지 포함(8-15자)
+    val pwPattern = "^(?=.*[a-zA-Z0-9])(?=.*[a-zA-Z~!`@#\$%^&*()_+=])(?=.*[0-9!@#\$%^&*]).{8,15}$"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
