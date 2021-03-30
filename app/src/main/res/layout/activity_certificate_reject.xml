@@ -115,7 +115,7 @@
             android:layout_height="@dimen/size_36dp"
             android:background="@drawable/selector_btn_purple_active_round"
             android:fontFamily="@font/noto_sans_kr_medium"
-            android:text="@string/btn_self_writing_submit"
+            android:text="@string/btn_reapply"
             android:textColor="@color/white"
             android:textSize="@dimen/size_13dp"
 

@@ -89,7 +89,7 @@ class ChangePasswordActivity : AppCompatActivity(), AuthPasswordView {
     }
 
     override fun onAuthPasswordFailure(message: String) {
-        CustomSnackbar.make(binding.root, message, Snackbar.LENGTH_SHORT)
+        CustomSnackbar.make(binding.root, message, Snackbar.LENGTH_SHORT).show()
     }
 
     override fun onDestroy() {

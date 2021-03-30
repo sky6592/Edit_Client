@@ -162,6 +162,6 @@ class SwitchToMenteeReasonActivity : AppCompatActivity(), SwitchPositionView {
     }
 
     override fun onSwitchPositionFailure(message: String) {
-        CustomSnackbar.make(binding.root, message, Snackbar.LENGTH_SHORT)
+        CustomSnackbar.make(binding.root, message, Snackbar.LENGTH_SHORT).show()
     }
 }

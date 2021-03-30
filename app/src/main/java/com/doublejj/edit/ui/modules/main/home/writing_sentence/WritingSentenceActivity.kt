@@ -156,7 +156,7 @@ class WritingSentenceActivity : AppCompatActivity() {
                 }
 
                 override fun onPostWritingSentenceFailure(message: String) {
-                    CustomSnackbar.make(binding.root, message, Snackbar.LENGTH_SHORT)
+                    CustomSnackbar.make(binding.root, message, Snackbar.LENGTH_SHORT).show()
                 }
             })
             dialog.show(supportFragmentManager, "CustomDialog")
@@ -189,7 +189,7 @@ class WritingSentenceActivity : AppCompatActivity() {
                 }
 
                 override fun onPostWritingSentenceFailure(message: String) {
-                    CustomSnackbar.make(binding.root, message, Snackbar.LENGTH_SHORT)
+                    CustomSnackbar.make(binding.root, message, Snackbar.LENGTH_SHORT).show()
                 }
             })
             dialog.show(supportFragmentManager, "CustomDialog")
