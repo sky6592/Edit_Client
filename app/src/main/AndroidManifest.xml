@@ -25,8 +25,9 @@
         <activity
             android:name=".ui.modules.main.signup.entercode.EnterCodeActivity"
             android:windowSoftInputMode="adjustResize" />
-        <activity android:name=".ui.modules.main.assistance.pw.PwFindActivity"
-            android:windowSoftInputMode="adjustResize"/>
+        <activity
+            android:name=".ui.modules.main.assistance.pw.PwFindActivity"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".ui.modules.main.assistance.email.EmailFindActivity"
             android:windowSoftInputMode="adjustResize" />
@@ -74,9 +75,14 @@
             android:name=".ui.modules.main.login.LogInActivity"
             android:windowSoftInputMode="adjustResize" />
         <activity android:name=".ui.modules.main.signup.slecttype.SelectTypeActivity" />
+        <activity android:name=".ui.modules.main.signup.privacyagree.PrivacyAgreeActivity"/>
         <activity android:name=".ui.modules.main.walkthrough.WalkThroughActivity" />
-        <activity android:name=".ui.modules.main.signup.infosecond.InfoSecondActivity" />
-        <activity android:name=".ui.modules.main.signup.infofirst.InfoFirstActivity" />
+        <activity
+            android:name=".ui.modules.main.signup.infosecond.InfoSecondActivity"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".ui.modules.main.signup.infofirst.InfoFirstActivity"
+            android:windowSoftInputMode="adjustResize" />
         <activity android:name=".ui.modules.main.signin.SignInActivity" />
         <activity android:name=".ui.modules.main.myedit.profile.ProfileActivity" />
         <activity android:name=".ui.modules.main.myedit.settings.withdrawal.WithdrawalCompleteActivity" />

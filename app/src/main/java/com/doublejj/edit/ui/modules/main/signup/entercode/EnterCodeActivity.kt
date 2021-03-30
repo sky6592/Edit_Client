@@ -39,7 +39,7 @@ class EnterCodeActivity : AppCompatActivity(), EnterCodeView {
         //전역변수
         intentEmailCheck = Intent(this, EmailCheckActivity::class.java)
         mArrayList = intent.getSerializableExtra("arrayList") as ArrayList<String>
-        countDown("000005")
+        countDown("000500")
         Log.d("sku", mArrayList.toString())
 
         //< 클릭
