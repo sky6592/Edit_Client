@@ -41,7 +41,6 @@ class CustomDialogFragment(
         }
         else {
             dialogCustomBinding.tvConfirm.isEnabled = false
-            dialogCustomBinding.tvConfirm.visibility = View.GONE
         }
         if (dismiss != null) {
             dialogCustomBinding.tvDismiss.isEnabled = true
@@ -49,7 +48,6 @@ class CustomDialogFragment(
         }
         else {
             dialogCustomBinding.tvDismiss.isEnabled = false
-            dialogCustomBinding.tvDismiss.visibility = View.GONE
         }
 
         dialogCustomBinding.tvConfirm.setOnClickListener {

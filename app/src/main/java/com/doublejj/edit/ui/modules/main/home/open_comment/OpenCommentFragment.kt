@@ -2,11 +2,11 @@ package com.doublejj.edit.ui.modules.main.home.open_comment
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -29,7 +29,6 @@ import com.google.android.material.snackbar.Snackbar
 class OpenCommentFragment : Fragment(), CommentsOfSentenceView {
     private lateinit var binding: OpenCommentFragmentBinding
     private lateinit var viewModel: OpenCommentViewModel
-    var sentenceId: Long = -1
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -43,16 +42,14 @@ class OpenCommentFragment : Fragment(), CommentsOfSentenceView {
         (activity as MainActivity).increaseFragmentCount()
 
         /** get comments from server **/
-        sentenceId = requireArguments().getLong("coverLetterId")
-        getComments(sentenceId)
+        getComments()
 
         /** toolbar buttons **/
         binding.ibBack.setOnClickListener {
             requireActivity().supportFragmentManager.popBackStack()
         }
         binding.ibRefresh.setOnClickListener {
-            // refresh data
-            onResume()
+            // TODO : refresh data
         }
 
         /** floating button **/
@@ -71,6 +68,12 @@ class OpenCommentFragment : Fragment(), CommentsOfSentenceView {
                     binding.fabMentor.visibility = View.GONE
                     binding.fabMentor.isEnabled = false
                 }
+            }
+        }
+
+        binding.fabMentor.setOnClickListener {
+            if (binding.fabMentor.isEnabled) {
+                startActivity(Intent(activity, WritingCommentActivity::class.java))
             }
         }
 
@@ -94,20 +97,6 @@ class OpenCommentFragment : Fragment(), CommentsOfSentenceView {
             dialog.show(requireActivity().supportFragmentManager, "CustomDialog")
         }
 
-        binding.fabMentor.setOnClickListener {
-
-            if (binding.fabMentor.isEnabled) {
-                val sendIntent = Intent(activity, WritingCommentActivity::class.java)
-                sendIntent.putExtra("ivCharacter", requireArguments().getInt("ivCharacter"))
-                sendIntent.putExtra("coverLetterId", requireArguments().getLong("coverLetterId"))
-                sendIntent.putExtra("tvSentenceWriter", requireArguments().getString("tvSentenceWriter"))
-                sendIntent.putExtra("tvOccupationType", requireArguments().getString("tvOccupationType"))
-                sendIntent.putExtra("tvSelfWritingType", requireArguments().getString("tvSelfWritingType"))
-                sendIntent.putExtra("tvSentenceContent", requireArguments().getString("tvSentenceContent"))
-                sendIntent.putExtra("isMine", requireArguments().getBoolean("isMine"))
-                startActivity(sendIntent)
-            }
-        }
         return binding.root
     }
 
@@ -117,12 +106,11 @@ class OpenCommentFragment : Fragment(), CommentsOfSentenceView {
         binding.tvOccupationType.text = requireArguments().getString("tvOccupationType")
         binding.tvSelfWritingType.text = requireArguments().getString("tvSelfWritingType")
         binding.tvSentenceContent.text = requireArguments().getString("tvSentenceContent")
-        val isMine = requireArguments().getBoolean("isMine")
-        if (isMine) binding.ibMenu.setImageDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.icon_delete))
     }
 
-    fun getComments(sentenceId: Long) {
+    fun getComments() {
         // TODO : 무한스크롤 처리
+        val sentenceId = requireArguments().getLong("coverLetterId")
 
         CommentsOfSentenceService(this).tryGetCommentsOfSentence(
             sentenceId = sentenceId,
@@ -131,39 +119,28 @@ class OpenCommentFragment : Fragment(), CommentsOfSentenceView {
     }
 
     fun setAdapter(commentDataList: MutableList<CommentData>) {
-        // 내 문장인지 같이 전달
-        val isMine = requireArguments().getBoolean("isMine")
-
         binding.rvComment.layoutManager = LinearLayoutManager(context)
-        binding.rvComment.adapter = OpenCommentAdapter(requireContext(), commentDataList, isMine, requireActivity().supportFragmentManager)
-
+        binding.rvComment.adapter = OpenCommentAdapter(requireContext(), commentDataList, requireActivity().supportFragmentManager)
     }
 
     override fun onGetCommentsOfSentenceSuccess(response: LookupCommentResponse) {
         if (response.isSuccess) {
             val commentDataList = response.result.commentInfos
+            Log.d("ok", "size: ${commentDataList.size}")
             if (commentDataList.size > 0) {
-                binding.llZeroComment.visibility = View.INVISIBLE
+                binding.llZeroComment.visibility = View.GONE
                 binding.rvComment.visibility = View.VISIBLE
                 setAdapter(commentDataList)
             }
             else {
                 binding.llZeroComment.visibility = View.VISIBLE
-                binding.rvComment.visibility = View.INVISIBLE
+                binding.rvComment.visibility = View.GONE
             }
-        }
-        else {
-            CustomSnackbar.make(binding.root, response.message.toString(), Snackbar.LENGTH_SHORT).show()
         }
     }
 
     override fun onGetCommentsOfSentenceFailure(message: String) {
-        CustomSnackbar.make(binding.root, message, Snackbar.LENGTH_SHORT).show()
-    }
-
-    override fun onResume() {
-        super.onResume()
-        getComments(sentenceId)
+        CustomSnackbar.make(binding.root, message, Snackbar.LENGTH_SHORT)
     }
 
     override fun onDetach() {

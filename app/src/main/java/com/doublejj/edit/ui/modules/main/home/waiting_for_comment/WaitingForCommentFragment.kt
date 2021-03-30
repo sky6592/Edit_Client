@@ -33,9 +33,6 @@ class WaitingForCommentFragment : Fragment(), WaitingForCommentView {
         binding.lifecycleOwner = this
         (activity as MainActivity).increaseFragmentCount()
 
-        /** get sentences from server **/
-        getSentences()
-
         /** set adapter **/
         setAdapter()
 
@@ -44,19 +41,15 @@ class WaitingForCommentFragment : Fragment(), WaitingForCommentView {
             requireActivity().supportFragmentManager.popBackStack()
         }
         binding.ibRefresh.setOnClickListener {
-            // refresh data
-            onResume()
+            // TODO : refresh data
         }
 
         return binding.root
     }
 
-    fun getSentences() {
-        // TODO : 무한스크롤 처리
-        WaitingForCommentService(this).tryGetWaitingCommentSentence(page = 1)
-    }
-
     fun setAdapter() {
+        // TODO : 페이징 적용하기
+        WaitingForCommentService(this).tryGetWaitingCommentSentence(page = 1)
         binding.rvSentence.layoutManager = LinearLayoutManager(context)
     }
 
@@ -67,12 +60,7 @@ class WaitingForCommentFragment : Fragment(), WaitingForCommentView {
     }
 
     override fun onGetWaitingCommentSentenceFailure(message: String) {
-        CustomSnackbar.make(requireView(), message, Snackbar.LENGTH_SHORT).show()
-    }
-
-    override fun onResume() {
-        super.onResume()
-        getSentences()
+        CustomSnackbar.make(requireView(), message, Snackbar.LENGTH_SHORT)
     }
 
     override fun onDetach() {

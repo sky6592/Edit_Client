@@ -4,5 +4,6 @@ import com.doublejj.edit.data.models.BaseResponse
 import com.google.gson.annotations.SerializedName
 
 data class SympathizeSentenceResponse(
-    @SerializedName("result") val result: SympathizeSentenceResult
+    @SerializedName("coverLetterId") val coverLetterId: Long,
+    @SerializedName("userInfoId") val userInfoId: Long
 ) : BaseResponse()

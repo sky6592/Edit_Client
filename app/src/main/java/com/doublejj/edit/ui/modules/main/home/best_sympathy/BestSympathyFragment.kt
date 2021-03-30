@@ -33,9 +33,6 @@ class BestSympathyFragment : Fragment(), BestSympathyView {
         binding.lifecycleOwner = this
         (activity as MainActivity).increaseFragmentCount()
 
-        /** get sentences from server **/
-        getSentences()
-
         /** set adapter **/
         setAdapter()
 
@@ -44,19 +41,15 @@ class BestSympathyFragment : Fragment(), BestSympathyView {
             requireActivity().supportFragmentManager.popBackStack()
         }
         binding.ibRefresh.setOnClickListener {
-            // refresh data
-            onResume()
+            // TODO : refresh data
         }
 
         return binding.root
     }
 
-    fun getSentences() {
-        // TODO : 무한스크롤 처리
-        BestSympathyService(this).tryGetBestSympathySentence(page = 1)
-    }
-
     fun setAdapter() {
+        // TODO : 페이징 적용하기
+        BestSympathyService(this).tryGetBestSympathySentence(page = 1)
         binding.rvSentence.layoutManager = LinearLayoutManager(context)
     }
 
@@ -67,12 +60,7 @@ class BestSympathyFragment : Fragment(), BestSympathyView {
     }
 
     override fun onGetBestSympathySentenceFailure(message: String) {
-        CustomSnackbar.make(requireView(), message, Snackbar.LENGTH_SHORT).show()
-    }
-
-    override fun onResume() {
-        super.onResume()
-        getSentences()
+        CustomSnackbar.make(requireView(), message, Snackbar.LENGTH_SHORT)
     }
 
     override fun onDetach() {
