@@ -14,7 +14,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="@style/CustomTextViewMidBlack"
-                android:text="@string/tv_change_job_select"
+                android:text="@string/tv_mentor_change_job_select"
                 android:textSize="@dimen/size_18dp"
                 android:fontFamily="@font/noto_sans_kr_medium"
                 android:gravity="center"

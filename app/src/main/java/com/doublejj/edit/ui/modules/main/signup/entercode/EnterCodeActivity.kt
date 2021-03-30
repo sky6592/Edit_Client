@@ -3,7 +3,11 @@ package com.doublejj.edit.ui.modules.main.signup.entercode
 import android.content.Intent
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
+import android.view.View
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.doublejj.edit.R
@@ -11,8 +15,10 @@ import com.doublejj.edit.data.api.services.entercode.EnterCodeService
 import com.doublejj.edit.data.api.services.entercode.EnterCodeView
 import com.doublejj.edit.data.models.entercode.EnterCodeResponse
 import com.doublejj.edit.databinding.ActivityEnterCodeBinding
+import com.doublejj.edit.databinding.DialogEmailFindBinding
 import com.doublejj.edit.ui.modules.main.signup.emailcheck.EmailCheckActivity
 import com.doublejj.edit.ui.modules.main.signup.slecttype.SelectTypeActivity
+import com.doublejj.edit.ui.modules.main.walkthrough.WalkThroughActivity
 import com.doublejj.edit.ui.utils.dialog.CustomDialogClickListener
 import com.doublejj.edit.ui.utils.dialog.CustomDialogFragment
 
@@ -20,7 +26,8 @@ import com.doublejj.edit.ui.utils.dialog.CustomDialogFragment
 class EnterCodeActivity : AppCompatActivity(), EnterCodeView {
 
     private lateinit var mBinding: ActivityEnterCodeBinding
-//    private var mArrayList: ArrayList<String>? = null
+
+    //    private var mArrayList: ArrayList<String>? = null
     private lateinit var mArrayList: ArrayList<String>
     private lateinit var intentEmailCheck: Intent
 
@@ -32,7 +39,52 @@ class EnterCodeActivity : AppCompatActivity(), EnterCodeView {
         //전역변수
         intentEmailCheck = Intent(this, EmailCheckActivity::class.java)
         mArrayList = intent.getSerializableExtra("arrayList") as ArrayList<String>
-        countDown("000300")
+        countDown("000005")
+        Log.d("sku", mArrayList.toString())
+
+        //< 클릭
+        mBinding.ivBackEnterCode.setOnClickListener {
+            val builder = AlertDialog.Builder(this)
+            val binding: DialogEmailFindBinding = DialogEmailFindBinding.inflate(layoutInflater)
+
+            //Dialog - Title
+            binding.tvDialogTitleEmailFind.text =
+                getString(R.string.tv_dialog_title_back_press)
+            //Dialog - Content
+            binding.tvDialogContentEmailFind.text =
+                getString(R.string.tv_dialog_content_back_press)
+            binding.tvDialogApiEmailFind.visibility = View.GONE
+            //Dialog - 확인 버튼
+            builder.setPositiveButton(getString(R.string.tv_dialog_confirm)) { _, _ ->
+                val intentWalkThrough = Intent(this, WalkThroughActivity::class.java)
+                startActivity(intentWalkThrough)
+                finishAffinity()
+            }
+            builder.setNegativeButton(getString(R.string.tv_dialog_dismiss)) { _, _ ->
+
+            }
+            builder.setView(binding.root).show()
+        }
+
+        //인증코드
+        mBinding.etEnterCode.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+                if (s != null) {
+                    //인증코드 입력하면 버튼 색상 변경
+                    if (s.length > 1) {
+                        mBinding.btnEnterCode.setBackgroundResource(R.color.purple)
+                    } else {
+                        mBinding.btnEnterCode.setBackgroundResource(R.color.very_light_pink)
+                    }
+                }
+            }
+        })
 
         //확인 버튼
         mBinding.btnEnterCode.setOnClickListener {
@@ -113,29 +165,27 @@ class EnterCodeActivity : AppCompatActivity(), EnterCodeView {
             // 제한시간 종료
             override fun onFinish() {
                 // TODO : 타이머 종료 후 다이얼로그 실행
-                val dialog = CustomDialogFragment(
-                    R.string.tv_dialog_2044_title_enter_code,
-                    R.string.tv_dialog_2044_content_enter_code,
-                    R.string.tv_dialog_check,
-                    R.string.tv_dialog_dismiss
-                )
+                val builder = AlertDialog.Builder(this@EnterCodeActivity)
+                val binding: DialogEmailFindBinding = DialogEmailFindBinding.inflate(layoutInflater)
 
-                dialog.setDialogClickListener(object : CustomDialogClickListener {
-                    //확인
-                    override fun onPositiveClick() {
-                        intentEmailCheck.putExtra("arrayList", mArrayList)
-                        startActivity(intentEmailCheck)
-                        finish()
-                    }
+                //Dialog - Title
+                binding.tvDialogTitleEmailFind.text =
+                    getString(R.string.tv_dialog_2044_title_enter_code)
+                //Dialog - Content
+                binding.tvDialogContentEmailFind.text =
+                    getString(R.string.tv_dialog_2044_content_enter_code)
+                binding.tvDialogApiEmailFind.visibility = View.GONE
+                //Dialog - 확인 버튼
+                builder.setPositiveButton(getString(R.string.tv_dialog_confirm)) { _, _ ->
+                    val intentWalkThrough =
+                        Intent(this@EnterCodeActivity, EmailCheckActivity::class.java)
+                    intentWalkThrough.putExtra("arrayList", mArrayList)
+                    startActivity(intentWalkThrough)
+                    finishAffinity()
+                }
 
-                    //취소
-                    override fun onNegativeClick() {
-                    }
-                })
-                dialog.show(supportFragmentManager, "CustomDialog")
-                //인증시간 만료 텍스트 변경
-                mBinding.tvCaptionEnterCode.text = getString(R.string.tv_2044_enter_code)
-
+                builder.setView(binding.root).show()
+//                val dialog
             }
         }.start()
     }
@@ -151,55 +201,75 @@ class EnterCodeActivity : AppCompatActivity(), EnterCodeView {
 
         //인증코드 실패(3분초과)
         if (response.code == 2044) {
-            val dialog = CustomDialogFragment(
-                R.string.tv_dialog_2044_title_enter_code,
-                R.string.tv_dialog_2044_content_enter_code,
-                R.string.tv_dialog_check,
-                R.string.tv_dialog_dismiss
-            )
-            dialog.setDialogClickListener(object : CustomDialogClickListener {
-                override fun onPositiveClick() {
-                    intentEmailCheck.putExtra("arrayList", mArrayList)
-                    startActivity(intentEmailCheck)
-                    finish()
-                }
+            val builder = AlertDialog.Builder(this)
+            val binding: DialogEmailFindBinding = DialogEmailFindBinding.inflate(layoutInflater)
 
-                override fun onNegativeClick() {
-                }
-            })
-            dialog.show(supportFragmentManager, "CustomDialog")
+            //Dialog - Title
+            binding.tvDialogTitleEmailFind.text =
+                getString(R.string.tv_dialog_2044_title_enter_code)
+            //Dialog - Content
+            binding.tvDialogContentEmailFind.text =
+                getString(R.string.tv_dialog_2044_content_enter_code)
+            binding.tvDialogApiEmailFind.visibility = View.GONE
+            //Dialog - 확인 버튼
+            builder.setPositiveButton(getString(R.string.tv_dialog_confirm)) { _, _ ->
+                val intentWalkThrough = Intent(this, EmailCheckActivity::class.java)
+                intentWalkThrough.putExtra("arrayList", mArrayList)
+                startActivity(intentWalkThrough)
+                finishAffinity()
+            }
 
-            mBinding.tvCaptionEnterCode.text = getString(R.string.tv_2044_enter_code)
+            builder.setView(binding.root).show()
 
         }
 
         //인증코드 실패(인증코드 다름)
         if (response.code == 3018) {
             Log.d("sky", "onGetEnterCodeSuccess- 3018")
-            val dialog = CustomDialogFragment(
-                R.string.tv_3018_enter_code,
-                R.string.tv_dialog_3018_content_enter_code,
-                R.string.tv_dialog_check,
-                R.string.tv_dialog_dismiss_none
-            )
-            dialog.setDialogClickListener(object : CustomDialogClickListener {
-                override fun onPositiveClick() {
-//                    intentEmailCheck.putExtra("arrayList", mArrayList)
-//                    startActivity(intentEmailCheck)
-//                    finish()
-                }
+            val builder = AlertDialog.Builder(this)
+            val binding: DialogEmailFindBinding = DialogEmailFindBinding.inflate(layoutInflater)
 
-                override fun onNegativeClick() {
-                }
-            })
-            dialog.show(supportFragmentManager, "CustomDialog")
+            //Dialog - Title
+            binding.tvDialogTitleEmailFind.text =
+                getString(R.string.tv_3018_enter_code)
+            //Dialog - Content
+            binding.tvDialogContentEmailFind.text =
+                getString(R.string.tv_dialog_3018_content_enter_code)
+            binding.tvDialogApiEmailFind.visibility = View.GONE
+            //Dialog - 확인 버튼
+            builder.setPositiveButton(getString(R.string.tv_dialog_confirm)) { _, _ ->
 
-            mBinding.tvCaptionEnterCode.text = getString(R.string.tv_2044_enter_code)
+            }
+            builder.setView(binding.root).show()
+            mBinding.tvCaptionEnterCode.text = getString(R.string.tv_dialog_3018_content_enter_code)
         }
     }
 
     override fun onGetEnterCodeFailure(message: String) {
         Log.d("sky", "onGetEnterCodeFailure")
+    }
 
+    override fun onBackPressed() {
+        //super.onBackPressed()
+        val builder = AlertDialog.Builder(this)
+        val binding: DialogEmailFindBinding = DialogEmailFindBinding.inflate(layoutInflater)
+
+        //Dialog - Title
+        binding.tvDialogTitleEmailFind.text =
+            getString(R.string.tv_dialog_title_back_press)
+        //Dialog - Content
+        binding.tvDialogContentEmailFind.text =
+            getString(R.string.tv_dialog_content_back_press)
+        binding.tvDialogApiEmailFind.visibility = View.GONE
+        //Dialog - 확인 버튼
+        builder.setPositiveButton(getString(R.string.tv_dialog_confirm)) { _, _ ->
+            val intentWalkThrough = Intent(this, WalkThroughActivity::class.java)
+            startActivity(intentWalkThrough)
+            finishAffinity()
+        }
+        builder.setNegativeButton(getString(R.string.tv_dialog_dismiss)) { _, _ ->
+
+        }
+        builder.setView(binding.root).show()
     }
 }

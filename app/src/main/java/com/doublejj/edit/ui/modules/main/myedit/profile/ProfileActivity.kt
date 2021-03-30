@@ -38,7 +38,8 @@ class ProfileActivity : AppCompatActivity() {
             // 직군 변경 페이지
             val sendIntent = Intent(this, ChangeJobActivity::class.java)
             startActivity(sendIntent)
-        }
-    }
 
-}
+            }
+        }
+
+    }

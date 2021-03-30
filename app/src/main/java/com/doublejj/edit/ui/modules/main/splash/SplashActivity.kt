@@ -1,10 +1,10 @@
 package com.doublejj.edit.ui.modules.main.splash
 
+import android.animation.Animator
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.doublejj.edit.ApplicationClass
 import com.doublejj.edit.R
@@ -21,28 +21,53 @@ class SplashActivity : AppCompatActivity(), SplashView {
         super.onCreate(savedInstanceState)
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_splash)
 
-        mBinding.animationView.addAnimatorUpdateListener {
-            if (mBinding.animationView.isAnimating) {
-                Log.d("editors","addAnimatorUpdateListener")
-                SplashService(this).tryGetSplash()
+        mBinding.animationView.addAnimatorListener(object : Animator.AnimatorListener {
+            override fun onAnimationStart(animation: Animator?) {
             }
-        }
+
+            override fun onAnimationEnd(animation: Animator?) {
+                SplashService(this@SplashActivity).tryGetSplash()
+            }
+
+            override fun onAnimationCancel(animation: Animator?) {
+            }
+
+            override fun onAnimationRepeat(animation: Animator?) {
+            }
+
+        })
+
     }
 
     override fun onGetSplashSuccess(response: SplashResponse) {
-        Log.d("editors","Splash - API성공")
+        Log.d("sky", "Splash - API성공")
         /** Success : Go Main **/
         if (response.code == 1000) {
+
+            //jwt값 저장되어있는지 확인
+            val spf = this.getSharedPreferences("EDIT", MODE_PRIVATE)
             val editor = ApplicationClass.sSharedPreferences.edit()
+            val jwt = spf.getString(ApplicationClass.X_ACCESS_TOKEN, "")
+            //jwt 유무 확인
+            editor.putString(ApplicationClass.X_ACCESS_TOKEN, jwt)
+            //멘토 인증 여부
+            editor.putBoolean(
+                ApplicationClass.MENTOR_AUTH_CONFIRM,
+                response.result.isCertificatedMentor
+            )
+
             editor.putString(ApplicationClass.USER_POSITION, response.result.userRole)
             editor.putBoolean(ApplicationClass.MENTOR_AUTH_CONFIRM, response.result.isCertificatedMentor)
             editor.commit()
             editor.apply()
 
+            //가입자(멘토/멘티)
             var intentMain = Intent(this, MainActivity::class.java)
             startActivity(intentMain)
             finish()
-        } else {
+        }
+        else {
+            //미가입자
             var intentWalkThrough = Intent(this, WalkThroughActivity::class.java)
             startActivity(intentWalkThrough)
             finish()
@@ -50,7 +75,6 @@ class SplashActivity : AppCompatActivity(), SplashView {
     }
 
     override fun onGetSplashFailure(message: String) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
-        Log.d("editors", message)
+        Log.d("sky", message)
     }
 }

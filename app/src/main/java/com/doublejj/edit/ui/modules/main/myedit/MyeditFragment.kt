@@ -17,8 +17,6 @@ import com.doublejj.edit.ApplicationClass.Companion.USER_POSITION
 import com.doublejj.edit.ApplicationClass.Companion.X_ACCESS_TOKEN
 import com.doublejj.edit.ApplicationClass.Companion.sSharedPreferences
 import com.doublejj.edit.R
-import com.doublejj.edit.data.api.services.certificate_mentor.AuthMentorStatusService
-import com.doublejj.edit.data.api.services.certificate_mentor.AuthMentorStatusView
 import com.doublejj.edit.data.api.services.logout.LogoutService
 import com.doublejj.edit.data.api.services.logout.LogoutView
 import com.doublejj.edit.data.api.services.profile.info.ProfileInfoService
@@ -123,7 +121,7 @@ class MyeditFragment : Fragment(), ProfileInfoView, LogoutView, AuthMentorStatus
         binding.ibMenuCommentList.setOnClickListener {
             // TODO : 코멘트 목록 페이지 (멘토)
         }
-        
+
         // TODO : 임시저장 추후 업데이트
         binding.ibMenuTemp.setOnClickListener {
             // TODO : 임시 저장 페이지

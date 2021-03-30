@@ -13,11 +13,13 @@
             android:id="@+id/linear_enter_code"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
             android:background="@drawable/shadow_below_bg"
             android:gravity="center_vertical"
             android:orientation="horizontal"
             android:paddingHorizontal="@dimen/padding_common"
             android:paddingTop="@dimen/padding_common">
+
 
             <ImageView
                 android:id="@+id/iv_back_enter_code"
@@ -34,7 +36,6 @@
                 android:gravity="center"
                 android:text="@string/tv_title_certification_email"
                 android:textColor="@color/black" />
-
         </LinearLayout>
 
         <!--Choose Info-->
@@ -79,6 +80,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
+                <!-- 인증코드 -->
                 <EditText
                     android:id="@+id/et_enter_code"
                     android:layout_width="match_parent"
@@ -90,7 +92,7 @@
                     android:imeOptions="actionSearch"
                     android:inputType="textPersonName|textNoSuggestions"
                     android:paddingHorizontal="@dimen/hint_padding_10dp"
-                    android:paddingTop="@dimen/hint_padding_5dp"
+                    android:paddingVertical="@dimen/padding_2.5dp"
                     android:textSize="@dimen/tv_15sp" />
 
                 <TextView

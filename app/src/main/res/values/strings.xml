@@ -148,7 +148,11 @@
     <string name="tv_dialog_select">선택하기</string>
     <string name="tv_dialog_title_find_email">가입하신 메일 계정입니다.</string>
     <string name="tv_dialog_content_find_email">개인정보 보호를 위해 일부는 *로 표기됩니다.</string>
-
+    <string name="tv_dialog_title_find_pw">메일이 전송되었습니다.</string>
+    <string name="tv_dialog_wrong_title_find_pw">메일 전송 실패!</string>
+    <string name="tv_dialog_content_find_pw">해당 이메일로 임시 비밀번호를 보내드렸습니다.\n확인해주세요!</string>
+    <string name="tv_dialog_title_back_press">회원가입을 취소하시나요?</string>
+    <string name="tv_dialog_content_back_press">확인을 누르면 입력한 내용이\n모두 저장되지 않습니다!</string>
 
     <!--  myedit_fragment  -->
     <string name="tv_menu_profile">내 정보</string>
@@ -174,6 +178,7 @@
         님,\n변경이 완료되었습니다.
     </string>
     <string name="tv_change_job">직군 변경</string>
+<<<<<<< HEAD
     <string name="tv_input_etc">기타 입력</string>
     <string name="tv_change_reason_title">변경 사유</string>
     <string name="tv_change_job_title">변경하실 직군을\n선택해주세요.</string>
@@ -193,7 +198,16 @@
     <string name="spinner_job_11">C/S</string>
     <string name="spinner_job_12">기타 (직접 입력)</string>
 
+    <string name="tv_mentor_change_job_select">직군 선택</string>
+    <string name="tv_mentee_change_job_select">희망 직군 선택</string>
+=======
+    <string name="tv_change_reason_title">변경 사유</string>
+    <string name="tv_change_job_title">
+        변경하실 직군을\n
+        선택해주세요.
+    </string>
     <string name="tv_change_job_select">직군 선택</string>
+>>>>>>> 23c496a (feat: Add mentee to mentor layouts)
     <string name="tv_menu_sympathy_list">공감 목록</string>
     <string name="tv_menu_sentence_list">자소서 목록</string>
     <string name="tv_menu_sentence_complete_list">자소서 완성</string>
@@ -420,6 +434,7 @@
     <string name="tv_caption_spacing_info">띄어쓰기는 제외해주세요</string>
     <string name="tv_phone_caption_result_info">핸드폰 입력 감사합니다!</string>
     <string name="tv_NickName_caption_result_info">닉네임 입력 감사합니다!</string>
+    <string name="tv_NickName_caption_duplication_result_info">중복된 닉네임입니다!\n입력을 다시해주세요!</string>
     <string name="tv_NickName_caption_btn_info">닉네임 사용이 가능합니다!</string>
     <string name="tv_NickName_caption_fail_info">중복된 닉네임입니다!</string>
 
@@ -431,16 +446,15 @@
     <string name="hint_phone_info">"&apos;-&apos;을 제외하고 입력해주세요"</string>
     <string name="tv_phone_caption_info">본인명의의 휴대폰 번호를 정확히 입력해주세요.</string>
 
-    <string name="tv_privacy_info">
-        "&apos;회원가입&apos;을 누르면 이용약관과\n개인정보 처리 방침에 동의하는 것으로 간주됩니다."</string>
-
     <string name="tv_email_info">이메일</string>
     <string name="hint_email_info">이메일을 입력해 주세요.</string>
     <string name="tv_email_result_info">이메일을 입력감사합니다!</string>
     <string name="tv_email_result_wrong_info">이메일 형식을 맞춰주세요!</string>
-    <string name="tv_email_fail_info">중복된 이메일입니다!</string>
+    <string name="tv_email_fail_info">중복된 이메일입니다!\n다시 입력해주세요!</string>
+
 
     <string name="tv_email_caption_info">로그인 시 사용할 이메일을 입력해주세요.</string>
+    <string name="tv_email_was_caption_info">로그인 시 사용한 이메일을 입력해주세요.</string>
     <string name="tv_click_caption_info">중복 확인을 눌러주세요!</string>
 
 
@@ -467,7 +481,6 @@
     <!-- Select -->
     <string name="tv_title_select">멘토/멘티 가입</string>
 
-
     <!-- Find -->
     <string name="tv_title_find_email">이메일 찾기</string>
     <string name="tv_title_find_pw">비밀번 찾기</string>
@@ -483,7 +496,7 @@
     <!-- Select Type -->
     <string name="tv_nick_name_select_type">닉네임</string>
     <string name="tv_info_one_select_type">님,</string>
-    <string name="tv_info_two_select_type">역할을 선택해주세요.</string>
+    <string name="tv_info_two_select_type">님,\n역할을 선택해주세요.</string>
     <string name="tv_total_select_type">닉네임님,\n역할을 선택해주세요.</string>
     <string name="tv_mentor">멘토</string>
     <string name="tv_mentor_info">문장에 대한 코멘트를\n작성합니다.</string>
@@ -491,32 +504,30 @@
     <string name="tv_mentee_info">문장 단위로 자소서를\n작성합니다.</string>
 
     <!-- Job Group -->
-    <string name="tv_info_job_group">직군을 선택해주세요.</string>
+    <string name="tv_mentor_info_job_group">님,\n직군을 선택해주세요.</string>
+    <string name="tv_mentee_info_job_group">님,\n희망 직군을 선택해주세요.</string>
     <string name="tv_job_group">직군</string>
+    <string name="tv_result_job_group">직군 입력감사합니다!</string>
 
     <!-- Read -->
-    <string name="tv_info_read">이것만은 지켜주세요!\n아래 사항들을 꼭 읽어주세요.</string>
+    <string name="tv_info_bottom_read">아래 사항들을 꼭 읽어주세요.</string>
+    <string name="tv_mentor_info_read">님,\n이것만은 지켜주세요!</string>
+    <string name="tv_btn_read">동의합니다</string>
     <string name="tv_one_title_read">1. 에딧의 방향성</string>
     <string name="tv_one_content_read">
-        1) Edit (이하 ‘에딧’)은 완성되지 않은 자소서를 공유하여 멘토의 코멘트를 통한 스스로 자소서를 완성할 수 있도록 돕는 플랫폼 입니다.\n
-        2) 에딧은 여러분이 스스로 자소서를 작성할 수 있도록 도움을 드리는 어플입니다.\n
-        3) 멘토는 자소서 문장을 완성할 수 있도록 방향을 제시합니다.\n
-        4) 멘티는 문장 단위로 자소서를 게시하고, 코멘트를 통해서 도움을 받게 됩니다. 자소서의 완성은 유저 스스로가 하게 됩니다.\n
-        3) 완성되지 않은 자소서라도 표절은 금지입니다.</string>
+        1) Edit (이하 ‘에딧’)은 완성되지 않은 자소서를 공유하여 멘토의 코멘트를 통한 스스로 자소서를 완성할 수 있도록 돕는 플랫폼 입니다.\n2) 에딧은 여러분이 스스로 자소서를 작성할 수 있도록 도움을 드리는 어플입니다.\n3) 멘토는 자소서 문장을 완성할 수 있도록 방향을 제시합니다.\n4) 멘티는 문장 단위로 자소서를 게시하고, 코멘트를 통해서 도움을 받게 됩니다. 자소서의 완성은 유저 스스로가 하게 됩니다.\n5) 완성되지 않은 자소서라도 표절은 금지입니다.</string>
     <string name="tv_two_title_read">2. 성희롱, 욕설 등 모욕감을 주는 글</string>
     <string name="tv_two_content_read">
-        1) 상대방에게 성적인 모욕감, 혐오감을 주는 글을 작성하면 안됩니다.\n\n
-        2) 자소서 문장을 향한 모욕감, 혐오감을 주어서는 안됩니다. 누구나 처음은 미숙할 수 밖에 없다는 걸 기억해주세요.\n\n
-        3) 위의 내용들은 신고의 대상이 될 수 있습니다.</string>
+        1) 상대방에게 성적인 모욕감, 혐오감을 주는 글을 작성하면 안됩니다.\n2) 자소서 문장을 향한 모욕감, 혐오감을 주어서는 안됩니다. 누구나 처음은 미숙할 수 밖에 없다는 걸 기억해주세요.\n3) 위의 내용들은 신고의 대상이 될 수 있습니다.</string>
     <string name="tv_three_title_read">3. 개인정보 관련</string>
     <string name="tv_three_content_read">
-        1) 에딧 내에서의 개인정보 요구는 금지하고 있습니다.\n\n
-        2) 다른 유저가 나의 개인정보를 요구한다면 신고해주세요.</string>
+        1) 에딧 내에서의 개인정보 요구는 금지하고 있습니다.\n2) 다른 유저가 나의 개인정보를 요구한다면 신고해주세요.</string>
     <string name="tv_check_info_read">에딧의 가이드를 모두 읽고, 이해했습니다.</string>
 
     <!-- Email Check -->
     <string name="tv_info_email_check">이메일 인증을 진행합니다.\n메일 주소를 확인해주세요!</string>
-    <string name="tv_caption_email_check">인증을 진행할 이메일이 아니라면 다시 입력해주세요!</string>
+    <string name="tv_caption_email_check">인증을 진행할 이메일이 아니라면 다시 입력해주세요!\n입력한 이메일로 아이디가 변경됩니다.</string>
+    <string name="tv_caption_pattern_result_email_check">입력한 이메일로 아이디가 변경됩니다.</string>
     <string name="tv_bottom_email_check">회원가입 완료까지 얼마 남지 않았어요! :)</string>
     <string name="btn_email_check">인증 메일 발송</string>
 
@@ -544,6 +555,142 @@
     <string name="tv_walk_thorough_one">스스로 자소서를 완성하는\n힘을 기를 수 있게 합니다.</string>
     <string name="tv_walk_thorough_two">누구나 멘토, 멘티가 될 수 있지만\n아무나 멘토, 멘티가 될 수는 없다.</string>
     <string name="tv_walk_thorough_three">정답이 아닌 완성을 위한\n자기소개서 공유 플랫폼, Edit.</string>
+
+    <!-- Privacy Agree -->
+    <string name="tv_title_privacy_agree">이용약관</string>
+    <string name="tv_info_privacy_agree">이용약관에 동의해주세요.</string>
+    <string name="tv_privacy_info_first">이용약관 보기>\n"‘회원가입’을 누르면 이용약관 동의화면으로 이동합니다!"</string>
+    <string name="tv_content_privacy_agree">‘Edit.’(이하 Edit.)은(는) 「개인정보 보호법」 제30조에 따라 정부주체의 개인정보를 보호하고 이와 관련한 고충을 신속하고 원활하게 처리할 수 있도록 하기 위하여 다음과 같이 개인정보 처리방침을 수립·공개합니다.
+이 개인정보처리방침은 2021년 3월 24부터 적용됩니다.\n\n
+
+1. 개인정보의 처리 목적\n\n
+
+Edit.은(는) 다음의 목적을 위하여 개인정보를 처리합니다. 처리하고 있는 개인정보는 다음의 목적 이외의 용도로는 이용되지 않으며 이용 목적이 변경되는 경우에는 「개인정보 보호법」 제18조에 따라 별도의 동의를 받는 등 필요한 조치를 이행할 예정입니다.\n
+
+1. 홈페이지 회원가입 및 관리\n
+회원 가입의사 확인, 회원제 서비스 제공에 따른 본인 식별·인증, 회원자격 유지·관리, 서비스 부정이용 방지, 각종 고지·통지, 고충처리 목적으로 개인정보를 처리합니다.\n
+2. 민원사무 처리\n
+사실조사를 위한 연락·통지 목적으로 개인정보를 처리합니다.\n
+3. 재화 또는 서비스 제공\n
+물품배송, 서비스 제공, 콘텐츠 제공, 맞춤서비스 제공, 본인인증, 요금결제·정산을 목적으로 개인정보를 처리합니다.\n
+4. 마케팅 및 광고에의 활용\n
+신규 서비스(제품) 개발 및 맞춤 서비스 제공, 이벤트 및 광고성 정보 제공 및 참여기회 제공 , 인구통계학적 특성에 따른 서비스 제공 및 광고 게재 , 서비스의 유효성 확인, 접속빈도 파악 또는 회원의 서비스 이용에 대한 통계 등을 목적으로 개인정보를 처리합니다.\n
+
+
+2. 개인정보의 처리 및 보유 기간\n\n
+
+① Edit.은(는) 법령에 따른 개인정보 보유·이용기간 또는 정보주체로부터 개인정보를 수집 시에 동의받은 개인정보 보유·이용기간 내에서 개인정보를 처리·보유합니다.\n
+
+② 각각의 개인정보 처리 및 보유 기간은 다음과 같습니다.\n
+1.&lt;홈페이지 회원가입 및 관리&gt;\n
+&lt;홈페이지 회원가입 및 관리&gt;와 관련한 개인정보는 수집.이용에 관한 동의일로부터&lt;회원탈퇴&gt;까지 위 이용목적을 위하여 보유.이용됩니다.\n
+보유근거 : 회원가입 및 관리를 통한 활동을 위해 보유관련법령 :\n
+1)신용정보의 수집/처리 및 이용 등에 관한 기록 : 3년\n
+2) 소비자의 불만 또는 분쟁처리에 관한 기록 : 3년\n
+3) 대금결제 및 재화 등의 공급에 관한 기록 : 5년\n
+4) 표시/광고에 관한 기록 : 6개월\n
+- 예외사유 : 위 내용과 다른 사항으로 관리될 경우 즉각 폐기\n\n
+
+
+3. 개인정보의 제3자 제공\n\n
+
+① Edit.은(는) 개인정보를 제1조(개인정보의 처리 목적)에서 명시한 범위 내에서만 처리하며, 정보주체의 동의, 법률의 특별한 규정 등 「개인정보 보호법」 제17조 및 제18조에 해당하는 경우에만 개인정보를 제3자에게 제공합니다.\n
+② Edit.은(는) 다음과 같이 개인정보를 제3자에게 제공하고 있습니다.\n
+
+
+4. 개인정보처리 위탁\n\n
+
+① Edit.은(는) 원활한 개인정보 업무처리를 위하여 다음과 같이 개인정보 처리업무를 위탁하고 있습니다.\n
+② Edit.은(는) 위탁계약 체결시 「개인정보 보호법」 제26조에 따라 위탁업무 수행목적 외 개인정보 처리금지, 기술적․관리적 보호조치, 재위탁 제한, 수탁자에 대한 관리․감독, 손해배상 등 책임에 관한 사항을 계약서 등 문서에 명시하고, 수탁자가 개인정보를 안전하게 처리하는지를 감독하고 있습니다.\n
+③ 위탁업무의 내용이나 수탁자가 변경될 경우에는 지체없이 본 개인정보 처리방침을 통하여 공개하도록 하겠습니다.\n
+
+
+5. 정보주체와 법정대리인의 권리·의무 및 그 행사방법\n\n
+
+① 정보주체는 Edit.에 대해 언제든지 개인정보 열람·정정·삭제·처리정지 요구 등의 권리를 행사할 수 있습니다.\n
+② 제1항에 따른 권리 행사는Edit.에 대해 「개인정보 보호법」 시행령 제41조제1항에 따라 서면, 전자우편, 모사전송(FAX) 등을 통하여 하실 수 있으며 Edit.은(는) 이에 대해 지체 없이 조치하겠습니다.\n
+③ 제1항에 따른 권리 행사는 정보주체의 법정대리인이나 위임을 받은 자 등 대리인을 통하여 하실 수 있습니다.이 경우 “개인정보 처리 방법에 관한 고시(제2020-7호)” 별지 제11호 서식에 따른 위임장을 제출하셔야 합니다.\n
+④ 개인정보 열람 및 처리정지 요구는 「개인정보 보호법」 제35조 제4항, 제37조 제2항에 의하여 정보주체의 권리가 제한 될 수 있습니다.\n
+⑤ 개인정보의 정정 및 삭제 요구는 다른 법령에서 그 개인정보가 수집 대상으로 명시되어 있는 경우에는 그 삭제를 요구할 수 없습니다.\n
+⑥ Edit.은(는) 정보주체 권리에 따른 열람의 요구, 정정·삭제의 요구, 처리정지의 요구 시 열람 등 요구를 한 자가 본인이거나 정당한 대리인인지를 확인합니다.\n
+
+
+6. 처리하는 개인정보의 항목 작성\n\n
+
+Edit.은(는) 다음의 개인정보 항목을 처리하고 있습니다.\n
+&lt; 홈페이지 회원가입 및 관리 &gt;\n
+- 필수항목 : 이메일, 휴대전화번호, 비밀번호, 로그인ID, 이름, 회사전화번호, 직책, 부서, 회사명, 직업, 신용카드정보, 은행계좌정보, 서비스 이용 기록, 접속 로그, 접속 IP 정보, 결제기록\n\n
+
+
+
+7. 개인정보의 파기\n\n
+
+① Edit.은(는) 개인정보 보유기간의 경과, 처리목적 달성 등 개인정보가 불필요하게 되었을 때에는 지체없이 해당 개인정보를 파기합니다.\n
+
+② 정보주체로부터 동의받은 개인정보 보유기간이 경과하거나 처리목적이 달성되었음에도 불구하고 다른 법령에 따라 개인정보를 계속 보존하여야 하는 경우에는, 해당 개인정보를 별도의 데이터베이스(DB)로 옮기거나 보관장소를 달리하여 보존합니다.\n
+보존하는 개인정보 항목 : 계좌정보, 거래날짜\n
+
+③ 개인정보 파기의 절차 및 방법은 다음과 같습니다.\n
+1. 파기절차\n
+은(는) 파기 사유가 발생한 개인정보를 선정하고, 의 개인정보 보호책임자의 승인을 받아 개인정보를 파기합니다.\n
+2. 파기방법\n
+전자적 파일 형태의 정보는 기록을 재생할 수 없는 기술적 방법을 사용합니다.\n\n
+
+
+8. 개인정보의 안전성 확보 조치\n\n
+
+Edit.은(는) 개인정보의 안전성 확보를 위해 다음과 같은 조치를 취하고 있습니다.\n
+1. 개인정보 취급 직원의 최소화 및 교육\n
+개인정보를 취급하는 직원을 지정하고 담당자에 한정시켜 최소화 하여 개인정보를 관리하는 대책을 시행하고 있습니다.\n
+
+2. 접속기록의 보관 및 위변조 방지\n
+개인정보처리시스템에 접속한 기록을 최소 6개월 이상 보관, 관리하고 있으며, 접속 기록이 위변조 및 도난, 분실되지 않도록 보안기능 사용하고 있습니다.\n
+
+3. 개인정보에 대한 접근 제한\n
+개인정보를 처리하는 데이터베이스시스템에 대한 접근권한의 부여,변경,말소를 통하여 개인정보에 대한 접근통제를 위하여 필요한 조치를 하고 있으며 침입차단시스템을 이용하여 외부로부터의 무단 접근을 통제하고 있습니다.\n\n
+
+
+9. 개인정보 자동 수집 장치의 설치•운영 및 거부에 관한 사항\n
+
+Edit. 은(는) 정보주체의 이용정보를 저장하고 수시로 불러오는 ‘쿠키(cookie)’를 사용하지 않습니다.\n\n
+
+
+10. 개인정보 보호책임자\n\n
+
+① Edit. 은(는) 개인정보 처리에 관한 업무를 총괄해서 책임지고, 개인정보 처리와 관련한 정보주체의 불만처리 및 피해구제 등을 위하여 아래와 같이 개인정보 보호책임자를 지정하고 있습니다.\n
+▶ 개인정보 보호책임자\n
+성명 :이하늘\n
+직책 :대표\n
+직급 :대표\n
+연락처 :789skymert2@gmail.com\n
+※ 개인정보 보호 담당부서로 연결됩니다.\n\n
+
+▶ 개인정보 보호 담당부서\n
+부서명 :관리부\n
+담당자 :배재홍\n
+연락처 :qowoghd@gmail.com\n
+② 정보주체께서는 Edit. 의 서비스(또는 사업)을 이용하시면서 발생한 모든 개인정보 보호 관련 문의, 불만처리, 피해구제 등에 관한 사항을 개인정보 보호책임자 및 담당부서로 문의하실 수 있습니다. Edit. 은(는) 정보주체의 문의에 대해 지체 없이 답변 및 처리해드릴 것입니다.\n\n
+
+
+11. 권익침해 구제방법\n
+
+정보주체는 개인정보침해로 인한 구제를 받기 위하여 개인정보분쟁조정위원회, 한국인터넷진흥원 개인정보침해신고센터 등에 분쟁해결이나 상담 등을 신청할 수 있습니다. 이 밖에 기타 개인정보침해의 신고, 상담에 대하여는 아래의 기관에 문의하시기 바랍니다.\n
+
+1. 개인정보분쟁조정위원회 : (국번없이) 1833-6972 (www.kopico.go.kr)\n
+2. 개인정보침해신고센터 : (국번없이) 118 (privacy.kisa.or.kr)\n
+3. 대검찰청 : (국번없이) 1301 (www.spo.go.kr)\n
+4. 경찰청 : (국번없이) 182 (cyberbureau.police.go.kr)\n
+
+「개인정보보호법」제35조(개인정보의 열람), 제36조(개인정보의 정정·삭제), 제37조(개인정보의 처리정지 등)의 규정에 의한 요구에 대 하여 공공기관의 장이 행한 처분 또는 부작위로 인하여 권리 또는 이익의 침해를 받은 자는 행정심판법이 정하는 바에 따라 행정심판을 청구할 수 있습니다.\n
+
+※ 행정심판에 대해 자세한 사항은 중앙행정심판위원회(www.simpan.go.kr) 홈페이지를 참고하시기 바랍니다.\n\n
+
+
+12. 개인정보 처리방침 변경\n
+
+이 개인정보처리방침은 시행일로부터 적용되며, 법령 및 방침에 따른 변경내용의 추가, 삭제 및 정정이 있는 경우에는 변경사항의 시행 7일 전부터 공지사항을 통하여 고지할 것입니다.</string>
+    <string name="tv_btn_privacy_agree">동의하기</string>
+
 
 
 </resources>

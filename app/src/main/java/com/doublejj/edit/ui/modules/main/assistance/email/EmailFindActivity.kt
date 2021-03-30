@@ -32,15 +32,17 @@ class EmailFindActivity : AppCompatActivity(), EmailFindView {
     private var mNameSpacingFlag: Boolean = false
     private var mPhoneSpacingFlag: Boolean = false
 
-    private val model: EmailFindViewModel by viewModels()
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_email_find)
+        //뒤로가기
+        mBinding.ivBackEmailFind.setOnClickListener {
+            finish()
+        }
 
         //정규식
-        var namePattern = "^[a-zA-Z가-힣]{2,10}$"
-        var phonePattern = "^01(?:0|1|[6-9])(\\d{3}|\\d{4})(\\d{4})$"
+        val namePattern = "^[a-zA-Z가-힣]{2,10}$"
+        val phonePattern = "^01(?:0|1|[6-9])(\\d{3}|\\d{4})(\\d{4})$"
 
         // 이름 입력
         mBinding.etNameEmailFind.addTextChangedListener(object : TextWatcher {
@@ -163,7 +165,7 @@ class EmailFindActivity : AppCompatActivity(), EmailFindView {
         //다음으로 버튼 클릭
         mBinding.btnEmailFind.setOnClickListener {
             var name = mBinding.etNameEmailFind.text.trim().toString()
-            var phoneNumber = mBinding.etPhoneEmailFind.text.toString().replace(" ", "")
+            var phoneNumber = mBinding.etPhoneEmailFind.text.trim().toString()
 
             Log.d("sky", "버튼클릭 : $name,$phoneNumber")
             if (mNameFlag && mPhoneFlag) {

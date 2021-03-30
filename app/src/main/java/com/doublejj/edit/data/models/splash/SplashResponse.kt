@@ -5,4 +5,4 @@ import com.google.gson.annotations.SerializedName
 
 data class SplashResponse(
     @SerializedName("result") val result: SplashResult
-) : BaseResponse()
+) :BaseResponse()

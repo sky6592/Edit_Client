@@ -22,15 +22,11 @@
         android:theme="@style/Theme.Edit"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
-        <activity android:name=".ui.modules.main.myedit.settings.notice.NoticeActivity"></activity>
-        <activity android:name=".ui.modules.main.myedit.my_sentence_completed.MySentenceCompletedActivity" />
-        <activity android:name=".ui.modules.main.home.open_comment.OpenCommentActivity" />
-        <activity android:name=".ui.modules.main.myedit.my_sentence_not_adopted.CompleteWritingSentenceActivity" />
-        <activity android:name=".ui.modules.main.myedit.my_sentence_not_adopted.MySentenceNotAdoptedActivity" />
         <activity
             android:name=".ui.modules.main.signup.entercode.EnterCodeActivity"
             android:windowSoftInputMode="adjustResize" />
-        <activity android:name=".ui.modules.main.assistance.pw.PwFindActivity" />
+        <activity android:name=".ui.modules.main.assistance.pw.PwFindActivity"
+            android:windowSoftInputMode="adjustResize"/>
         <activity
             android:name=".ui.modules.main.assistance.email.EmailFindActivity"
             android:windowSoftInputMode="adjustResize" />
@@ -71,7 +67,9 @@
             android:name=".ui.modules.main.myedit.profile.change_password.ChangePasswordActivity"
             android:windowSoftInputMode="adjustPan" />
         <activity android:name=".ui.modules.main.myedit.profile.change_profile.ChangeProfileActivity" />
-        <activity android:name=".ui.modules.main.signup.slectjopgroup.JobGroupActivity" />
+        <activity
+            android:name=".ui.modules.main.signup.slectjopgroup.JobGroupActivity"
+            android:windowSoftInputMode="adjustResize"></activity>
         <activity
             android:name=".ui.modules.main.login.LogInActivity"
             android:windowSoftInputMode="adjustResize" />

@@ -7,6 +7,8 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
+import android.view.View
+import androidx.appcompat.app.AlertDialog
 import androidx.databinding.DataBindingUtil
 import com.doublejj.edit.R
 import com.doublejj.edit.data.api.services.emailcheck.EmailCheckService
@@ -14,7 +16,9 @@ import com.doublejj.edit.data.api.services.emailcheck.EmailCheckVIew
 import com.doublejj.edit.data.models.emailcheck.EmailCheckRequest
 import com.doublejj.edit.data.models.emailcheck.EmailCheckResponse
 import com.doublejj.edit.databinding.ActivityEmailCheckBinding
+import com.doublejj.edit.databinding.DialogEmailFindBinding
 import com.doublejj.edit.ui.modules.main.signup.entercode.EnterCodeActivity
+import com.doublejj.edit.ui.modules.main.walkthrough.WalkThroughActivity
 
 class EmailCheckActivity : AppCompatActivity(), EmailCheckVIew {
     private val TAG = "sky"
@@ -37,17 +41,44 @@ class EmailCheckActivity : AppCompatActivity(), EmailCheckVIew {
         Log.d(TAG, mArrayList.toString())
 
 
+        //< 클릭
+        mBinding.ivBackEmailCheck.setOnClickListener {
+            val builder = AlertDialog.Builder(this)
+            val binding: DialogEmailFindBinding = DialogEmailFindBinding.inflate(layoutInflater)
+
+            //Dialog - Title
+            binding.tvDialogTitleEmailFind.text =
+                getString(R.string.tv_dialog_title_back_press)
+            //Dialog - Content
+            binding.tvDialogContentEmailFind.text =
+                getString(R.string.tv_dialog_content_back_press)
+            binding.tvDialogApiEmailFind.visibility = View.GONE
+            //Dialog - 확인 버튼
+            builder.setPositiveButton(getString(R.string.tv_dialog_confirm)) { _, _ ->
+                val intentWalkThrough = Intent(this, WalkThroughActivity::class.java)
+                startActivity(intentWalkThrough)
+                finishAffinity()
+            }
+            builder.setNegativeButton(getString(R.string.tv_dialog_dismiss)) { _, _ ->
+
+            }
+            builder.setView(binding.root).show()
+        }
+
         //입력한 이메일 세팅
         mBinding.etEmailCheck.setText(mArrayList!![3])
         if (mBinding.etEmailCheck.text.isNotEmpty()) {
             Log.d(TAG, "main - if")
             mEmailFlag = true
+            mBinding.btnEmailCheck.setBackgroundResource(R.color.purple)
         } else {
             Log.d(TAG, "main - else")
             mEmailFlag = false
+            mBinding.btnEmailCheck.setBackgroundResource(R.color.very_light_pink)
         }
 
 
+        //이메일 입력
         mBinding.etEmailCheck.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
             }
@@ -64,8 +95,9 @@ class EmailCheckActivity : AppCompatActivity(), EmailCheckVIew {
                     if (emailPattern.matcher(s.toString()).matches()) {
                         mEmailFlag = true
                         mBinding.btnEmailCheck.setBackgroundResource(R.color.purple)
+                        mBinding.tvCaptionEmailCheck.setTextColor(R.color.purple)
                         mBinding.tvCaptionEmailCheck.text =
-                            getString(R.string.tv_caption_email_check)
+                            getString(R.string.tv_caption_pattern_result_email_check)
                     } else {
                         mEmailFlag = false
                         mBinding.tvCaptionEmailCheck.text =
@@ -97,14 +129,42 @@ class EmailCheckActivity : AppCompatActivity(), EmailCheckVIew {
     }
 
     override fun onPostEmailCheckSuccess(response: EmailCheckResponse) {
-        Log.d(TAG, response.message.toString())
+        //변경한 이메일 정보를 다시 저장
+        val email = mBinding.etEmailCheck.text.trim().toString()
+        mArrayList[3] = email
+
         val intent = Intent(this, EnterCodeActivity::class.java)
         intent.putExtra("arrayList", mArrayList)
         startActivity(intent)
         finish()
+
     }
 
     override fun onPostEmailCheckFailure(message: String) {
         Log.d(TAG, message)
+    }
+
+    override fun onBackPressed() {
+        //super.onBackPressed()
+        val builder = AlertDialog.Builder(this)
+        val binding: DialogEmailFindBinding = DialogEmailFindBinding.inflate(layoutInflater)
+
+        //Dialog - Title
+        binding.tvDialogTitleEmailFind.text =
+            getString(R.string.tv_dialog_title_back_press)
+        //Dialog - Content
+        binding.tvDialogContentEmailFind.text =
+            getString(R.string.tv_dialog_content_back_press)
+        binding.tvDialogApiEmailFind.visibility = View.GONE
+        //Dialog - 확인 버튼
+        builder.setPositiveButton(getString(R.string.tv_dialog_confirm)) { _, _ ->
+            val intentWalkThrough = Intent(this, WalkThroughActivity::class.java)
+            startActivity(intentWalkThrough)
+            finishAffinity()
+        }
+        builder.setNegativeButton(getString(R.string.tv_dialog_dismiss)) { _, _ ->
+
+        }
+        builder.setView(binding.root).show()
     }
 }

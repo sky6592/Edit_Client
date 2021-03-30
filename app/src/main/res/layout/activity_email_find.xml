@@ -102,7 +102,7 @@
                     android:imeOptions="actionSearch"
                     android:inputType="textPersonName|textNoSuggestions"
                     android:paddingHorizontal="@dimen/hint_padding_10dp"
-                    android:paddingTop="@dimen/hint_padding_5dp"
+                    android:paddingVertical="@dimen/padding_2.5dp"
                     android:textSize="@dimen/tv_15sp" />
 
                 <TextView
@@ -144,7 +144,7 @@
                     android:imeOptions="actionSearch"
                     android:inputType="phone|textNoSuggestions"
                     android:paddingHorizontal="@dimen/hint_padding_10dp"
-                    android:paddingTop="@dimen/hint_padding_5dp"
+                    android:paddingVertical="@dimen/padding_2.5dp"
                     android:textSize="@dimen/tv_15sp" />
 
                 <TextView

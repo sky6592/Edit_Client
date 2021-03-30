@@ -13,8 +13,9 @@ import java.util.concurrent.TimeUnit
 class ApplicationClass : MultiDexApplication() {
     companion object {
         // 서버 주소
-//        const val API_URL = "https://app.team-edit.shop/" // product server
-        const val API_URL = "https://app.team-edit.shop/" // test server
+        const val API_URL = "https://app.team-edit.shop/" // product server
+//        const val API_URL = "https://app.team-edit.shop/" // test server
+
 
         // 만들어져있는 SharedPreferences를 사용 (재생성하지 않도록 유념)
         lateinit var sSharedPreferences: SharedPreferences
@@ -109,6 +110,7 @@ class ApplicationClass : MultiDexApplication() {
         }
         return applicationContext.resources!!.getIdentifier(resPath, "drawable", packageName)
     }
+
     fun getPostionToString(position: String?) : String {
         return when (position) {
             "MENTEE" -> "멘티님"

@@ -156,9 +156,13 @@
     <dimen name="size_125dp">125dp</dimen>
     <dimen name="size_128dp">128dp</dimen>
     <dimen name="size_132dp">132dp</dimen>
+<<<<<<< HEAD
     <dimen name="size_139dp">139dp</dimen>
     <dimen name="size_140dp">140dp</dimen>
     <dimen name="size_145dp">145dp</dimen>
+=======
+    <dimen name="size_140dp">140dp</dimen>
+>>>>>>> 23c496a (feat: Add mentee to mentor layouts)
     <dimen name="size_147dp">147dp</dimen>
     <dimen name="size_148dp">148dp</dimen>
     <dimen name="size_155dp">155dp</dimen>
@@ -216,6 +220,7 @@
     <dimen name="tv_18sp">18sp</dimen>
     <dimen name="stroke_2px">2px</dimen>
     <dimen name="tv_13sp">13sp</dimen>
+    <dimen name="padding_2.5dp">2.5dp</dimen>
 
 
     //walk_through
