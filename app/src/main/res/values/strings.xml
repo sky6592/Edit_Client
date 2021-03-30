@@ -253,6 +253,9 @@
     <string name="tv_switch_position_reject">
         멘토/멘티 신청이 반려되었습니다.\n변경을 다시 신청하실 수 있어요.
     </string>
+    <string name="tv_switch_position_logout">
+        멘토/멘티 신청이 승인되었습니다.\n로그아웃 후, 다시 로그인하시면\n정상적으로 적용됩니다!
+    </string>
     <string name="btn_reapply">재신청</string>
 
     <string name="tv_menu_manage_coin">코인 관리</string>

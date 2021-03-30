@@ -83,7 +83,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/tv_switch_position_reject"
+                    android:text="@string/tv_switch_position_logout"
                     android:textSize="@dimen/size_13dp"
                     android:textColor="@color/mid_black"
                     android:gravity="center"
@@ -110,12 +110,12 @@
                 android:layout_gravity="center" />
         </androidx.cardview.widget.CardView>
         <android.widget.Button
-            android:id="@+id/btn_reapply"
+            android:id="@+id/btn_logout"
             android:layout_width="@dimen/size_112dp"
             android:layout_height="@dimen/size_36dp"
             android:background="@drawable/selector_btn_purple_active_round"
             android:fontFamily="@font/noto_sans_kr_medium"
-            android:text="@string/btn_reapply"
+            android:text="@string/btn_logout"
             android:textColor="@color/white"
             android:textSize="@dimen/size_13dp"
 

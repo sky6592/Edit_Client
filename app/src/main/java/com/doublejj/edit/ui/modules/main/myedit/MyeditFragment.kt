@@ -17,14 +17,19 @@ import com.doublejj.edit.ApplicationClass.Companion.USER_POSITION
 import com.doublejj.edit.ApplicationClass.Companion.X_ACCESS_TOKEN
 import com.doublejj.edit.ApplicationClass.Companion.sSharedPreferences
 import com.doublejj.edit.R
+import com.doublejj.edit.data.api.services.certificate_mentor.AuthMentorStatusService
+import com.doublejj.edit.data.api.services.certificate_mentor.AuthMentorStatusView
 import com.doublejj.edit.data.api.services.logout.LogoutService
 import com.doublejj.edit.data.api.services.logout.LogoutView
 import com.doublejj.edit.data.api.services.profile.info.ProfileInfoService
 import com.doublejj.edit.data.api.services.profile.info.ProfileInfoView
 import com.doublejj.edit.data.models.BaseResponse
+import com.doublejj.edit.data.models.certificate_mentor.AuthMentorStatusResponse
 import com.doublejj.edit.data.models.profile.info.ProfileInfoResponse
 import com.doublejj.edit.databinding.MyeditFragmentBinding
+import com.doublejj.edit.ui.modules.main.myedit.certificate_mentor.CertificateLogoutActivity
 import com.doublejj.edit.ui.modules.main.myedit.certificate_mentor.CertificateMentorActivity
+import com.doublejj.edit.ui.modules.main.myedit.certificate_mentor.CertificateRejectActivity
 import com.doublejj.edit.ui.modules.main.myedit.manage_coin.ManageCoinActivity
 import com.doublejj.edit.ui.modules.main.myedit.my_sentence_completed.MySentenceCompletedActivity
 import com.doublejj.edit.ui.modules.main.myedit.my_sentence_not_adopted.MySentenceNotAdoptedActivity
@@ -37,7 +42,7 @@ import com.doublejj.edit.ui.utils.dialog.CustomLoadingDialog
 import com.doublejj.edit.ui.utils.snackbar.CustomSnackbar
 import com.google.android.material.snackbar.Snackbar
 
-class MyeditFragment : Fragment(), ProfileInfoView, LogoutView {
+class MyeditFragment : Fragment(), ProfileInfoView, LogoutView, AuthMentorStatusView {
     private val TAG: String = javaClass.simpleName.toString()
     private lateinit var binding: MyeditFragmentBinding
     private lateinit var viewModel: MyeditViewModel
@@ -126,8 +131,9 @@ class MyeditFragment : Fragment(), ProfileInfoView, LogoutView {
 
         /** position buttons **/
         binding.llBtnCertificateMentor.setOnClickListener {
-            // TODO : 멘토 인증 페이지
-            startActivity(Intent(activity, CertificateMentorActivity::class.java))
+            // TODO : pending 중이 아니라면 멘토 인증 페이지
+            AuthMentorStatusService(this).tryGetAuthMentorStatus()
+//            CustomLoadingDialog(requireContext()).show()
         }
         binding.llBtnSwitchPosition.setOnClickListener {
             when (sSharedPreferences.getString(USER_POSITION, "MENTEE")) {
@@ -148,6 +154,8 @@ class MyeditFragment : Fragment(), ProfileInfoView, LogoutView {
 
     override fun onResume() {
         super.onResume()
+        CustomLoadingDialog(requireContext()).dismiss()
+
         // 프로필 캐릭터 업데이트
         binding.tvNickname.text = sSharedPreferences.getString(USER_NICKNAME, null)
         binding.tvPosition.text = (requireContext().applicationContext as ApplicationClass).getPostionToString(
@@ -194,6 +202,55 @@ class MyeditFragment : Fragment(), ProfileInfoView, LogoutView {
     }
 
     override fun onProfileInfoFailure(message: String) {
+        CustomSnackbar.make(binding.root, message, Snackbar.LENGTH_SHORT).show()
+
+        CustomLoadingDialog(requireContext()).dismiss()
+    }
+
+    override fun onAuthMentorStatusSuccess(response: AuthMentorStatusResponse) {
+        if (response.isSuccess) {
+            val editor = sSharedPreferences.edit()
+            when (response.result.presentState) {
+                "YES" -> {
+                    CustomLoadingDialog(requireContext()).dismiss()
+                    editor.putBoolean(MENTOR_AUTH_CONFIRM, true)
+                    editor.commit()
+                    editor.apply()
+                    // 멘토 인증 완료 페이지로 이동
+                    startActivity(Intent(activity, CertificateLogoutActivity::class.java))
+                }
+                "NO" -> {
+                    CustomLoadingDialog(requireContext()).dismiss()
+                    editor.putBoolean(MENTOR_AUTH_CONFIRM, false)
+                    editor.commit()
+                    editor.apply()
+                    // 멘토 인증 거부 페이지로 이동
+                    startActivity(Intent(activity, CertificateRejectActivity::class.java))
+                }
+                "WAITING" -> {
+                    CustomLoadingDialog(requireContext()).dismiss()
+                    // 멘토 인증 대기 페이지로 이동
+                    editor.putBoolean(MENTOR_AUTH_CONFIRM, false)
+                    editor.commit()
+                    editor.apply()
+                    startActivity(Intent(activity, CertificateMentorActivity::class.java))
+                }
+            }
+        }
+        else {
+            if (response.code == 3026) {
+                CustomLoadingDialog(requireContext()).dismiss()
+                // 멘토 인증 페이지로 이동
+                startActivity(Intent(activity, CertificateMentorActivity::class.java))
+            }
+            else {
+                CustomLoadingDialog(requireContext()).dismiss()
+                CustomSnackbar.make(binding.root, response.message.toString(), Snackbar.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+    override fun onAuthMentorStatusFailure(message: String) {
         CustomSnackbar.make(binding.root, message, Snackbar.LENGTH_SHORT).show()
 
         CustomLoadingDialog(requireContext()).dismiss()
