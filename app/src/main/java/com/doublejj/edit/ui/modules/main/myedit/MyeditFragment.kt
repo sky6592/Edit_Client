@@ -136,7 +136,10 @@ class MyeditFragment : Fragment(), ProfileInfoView, LogoutView, AuthMentorStatus
         /** position buttons **/
         binding.llBtnCertificateMentor.setOnClickListener {
             // pending 중이 아니라면 멘토 인증 페이지
-            AuthMentorStatusService(this).tryGetAuthMentorStatus()
+//            AuthMentorStatusService(this).tryGetAuthMentorStatus()
+
+            // TODO : 테스트용 인증
+            startActivity(Intent(activity, CertificateMentorActivity::class.java))
 //            CustomLoadingDialog(requireContext()).show()
         }
         binding.llBtnSwitchPosition.setOnClickListener {
