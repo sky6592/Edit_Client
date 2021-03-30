@@ -14,6 +14,7 @@ import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import com.doublejj.edit.R
 import com.doublejj.edit.data.api.services.switch_position.SwitchPositionView
+import com.doublejj.edit.data.api.services.switch_position.SwitchToMenteeService
 import com.doublejj.edit.data.api.services.switch_position.SwitchToMentorService
 import com.doublejj.edit.data.models.ResultResponse
 import com.doublejj.edit.data.models.switch_position.SwitchPositionRequest
@@ -133,7 +134,7 @@ class SwitchToMenteeReasonActivity : AppCompatActivity(), SwitchPositionView {
                 }
 
                 // switch mentee to mentor 역할 변경 API
-                SwitchToMentorService(this).tryPatchSwitchToMentor(
+                SwitchToMenteeService(this).tryPatchSwitchToMentee(
                     SwitchPositionRequest(
                         changeContent = getSelectedString(changeContent!!),
                         etcChangeContent = etcChangeContent!!

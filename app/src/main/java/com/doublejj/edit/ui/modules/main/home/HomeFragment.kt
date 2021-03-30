@@ -3,7 +3,6 @@ package com.doublejj.edit.ui.modules.main.home
 import android.content.Intent
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -50,41 +49,30 @@ class HomeFragment : Fragment(), MainOneshotView, SentenceLimitView {
 
         /** toolbar buttons **/
         binding.tvLogo.setOnClickListener {
-            // TODO : scroll to top
-            Log.d(TAG, "logo clicked")
+            // scroll to top
+            binding.nsvHome.smoothScrollTo(0, 0)
         }
         binding.ibRefresh.setOnClickListener {
+            /** MainOneshot API **/
             MainOneshotService(this).tryGetMainSentences()
         }
 
+        /** MainOneshot API **/
+        MainOneshotService(this).tryGetMainSentences()
+
+
         // fragment안에서 새로운 fragment 전환
         binding.tvTitleTodaySentence.setOnClickListener {
-            requireActivity().supportFragmentManager.beginTransaction()
-                .add(R.id.fl_home, TodaySentenceFragment())
-                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                .addToBackStack(null)
-                .commit()
+            openTodaySentence()
         }
         binding.tvTitleWaitedComment.setOnClickListener {
-            requireActivity().supportFragmentManager.beginTransaction()
-                .add(R.id.fl_home, WaitingForCommentFragment())
-                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                .addToBackStack(null)
-                .commit()
+            openWaitedComment()
         }
         binding.tvTitleCompletedAdoption.setOnClickListener {
-            requireActivity().supportFragmentManager.beginTransaction()
-                .add(R.id.fl_home, AdoptionCompletedFragment())
-                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                .addToBackStack(null)
-                .commit()
+            openCompletedAdoption()
         }
         binding.tvTitleSympathyComment.setOnClickListener {
-            requireActivity().supportFragmentManager.beginTransaction()
-                .add(R.id.fl_home, BestSympathyFragment())
-                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                .addToBackStack(null)
-                .commit()
+            openSympathyComment()
         }
 
         when (sSharedPreferences.getString(USER_POSITION, "MENTEE")) {
@@ -93,23 +81,70 @@ class HomeFragment : Fragment(), MainOneshotView, SentenceLimitView {
             }
             "MENTOR" -> {
                 binding.fabMentee.visibility = View.GONE
-                // TODO : 첫 home 화면에서 아직 멘토 인증 안했다면 스낵바 띄우기 & 지우기
+                // 첫 home 화면에서 아직 멘토 인증 안했다면 스낵바 띄우기 & 지우기
                 if (!sSharedPreferences.getBoolean(MENTOR_AUTH_CONFIRM, false)) {
                     CustomSnackbar.make(binding.root, getString(R.string.snackbar_description_mentor), Snackbar.LENGTH_INDEFINITE).show()
                 }
             }
         }
 
+        // 오늘 작성한 문장 개수 조회
         binding.fabMentee.setOnClickListener {
-            // 오늘 작성한 문장 개수 조회
             SentenceLimitService(this).tryGetSentenceLimit()
         }
 
 
-        /** MainOneshot API **/
-        MainOneshotService(this).tryGetMainSentences()
-        
+        // 카드 클릭 시 세부 페이지로 이동
+        binding.llHomeWaitedComment0.setOnClickListener {
+            openWaitedComment()
+        }
+        binding.llHomeWaitedComment1.setOnClickListener {
+            openWaitedComment()
+        }
+        binding.llHomeCompletedAdoption0.setOnClickListener {
+            openCompletedAdoption()
+        }
+        binding.llHomeCompletedAdoption1.setOnClickListener {
+            openCompletedAdoption()
+        }
+        binding.llHomeSympathyComment0.setOnClickListener {
+            openSympathyComment()
+        }
+        binding.llHomeSympathyComment1.setOnClickListener {
+            openSympathyComment()
+        }
+
         return binding.root
+    }
+
+    fun openTodaySentence() {
+        requireActivity().supportFragmentManager.beginTransaction()
+            .add(R.id.fl_home, TodaySentenceFragment())
+            .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+            .addToBackStack(null)
+            .commit()
+    }
+
+    fun openWaitedComment() {
+        requireActivity().supportFragmentManager.beginTransaction()
+            .add(R.id.fl_home, WaitingForCommentFragment())
+            .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+            .addToBackStack(null)
+            .commit()
+    }
+    fun openCompletedAdoption() {
+        requireActivity().supportFragmentManager.beginTransaction()
+            .add(R.id.fl_home, AdoptionCompletedFragment())
+            .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+            .addToBackStack(null)
+            .commit()
+    }
+    fun openSympathyComment() {
+        requireActivity().supportFragmentManager.beginTransaction()
+            .add(R.id.fl_home, BestSympathyFragment())
+            .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+            .addToBackStack(null)
+            .commit()
     }
 
     fun setTodaySentence(todaySentences: MutableList<MainSentenceData>) {
@@ -133,11 +168,11 @@ class HomeFragment : Fragment(), MainOneshotView, SentenceLimitView {
                 binding.cvHomeTodaySentenceZero2.visibility = View.GONE
                 binding.cvHomeTodaySentenceZero3.visibility = View.GONE
                 binding.cvHomeTodaySentenceZero4.visibility = View.GONE
-                binding.cvHomeTodaySentence0.visibility = View.GONE
-                binding.cvHomeTodaySentence1.visibility = View.GONE
-                binding.cvHomeTodaySentence2.visibility = View.GONE
-                binding.cvHomeTodaySentence3.visibility = View.GONE
-                binding.cvHomeTodaySentence4.visibility = View.GONE
+                binding.cvHomeTodaySentence0.visibility = View.VISIBLE
+                binding.cvHomeTodaySentence1.visibility = View.VISIBLE
+                binding.cvHomeTodaySentence2.visibility = View.VISIBLE
+                binding.cvHomeTodaySentence3.visibility = View.VISIBLE
+                binding.cvHomeTodaySentence4.visibility = View.VISIBLE
 
                 if (todaySentences.size >= 1) {
                     binding.cvHomeTodaySentence0.visibility = View.VISIBLE
@@ -169,61 +204,50 @@ class HomeFragment : Fragment(), MainOneshotView, SentenceLimitView {
     }
 
     fun setSentenceBox(sentences: MainSentences) {
-        if (sentences.waitingForCommentCoverLetters.size != 0) {
-            for (idx in 0 until sentences.waitingForCommentCoverLetters.size) {
-                binding.tvSentenceWriter0.text = sentences.waitingForCommentCoverLetters.get(idx).nickName
-                binding.tvSentenceContent0.text = sentences.waitingForCommentCoverLetters.get(idx).coverLetterContent
-            }
+        // 코멘트 대기
+        if (sentences.waitingForCommentCoverLetters.size > 0) {
+            binding.llHomeWaitedComment0.visibility = View.VISIBLE
+            binding.tvSentenceWriter0.text = sentences.waitingForCommentCoverLetters.get(0).nickName
+            binding.tvSentenceContent0.text = sentences.waitingForCommentCoverLetters.get(0).coverLetterContent
         }
-        if (sentences.adoptedCoverLetters.size != 0) {
-            for (idx in 0 until sentences.adoptedCoverLetters.size) {
-                binding.tvSentenceWriter2.text = sentences.adoptedCoverLetters.get(idx).nickName
-                binding.tvSentenceContent2.text = sentences.adoptedCoverLetters.get(idx).coverLetterContent
-            }
+        if (sentences.waitingForCommentCoverLetters.size > 1) {
+            binding.llHomeWaitedComment1.visibility = View.VISIBLE
+            binding.tvSentenceWriter1.text = sentences.waitingForCommentCoverLetters.get(1).nickName
+            binding.tvSentenceContent1.text = sentences.waitingForCommentCoverLetters.get(1).coverLetterContent
         }
-        if (sentences.sympathiesCoverLetters.size != 0) {
-            for (idx in 0 until sentences.sympathiesCoverLetters.size) {
-                binding.tvSentenceWriter4.text = sentences.sympathiesCoverLetters.get(idx).nickName
-                binding.tvSentenceContent4.text = sentences.sympathiesCoverLetters.get(idx).coverLetterContent
-            }
+
+        // 채택 완료
+        if (sentences.adoptedCoverLetters.size > 0) {
+            binding.llHomeCompletedAdoption0.visibility = View.VISIBLE
+            binding.tvSentenceWriter2.text = sentences.adoptedCoverLetters.get(0).nickName
+            binding.tvSentenceContent2.text = sentences.adoptedCoverLetters.get(0).coverLetterContent
+        }
+        if (sentences.waitingForCommentCoverLetters.size > 1) {
+            binding.llHomeCompletedAdoption1.visibility = View.VISIBLE
+            binding.tvSentenceWriter3.text = sentences.adoptedCoverLetters.get(1).nickName
+            binding.tvSentenceContent3.text = sentences.adoptedCoverLetters.get(1).coverLetterContent
+        }
+
+        // 공감 정렬
+        if (sentences.sympathiesCoverLetters.size > 0) {
+            binding.llHomeSympathyComment0.visibility = View.VISIBLE
+            binding.tvSentenceWriter4.text = sentences.sympathiesCoverLetters.get(0).nickName
+            binding.tvSentenceContent4.text = sentences.sympathiesCoverLetters.get(0).coverLetterContent
+        }
+        if (sentences.waitingForCommentCoverLetters.size > 1) {
+            binding.llHomeSympathyComment1.visibility = View.VISIBLE
+            binding.tvSentenceWriter5.text = sentences.sympathiesCoverLetters.get(1).nickName
+            binding.tvSentenceContent5.text = sentences.sympathiesCoverLetters.get(1).coverLetterContent
         }
     }
 
     override fun onResume() {
         super.onResume()
-/*
-        val isMentor = sSharedPreferences.getString(USER_POSITION, "MENTEE")
-        val isMentorAuth = sSharedPreferences.getBoolean(MENTOR_AUTH_CONFIRM, false)
-        Log.d("homeFragment", "isMentor: $isMentor, isMentorAuth: $isMentorAuth")
 
-        when (sSharedPreferences.getString(USER_POSITION, "MENTEE")) {
-            "MENTEE" -> {
-                binding.fabMentee.visibility = View.VISIBLE
-            }
-            "MENTOR" -> {
-                binding.fabMentee.visibility = View.GONE
-                // TODO : 첫 home 화면에서 아직 멘토 인증 안했다면 스낵바 띄우기 & 지우기
-                if (!sSharedPreferences.getBoolean(MENTOR_AUTH_CONFIRM, false)) {
-//                    CustomSnackbar.make(binding.root, getString(R.string.snackbar_description_mentor), Snackbar.LENGTH_INDEFINITE).show()
-                }
-            }
-        }*/
+        /** MainOneshot API **/
+        MainOneshotService(this).tryGetMainSentences()
 
-        /*// TODO : 멘티라면 fab 버튼 활성화, 스낵바 비활성화
-        if (isMentor == "MENTEE") {
-            binding.fabMentee.visibility = View.VISIBLE
-            binding.fabMentee.isEnabled = true
-            binding.
-        }
-        // TODO : 멘토라면 fab 버튼 비활성화, 스낵바 비활성화
-        else {
-            binding.fabMentee.visibility = View.GONE
-            binding.fabMentee.isEnabled = false
-            // TODO : 멘토인데 인증받은 멘토라면 스낵바 활성화
-            if ()
-        }*/
-
-//        Log.d("fab", "isMentor: $isMentor, isMentorAuth: $isMentorAuth")
+        // TODO : onResume()일 때 sSharedPreferences 업데이트
     }
 
     override fun onGetMainSentencesSuccess(response: MainOneshotResponse) {
@@ -257,8 +281,6 @@ class HomeFragment : Fragment(), MainOneshotView, SentenceLimitView {
     override fun onGetSentenceLimitFailure(message: String) {
         CustomSnackbar.make(binding.root, message, Snackbar.LENGTH_SHORT).show()
     }
-    
-    // TODO : onResume()일 때 sSharedPreferences 업데이트
 
     override fun onDetach() {
         super.onDetach()

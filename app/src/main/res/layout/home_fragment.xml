@@ -60,6 +60,7 @@
             </androidx.appcompat.widget.Toolbar>
 
             <androidx.core.widget.NestedScrollView
+                android:id="@+id/nsv_home"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
 
@@ -324,7 +325,7 @@
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             style="@style/CustomTextViewMidBlack"
-                                            android:text="@string/tv_card_writer"
+                                            android:text="@null"
                                             android:fontFamily="@font/noto_sans_kr_bold"
                                             android:textSize="@dimen/size_tv_card_writer_14dp"
                                             android:textColor="@color/purple_active"
@@ -544,6 +545,7 @@
                             android:layout_width="0dp"
                             android:layout_height="@dimen/size_card_home_sentence_box_height"
 
+                            android:visibility="gone"
                             android:background="@drawable/shape_gray_border_box"
 
                             android:paddingTop="@dimen/size_12dp"
@@ -559,7 +561,7 @@
                                 android:layout_height="wrap_content"
                                 style="@style/CustomTextViewMidBlack"
                                 android:fontFamily="@font/noto_sans_kr_bold"
-                                android:text="@string/tv_card_writer"
+                                android:text="@null"
                                 android:textSize="@dimen/size_tv_card_writer_14dp"
                                 android:textColor="@color/purple_active"
 
@@ -587,7 +589,7 @@
                                 style="@style/CustomTextViewMidBlack"
 
                                 android:layout_marginTop="@dimen/size_12dp"
-                                android:text="@string/tv_sentence_content_example"
+                                android:text="@null"
                                 android:textSize="@dimen/size_tv_card_content_12dp"
                                 app:layout_constraintTop_toBottomOf="@id/tv_sentence_writer_0"
                                 app:layout_constraintStart_toStartOf="parent"
@@ -598,6 +600,7 @@
                             android:layout_width="0dp"
                             android:layout_height="@dimen/size_card_home_sentence_box_height"
                             android:background="@drawable/shape_gray_border_box"
+                            android:visibility="gone"
 
                             android:paddingTop="@dimen/size_12dp"
                             android:paddingBottom="@dimen/size_18dp"
@@ -613,7 +616,7 @@
                                 android:layout_height="wrap_content"
                                 style="@style/CustomTextViewMidBlack"
                                 android:fontFamily="@font/noto_sans_kr_bold"
-                                android:text="@string/tv_card_writer"
+                                android:text="@null"
                                 android:textSize="@dimen/size_tv_card_writer_14dp"
                                 android:textColor="@color/purple_active"
 
@@ -641,7 +644,7 @@
                                 style="@style/CustomTextViewMidBlack"
 
                                 android:layout_marginTop="@dimen/size_12dp"
-                                android:text="@string/tv_sentence_content_example"
+                                android:text="@null"
                                 android:textSize="@dimen/size_tv_card_content_12dp"
                                 app:layout_constraintTop_toBottomOf="@id/tv_sentence_writer_1"
                                 app:layout_constraintStart_toStartOf="parent"
@@ -774,6 +777,7 @@
                             android:id="@+id/ll_home_completed_adoption_0"
                             android:layout_width="0dp"
                             android:layout_height="@dimen/size_card_home_sentence_box_height"
+                            android:visibility="gone"
                             android:background="@drawable/shape_gray_border_box"
 
                             android:paddingTop="@dimen/size_12dp"
@@ -789,7 +793,7 @@
                                 android:layout_height="wrap_content"
                                 style="@style/CustomTextViewMidBlack"
                                 android:fontFamily="@font/noto_sans_kr_bold"
-                                android:text="@string/tv_card_writer"
+                                android:text="@null"
                                 android:textSize="@dimen/size_tv_card_writer_14dp"
                                 android:textColor="@color/purple_active"
 
@@ -817,7 +821,7 @@
                                 style="@style/CustomTextViewMidBlack"
 
                                 android:layout_marginTop="@dimen/size_12dp"
-                                android:text="@string/tv_sentence_content_example"
+                                android:text="@null"
                                 android:textSize="@dimen/size_tv_card_content_12dp"
                                 app:layout_constraintTop_toBottomOf="@id/tv_sentence_writer_2"
                                 app:layout_constraintStart_toStartOf="parent"
@@ -827,6 +831,7 @@
                             android:id="@+id/ll_home_completed_adoption_1"
                             android:layout_width="0dp"
                             android:layout_height="@dimen/size_card_home_sentence_box_height"
+                            android:visibility="gone"
                             android:background="@drawable/shape_gray_border_box"
 
                             android:paddingTop="@dimen/size_12dp"
@@ -843,7 +848,7 @@
                                 android:layout_height="wrap_content"
                                 style="@style/CustomTextViewMidBlack"
                                 android:fontFamily="@font/noto_sans_kr_bold"
-                                android:text="@string/tv_card_writer"
+                                android:text="@null"
                                 android:textSize="@dimen/size_tv_card_writer_14dp"
                                 android:textColor="@color/purple_active"
 
@@ -871,7 +876,7 @@
                                 style="@style/CustomTextViewMidBlack"
 
                                 android:layout_marginTop="@dimen/size_12dp"
-                                android:text="@string/tv_sentence_content_example"
+                                android:text="@null"
                                 android:textSize="@dimen/size_tv_card_content_12dp"
                                 app:layout_constraintTop_toBottomOf="@id/tv_sentence_writer_3"
                                 app:layout_constraintStart_toStartOf="parent"
@@ -937,6 +942,7 @@
                             android:id="@+id/ll_home_sympathy_comment_0"
                             android:layout_width="0dp"
                             android:layout_height="@dimen/size_card_home_sentence_box_height"
+                            android:visibility="gone"
                             android:background="@drawable/shape_gray_border_box"
 
                             android:paddingTop="@dimen/size_12dp"
@@ -952,7 +958,7 @@
                                 android:layout_height="wrap_content"
                                 style="@style/CustomTextViewMidBlack"
                                 android:fontFamily="@font/noto_sans_kr_bold"
-                                android:text="@string/tv_card_writer"
+                                android:text="@null"
                                 android:textSize="@dimen/size_tv_card_writer_14dp"
                                 android:textColor="@color/purple_active"
 
@@ -980,7 +986,7 @@
                                 style="@style/CustomTextViewMidBlack"
 
                                 android:layout_marginTop="@dimen/size_12dp"
-                                android:text="@string/tv_sentence_content_example"
+                                android:text="@null"
                                 android:textSize="@dimen/size_tv_card_content_12dp"
                                 app:layout_constraintTop_toBottomOf="@id/tv_sentence_writer_4"
                                 app:layout_constraintStart_toStartOf="parent"
@@ -990,6 +996,7 @@
                             android:id="@+id/ll_home_sympathy_comment_1"
                             android:layout_width="0dp"
                             android:layout_height="@dimen/size_card_home_sentence_box_height"
+                            android:visibility="gone"
                             android:background="@drawable/shape_gray_border_box"
 
                             android:paddingTop="@dimen/size_12dp"
@@ -1006,7 +1013,7 @@
                                 android:layout_height="wrap_content"
                                 style="@style/CustomTextViewMidBlack"
                                 android:fontFamily="@font/noto_sans_kr_bold"
-                                android:text="@string/tv_card_writer"
+                                android:text="@null"
                                 android:textSize="@dimen/size_tv_card_writer_14dp"
                                 android:textColor="@color/purple_active"
 
@@ -1034,7 +1041,7 @@
                                 style="@style/CustomTextViewMidBlack"
 
                                 android:layout_marginTop="@dimen/size_12dp"
-                                android:text="@string/tv_sentence_content_example"
+                                android:text="@null"
                                 android:textSize="@dimen/size_tv_card_content_12dp"
                                 app:layout_constraintTop_toBottomOf="@id/tv_sentence_writer_5"
                                 app:layout_constraintStart_toStartOf="parent"

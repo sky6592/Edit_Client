@@ -9,10 +9,10 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class AuthMentorService(val view: AuthMentorView) {
-    fun tryPostAuthMentor(authenticationImage: MultipartBody.Part) {
+    fun tryPostAuthMentor(file: MultipartBody.Part) {
         val retrofitInterface = sRetrofit.create(AuthMentorRetrofitInterface::class.java)
         retrofitInterface
-            .postAuthMentor(authenticationImage)
+            .postAuthMentor(file)
             .enqueue(object : Callback<BaseResponse> {
                 override fun onResponse(
                     call: Call<BaseResponse>,
