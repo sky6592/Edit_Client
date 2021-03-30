@@ -2,7 +2,6 @@ package com.doublejj.edit.data.api.retrofitinterfaces.splash
 
 import com.doublejj.edit.data.models.splash.SplashResponse
 import retrofit2.http.GET
-import retrofit2.http.Query
 import retrofit2.Call
 
 

@@ -161,6 +161,6 @@ class ChangeProfileActivity : AppCompatActivity(), ChangeProfileView {
     }
 
     override fun onChangeProfileFailure(message: String) {
-        CustomSnackbar.make(binding.root, message, Snackbar.LENGTH_SHORT)
+        CustomSnackbar.make(binding.root, message, Snackbar.LENGTH_SHORT).show()
     }
 }
