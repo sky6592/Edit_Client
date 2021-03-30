@@ -151,6 +151,7 @@ class MyeditFragment : Fragment(), ProfileInfoView, LogoutView {
         // 멘토 인증하기 버튼 업데이트
         if (sSharedPreferences.getString(USER_POSITION, "MENTEE") == "MENTOR"
             && !sSharedPreferences.getBoolean(MENTOR_AUTH_CONFIRM, false)) {
+
             // 인증 받지 않은 멘토라면 인증하기 버튼 보이기
             binding.llBtnCertificateMentor.visibility = View.VISIBLE
         }
