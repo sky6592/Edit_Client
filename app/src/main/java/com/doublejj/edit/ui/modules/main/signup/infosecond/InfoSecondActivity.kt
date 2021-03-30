@@ -19,6 +19,8 @@ import com.doublejj.edit.databinding.ActivityInfoSecondBinding
 import com.doublejj.edit.databinding.DialogEmailFindBinding
 import com.doublejj.edit.ui.modules.main.signup.emailcheck.EmailCheckActivity
 import com.doublejj.edit.ui.modules.main.walkthrough.WalkThroughActivity
+import com.doublejj.edit.ui.utils.snackbar.CustomSnackbar
+import com.google.android.material.snackbar.Snackbar
 
 
 class InfoSecondActivity : AppCompatActivity(), InfoSecondView {
@@ -279,6 +281,7 @@ class InfoSecondActivity : AppCompatActivity(), InfoSecondView {
     @SuppressLint("ResourceType")
     override fun onPostInfoSecondFailure(message: String) {
         Log.d("sky", "onPostInfoSecondFailure - api실패")
+        CustomSnackbar.make(mBinding.root, message, Snackbar.ANIMATION_MODE_SLIDE)
     }
 
     override fun onBackPressed() {

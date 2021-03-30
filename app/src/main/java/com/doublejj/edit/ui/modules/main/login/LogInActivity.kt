@@ -32,6 +32,7 @@ class LogInActivity : AppCompatActivity(), LogInView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_log_in)
+
         //이메일 정규식
         val emailPatternTest = android.util.Patterns.EMAIL_ADDRESS
         //비밀번호 정규식
@@ -50,33 +51,35 @@ class LogInActivity : AppCompatActivity(), LogInView {
             @SuppressLint("ResourceAsColor")
             override fun afterTextChanged(s: Editable?) {
                 if (s != null) {
-                    //띄어쓰기 정규식
-                    if (s.toString().contains(" ") || s.toString().isEmpty()) {
-                        mBinding.btnLogIn.setBackgroundResource(R.color.very_light_pink)
-                        mBinding.tvEmailCaptionLogIn.setTextColor(R.color.purple)
-                        mBinding.tvEmailCaptionLogIn.text =
-                            getString(R.string.tv_caption_spacing_info)
-//                        mEmailSpacingFlag = true
-                        mEmailBtnFlag = false
-                    } else {
-//                        mEmailSpacingFlag = false
+                    //엔터 입력 : 다른 내용 입력 되어있는지 확인
+                    if (s.toString().contains("\n")) {
+                        if (mEmailBtnFlag && mPwBtnFlag) {
+                            mBinding.btnLogIn.setBackgroundResource(R.color.purple)
+                        }
                     }
-                    //이메일 정규식 - 중복확인을 누르세요!
-                    if (emailPatternTest.matcher(s.toString()).matches()) {
+                    //이메일 정규식 -중복확인을 누르세요 !
+                    if (!emailPatternTest.matcher(s.toString()).matches()) {
                         mBinding.tvEmailCaptionLogIn.setTextColor(R.color.purple)
                         mBinding.tvEmailCaptionLogIn.text =
-                            getString(R.string.tv_email_result_info)
+                            getString(R.string.tv_email_result_wrong_info)
                         mEmailBtnFlag = true
+                    }
+
+                    if (s.isNotEmpty()) {
+                        mBinding.tvEmailCaptionLogIn.setTextColor(R.color.purple)
+                        mBinding.tvEmailCaptionLogIn.text = getString(R.string.tv_email_result_info)
+                        mEmailBtnFlag = true
+                    } else {
+                        mBinding.tvEmailCaptionLogIn.setTextColor(R.color.purple)
+                        mBinding.tvEmailCaptionLogIn.text = getString(R.string.hint_email_info)
+                        mEmailBtnFlag = false
                     }
                     //입력 완료여부 정규식
                     if (mEmailBtnFlag && mPwBtnFlag) {
                         mBinding.btnLogIn.setBackgroundResource(R.color.purple)
                     }
-                    Log.d("sky", "이메일 엔 : $mEmailBtnFlag, $mPwBtnFlag")
-
                 }
             }
-
         })
 
         //비밀번호 입력
@@ -96,27 +99,13 @@ class LogInActivity : AppCompatActivity(), LogInView {
                             mBinding.btnLogIn.setBackgroundResource(R.color.purple)
                         }
                     }
-                    //띄어쓰기 정규식
-                    if (s.toString().contains(" ") || s.toString().isEmpty()) {
-                        mBinding.tvPwCaptionLogIn.text =
-                            getString(R.string.tv_caption_spacing_info)
-                        mPwBtnFlag = false
-                        mBinding.tvEmailCaptionLogIn.text =
-                            getString(R.string.tv_pw_result_info)
-                        mBinding.btnLogIn.setBackgroundResource(R.color.very_light_pink)
-                    } else {
-                        mBinding.tvPwCaptionLogIn.text = getString(R.string.tv_pw_caption_info)
-                    }
-
-
-                    //비밀번호 정규식
-                    if (s.toString().matches(pwPattern.toRegex())) {
-                        mBinding.tvPwCaptionLogIn.text = ""
+                    if (s.isNotEmpty()) {
+                        mBinding.tvPwCaptionLogIn.setTextColor(R.color.purple)
+                        mBinding.tvPwCaptionLogIn.text = getString(R.string.tv_pw_result_info)
                         mPwBtnFlag = true
                     } else {
                         mBinding.tvPwCaptionLogIn.setTextColor(R.color.purple)
-                        mBinding.tvPwCaptionLogIn.text =
-                            getString(R.string.tv_pw_caption_info)
+                        mBinding.tvPwCaptionLogIn.text = getString(R.string.hint_pw_info)
                         mPwBtnFlag = false
                     }
                     //입력 완료여부 정규식
@@ -133,20 +122,17 @@ class LogInActivity : AppCompatActivity(), LogInView {
             var password = mBinding.etPwLogIn.text.trim().toString()
 
             if (mEmailBtnFlag && mPwBtnFlag) {
-                mEmailBtnFlag = false
-                mPwBtnFlag = false
-                mBinding.btnLogIn.setBackgroundResource(R.color.purple)
-
                 //로그인 api
                 val postRequest = LoginRequest(email = email, password = password)
                 LogInService(this).tryPostLogin(postRequest)
-
             } else {
                 //스낵바 : 로그인 재안내!
-                mBinding.tvEmailCaptionLogIn.setTextColor(R.color.purple)
-                mBinding.tvEmailCaptionLogIn.text = getString(R.string.tv_check_log_in)
+                CustomSnackbar.make(
+                    mBinding.root,
+                    getString(R.string.tv_check_log_in),
+                    Snackbar.ANIMATION_MODE_SLIDE
+                ).show()
             }
-            Log.d("sky", "btn in - $mEmailBtnFlag + $mPwBtnFlag")
         }
 
     }
@@ -169,7 +155,8 @@ class LogInActivity : AppCompatActivity(), LogInView {
             val editor = ApplicationClass.sSharedPreferences.edit()
             editor.putString(ApplicationClass.X_ACCESS_TOKEN, response.result.jwt)
             editor.putString(ApplicationClass.USER_POSITION, response.result.userRole)
-            editor.putBoolean(ApplicationClass.MENTOR_AUTH_CONFIRM, response.result.isCertificatedMentor)
+            editor.putBoolean(ApplicationClass.MENTOR_AUTH_CONFIRM,
+                response.result.isCertificatedMentor)
             editor.commit()
             editor.apply()
 
@@ -179,8 +166,8 @@ class LogInActivity : AppCompatActivity(), LogInView {
             finishAffinity()
         } else {
             CustomSnackbar.make(
-                mBinding.root, "onPostLoginSuccess" +
-                        response.message.toString(),
+                mBinding.root,
+                response.message.toString(),
                 Snackbar.LENGTH_LONG
             ).show()
         }
@@ -190,7 +177,7 @@ class LogInActivity : AppCompatActivity(), LogInView {
         CustomSnackbar.make(
             mBinding.root,
             message,
-            Snackbar.LENGTH_LONG,
+            Snackbar.ANIMATION_MODE_SLIDE,
         ).show()
     }
 }

@@ -7,18 +7,13 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
-import android.widget.EditText
-import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.Observer
 import com.doublejj.edit.R
 import com.doublejj.edit.data.api.services.emailfind.EmailFindService
 import com.doublejj.edit.data.api.services.emailfind.EmailFindView
-import com.doublejj.edit.data.api.services.login.LogInService
 import com.doublejj.edit.data.models.emailfind.EmailFindRequest
 import com.doublejj.edit.data.models.emailfind.EmailFindResponse
-import com.doublejj.edit.data.models.login.LoginRequest
 import com.doublejj.edit.databinding.ActivityEmailFindBinding
 import com.doublejj.edit.databinding.DialogEmailFindBinding
 import com.doublejj.edit.ui.modules.main.signup.infofirst.InfoFirstActivity
@@ -191,7 +186,6 @@ class EmailFindActivity : AppCompatActivity(), EmailFindView {
         if (response.code == 1000) {
             binding.tvDialogContentEmailFind.text =
                 getString(R.string.tv_dialog_content_find_email) + "\n" + response.result.email
-//            binding.tvDialogApiEmailFind.text = response.result.email
             builder.setPositiveButton("확인") { _, i ->
 
             }
@@ -199,7 +193,8 @@ class EmailFindActivity : AppCompatActivity(), EmailFindView {
             Log.d("sky", response.result.email)
 
         }
-        if (response.code == 3012) {
+        //if (response.code == 3012)
+        else {
             binding.tvDialogTitleEmailFind.text = "가입되니 않은 계정입니다."
             binding.tvDialogContentEmailFind.text = "회원가입을 새로 하시겠어요?"
             binding.tvDialogApiEmailFind.text = "확인을 누르면 회원가입화면으로 이동합니다!"
@@ -212,12 +207,14 @@ class EmailFindActivity : AppCompatActivity(), EmailFindView {
                 finishAffinity()
             }
             builder.setView(binding.root).show()
-        } else {
-            Log.d("sky", "onPostEmailFindSuccess" + response.message.toString())
         }
+        //else {
+//            Log.d("sky", "onPostEmailFindSuccess" + response.message.toString())
+//        }
     }
 
     override fun onPostEmailFindFailure(message: String) {
         Log.d("sky", "onPostEmailFindFailure : $message")
+        CustomSnackbar.make(mBinding.root, message, Snackbar.ANIMATION_MODE_SLIDE)
     }
 }

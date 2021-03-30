@@ -90,7 +90,7 @@ class JobGroupActivity : AppCompatActivity() {
             spannable.setSpan(
                 ForegroundColorSpan(Color.parseColor("#5a32dc")),
                 0,
-                endLength,
+                endLength + 1,
                 Spannable.SPAN_EXCLUSIVE_INCLUSIVE
             )
             mBinding.tvInfoTwoJobGroup.text = spannable

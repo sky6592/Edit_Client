@@ -24,6 +24,8 @@ import com.doublejj.edit.databinding.DialogEmailFindBinding
 import com.doublejj.edit.ui.modules.main.signup.infosecond.InfoSecondActivity
 import com.doublejj.edit.ui.modules.main.signup.privacyagree.PrivacyAgreeActivity
 import com.doublejj.edit.ui.modules.main.walkthrough.WalkThroughActivity
+import com.doublejj.edit.ui.utils.snackbar.CustomSnackbar
+import com.google.android.material.snackbar.Snackbar
 
 class InfoFirstActivity : AppCompatActivity(), InfoFirstView {
 
@@ -55,7 +57,7 @@ class InfoFirstActivity : AppCompatActivity(), InfoFirstView {
         spannable.setSpan(
             ForegroundColorSpan(Color.parseColor("#5a32dc")),
             0,
-            mBinding.tvPrivacyInfoFirst.text.length,
+            8,
             Spannable.SPAN_EXCLUSIVE_INCLUSIVE
         )
         mBinding.tvPrivacyInfoFirst.text = spannable
@@ -327,10 +329,10 @@ class InfoFirstActivity : AppCompatActivity(), InfoFirstView {
         )
     }
 
-    @SuppressLint("ResourceAsColor")
     override fun onPostInfoFirstFailure(message: String) {
         //닉네임 중복여부 실패
         Log.d("sky", "onPostInfoFirstFailure - api실패")
+        CustomSnackbar.make(mBinding.root, message, Snackbar.ANIMATION_MODE_SLIDE)
     }
 
     override fun onBackPressed() {

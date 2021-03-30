@@ -159,23 +159,23 @@
         </LinearLayout>
 
         <!--Next Button-->
-        <LinearLayout
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1"-->
+<!--            android:gravity="bottom"-->
+<!--            android:orientation="vertical">-->
+
+<!--        </LinearLayout>-->
+        <!-- Button -->
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_email_find"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="bottom"
-            android:orientation="vertical">
-
-            <!-- Button -->
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btn_email_find"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/very_light_pink"
-                android:fontFamily="@font/noto_sans_kr_regular"
-                android:imeOptions="actionSearch"
-                android:text="@string/btn_email_find"
-                android:textColor="@color/white" />
-        </LinearLayout>
+            android:background="@color/very_light_pink"
+            android:fontFamily="@font/noto_sans_kr_regular"
+            android:imeOptions="actionSearch"
+            android:text="@string/btn_email_find"
+            android:textColor="@color/white" />
     </LinearLayout>
 </layout>
