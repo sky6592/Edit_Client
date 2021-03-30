@@ -28,9 +28,7 @@
         <activity
             android:name=".ui.modules.main.assistance.pw.PwFindActivity"
             android:windowSoftInputMode="adjustResize" />
-        <activity
-            android:name=".ui.modules.main.assistance.email.EmailFindActivity"
-            android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".ui.modules.main.assistance.email.EmailFindActivity" />
         <activity
             android:name=".ui.modules.main.signup.emailcheck.EmailCheckActivity"
             android:windowSoftInputMode="adjustResize" />
@@ -75,7 +73,7 @@
             android:name=".ui.modules.main.login.LogInActivity"
             android:windowSoftInputMode="adjustResize" />
         <activity android:name=".ui.modules.main.signup.slecttype.SelectTypeActivity" />
-        <activity android:name=".ui.modules.main.signup.privacyagree.PrivacyAgreeActivity"/>
+        <activity android:name=".ui.modules.main.signup.privacyagree.PrivacyAgreeActivity" />
         <activity android:name=".ui.modules.main.walkthrough.WalkThroughActivity" />
         <activity
             android:name=".ui.modules.main.signup.infosecond.InfoSecondActivity"
