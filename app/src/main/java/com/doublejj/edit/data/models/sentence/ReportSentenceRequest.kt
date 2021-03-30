@@ -1,4 +1,4 @@
-package com.doublejj.edit.data.models.report_sentence
+package com.doublejj.edit.data.models.sentence
 
 import com.google.gson.annotations.SerializedName
 

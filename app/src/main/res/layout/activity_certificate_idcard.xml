@@ -81,8 +81,10 @@
             app:layout_constraintTop_toBottomOf="@id/toolbar_title"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
+
+        <!--  toggle  -->
         <androidx.cardview.widget.CardView
-            android:id="@+id/cv_btn_idcard"
+            android:id="@+id/cv_toggle_idcard"
             android:layout_width="@dimen/size_115dp"
             android:layout_height="@dimen/size_117dp"
             android:elevation="@dimen/size_10dp"
@@ -122,7 +124,7 @@
             android:orientation="vertical"
             android:gravity="center"
             android:layout_marginTop="@dimen/size_35dp"
-            app:layout_constraintTop_toBottomOf="@id/cv_btn_idcard"
+            app:layout_constraintTop_toBottomOf="@id/cv_toggle_idcard"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent">
             <TextView
@@ -146,11 +148,12 @@
                 android:layout_marginTop="@dimen/size_24dp" />
         </LinearLayout>
 
+        <!--  이미지 첨부하세요  -->
         <LinearLayout
             android:id="@+id/ll_btn_get_idcard"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:visibility="gone"
+            android:visibility="invisible"
             android:layout_marginStart="@dimen/size_20dp"
             android:layout_marginLeft="@dimen/size_20dp"
             android:layout_marginTop="@dimen/size_35dp"
@@ -162,7 +165,7 @@
             app:layout_constraintDimensionRatio="100:62"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/cv_btn_idcard">
+            app:layout_constraintTop_toBottomOf="@id/cv_toggle_idcard">
             <ImageView
                 android:layout_width="@dimen/size_48dp"
                 android:layout_height="@dimen/size_48dp"
@@ -178,8 +181,11 @@
                 android:textColor="@color/gray_shadow"
                 android:textSize="@dimen/size_14dp" />
         </LinearLayout>
+
+
+        <!--  첨부한 이미지  -->
         <androidx.cardview.widget.CardView
-            android:id="@+id/cv_btn_imported_idcard"
+            android:id="@+id/cv_imported_idcard"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:visibility="invisible"
@@ -194,11 +200,12 @@
             app:layout_constraintDimensionRatio="100:62"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/cv_btn_idcard">
+            app:layout_constraintTop_toBottomOf="@id/cv_toggle_idcard">
             <ImageView
                 android:id="@+id/iv_imported_idcard"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop" />
         </androidx.cardview.widget.CardView>
 
 

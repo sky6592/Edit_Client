@@ -33,6 +33,9 @@ class AdoptionCompletedFragment : Fragment(), AdoptionCompletedView {
         binding.lifecycleOwner = this
         (activity as MainActivity).increaseFragmentCount()
 
+        /** get sentences from server **/
+        getSentences()
+
         /** set adapter **/
         setAdapter()
 
@@ -41,15 +44,19 @@ class AdoptionCompletedFragment : Fragment(), AdoptionCompletedView {
             requireActivity().supportFragmentManager.popBackStack()
         }
         binding.ibRefresh.setOnClickListener {
-            // TODO : refresh data
+            // refresh data
+            onResume()
         }
 
         return binding.root
     }
 
-    fun setAdapter() {
-        // TODO : 페이징 적용하기
+    fun getSentences() {
+        // TODO : 무한스크롤 처리
         AdoptionCompletedService(this).tryGetAdoptionCompletedSentence(page = 1)
+    }
+
+    fun setAdapter() {
         binding.rvSentence.layoutManager = LinearLayoutManager(context)
     }
 
@@ -64,6 +71,11 @@ class AdoptionCompletedFragment : Fragment(), AdoptionCompletedView {
 
     override fun onGetAdoptionCompletedSentenceFailure(message: String) {
         CustomSnackbar.make(requireView(), message, Snackbar.LENGTH_SHORT).show()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        getSentences()
     }
 
     override fun onDetach() {

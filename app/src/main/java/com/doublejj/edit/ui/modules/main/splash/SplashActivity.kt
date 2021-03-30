@@ -43,6 +43,7 @@ class SplashActivity : AppCompatActivity(), SplashView {
         Log.d("sky", "Splash - API성공")
         /** Success : Go Main **/
         if (response.code == 1000) {
+
             //jwt값 저장되어있는지 확인
             val spf = this.getSharedPreferences("EDIT", MODE_PRIVATE)
             val editor = ApplicationClass.sSharedPreferences.edit()
@@ -54,13 +55,18 @@ class SplashActivity : AppCompatActivity(), SplashView {
                 ApplicationClass.MENTOR_AUTH_CONFIRM,
                 response.result.isCertificatedMentor
             )
+
+            editor.putString(ApplicationClass.USER_POSITION, response.result.userRole)
+            editor.putBoolean(ApplicationClass.MENTOR_AUTH_CONFIRM, response.result.isCertificatedMentor)
             editor.commit()
             editor.apply()
+
             //가입자(멘토/멘티)
             var intentMain = Intent(this, MainActivity::class.java)
             startActivity(intentMain)
             finish()
-        } else {
+        }
+        else {
             //미가입자
             var intentWalkThrough = Intent(this, WalkThroughActivity::class.java)
             startActivity(intentWalkThrough)
