@@ -8,6 +8,7 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Base64
 import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -16,6 +17,7 @@ import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import com.doublejj.edit.ApplicationClass
 import com.doublejj.edit.R
+import com.doublejj.edit.data.api.retrofitinterfaces.certificate_mentor.ImageRequest
 import com.doublejj.edit.data.api.services.certificate_mentor.AuthMentorService
 import com.doublejj.edit.data.api.services.certificate_mentor.AuthMentorView
 import com.doublejj.edit.data.models.BaseResponse
@@ -24,10 +26,7 @@ import com.doublejj.edit.ui.utils.dialog.CustomLoadingDialog
 import com.doublejj.edit.ui.utils.snackbar.CustomSnackbar
 import com.doublejj.edit.ui.utils.span.CustomSpannableString
 import com.google.android.material.snackbar.Snackbar
-import okhttp3.*
-import okhttp3.MediaType.Companion.toMediaType
-import okhttp3.RequestBody.Companion.toRequestBody
-import java.io.File
+import java.io.ByteArrayOutputStream
 
 
 class CertificateIdcardActivity : AppCompatActivity(), AuthMentorView {
@@ -123,31 +122,23 @@ class CertificateIdcardActivity : AppCompatActivity(), AuthMentorView {
         }
         binding.btnSelect.setOnClickListener {
             if (binding.btnSelect.isEnabled) {
+                val encodedImage = bitmapToByteArray()
 
-                multipart()
+                // apply auth mentor API
+                AuthMentorService(this).tryPostAuthMentor(ImageRequest(encodedImage))
             }
         }
     }
 
-    fun multipart() {
+    fun bitmapToByteArray() : String {
+        val stream = ByteArrayOutputStream()
+        bitmap!!.compress(Bitmap.CompressFormat.JPEG, 100, stream)
+        val byteArray = stream.toByteArray()
+        val serialized = Base64.encodeToString(byteArray, Base64.NO_WRAP)
+        Log.d("tag", "bitmap converted base64: ${serialized}")
 
-        val requestBody = fileName!!.toRequestBody("image/*".toMediaType())
-//                    val requestBody = File(fileName).asRequestBody("image/png".toMediaType())
-
-//                val convertedFileName: String = "@" + fileName!! + ";type=image/png"
-////                val convertedFileName = fileName!!.replace("@","").replace(".","")
-////                val requestBody = RequestBody.create("image/*".toMediaTypeOrNull(), fileName!!)
-//                val requestBody = RequestBody.create("image/*".toMediaTypeOrNull(), convertedFileName!!)
-////                val requestBody = convertedFileName.asRequestBody("image/*".toMediaType())
-//                Log.d("tag", "requestBody: ${requestBody}")
-//
-//                val body = MultipartBody.Part.createFormData("file", File(fileName).name, requestBody)\
-        val body = MultipartBody.Part.createFormData("file", File(fileName).name, requestBody)
-
-        // apply auth mentor API
-        AuthMentorService(this).tryPostAuthMentor(body)
+        return serialized
     }
-
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
@@ -170,6 +161,8 @@ class CertificateIdcardActivity : AppCompatActivity(), AuthMentorView {
 
             // 이미지 데이터를 비트맵으로 받기
             bitmap = MediaStore.Images.Media.getBitmap(contentResolver, selectedImageUri)
+            // 비트맵 리사이즈 (800x600)
+            bitmap = Bitmap.createScaledBitmap(bitmap!!, 800, 600, true)
         }
     }
 
@@ -219,6 +212,7 @@ class CertificateIdcardActivity : AppCompatActivity(), AuthMentorView {
         if (response.isSuccess) {
             val sendIntent = Intent(this, CertificateMentorCompleteActivity::class.java)
             startActivity(sendIntent)
+            CustomSnackbar.make(binding.root, response.message.toString(), Snackbar.LENGTH_SHORT).show()
         }
         else {
             CustomSnackbar.make(binding.root, response.message.toString(), Snackbar.LENGTH_SHORT).show()
