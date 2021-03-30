@@ -27,10 +27,14 @@ import com.doublejj.edit.databinding.MyeditFragmentBinding
 import com.doublejj.edit.ui.modules.main.myedit.certificate_mentor.CertificateMentorActivity
 import com.doublejj.edit.ui.modules.main.myedit.manage_coin.ManageCoinActivity
 import com.doublejj.edit.ui.modules.main.myedit.profile.ProfileActivity
+<<<<<<< HEAD
 import com.doublejj.edit.ui.modules.main.myedit.settings.SettingsActivity
 import com.doublejj.edit.ui.modules.main.myedit.switch_position.SwitchToMenteeActivity
 import com.doublejj.edit.ui.modules.main.myedit.switch_position.SwitchToMentorActivity
 import com.doublejj.edit.ui.modules.main.splash.SplashActivity
+=======
+import com.doublejj.edit.ui.modules.main.myedit.switch_position.MenteeToMentorActivity
+>>>>>>> 23c496a (feat: Add mentee to mentor layouts)
 import com.doublejj.edit.ui.utils.snackbar.CustomSnackbar
 import com.google.android.material.snackbar.Snackbar
 
@@ -118,6 +122,7 @@ class MyeditFragment : Fragment(), ProfileInfoView, LogoutView {
 
         /** position buttons **/
         binding.llBtnCertificateMentor.setOnClickListener {
+<<<<<<< HEAD
             // TODO : 멘토 인증 페이지
             startActivity(Intent(activity, CertificateMentorActivity::class.java))
         }
@@ -125,13 +130,23 @@ class MyeditFragment : Fragment(), ProfileInfoView, LogoutView {
             when (sSharedPreferences.getString(USER_POSITION, "MENTEE")) {
                 "MENTEE" -> startActivity(Intent(activity, SwitchToMentorActivity::class.java))
                 "MENTOR" -> startActivity(Intent(activity, SwitchToMenteeActivity::class.java))
+=======
+            when (sSharedPreferences.getString(USER_POSITION, "MENTEE")) {
+                "MENTEE" -> {
+                    startActivity(Intent(activity, MenteeToMentorActivity::class.java))
+                }
+>>>>>>> 23c496a (feat: Add mentee to mentor layouts)
             }
         }
 
         /** logout buttons **/
         binding.btnLogout.setOnClickListener {
+<<<<<<< HEAD
             // 로그아웃 API 적용
             LogoutService(this).tryPostLogout()
+=======
+            // TODO : 로그아웃 API 적용
+>>>>>>> 23c496a (feat: Add mentee to mentor layouts)
         }
 
         return binding.root
