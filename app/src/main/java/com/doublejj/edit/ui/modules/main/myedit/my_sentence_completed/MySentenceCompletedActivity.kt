@@ -1,14 +1,9 @@
 package com.doublejj.edit.ui.modules.main.myedit.my_sentence_completed
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.doublejj.edit.ApplicationClass
-import com.doublejj.edit.ApplicationClass.Companion.USER_COLOR
-import com.doublejj.edit.ApplicationClass.Companion.USER_EMOTION
-import com.doublejj.edit.ApplicationClass.Companion.sSharedPreferences
 import com.doublejj.edit.R
 import com.doublejj.edit.data.api.services.my_sentence_completed.MySentenceCompletedService
 import com.doublejj.edit.data.api.services.my_sentence_completed.MySentenceCompletedView

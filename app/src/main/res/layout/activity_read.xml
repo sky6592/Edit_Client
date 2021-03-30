@@ -26,7 +26,6 @@
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_baseline_navigate_before_24" />
 
-
             <TextView
                 android:id="@+id/tv_title_read"
                 android:layout_width="wrap_content"
@@ -72,10 +71,10 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/noto_sans_kr_medium"
                 android:gravity="center_horizontal"
+                android:text="@string/tv_info_bottom_read"
                 android:textColor="@color/black"
                 android:textSize="15sp"
-                android:textStyle="normal"
-                tools:text="@string/tv_info_bottom_read" />
+                android:textStyle="normal" />
         </LinearLayout>
 
 
@@ -210,10 +209,10 @@
                     android:fontFamily="@font/noto_sans_kr_regular"
                     android:gravity="center_vertical"
                     android:lineSpacingExtra="5sp"
+                    android:text="@string/tv_check_info_read"
                     android:textColor="@color/black"
                     android:textSize="@dimen/tv_12sp"
-                    android:textStyle="normal"
-                    android:text="@string/tv_check_info_read" />
+                    android:textStyle="normal" />
 
             </LinearLayout>
 

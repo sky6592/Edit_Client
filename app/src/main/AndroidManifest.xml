@@ -49,6 +49,9 @@
         <activity android:name=".ui.modules.main.myedit.certificate_mentor.TrainingOneActivity" />
         <activity android:name=".ui.modules.main.myedit.certificate_mentor.CertificateMentorActivity" />
         <activity android:name=".ui.modules.main.myedit.manage_coin.ManageCoinActivity" />
+        <activity android:name=".ui.modules.main.myedit.my_sentence_completed.MySentenceCompletedActivity" />
+        <activity android:name=".ui.modules.main.myedit.my_sentence_not_adopted.MySentenceNotAdoptedActivity" />
+        <activity android:name=".ui.modules.main.myedit.my_sentence_not_adopted.CompleteWritingSentenceActivity" />
         <activity android:name=".ui.modules.main.myedit.switch_position.SwitchPositionCompleteActivity" />
         <activity
             android:name=".ui.modules.main.myedit.switch_position.SwitchToMentorReasonActivity"
@@ -68,7 +71,7 @@
         <activity android:name=".ui.modules.main.myedit.profile.change_profile.ChangeProfileActivity" />
         <activity
             android:name=".ui.modules.main.signup.slectjopgroup.JobGroupActivity"
-            android:windowSoftInputMode="adjustResize"></activity>
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".ui.modules.main.login.LogInActivity"
             android:windowSoftInputMode="adjustResize" />
@@ -92,6 +95,7 @@
         <activity
             android:name=".ui.modules.main.home.writing_sentence.WritingSentenceActivity"
             android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".ui.modules.main.home.open_comment.OpenCommentActivity" />
         <activity android:name=".ui.modules.main.home.writing_comment.WritingCommentActivity" />
         <activity android:name=".ui.modules.main.splash.SplashActivity">
             <intent-filter>

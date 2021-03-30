@@ -186,7 +186,6 @@ class EmailFindActivity : AppCompatActivity(), EmailFindView {
         if (response.code == 1000) {
             binding.tvDialogContentEmailFind.text =
                 getString(R.string.tv_dialog_content_find_email) + "\n" + response.result.email
-//            binding.tvDialogApiEmailFind.text = response.result.email
             builder.setPositiveButton("확인") { _, i ->
 
             }
@@ -194,7 +193,8 @@ class EmailFindActivity : AppCompatActivity(), EmailFindView {
             Log.d("sky", response.result.email)
 
         }
-        if (response.code == 3012) {
+        //if (response.code == 3012)
+        else {
             binding.tvDialogTitleEmailFind.text = "가입되니 않은 계정입니다."
             binding.tvDialogContentEmailFind.text = "회원가입을 새로 하시겠어요?"
             binding.tvDialogApiEmailFind.text = "확인을 누르면 회원가입화면으로 이동합니다!"
@@ -207,12 +207,14 @@ class EmailFindActivity : AppCompatActivity(), EmailFindView {
                 finishAffinity()
             }
             builder.setView(binding.root).show()
-        } else {
-            Log.d("sky", "onPostEmailFindSuccess" + response.message.toString())
         }
+        //else {
+//            Log.d("sky", "onPostEmailFindSuccess" + response.message.toString())
+//        }
     }
 
     override fun onPostEmailFindFailure(message: String) {
         Log.d("sky", "onPostEmailFindFailure : $message")
+        CustomSnackbar.make(mBinding.root, message, Snackbar.ANIMATION_MODE_SLIDE)
     }
 }

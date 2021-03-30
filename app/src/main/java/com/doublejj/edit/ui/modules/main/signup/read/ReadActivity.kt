@@ -63,7 +63,12 @@ class ReadActivity : AppCompatActivity(), ReadView {
         //닉네임 세팅
         val nickname = mArrayList[1]
         //멘토,멘티 세팅
-        var selectType = mArrayList[6]
+        var selectType = ""
+        if (mArrayList[6] == "MENTEE") {
+            selectType = "멘티"
+        }else{
+            selectType = "멘토"
+        }
 
         //정보 선택
         mBinding.tvInfoOneRead.text =
@@ -132,6 +137,7 @@ class ReadActivity : AppCompatActivity(), ReadView {
 
     override fun onPostReadFailure(message: String) {
         Log.d("sky", "onPostReadFailure - $message")
+        CustomSnackbar.make(mBinding.root, message, Snackbar.ANIMATION_MODE_SLIDE)
     }
 
     override fun onBackPressed() {

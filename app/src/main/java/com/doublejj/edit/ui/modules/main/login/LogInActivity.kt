@@ -32,6 +32,7 @@ class LogInActivity : AppCompatActivity(), LogInView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_log_in)
+
         //이메일 정규식
         val emailPatternTest = android.util.Patterns.EMAIL_ADDRESS
         //비밀번호 정규식
