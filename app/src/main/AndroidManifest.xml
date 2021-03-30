@@ -81,6 +81,14 @@
         <activity
             android:name=".ui.modules.main.signup.infofirst.InfoFirstActivity"
             android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".ui.modules.main.myedit.settings.profile.change_password.ChangePasswordCompleteActivity" />
+        <activity
+            android:name=".ui.modules.main.myedit.settings.profile.change_password.ChangeNewPasswordActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ui.modules.main.myedit.settings.profile.change_password.ChangePasswordActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".ui.modules.main.myedit.settings.profile.change_profile.ChangeProfileActivity" />
         <activity android:name=".ui.modules.main.signin.SignInActivity" />
         <activity android:name=".ui.modules.main.myedit.profile.ProfileActivity" />
         <activity android:name=".ui.modules.main.myedit.settings.withdrawal.WithdrawalCompleteActivity" />
@@ -100,7 +108,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.modules.main.MainActivity" />
     </application>
 
 </manifest>

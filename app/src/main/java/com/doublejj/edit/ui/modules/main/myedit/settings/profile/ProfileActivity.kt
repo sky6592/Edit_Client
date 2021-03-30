@@ -4,8 +4,10 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
+import com.doublejj.edit.ApplicationClass.Companion.sActivityList
 import com.doublejj.edit.R
 import com.doublejj.edit.databinding.ActivityProfileBinding
+import com.doublejj.edit.ui.modules.main.myedit.settings.profile.change_password.ChangePasswordActivity
 import com.doublejj.edit.ui.modules.main.myedit.settings.profile.change_profile.ChangeProfileActivity
 
 class ProfileActivity : AppCompatActivity() {
@@ -29,8 +31,8 @@ class ProfileActivity : AppCompatActivity() {
         }
         binding.llBtnChangePassword.setOnClickListener {
             // TODO : 비밀번호 변경 페이지
-            /*val sendIntent = Intent(this, ChangePasswordActivity::class.java)
-            startActivity(sendIntent)*/
+            val sendIntent = Intent(this, ChangePasswordActivity::class.java)
+            startActivity(sendIntent)
         }
 
         binding.llBtnChangeProfile.setOnClickListener {
@@ -39,4 +41,5 @@ class ProfileActivity : AppCompatActivity() {
             startActivity(sendIntent)*/
         }
     }
+
 }
