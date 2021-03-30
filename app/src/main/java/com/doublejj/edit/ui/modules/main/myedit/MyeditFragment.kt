@@ -88,8 +88,9 @@ class MyeditFragment : Fragment(), ProfileInfoView, LogoutView, AuthMentorStatus
         }
 
         /** toolbar buttons **/
-        binding.tvLogo.setOnClickListener { 
-            // TODO : 맨 위로 가기
+        binding.tvLogo.setOnClickListener {
+            // scroll to top
+            binding.nsvMyedit.smoothScrollTo(0, 0)
         }
         binding.ibSettings.setOnClickListener {
             val sendIntent = Intent(activity, SettingsActivity::class.java)
@@ -109,6 +110,7 @@ class MyeditFragment : Fragment(), ProfileInfoView, LogoutView, AuthMentorStatus
         }
         binding.ibMenuSympathy.setOnClickListener {
             // TODO : 공감 페이지
+            CustomSnackbar.make(binding.root, getString(R.string.tv_to_be_develop), Snackbar.LENGTH_SHORT).show()
         }
         binding.ibMenuSentence.setOnClickListener {
             // 자소서 목록 페이지 (멘티)
@@ -122,16 +124,18 @@ class MyeditFragment : Fragment(), ProfileInfoView, LogoutView, AuthMentorStatus
         }
         binding.ibMenuCommentList.setOnClickListener {
             // TODO : 코멘트 목록 페이지 (멘토)
+            CustomSnackbar.make(binding.root, getString(R.string.tv_to_be_develop), Snackbar.LENGTH_SHORT).show()
         }
 
         // TODO : 임시저장 추후 업데이트
         binding.ibMenuTemp.setOnClickListener {
             // TODO : 임시 저장 페이지
+            CustomSnackbar.make(binding.root, getString(R.string.tv_to_be_develop), Snackbar.LENGTH_SHORT).show()
         }
 
         /** position buttons **/
         binding.llBtnCertificateMentor.setOnClickListener {
-            // TODO : pending 중이 아니라면 멘토 인증 페이지
+            // pending 중이 아니라면 멘토 인증 페이지
             AuthMentorStatusService(this).tryGetAuthMentorStatus()
 //            CustomLoadingDialog(requireContext()).show()
         }

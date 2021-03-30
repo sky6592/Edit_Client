@@ -18,6 +18,5 @@ class NoticeActivity : AppCompatActivity() {
         binding.ibBack.setOnClickListener {
             finish()
         }
-
     }
 }

@@ -3,9 +3,11 @@ package com.doublejj.edit.ui.modules.main.myedit.certificate_mentor
 import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.provider.MediaStore
 import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -22,10 +24,9 @@ import com.doublejj.edit.ui.utils.dialog.CustomLoadingDialog
 import com.doublejj.edit.ui.utils.snackbar.CustomSnackbar
 import com.doublejj.edit.ui.utils.span.CustomSpannableString
 import com.google.android.material.snackbar.Snackbar
+import okhttp3.*
 import okhttp3.MediaType.Companion.toMediaType
-import okhttp3.MediaType.Companion.toMediaTypeOrNull
-import okhttp3.MultipartBody
-import okhttp3.RequestBody.Companion.asRequestBody
+import okhttp3.RequestBody.Companion.toRequestBody
 import java.io.File
 
 
@@ -36,6 +37,8 @@ class CertificateIdcardActivity : AppCompatActivity(), AuthMentorView {
     val GET_GALLERY_IMAGE: Int = 2000
     private var isToggled = false
     private var selectedImageUri: Uri? = null
+    private var fileName: String? = null
+    private var bitmap: Bitmap? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -101,7 +104,6 @@ class CertificateIdcardActivity : AppCompatActivity(), AuthMentorView {
                             )
                         }
                     }
-
             }
         }
 
@@ -122,17 +124,30 @@ class CertificateIdcardActivity : AppCompatActivity(), AuthMentorView {
         binding.btnSelect.setOnClickListener {
             if (binding.btnSelect.isEnabled) {
 
-                val file = File(selectedImageUri!!.path)
-//                if (!file.getParentFile().exists()) file.getParentFile().mkdirs();
-//                if (!file.exists()) file.createNewFile();
-                val requestBody = file.asRequestBody("image/*".toMediaType())
-                val body = MultipartBody.Part.createFormData("file", file.name, requestBody)
-
-                // apply auth mentor API
-                AuthMentorService(this).tryPostAuthMentor(body)
+                multipart()
             }
         }
     }
+
+    fun multipart() {
+
+        val requestBody = fileName!!.toRequestBody("image/*".toMediaType())
+//                    val requestBody = File(fileName).asRequestBody("image/png".toMediaType())
+
+//                val convertedFileName: String = "@" + fileName!! + ";type=image/png"
+////                val convertedFileName = fileName!!.replace("@","").replace(".","")
+////                val requestBody = RequestBody.create("image/*".toMediaTypeOrNull(), fileName!!)
+//                val requestBody = RequestBody.create("image/*".toMediaTypeOrNull(), convertedFileName!!)
+////                val requestBody = convertedFileName.asRequestBody("image/*".toMediaType())
+//                Log.d("tag", "requestBody: ${requestBody}")
+//
+//                val body = MultipartBody.Part.createFormData("file", File(fileName).name, requestBody)\
+        val body = MultipartBody.Part.createFormData("file", File(fileName).name, requestBody)
+
+        // apply auth mentor API
+        AuthMentorService(this).tryPostAuthMentor(body)
+    }
+
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
@@ -147,7 +162,27 @@ class CertificateIdcardActivity : AppCompatActivity(), AuthMentorView {
             // 이미지뷰에 선택한 사진 할당
             selectedImageUri = data.data
             binding.ivImportedIdcard.setImageURI(selectedImageUri)
+
+            // Uri에서 이미지 이름 추출
+            fileName = getImageNameToUri(selectedImageUri!!)
+
+            Log.d("tag", "fileName: $fileName")
+
+            // 이미지 데이터를 비트맵으로 받기
+            bitmap = MediaStore.Images.Media.getBitmap(contentResolver, selectedImageUri)
         }
+    }
+
+    fun getImageNameToUri(uri: Uri) : String {
+        val proj: Array<String> = arrayOf(MediaStore.Images.Media.DATA)
+        val cursor = managedQuery(uri, proj, null, null, null)
+        val columnIndex = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA)
+        cursor.moveToFirst()
+
+        val imgPath = cursor.getString(columnIndex)
+//        val imgName = imgPath.substring(imgPath.lastIndexOf("/") + 1)
+
+        return imgPath
     }
 
     fun toggleButton(on: Boolean) {
@@ -202,4 +237,6 @@ class CertificateIdcardActivity : AppCompatActivity(), AuthMentorView {
         super.onDestroy()
         ApplicationClass.sActivityList.remove(this)
     }
+
+
 }
