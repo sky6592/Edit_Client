@@ -159,6 +159,9 @@ class SwitchToMentorReasonActivity : AppCompatActivity(), SwitchPositionView {
             sendIntent.putExtra("nickName", nickName)
             startActivity(sendIntent)
         }
+        else {
+            CustomSnackbar.make(binding.root, response.message.toString(), Snackbar.LENGTH_SHORT).show()
+        }
     }
 
     override fun onSwitchPositionFailure(message: String) {

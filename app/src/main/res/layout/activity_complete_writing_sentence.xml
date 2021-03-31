@@ -150,7 +150,7 @@
                                 android:layout_height="wrap_content"
 
                                 style="@style/CustomTextViewMidBlack"
-                                android:text="@string/tv_sentence_content_example"
+                                android:text="@null"
                                 android:textSize="@dimen/size_13dp"
                                 android:maxLines="4"
                                 android:lineSpacingExtra="@dimen/size_5dp"
@@ -198,7 +198,7 @@
                             android:layout_height="wrap_content"
 
                             style="@style/CustomTextViewMidBlack"
-                            android:text="@string/tv_sentence_content_example"
+                            android:text="@null"
                             android:textSize="@dimen/size_13dp"
                             android:maxLines="4"
                             android:lineSpacingExtra="@dimen/size_5dp"

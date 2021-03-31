@@ -27,6 +27,7 @@ import com.doublejj.edit.data.models.BaseResponse
 import com.doublejj.edit.data.models.certificate_mentor.AuthMentorStatusResponse
 import com.doublejj.edit.data.models.profile.info.ProfileInfoResponse
 import com.doublejj.edit.databinding.MyeditFragmentBinding
+import com.doublejj.edit.ui.modules.main.myedit.certificate_mentor.CertificateInProgressActivity
 import com.doublejj.edit.ui.modules.main.myedit.certificate_mentor.CertificateLogoutActivity
 import com.doublejj.edit.ui.modules.main.myedit.certificate_mentor.CertificateMentorActivity
 import com.doublejj.edit.ui.modules.main.myedit.certificate_mentor.CertificateRejectActivity
@@ -238,7 +239,7 @@ class MyeditFragment : Fragment(), ProfileInfoView, LogoutView, AuthMentorStatus
                     editor.putBoolean(MENTOR_AUTH_CONFIRM, false)
                     editor.commit()
                     editor.apply()
-                    startActivity(Intent(activity, CertificateMentorActivity::class.java))
+                    startActivity(Intent(activity, CertificateInProgressActivity::class.java))
                 }
             }
         }
