@@ -55,7 +55,7 @@
         <androidx.cardview.widget.CardView
             android:id="@+id/cv_box"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/size_145dp"
+            android:layout_height="wrap_content"
             app:cardCornerRadius="@dimen/size_4dp"
             android:elevation="@dimen/size_10dp"
             android:layout_marginTop="@dimen/size_55dp"
@@ -70,7 +70,9 @@
                 android:orientation="vertical"
                 android:gravity="center"
                 android:paddingTop="@dimen/size_38dp"
-                android:paddingBottom="@dimen/size_33dp">
+                android:paddingBottom="@dimen/size_33dp"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

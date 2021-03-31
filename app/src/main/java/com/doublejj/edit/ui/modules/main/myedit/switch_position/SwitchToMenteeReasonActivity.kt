@@ -145,7 +145,7 @@ class SwitchToMenteeReasonActivity : AppCompatActivity(), SwitchPositionView {
     }
 
     fun getSelectedString(index: Int) : String {
-        val typeStringArray = resources.getStringArray(R.array.array_withdrawal_type).toMutableList()
+        val typeStringArray = resources.getStringArray(R.array.array_mentor_to_mentee_type).toMutableList()
         return typeStringArray[index]
     }
 
@@ -159,6 +159,9 @@ class SwitchToMenteeReasonActivity : AppCompatActivity(), SwitchPositionView {
             val sendIntent = Intent(this, SwitchPositionCompleteActivity::class.java)
             sendIntent.putExtra("nickName", nickName)
             startActivity(sendIntent)
+        }
+        else {
+            CustomSnackbar.make(binding.root, response.message.toString(), Snackbar.LENGTH_SHORT).show()
         }
     }
 

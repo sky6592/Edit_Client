@@ -13,22 +13,20 @@ import android.widget.ArrayAdapter
 import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import com.doublejj.edit.R
-import com.doublejj.edit.data.api.services.withdrawal.WithdrawalService
-import com.doublejj.edit.data.api.services.withdrawal.WithdrawalView
-import com.doublejj.edit.data.models.withdrawal.WithdrawalRequest
-import com.doublejj.edit.data.models.withdrawal.WithdrawalResponse
+import com.doublejj.edit.data.api.services.switch_position.SwitchPositionView
+import com.doublejj.edit.data.api.services.switch_position.SwitchToMentorService
+import com.doublejj.edit.data.models.ResultResponse
+import com.doublejj.edit.data.models.switch_position.SwitchPositionRequest
 import com.doublejj.edit.databinding.ActivityMenteeToMentorReasonBinding
-import com.doublejj.edit.ui.utils.dialog.CustomDialogClickListener
-import com.doublejj.edit.ui.utils.dialog.CustomDialogFragment
 import com.doublejj.edit.ui.utils.snackbar.CustomSnackbar
 import com.doublejj.edit.ui.utils.span.CustomSpannableString
 import com.google.android.material.snackbar.Snackbar
 
-class MenteeToMentorReasonActivity : AppCompatActivity() {
+class MenteeToMentorReasonActivity : AppCompatActivity(), SwitchPositionView {
     private val TAG: String = javaClass.simpleName.toString()
     private lateinit var binding: ActivityMenteeToMentorReasonBinding
-    private var withdrawalContent: Int? = null
-    private var etcWithdrawalContent: String? = null
+    private var changeContent: Int? = null
+    private var etcChangeContent: String? = null
     private lateinit var nickName: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -66,119 +64,104 @@ class MenteeToMentorReasonActivity : AppCompatActivity() {
             }
         }
         // item과 hint 추가, adapter에 연결
-        val typeStringArray = resources.getStringArray(R.array.array_withdrawal_type).toMutableList()
+        val typeStringArray = resources.getStringArray(R.array.array_mentee_to_mentor_type).toMutableList()
         typeAdapter.addAll(typeStringArray)
         typeAdapter.add(getString(R.string.spinner_hint))
-        binding.spinnerSelectWithdrawalType.adapter = typeAdapter
+        binding.spinnerSelectReasonType.adapter = typeAdapter
 
         // settings for adapter
-        binding.spinnerSelectWithdrawalType.setSelection(typeAdapter.count)
-        binding.spinnerSelectWithdrawalType.setPopupBackgroundResource(R.drawable.shape_white_bg_round_4dp)
+        binding.spinnerSelectReasonType.setSelection(typeAdapter.count)
+        binding.spinnerSelectReasonType.setPopupBackgroundResource(R.drawable.shape_white_bg_round_4dp)
 
         // convert dp to px
-        binding.spinnerSelectWithdrawalType.dropDownVerticalOffset = dipToPixels(40f)
+        binding.spinnerSelectReasonType.dropDownVerticalOffset = dipToPixels(40f)
 
-        binding.spinnerSelectWithdrawalType.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+        binding.spinnerSelectReasonType.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
                 parent: AdapterView<*>?,
                 view: View?,
                 position: Int,
                 id: Long
             ) {
-                withdrawalContent = position
+                changeContent = position
 
-                when (withdrawalContent) {
-                    0, 1, 2 -> {
+                when (changeContent) {
+                    0, 1, 2, 3 -> {
                         binding.btnNext.isEnabled = true
-                        binding.llWithdrawalEtc.visibility = View.GONE
+                        binding.llReasonEtc.visibility = View.GONE
                     }
-                    3 -> {
-                        binding.llWithdrawalEtc.visibility = View.VISIBLE
-                        binding.btnNext.isEnabled = binding.etInputWithdrawalEtcContent.text.toString().length >= 10
+                    4 -> {
+                        binding.llReasonEtc.visibility = View.VISIBLE
+                        binding.btnNext.isEnabled = binding.etInputReasonEtcContent.text.toString().length >= 10
                     }
                     null -> {
                         binding.btnNext.isEnabled = true
-                        binding.llWithdrawalEtc.visibility = View.GONE
+                        binding.llReasonEtc.visibility = View.GONE
                     }
                 }
             }
             override fun onNothingSelected(parent: AdapterView<*>?) {
-                withdrawalContent = null
+                changeContent = null
             }
         }
 
-        binding.etInputWithdrawalEtcContent.addTextChangedListener(object : TextWatcher {
+        binding.etInputReasonEtcContent.addTextChangedListener(object : TextWatcher {
             // gets triggered immediately after something is typed
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-                binding.btnNext.isEnabled = binding.etInputWithdrawalEtcContent.text.toString().length >= 10
+                binding.btnNext.isEnabled = binding.etInputReasonEtcContent.text.toString().length >= 10
             }
 
             // gets triggered before the next input
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                binding.btnNext.isEnabled = binding.etInputWithdrawalEtcContent.text.toString().length >= 10
+                binding.btnNext.isEnabled = binding.etInputReasonEtcContent.text.toString().length >= 10
             }
 
             // gets triggered during an input
             override fun afterTextChanged(s: Editable?) {
-                binding.btnNext.isEnabled = binding.etInputWithdrawalEtcContent.text.toString().length >= 10
+                binding.btnNext.isEnabled = binding.etInputReasonEtcContent.text.toString().length >= 10
             }
         })
 
         binding.btnNext.setOnClickListener {
             if (binding.btnNext.isEnabled) {
-                val dialog = CustomDialogFragment(
-                    R.string.tv_dialog_withdrawal_title,
-                    R.string.tv_dialog_withdrawal_content,
-                    R.string.tv_dialog_agree,
-                    R.string.tv_dialog_dismiss
+                // 기타 선택 후 의견이 유효하도록 NONE 처리
+                if (changeContent == 4 && binding.etInputReasonEtcContent.length() >= 10) {
+                    etcChangeContent = binding.etInputReasonEtcContent.text.toString()
+                }
+                else {
+                    etcChangeContent = "NONE"
+                }
+
+                // switch mentee to mentor 역할 변경 API
+                SwitchToMentorService(this).tryPatchSwitchToMentor(
+                    SwitchPositionRequest(
+                        changeContent = getSelectedString(changeContent!!),
+                        etcChangeContent = etcChangeContent!!
+                    )
                 )
-
-                dialog.setDialogClickListener(object : CustomDialogClickListener, WithdrawalView {
-                    override fun onPositiveClick() {
-                        // 기타 선택 후 의견이 유효하도록 NONE 처리
-                        if (withdrawalContent == 3 && binding.etInputWithdrawalEtcContent.length() >= 10) {
-                            etcWithdrawalContent = binding.etInputWithdrawalEtcContent.text.toString()
-                        }
-                        else {
-                            etcWithdrawalContent = "NONE"
-                        }
-
-                        // 회원탈퇴 API
-                        WithdrawalService(this).tryDeleteWithdrawal(
-                            WithdrawalRequest(
-                                withdrawalContent = getSelectedString(withdrawalContent!!),
-                                etcWithdrawalContent = etcWithdrawalContent!!
-                            )
-                        )
-                    }
-                    override fun onNegativeClick() {
-                    }
-
-                    override fun onWithdrawalSuccess(response: WithdrawalResponse) {
-                        if (response.isSuccess) {
-                            // dialog에서 activity로 전환하기 위해 dialog 밖의 activity 넘겨줌
-                            val sendIntent = Intent(this@MenteeToMentorReasonActivity, MenteeToMentorCompleteActivity::class.java)
-                            sendIntent.putExtra("nickName", nickName)
-                            startActivity(sendIntent)
-                        }
-                    }
-
-                    override fun onWithdrawalFailure(message: String) {
-                        CustomSnackbar.make(binding.root, message, Snackbar.LENGTH_SHORT)
-                    }
-                })
-                dialog.show(supportFragmentManager, "CustomDialog")
             }
         }
     }
 
     fun getSelectedString(index: Int) : String {
-        val typeStringArray = resources.getStringArray(R.array.array_withdrawal_type).toMutableList()
+        val typeStringArray = resources.getStringArray(R.array.array_mentee_to_mentor_type).toMutableList()
         return typeStringArray[index]
     }
 
     fun dipToPixels(dipValue: Float) : Int {
         return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dipValue, resources.displayMetrics).toInt()
+    }
+
+    override fun onSwitchPositionSuccess(response: ResultResponse) {
+        if (response.isSuccess) {
+            val sendIntent = Intent(this, SwitchPositionCompleteActivity::class.java)
+            sendIntent.putExtra("nickName", nickName)
+            startActivity(sendIntent)
+        }
+    }
+
+    override fun onSwitchPositionFailure(message: String) {
+        CustomSnackbar.make(binding.root, message, Snackbar.LENGTH_SHORT).show()
     }
 
 }

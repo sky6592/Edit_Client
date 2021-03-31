@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
+import com.doublejj.edit.ApplicationClass
 import com.doublejj.edit.R
 import com.doublejj.edit.databinding.ActivityMenteeToMentorCompleteBinding
 import com.doublejj.edit.ui.modules.main.splash.SplashActivity
@@ -40,4 +41,17 @@ class MenteeToMentorCompleteActivity : AppCompatActivity() {
         }
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+
+        val editor = ApplicationClass.sSharedPreferences.edit()
+        editor.putString(ApplicationClass.X_ACCESS_TOKEN, null)
+        editor.putString(ApplicationClass.USER_POSITION, null)
+        editor.putBoolean(ApplicationClass.MENTOR_AUTH_CONFIRM, false)
+        editor.putString(ApplicationClass.USER_NICKNAME, null)
+        editor.putString(ApplicationClass.USER_EMOTION, null)
+        editor.putString(ApplicationClass.USER_COLOR, null)
+        editor.commit()
+        editor.apply()
+    }
 }
