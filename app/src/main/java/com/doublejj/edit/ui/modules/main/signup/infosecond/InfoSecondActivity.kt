@@ -198,25 +198,27 @@ class InfoSecondActivity : AppCompatActivity(), InfoSecondView {
 
                     Log.d("sky", mBinding.etPwInfoSecond.text.toString() + ", " + s.toString())
 
-                    //비밀번호 일치여부
-                    if (mBinding.etPwInfoSecond.text.toString() == s.toString()) {
-                        mBinding.tvRePwCaptionInfoFirst.text = getString(R.string.tv_pw_result_info)
-                        mRePwFlag = true
-
-                    } else {
-                        mBinding.btnInfoSecond.setBackgroundResource(R.color.very_light_pink)
-                        mBinding.tvRePwCaptionInfoFirst.text =
-                            getString(R.string.tv_re_pw_caption_wrong_info)
-                        mRePwFlag = false
-                    }
                     //비밀번호 정규식
                     if (s.toString().matches(pwPattern.toRegex())) {
-                        mBinding.tvRePwCaptionInfoFirst.text = ""
+                        mBinding.tvRePwCaptionInfoFirst.setTextColor(R.color.purple)
+                        mBinding.tvRePwCaptionInfoFirst.text = getString(R.string.tv_pw_result_info)
 //                        mRePwFlag = true
                     } else {
                         mBinding.tvRePwCaptionInfoFirst.text =
                             getString(R.string.tv_pw_wrong_caption_info)
 //                        mRePwFlag = false
+                    }
+                    //비밀번호 일치여부
+                    if (mBinding.etPwInfoSecond.text.toString() == s.toString()) {
+                        mBinding.tvRePwCaptionInfoFirst.setTextColor(R.color.purple)
+                        mBinding.tvRePwCaptionInfoFirst.text = getString(R.string.tv_pw_result_info)
+                        mRePwFlag = true
+                    } else {
+                        mBinding.btnInfoSecond.setBackgroundResource(R.color.very_light_pink)
+                        mBinding.tvRePwCaptionInfoFirst.setTextColor(R.color.purple)
+                        mBinding.tvRePwCaptionInfoFirst.text =
+                            getString(R.string.tv_re_pw_caption_wrong_info)
+                        mRePwFlag = false
                     }
                     //입력 완료여부 정규식
                     if (mEmailFlag && mPwFlag && mRePwFlag) {

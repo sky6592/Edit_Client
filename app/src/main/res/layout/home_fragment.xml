@@ -127,18 +127,125 @@
                                 <FrameLayout
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content">
-                                    <include
+                                    <androidx.cardview.widget.CardView
                                         android:id="@+id/cv_home_today_sentence_zero_0"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        layout="@layout/cardview_home_today_sentence_zero_0"
+                                        app:cardCornerRadius="@dimen/size_card_radius_7dp"
+                                        app:cardElevation="@dimen/size_10dp"
 
                                         android:layout_marginTop="@dimen/margin_card_top_space"
                                         android:layout_marginBottom="@dimen/margin_card_inner_text_start_and_end_20dp"
                                         android:layout_marginStart="@dimen/margin_component_inset_20dp"
                                         android:layout_marginLeft="@dimen/margin_component_inset_20dp"
-                                        android:layout_marginEnd="@dimen/margin_card_end_space"
-                                        android:layout_marginRight="@dimen/margin_card_end_space" />
+                                        android:layout_marginEnd="@dimen/size_8dp"
+                                        android:layout_marginRight="@dimen/size_8dp">
+                                        <androidx.constraintlayout.widget.ConstraintLayout
+                                            android:layout_width="@dimen/size_card_home_today_sentence_width"
+                                            android:layout_height="@dimen/size_card_home_today_sentence_height"
+                                            android:orientation="vertical">
+                                            <TextView
+                                                android:id="@+id/tv_today_sentence_zero_title"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                style="@style/CustomTextViewMidBlack"
+                                                android:fontFamily="@font/noto_sans_kr_bold"
+                                                android:textColor="@color/purple_active"
+                                                android:text="@string/tv_card_zero_title"
+                                                android:textSize="@dimen/size_tv_title_15dp"
+
+                                                android:layout_marginTop="@dimen/size_48dp"
+                                                app:layout_constraintTop_toTopOf="parent"
+                                                app:layout_constraintStart_toStartOf="parent"
+                                                app:layout_constraintEnd_toEndOf="parent" />
+                                            <TextView
+                                                android:id="@+id/tv_today_sentence_zero_content"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+
+                                                style="@style/CustomTextViewMidBlack"
+                                                android:fontFamily="@font/noto_sans_kr_bold"
+                                                android:text="@string/tv_card_zero_content"
+                                                android:textSize="@dimen/size_tv_card_content_12dp"
+
+                                                android:layout_marginBottom="@dimen/size_48dp"
+                                                app:layout_constraintBottom_toBottomOf="parent"
+                                                app:layout_constraintStart_toStartOf="parent"
+                                                app:layout_constraintEnd_toEndOf="parent" />
+                                            <ImageView
+                                                android:id="@+id/iv_star_left"
+                                                android:layout_width="@dimen/size_15dp"
+                                                android:layout_height="@dimen/size_20dp"
+                                                android:src="@drawable/ic_graphic_star_shape"
+                                                android:scaleType="fitXY"
+
+                                                android:layout_marginTop="@dimen/size_11dp"
+                                                android:layout_marginStart="@dimen/size_12dp"
+                                                android:layout_marginLeft="@dimen/size_12dp"
+                                                app:layout_constraintTop_toTopOf="parent"
+                                                app:layout_constraintStart_toStartOf="parent" />
+                                            <ImageView
+                                                android:id="@+id/iv_dot_left"
+                                                android:layout_width="@dimen/size_6dp"
+                                                android:layout_height="@dimen/size_6dp"
+                                                android:src="@drawable/ic_graphic_dot_shape"
+                                                android:scaleType="fitXY"
+
+                                                android:layout_marginStart="@dimen/size_11dp"
+                                                android:layout_marginLeft="@dimen/size_11dp"
+                                                app:layout_constraintTop_toTopOf="@id/iv_star_left"
+                                                app:layout_constraintStart_toEndOf="@id/iv_star_left" />
+                                            <ImageView
+                                                android:id="@+id/iv_donuts_left"
+                                                android:layout_width="@dimen/size_10dp"
+                                                android:layout_height="@dimen/size_10dp"
+                                                android:src="@drawable/ic_graphic_donuts_shape"
+                                                android:scaleType="fitXY"
+
+                                                android:layout_marginTop="@dimen/size_10dp"
+                                                android:layout_marginStart="@dimen/size_9dp"
+                                                android:layout_marginLeft="@dimen/size_9dp"
+                                                app:layout_constraintTop_toBottomOf="@id/iv_star_left"
+                                                app:layout_constraintStart_toStartOf="parent" />
+
+                                            <ImageView
+                                                android:id="@+id/iv_star_right"
+                                                android:layout_width="@dimen/size_15dp"
+                                                android:layout_height="@dimen/size_20dp"
+                                                android:src="@drawable/ic_graphic_star_shape"
+                                                android:scaleType="fitXY"
+
+                                                android:layout_marginBottom="@dimen/size_11dp"
+                                                android:layout_marginEnd="@dimen/size_12dp"
+                                                android:layout_marginRight="@dimen/size_12dp"
+                                                app:layout_constraintBottom_toBottomOf="parent"
+                                                app:layout_constraintEnd_toEndOf="parent" />
+                                            <ImageView
+                                                android:id="@+id/iv_dot_right"
+                                                android:layout_width="@dimen/size_6dp"
+                                                android:layout_height="@dimen/size_6dp"
+                                                android:src="@drawable/ic_graphic_dot_shape"
+                                                android:scaleType="fitXY"
+
+                                                android:layout_marginEnd="@dimen/size_11dp"
+                                                android:layout_marginRight="@dimen/size_11dp"
+                                                app:layout_constraintBottom_toBottomOf="@id/iv_star_right"
+                                                app:layout_constraintEnd_toStartOf="@id/iv_star_right" />
+                                            <ImageView
+                                                android:id="@+id/iv_donuts_right"
+                                                android:layout_width="@dimen/size_10dp"
+                                                android:layout_height="@dimen/size_10dp"
+                                                android:src="@drawable/ic_graphic_donuts_shape"
+                                                android:scaleType="fitXY"
+
+                                                android:layout_marginBottom="@dimen/size_6dp"
+                                                android:layout_marginEnd="@dimen/size_9dp"
+                                                android:layout_marginRight="@dimen/size_9dp"
+                                                app:layout_constraintEnd_toEndOf="parent"
+                                                app:layout_constraintBottom_toTopOf="@id/iv_star_right" />
+
+                                        </androidx.constraintlayout.widget.ConstraintLayout>
+                                    </androidx.cardview.widget.CardView>
 
                                     <androidx.cardview.widget.CardView
                                         android:id="@+id/cv_home_today_sentence_0"
@@ -151,8 +258,8 @@
                                         android:layout_marginBottom="@dimen/margin_card_inner_text_start_and_end_20dp"
                                         android:layout_marginStart="@dimen/margin_component_inset_20dp"
                                         android:layout_marginLeft="@dimen/margin_component_inset_20dp"
-                                        android:layout_marginEnd="@dimen/margin_card_end_space"
-                                        android:layout_marginRight="@dimen/margin_card_end_space">
+                                        android:layout_marginEnd="@dimen/size_8dp"
+                                        android:layout_marginRight="@dimen/size_8dp">
                                         <androidx.constraintlayout.widget.ConstraintLayout
                                             android:layout_width="@dimen/size_card_home_today_sentence_width"
                                             android:layout_height="@dimen/size_card_home_today_sentence_height"
@@ -208,16 +315,36 @@
                                 <FrameLayout
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content">
-                                    <include
+                                    <androidx.cardview.widget.CardView
                                         android:id="@+id/cv_home_today_sentence_zero_1"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        layout="@layout/cardview_home_today_sentence_zero_1"
+                                        app:cardCornerRadius="@dimen/size_card_radius_7dp"
+                                        app:cardElevation="@dimen/size_10dp"
 
                                         android:layout_marginTop="@dimen/margin_card_top_space"
                                         android:layout_marginBottom="@dimen/margin_card_inner_text_start_and_end_20dp"
-                                        android:layout_marginEnd="@dimen/margin_card_end_space"
-                                        android:layout_marginRight="@dimen/margin_card_end_space" />
+                                        android:layout_marginStart="@dimen/size_8dp"
+                                        android:layout_marginLeft="@dimen/size_8dp"
+                                        android:layout_marginEnd="@dimen/size_8dp"
+                                        android:layout_marginRight="@dimen/size_8dp">
+                                        <androidx.constraintlayout.widget.ConstraintLayout
+                                            android:layout_width="@dimen/size_card_home_today_sentence_width"
+                                            android:layout_height="@dimen/size_card_home_today_sentence_height">
+                                            <ImageView
+                                                android:id="@+id/iv_leaf_tripple"
+                                                android:layout_width="@dimen/size_iv_leaf_triple_width"
+                                                android:layout_height="@dimen/size_iv_leaf_triple_height"
+                                                android:src="@drawable/ic_graphic_leaf_triple"
+                                                android:scaleType="fitXY"
+
+                                                android:layout_marginTop="@dimen/size_10dp"
+                                                app:layout_constraintTop_toTopOf="parent"
+                                                app:layout_constraintBottom_toBottomOf="parent"
+                                                app:layout_constraintEnd_toEndOf="parent"
+                                                app:layout_constraintStart_toStartOf="parent" />
+                                        </androidx.constraintlayout.widget.ConstraintLayout>
+                                    </androidx.cardview.widget.CardView>
                                     <androidx.cardview.widget.CardView
                                         android:id="@+id/cv_home_today_sentence_1"
                                         android:layout_width="wrap_content"
@@ -227,8 +354,10 @@
 
                                         android:layout_marginTop="@dimen/margin_card_top_space"
                                         android:layout_marginBottom="@dimen/margin_card_inner_text_start_and_end_20dp"
-                                        android:layout_marginEnd="@dimen/margin_card_end_space"
-                                        android:layout_marginRight="@dimen/margin_card_end_space">
+                                        android:layout_marginStart="@dimen/size_8dp"
+                                        android:layout_marginLeft="@dimen/size_8dp"
+                                        android:layout_marginEnd="@dimen/size_8dp"
+                                        android:layout_marginRight="@dimen/size_8dp">
                                         <androidx.constraintlayout.widget.ConstraintLayout
                                             android:layout_width="@dimen/size_card_home_today_sentence_width"
                                             android:layout_height="@dimen/size_card_home_today_sentence_height"
@@ -284,16 +413,37 @@
                                 <FrameLayout
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content">
-                                    <include
+                                    <androidx.cardview.widget.CardView
                                         android:id="@+id/cv_home_today_sentence_zero_2"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        layout="@layout/cardview_home_today_sentence_zero_2"
+                                        app:cardCornerRadius="@dimen/size_card_radius_7dp"
+                                        app:cardElevation="@dimen/size_10dp"
 
                                         android:layout_marginTop="@dimen/margin_card_top_space"
                                         android:layout_marginBottom="@dimen/margin_card_inner_text_start_and_end_20dp"
-                                        android:layout_marginEnd="@dimen/margin_card_end_space"
-                                        android:layout_marginRight="@dimen/margin_card_end_space" />
+                                        android:layout_marginStart="@dimen/size_8dp"
+                                        android:layout_marginLeft="@dimen/size_8dp"
+                                        android:layout_marginEnd="@dimen/size_8dp"
+                                        android:layout_marginRight="@dimen/size_8dp">
+                                        <androidx.constraintlayout.widget.ConstraintLayout
+                                            android:layout_width="@dimen/size_card_home_today_sentence_width"
+                                            android:layout_height="@dimen/size_card_home_today_sentence_height">
+                                            <ImageView
+                                                android:id="@+id/iv_leaf_double"
+                                                android:layout_width="@dimen/size_iv_leaf_double_width"
+                                                android:layout_height="@dimen/size_iv_leaf_double_height"
+                                                android:src="@drawable/ic_graphic_leaf_double"
+                                                android:scaleType="fitXY"
+
+                                                android:layout_marginTop="@dimen/size_10dp"
+                                                app:layout_constraintTop_toTopOf="parent"
+                                                app:layout_constraintBottom_toBottomOf="parent"
+                                                app:layout_constraintEnd_toEndOf="parent"
+                                                app:layout_constraintStart_toStartOf="parent" />
+
+                                        </androidx.constraintlayout.widget.ConstraintLayout>
+                                    </androidx.cardview.widget.CardView>
                                     <androidx.cardview.widget.CardView
                                         android:id="@+id/cv_home_today_sentence_2"
                                         android:layout_width="wrap_content"
@@ -303,8 +453,10 @@
 
                                         android:layout_marginTop="@dimen/margin_card_top_space"
                                         android:layout_marginBottom="@dimen/margin_card_inner_text_start_and_end_20dp"
-                                        android:layout_marginEnd="@dimen/margin_card_end_space"
-                                        android:layout_marginRight="@dimen/margin_card_end_space">
+                                        android:layout_marginStart="@dimen/size_8dp"
+                                        android:layout_marginLeft="@dimen/size_8dp"
+                                        android:layout_marginEnd="@dimen/size_8dp"
+                                        android:layout_marginRight="@dimen/size_8dp">
                                         <androidx.constraintlayout.widget.ConstraintLayout
                                             android:layout_width="@dimen/size_card_home_today_sentence_width"
                                             android:layout_height="@dimen/size_card_home_today_sentence_height"
@@ -360,16 +512,49 @@
                                 <FrameLayout
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content">
-                                    <include
+                                    <androidx.cardview.widget.CardView
                                         android:id="@+id/cv_home_today_sentence_zero_3"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        layout="@layout/cardview_home_today_sentence_zero_3"
+                                        app:cardCornerRadius="@dimen/size_card_radius_7dp"
+                                        app:cardElevation="@dimen/size_10dp"
 
                                         android:layout_marginTop="@dimen/margin_card_top_space"
                                         android:layout_marginBottom="@dimen/margin_card_inner_text_start_and_end_20dp"
-                                        android:layout_marginEnd="@dimen/margin_card_end_space"
-                                        android:layout_marginRight="@dimen/margin_card_end_space" />
+                                        android:layout_marginStart="@dimen/size_8dp"
+                                        android:layout_marginLeft="@dimen/size_8dp"
+                                        android:layout_marginEnd="@dimen/size_8dp"
+                                        android:layout_marginRight="@dimen/size_8dp">
+                                        <androidx.constraintlayout.widget.ConstraintLayout
+                                            android:layout_width="@dimen/size_card_home_today_sentence_width"
+                                            android:layout_height="@dimen/size_card_home_today_sentence_height">
+                                            <ImageView
+                                                android:id="@+id/iv_flower_red"
+                                                android:layout_width="@dimen/size_iv_flower_red_width"
+                                                android:layout_height="@dimen/size_iv_flower_red_height"
+                                                android:src="@drawable/ic_graphic_flower_red"
+                                                android:scaleType="fitXY"
+
+                                                android:layout_marginTop="@dimen/size_10dp"
+                                                android:layout_marginStart="@dimen/size_63dp"
+                                                android:layout_marginLeft="@dimen/size_63dp"
+                                                app:layout_constraintTop_toTopOf="parent"
+                                                app:layout_constraintBottom_toBottomOf="parent"
+                                                app:layout_constraintStart_toStartOf="parent" />
+                                            <ImageView
+                                                android:layout_width="@dimen/size_iv_leaf_double_width"
+                                                android:layout_height="@dimen/size_iv_leaf_double_height"
+                                                android:src="@drawable/ic_graphic_leaf_double"
+                                                android:scaleType="fitXY"
+                                                android:rotation="23"
+
+                                                android:layout_marginTop="@dimen/size_10dp"
+                                                app:layout_constraintTop_toTopOf="parent"
+                                                app:layout_constraintBottom_toBottomOf="parent"
+                                                app:layout_constraintStart_toEndOf="@id/iv_flower_red" />
+
+                                        </androidx.constraintlayout.widget.ConstraintLayout>
+                                    </androidx.cardview.widget.CardView>
                                     <androidx.cardview.widget.CardView
                                         android:id="@+id/cv_home_today_sentence_3"
                                         android:layout_width="wrap_content"
@@ -379,8 +564,10 @@
 
                                         android:layout_marginTop="@dimen/margin_card_top_space"
                                         android:layout_marginBottom="@dimen/margin_card_inner_text_start_and_end_20dp"
-                                        android:layout_marginEnd="@dimen/margin_card_end_space"
-                                        android:layout_marginRight="@dimen/margin_card_end_space">
+                                        android:layout_marginStart="@dimen/size_8dp"
+                                        android:layout_marginLeft="@dimen/size_8dp"
+                                        android:layout_marginEnd="@dimen/size_8dp"
+                                        android:layout_marginRight="@dimen/size_8dp">
                                         <androidx.constraintlayout.widget.ConstraintLayout
                                             android:layout_width="@dimen/size_card_home_today_sentence_width"
                                             android:layout_height="@dimen/size_card_home_today_sentence_height"
@@ -436,16 +623,58 @@
                                 <FrameLayout
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content">
-                                    <include
+                                    <androidx.cardview.widget.CardView
                                         android:id="@+id/cv_home_today_sentence_zero_4"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        layout="@layout/cardview_home_today_sentence_zero_4"
+                                        app:cardCornerRadius="@dimen/size_card_radius_7dp"
+                                        app:cardElevation="@dimen/size_10dp"
 
                                         android:layout_marginTop="@dimen/margin_card_top_space"
                                         android:layout_marginBottom="@dimen/margin_card_inner_text_start_and_end_20dp"
-                                        android:layout_marginEnd="@dimen/margin_card_end_space"
-                                        android:layout_marginRight="@dimen/margin_card_inner_text_start_and_end_20dp" />
+                                        android:layout_marginEnd="@dimen/size_16dp"
+                                        android:layout_marginRight="@dimen/size_16dp">
+                                        <androidx.constraintlayout.widget.ConstraintLayout
+                                            android:layout_width="@dimen/size_card_home_today_sentence_width"
+                                            android:layout_height="@dimen/size_card_home_today_sentence_height">
+                                            <ImageView
+                                                android:id="@+id/iv_flower_red4"
+                                                android:layout_width="@dimen/size_iv_flower_red_width"
+                                                android:layout_height="@dimen/size_iv_flower_red_height"
+                                                android:src="@drawable/ic_graphic_flower_red"
+                                                android:scaleType="fitXY"
+
+                                                android:layout_marginTop="@dimen/size_31dp"
+                                                android:layout_marginStart="@dimen/size_56dp"
+                                                android:layout_marginLeft="@dimen/size_56dp"
+                                                app:layout_constraintTop_toTopOf="parent"
+                                                app:layout_constraintStart_toStartOf="parent" />
+                                            <ImageView
+                                                android:id="@+id/iv_leaf_tripple4"
+                                                android:layout_width="@dimen/size_iv_leaf_double_width"
+                                                android:layout_height="@dimen/size_iv_leaf_double_height"
+                                                android:src="@drawable/ic_graphic_leaf_triple"
+                                                android:scaleType="fitXY"
+                                                android:rotation="-30"
+
+                                                android:layout_marginTop="@dimen/size_10dp"
+                                                app:layout_constraintTop_toTopOf="parent"
+                                                app:layout_constraintBottom_toBottomOf="parent"
+                                                app:layout_constraintStart_toEndOf="@id/iv_flower_red4" />
+                                            <ImageView
+                                                android:id="@+id/iv_flower_yellow4"
+                                                android:layout_width="@dimen/size_iv_flower_yellow_width"
+                                                android:layout_height="@dimen/size_iv_flower_yellow_height"
+                                                android:src="@drawable/ic_graphic_flower_yellow"
+                                                android:scaleType="fitXY"
+                                                android:rotation="44"
+
+                                                android:layout_marginBottom="@dimen/size_26dp"
+                                                app:layout_constraintBottom_toBottomOf="parent"
+                                                app:layout_constraintStart_toEndOf="@id/iv_leaf_tripple4" />
+
+                                        </androidx.constraintlayout.widget.ConstraintLayout>
+                                    </androidx.cardview.widget.CardView>
                                     <androidx.cardview.widget.CardView
                                         android:id="@+id/cv_home_today_sentence_4"
                                         android:layout_width="wrap_content"
@@ -455,8 +684,8 @@
 
                                         android:layout_marginTop="@dimen/margin_card_top_space"
                                         android:layout_marginBottom="@dimen/margin_card_inner_text_start_and_end_20dp"
-                                        android:layout_marginEnd="@dimen/margin_card_end_space"
-                                        android:layout_marginRight="@dimen/margin_card_inner_text_start_and_end_20dp">
+                                        android:layout_marginEnd="@dimen/size_16dp"
+                                        android:layout_marginRight="@dimen/size_16dp">
                                         <androidx.constraintlayout.widget.ConstraintLayout
                                             android:layout_width="@dimen/size_card_home_today_sentence_width"
                                             android:layout_height="@dimen/size_card_home_today_sentence_height"

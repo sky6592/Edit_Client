@@ -77,7 +77,7 @@ class ReadActivity : AppCompatActivity(), ReadView {
         spannable.setSpan(
             ForegroundColorSpan(Color.parseColor("#5a32dc")),
             0,
-            selectType.length,
+            nickname.length + 1 + selectType.length,
             Spannable.SPAN_EXCLUSIVE_INCLUSIVE
         )
         mBinding.tvInfoOneRead.text = spannable

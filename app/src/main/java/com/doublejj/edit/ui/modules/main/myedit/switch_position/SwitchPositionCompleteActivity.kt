@@ -48,16 +48,6 @@ class SwitchPositionCompleteActivity : AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
 
-        val editor = ApplicationClass.sSharedPreferences.edit()
-        editor.putString(ApplicationClass.X_ACCESS_TOKEN, null)
-        editor.putString(ApplicationClass.USER_POSITION, null)
-        editor.putBoolean(ApplicationClass.MENTOR_AUTH_CONFIRM, false)
-        editor.putString(ApplicationClass.USER_NICKNAME, null)
-        editor.putString(ApplicationClass.USER_EMOTION, null)
-        editor.putString(ApplicationClass.USER_COLOR, null)
-        editor.commit()
-        editor.apply()
-
         ApplicationClass.sActivityList.actFinish()
 
     }

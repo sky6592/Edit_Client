@@ -198,6 +198,7 @@ class JobGroupActivity : AppCompatActivity() {
             builder.setPositiveButton(getString(R.string.tv_dialog_confirm)) { _, _ ->
                 if (mSelectRadioFlag || mEnterRadioFlag) {
                     mBinding.btnJobGroup.setBackgroundResource(R.color.purple)
+                    mEnterRadioFlag = true
                 } else {
                     mBinding.btnJobGroup.setBackgroundResource(R.color.very_light_pink)
                 }
