@@ -163,41 +163,66 @@ class HomeFragment : Fragment(), MainOneshotView, SentenceLimitView {
                 binding.cvHomeTodaySentence4.visibility = View.GONE
             }
             else -> {
-                binding.cvHomeTodaySentenceZero0.visibility = View.GONE
-                binding.cvHomeTodaySentenceZero1.visibility = View.GONE
-                binding.cvHomeTodaySentenceZero2.visibility = View.GONE
-                binding.cvHomeTodaySentenceZero3.visibility = View.GONE
-                binding.cvHomeTodaySentenceZero4.visibility = View.GONE
-                binding.cvHomeTodaySentence0.visibility = View.VISIBLE
-                binding.cvHomeTodaySentence1.visibility = View.VISIBLE
-                binding.cvHomeTodaySentence2.visibility = View.VISIBLE
-                binding.cvHomeTodaySentence3.visibility = View.VISIBLE
-                binding.cvHomeTodaySentence4.visibility = View.VISIBLE
+                binding.cvHomeTodaySentenceZero0.visibility = View.VISIBLE
+                binding.cvHomeTodaySentenceZero1.visibility = View.VISIBLE
+                binding.cvHomeTodaySentenceZero2.visibility = View.VISIBLE
+                binding.cvHomeTodaySentenceZero3.visibility = View.VISIBLE
+                binding.cvHomeTodaySentenceZero4.visibility = View.VISIBLE
+                binding.cvHomeTodaySentence0.visibility = View.GONE
+                binding.cvHomeTodaySentence1.visibility = View.GONE
+                binding.cvHomeTodaySentence2.visibility = View.GONE
+                binding.cvHomeTodaySentence3.visibility = View.GONE
+                binding.cvHomeTodaySentence4.visibility = View.GONE
 
                 if (todaySentences.size >= 1) {
                     binding.cvHomeTodaySentence0.visibility = View.VISIBLE
                     binding.tvTodaySentenceWriter0.text = todaySentences.get(0).nickName
                     binding.tvTodaySentenceContent0.text = todaySentences.get(0).coverLetterContent
+                    binding.cvHomeTodaySentenceZero0.visibility = View.GONE
+                    binding.cvHomeTodaySentenceZero1.visibility = View.VISIBLE
+                    binding.cvHomeTodaySentenceZero2.visibility = View.VISIBLE
+                    binding.cvHomeTodaySentenceZero3.visibility = View.VISIBLE
+                    binding.cvHomeTodaySentenceZero4.visibility = View.VISIBLE
                 }
                 if (todaySentences.size >= 2) {
                     binding.cvHomeTodaySentence1.visibility = View.VISIBLE
                     binding.tvTodaySentenceWriter1.text = todaySentences.get(1).nickName
                     binding.tvTodaySentenceContent1.text = todaySentences.get(1).coverLetterContent
+                    binding.cvHomeTodaySentenceZero0.visibility = View.GONE
+                    binding.cvHomeTodaySentenceZero1.visibility = View.GONE
+                    binding.cvHomeTodaySentenceZero2.visibility = View.VISIBLE
+                    binding.cvHomeTodaySentenceZero3.visibility = View.VISIBLE
+                    binding.cvHomeTodaySentenceZero4.visibility = View.VISIBLE
                 }
                 if (todaySentences.size >= 3) {
                     binding.cvHomeTodaySentence2.visibility = View.VISIBLE
                     binding.tvTodaySentenceWriter2.text = todaySentences.get(2).nickName
                     binding.tvTodaySentenceContent2.text = todaySentences.get(2).coverLetterContent
+                    binding.cvHomeTodaySentenceZero0.visibility = View.GONE
+                    binding.cvHomeTodaySentenceZero1.visibility = View.GONE
+                    binding.cvHomeTodaySentenceZero2.visibility = View.GONE
+                    binding.cvHomeTodaySentenceZero3.visibility = View.VISIBLE
+                    binding.cvHomeTodaySentenceZero4.visibility = View.VISIBLE
                 }
                 if (todaySentences.size >= 4) {
                     binding.cvHomeTodaySentence3.visibility = View.VISIBLE
                     binding.tvTodaySentenceWriter3.text = todaySentences.get(3).nickName
                     binding.tvTodaySentenceContent3.text = todaySentences.get(3).coverLetterContent
+                    binding.cvHomeTodaySentenceZero0.visibility = View.GONE
+                    binding.cvHomeTodaySentenceZero1.visibility = View.GONE
+                    binding.cvHomeTodaySentenceZero2.visibility = View.GONE
+                    binding.cvHomeTodaySentenceZero3.visibility = View.GONE
+                    binding.cvHomeTodaySentenceZero4.visibility = View.VISIBLE
                 }
                 if (todaySentences.size >= 5) {
                     binding.cvHomeTodaySentence4.visibility = View.VISIBLE
                     binding.tvTodaySentenceWriter4.text = todaySentences.get(4).nickName
                     binding.tvTodaySentenceContent4.text = todaySentences.get(4).coverLetterContent
+                    binding.cvHomeTodaySentenceZero0.visibility = View.GONE
+                    binding.cvHomeTodaySentenceZero1.visibility = View.GONE
+                    binding.cvHomeTodaySentenceZero2.visibility = View.GONE
+                    binding.cvHomeTodaySentenceZero3.visibility = View.GONE
+                    binding.cvHomeTodaySentenceZero4.visibility = View.GONE
                 }
             }
         }
@@ -205,36 +230,36 @@ class HomeFragment : Fragment(), MainOneshotView, SentenceLimitView {
 
     fun setSentenceBox(sentences: MainSentences) {
         // 코멘트 대기
-        if (sentences.waitingForCommentCoverLetters.size > 0) {
+        if (sentences.waitingForCommentCoverLetters.size == 1) {
             binding.llHomeWaitedComment0.visibility = View.VISIBLE
             binding.tvSentenceWriter0.text = sentences.waitingForCommentCoverLetters.get(0).nickName
             binding.tvSentenceContent0.text = sentences.waitingForCommentCoverLetters.get(0).coverLetterContent
         }
-        if (sentences.waitingForCommentCoverLetters.size > 1) {
+        if (sentences.waitingForCommentCoverLetters.size == 2) {
             binding.llHomeWaitedComment1.visibility = View.VISIBLE
             binding.tvSentenceWriter1.text = sentences.waitingForCommentCoverLetters.get(1).nickName
             binding.tvSentenceContent1.text = sentences.waitingForCommentCoverLetters.get(1).coverLetterContent
         }
 
         // 채택 완료
-        if (sentences.adoptedCoverLetters.size > 0) {
+        if (sentences.adoptedCoverLetters.size == 1) {
             binding.llHomeCompletedAdoption0.visibility = View.VISIBLE
             binding.tvSentenceWriter2.text = sentences.adoptedCoverLetters.get(0).nickName
             binding.tvSentenceContent2.text = sentences.adoptedCoverLetters.get(0).coverLetterContent
         }
-        if (sentences.waitingForCommentCoverLetters.size > 1) {
+        if (sentences.adoptedCoverLetters.size == 2) {
             binding.llHomeCompletedAdoption1.visibility = View.VISIBLE
             binding.tvSentenceWriter3.text = sentences.adoptedCoverLetters.get(1).nickName
             binding.tvSentenceContent3.text = sentences.adoptedCoverLetters.get(1).coverLetterContent
         }
 
         // 공감 정렬
-        if (sentences.sympathiesCoverLetters.size > 0) {
+        if (sentences.sympathiesCoverLetters.size == 1) {
             binding.llHomeSympathyComment0.visibility = View.VISIBLE
             binding.tvSentenceWriter4.text = sentences.sympathiesCoverLetters.get(0).nickName
             binding.tvSentenceContent4.text = sentences.sympathiesCoverLetters.get(0).coverLetterContent
         }
-        if (sentences.waitingForCommentCoverLetters.size > 1) {
+        if (sentences.sympathiesCoverLetters.size == 2) {
             binding.llHomeSympathyComment1.visibility = View.VISIBLE
             binding.tvSentenceWriter5.text = sentences.sympathiesCoverLetters.get(1).nickName
             binding.tvSentenceContent5.text = sentences.sympathiesCoverLetters.get(1).coverLetterContent
