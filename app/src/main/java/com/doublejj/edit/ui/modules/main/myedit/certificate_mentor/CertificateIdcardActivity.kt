@@ -96,11 +96,7 @@ class CertificateIdcardActivity : AppCompatActivity(), AuthMentorView {
                             // 권한 설정 요청
                             ActivityCompat.requestPermissions(
                                 this,
-                                arrayOf<kotlin.String?>(
-                                    android.Manifest.permission.WRITE_EXTERNAL_STORAGE
-                                ),
-                                1
-                            )
+                                arrayOf<kotlin.String?>(android.Manifest.permission.WRITE_EXTERNAL_STORAGE),1)
                         }
                     }
             }

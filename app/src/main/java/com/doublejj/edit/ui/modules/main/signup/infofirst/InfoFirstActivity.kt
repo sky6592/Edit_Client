@@ -244,7 +244,7 @@ class InfoFirstActivity : AppCompatActivity(), InfoFirstView {
 
                     //핸드폰 정규식
                     if (s.matches(phonePattern.toRegex()) && !mPhoneSpacingFlag) {
-                        mBinding.tvPhoneCaptionInfoFirst.setText(R.color.purple)
+                        mBinding.tvPhoneCaptionInfoFirst.setTextColor(R.color.purple)
                         mBinding.tvPhoneCaptionInfoFirst.text =
                             getString(R.string.tv_phone_caption_result_info)
                         mPhoneFlag = true

@@ -19,6 +19,9 @@ class SwitchPositionCompleteActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_switch_position_complete)
 
+        // add activity at sActivityList
+        ApplicationClass.sActivityList.add(this)
+
         /** toolbar buttons **/
         binding.ibBack.setOnClickListener {
             // 초기화면으로 가기
@@ -33,25 +36,19 @@ class SwitchPositionCompleteActivity : AppCompatActivity() {
         val spanStr = CustomSpannableString(applicationContext).getPurpleActiveColorText(textTitle, nickName, R.color.purple_active)
         binding.tvCompleteTitle.setText(spanStr)
         
-        binding.btnRelogin.setOnClickListener { 
+        binding.btnRelogin.setOnClickListener {
             // 초기화면으로 가기
             val sendIntent = Intent(this, SplashActivity::class.java)
             sendIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
             startActivity(sendIntent)
+
         }
     }
 
     override fun onDestroy() {
         super.onDestroy()
 
-        val editor = ApplicationClass.sSharedPreferences.edit()
-        editor.putString(ApplicationClass.X_ACCESS_TOKEN, null)
-        editor.putString(ApplicationClass.USER_POSITION, null)
-        editor.putBoolean(ApplicationClass.MENTOR_AUTH_CONFIRM, false)
-        editor.putString(ApplicationClass.USER_NICKNAME, null)
-        editor.putString(ApplicationClass.USER_EMOTION, null)
-        editor.putString(ApplicationClass.USER_COLOR, null)
-        editor.commit()
-        editor.apply()
+        ApplicationClass.sActivityList.actFinish()
+
     }
 }

@@ -37,7 +37,7 @@ class WritingCommentActivity : AppCompatActivity() {
         /** sentence **/
         writingRequest.coverLetterId = intent.getLongExtra("coverLetterId", -1L)
         binding.ivCharacter.setImageDrawable(ContextCompat.getDrawable(applicationContext, intent.getIntExtra("ivCharacter", R.drawable.selector_char_purple_active_0)))
-        binding.tvSentenceWriter.text = intent.getStringExtra("tvSentenceWrditer").toString()
+        binding.tvSentenceWriter.text = intent.getStringExtra("tvSentenceWriter").toString()
         binding.tvOccupationType.text = intent.getStringExtra("tvOccupationType").toString()
         binding.tvSelfWritingType.text = intent.getStringExtra("tvSelfWritingType").toString()
         binding.tvSentenceContent.text = intent.getStringExtra("tvSentenceContent").toString()
