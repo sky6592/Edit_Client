@@ -12,6 +12,7 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.TextView
 import androidx.databinding.DataBindingUtil
+import com.doublejj.edit.ApplicationClass
 import com.doublejj.edit.R
 import com.doublejj.edit.data.api.services.switch_position.SwitchPositionView
 import com.doublejj.edit.data.api.services.switch_position.SwitchToMentorService
@@ -32,6 +33,9 @@ class SwitchToMentorReasonActivity : AppCompatActivity(), SwitchPositionView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_switch_position_reason)
+
+        // add activity at sActivityList
+        ApplicationClass.sActivityList.add(this)
 
         /** toolbar buttons **/
         binding.ibBack.setOnClickListener {
@@ -166,5 +170,11 @@ class SwitchToMentorReasonActivity : AppCompatActivity(), SwitchPositionView {
 
     override fun onSwitchPositionFailure(message: String) {
         CustomSnackbar.make(binding.root, message, Snackbar.LENGTH_SHORT).show()
+    }
+
+
+    override fun onDestroy() {
+        super.onDestroy()
+        ApplicationClass.sActivityList.remove(this)
     }
 }
