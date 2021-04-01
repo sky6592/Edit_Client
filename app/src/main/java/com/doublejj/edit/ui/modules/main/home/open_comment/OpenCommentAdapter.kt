@@ -137,7 +137,7 @@ class OpenCommentAdapter(
         holder.tvCommentContent.text = commentData.commentContent
 
         // 내 문장에 코멘트를 달아줬다면 감사합니다, 채택하기 visible
-        if (isMySentence) {
+        if (isMySentence && !commentData.isMine) {
             holder.tbThanks.visibility = View.VISIBLE
             holder.llBtnThanks.visibility = View.VISIBLE
             holder.tbAdoption.visibility = View.VISIBLE

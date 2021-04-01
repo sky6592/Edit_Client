@@ -1,6 +1,7 @@
 package com.doublejj.edit.ui.modules.main.myedit.settings
 
 import android.content.Intent
+import android.content.pm.PackageInfo
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
@@ -38,10 +39,17 @@ class SettingsActivity : AppCompatActivity() {
         // TODO : 버전정보 페이지
 //        binding.llBtnAppVersion.setOnClickListener {
 //        }
+//        binding.
+
         // 회원탈퇴 페이지
         binding.llBtnAccountWithdrawal.setOnClickListener { 
             val intent = Intent(this, WithdrawalActivity::class.java)
             startActivity(intent)
         }
+    }
+
+    fun getVersionInfo() : String {
+        val info: PackageInfo = applicationContext.packageManager.getPackageInfo(applicationContext.packageName, 0)
+        return info.versionName
     }
 }

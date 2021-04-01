@@ -13,6 +13,8 @@
 
     <application
         android:name=".ApplicationClass"
+        android:allowBackup="false"
+        android:fullBackupContent="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:requestLegacyExternalStorage="true"
@@ -20,17 +22,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Edit"
         android:usesCleartextTraffic="true"
-        tools:targetApi="m"
-        android:allowBackup="false"
-        android:fullBackupContent="false">
+        tools:targetApi="m">
+        <activity android:name=".ui.modules.main.myedit.my_comment.open_comment.LookupMyCommentActivity"></activity>
+        <activity android:name=".ui.modules.main.myedit.my_comment.MyCommentListActivity" />
         <activity
             android:name=".ui.modules.main.signup.entercode.EnterCodeActivity"
             android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".ui.modules.main.assistance.pw.PwFindActivity"
             android:windowSoftInputMode="adjustResize" />
-        <activity android:name=".ui.modules.main.assistance.email.EmailFindActivity"
-            android:windowSoftInputMode="adjustResize"/>
+        <activity
+            android:name=".ui.modules.main.assistance.email.EmailFindActivity"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".ui.modules.main.signup.emailcheck.EmailCheckActivity"
             android:windowSoftInputMode="adjustResize" />
