@@ -119,7 +119,6 @@ class CertificateIdcardActivity : AppCompatActivity(), AuthMentorView {
         binding.btnSelect.setOnClickListener {
             if (binding.btnSelect.isEnabled && selectedImageUri != null) {
                 val encodedImage = bitmapToByteArray()
-
                 // apply auth mentor API
                 AuthMentorService(this).tryPostAuthMentor(ImageRequest(encodedImage))
             }
@@ -221,12 +220,6 @@ class CertificateIdcardActivity : AppCompatActivity(), AuthMentorView {
         CustomSnackbar.make(binding.root, message, Snackbar.LENGTH_SHORT).show()
 
         CustomLoadingDialog(this).dismiss()
-    }
-
-    override fun onResume() {
-        super.onResume()
-
-        selectedImageUri = null
     }
 
     override fun onDestroy() {

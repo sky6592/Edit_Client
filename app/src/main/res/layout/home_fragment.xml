@@ -632,6 +632,8 @@
 
                                         android:layout_marginTop="@dimen/margin_card_top_space"
                                         android:layout_marginBottom="@dimen/margin_card_inner_text_start_and_end_20dp"
+                                        android:layout_marginStart="@dimen/size_8dp"
+                                        android:layout_marginLeft="@dimen/size_8dp"
                                         android:layout_marginEnd="@dimen/size_16dp"
                                         android:layout_marginRight="@dimen/size_16dp">
                                         <androidx.constraintlayout.widget.ConstraintLayout
@@ -684,6 +686,8 @@
 
                                         android:layout_marginTop="@dimen/margin_card_top_space"
                                         android:layout_marginBottom="@dimen/margin_card_inner_text_start_and_end_20dp"
+                                        android:layout_marginStart="@dimen/size_8dp"
+                                        android:layout_marginLeft="@dimen/size_8dp"
                                         android:layout_marginEnd="@dimen/size_16dp"
                                         android:layout_marginRight="@dimen/size_16dp">
                                         <androidx.constraintlayout.widget.ConstraintLayout
