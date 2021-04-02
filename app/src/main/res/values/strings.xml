@@ -525,6 +525,7 @@
     <!-- Find Email -->
     <string name="tv_title_email_find">에딧에 가입했던\n정보를 입력해주세요. </string>
     <string name="btn_email_find">이메일 찾기</string>
+    <string name="btn_pw_find">비밀번호 찾기</string>
     <string name="tv_name_result_email_find">이름 입력감사합니다!</string>
     <string name="tv_check_info_find_email">정보를 다시 확인해주세요!</string>
 

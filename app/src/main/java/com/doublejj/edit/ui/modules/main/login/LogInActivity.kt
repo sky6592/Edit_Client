@@ -134,7 +134,6 @@ class LogInActivity : AppCompatActivity(), LogInView {
                 ).show()
             }
         }
-
     }
 
     fun onClick(v: View) {

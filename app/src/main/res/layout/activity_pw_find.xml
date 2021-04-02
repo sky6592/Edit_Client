@@ -39,7 +39,7 @@
                     android:layout_weight="1"
                     android:fontFamily="@font/noto_sans_kr_bold"
                     android:gravity="center"
-                    android:text="@string/btn_email_find"
+                    android:text="@string/btn_pw_find"
                     android:textColor="@color/black" />
             </LinearLayout>
 
