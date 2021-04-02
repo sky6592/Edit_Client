@@ -75,7 +75,7 @@
                     android:gravity="center"
                     android:text="@string/tv_info_two_select_type"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/tv_18sp" />
+                    android:textSize="@dimen/size_18dp" />
             </LinearLayout>
         </LinearLayout>
 
@@ -107,7 +107,7 @@
                     android:fontFamily="@font/noto_sans_kr_regular"
                     android:text="@string/tv_mentor"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/tv_17sp" />
+                    android:textSize="@dimen/size_17dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -116,7 +116,7 @@
                     android:gravity="center"
                     android:text="@string/tv_mentor_info"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/tv_12sp" />
+                    android:textSize="@dimen/size_12dp" />
             </LinearLayout>
 
             <!--멘티선택-->
@@ -139,7 +139,7 @@
                     android:fontFamily="@font/noto_sans_kr_regular"
                     android:text="@string/tv_mentee"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/tv_17sp" />
+                    android:textSize="@dimen/size_17dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -148,7 +148,7 @@
                     android:gravity="center"
                     android:text="@string/tv_mentee_info"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/tv_12sp" />
+                    android:textSize="@dimen/size_12dp" />
 
             </LinearLayout>
         </LinearLayout>

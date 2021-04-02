@@ -35,6 +35,7 @@ import com.doublejj.edit.ui.modules.main.myedit.manage_coin.ManageCoinActivity
 import com.doublejj.edit.ui.modules.main.myedit.my_comment.MyCommentListActivity
 import com.doublejj.edit.ui.modules.main.myedit.my_sentence_completed.MySentenceCompletedActivity
 import com.doublejj.edit.ui.modules.main.myedit.my_sentence_not_adopted.MySentenceNotAdoptedActivity
+import com.doublejj.edit.ui.modules.main.myedit.my_sympathized_sentence.MySympathizedSentenceActivity
 import com.doublejj.edit.ui.modules.main.myedit.profile.ProfileActivity
 import com.doublejj.edit.ui.modules.main.myedit.settings.SettingsActivity
 import com.doublejj.edit.ui.modules.main.myedit.switch_position.SwitchToMenteeActivity
@@ -111,8 +112,9 @@ class MyeditFragment : Fragment(), ProfileInfoView, LogoutView, AuthMentorStatus
             startActivity(sendIntent)
         }
         binding.ibMenuSympathy.setOnClickListener {
-            // TODO : 공감 페이지
-            CustomSnackbar.make(binding.root, getString(R.string.tv_to_be_develop), Snackbar.LENGTH_SHORT).show()
+            // 공감 페이지
+            val sendIntent = Intent(activity, MySympathizedSentenceActivity::class.java)
+            startActivity(sendIntent)
         }
         binding.ibMenuSentence.setOnClickListener {
             // 자소서 목록 페이지 (멘티)
@@ -125,10 +127,9 @@ class MyeditFragment : Fragment(), ProfileInfoView, LogoutView, AuthMentorStatus
             startActivity(sendIntent)
         }
         binding.ibMenuCommentList.setOnClickListener {
-            // TODO : 코멘트 목록 페이지 (멘토)
+            // 코멘트 목록 페이지 (멘토)
             val sendIntent = Intent(activity, MyCommentListActivity::class.java)
             startActivity(sendIntent)
-            CustomSnackbar.make(binding.root, getString(R.string.tv_to_be_develop), Snackbar.LENGTH_SHORT).show()
         }
 
         // TODO : 임시저장 추후 업데이트

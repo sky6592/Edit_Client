@@ -76,7 +76,7 @@
                         android:gravity="center"
                         android:text="@string/tv_info_email_check"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/tv_18sp" />
+                        android:textSize="@dimen/size_18dp" />
                 </LinearLayout>
 
                 <!--Enter Email-->
@@ -94,7 +94,7 @@
                         android:fontFamily="@font/noto_sans_kr_regular"
                         android:text="@string/tv_email_info"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/tv_15sp" />
+                        android:textSize="@dimen/size_15dp" />
 
                     <EditText
                         android:id="@+id/et_email_check"
@@ -107,7 +107,7 @@
                         android:inputType="textPersonName|textNoSuggestions"
                         android:paddingHorizontal="@dimen/hint_padding_10dp"
                         android:paddingTop="@dimen/hint_padding_5dp"
-                        android:textSize="@dimen/tv_15sp" />
+                        android:textSize="@dimen/size_15dp" />
 
                     <TextView
                         android:id="@+id/tv_caption_email_check"
@@ -117,7 +117,7 @@
                         android:fontFamily="@font/noto_sans_kr_regular"
                         android:text="@string/tv_caption_email_check"
                         android:textColor="@color/very_light_pink"
-                        android:textSize="@dimen/tv_10sp" />
+                        android:textSize="@dimen/size_10dp" />
 
                 </LinearLayout>
 
