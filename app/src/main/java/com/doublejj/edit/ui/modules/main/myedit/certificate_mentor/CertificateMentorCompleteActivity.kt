@@ -40,21 +40,14 @@ class CertificateMentorCompleteActivity : AppCompatActivity() {
         binding.tvCompleteTitle.setText(spanStr)
         
         binding.btnMain.setOnClickListener {
+
             // 메인화면으로 가기
-            onDestroy()
+            val sendIntent = Intent(this, MainActivity::class.java)
+            sendIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+            startActivity(sendIntent)
+
+            sActivityList.actFinish()
         }
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        ApplicationClass.sActivityList.remove(this)
-
-        // 메인화면으로 가기
-        val sendIntent = Intent(this, MainActivity::class.java)
-        sendIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
-        startActivity(sendIntent)
-
-        sActivityList.actFinish()
     }
 
 }
