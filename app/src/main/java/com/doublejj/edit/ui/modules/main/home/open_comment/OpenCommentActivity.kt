@@ -65,8 +65,6 @@ class OpenCommentActivity : AppCompatActivity(), CommentsOfSentenceView {
             sentenceId = sentenceId,
             page = 1
         )
-
-
     }
 
     fun setAdapter(commentDataList: MutableList<CommentData>) {
@@ -82,13 +80,13 @@ class OpenCommentActivity : AppCompatActivity(), CommentsOfSentenceView {
         if (response.isSuccess) {
             val commentDataList = response.result.commentInfos
             if (commentDataList.size > 0) {
-                binding.llZeroComment.visibility = View.INVISIBLE
+                binding.llZeroComment.visibility = View.GONE
                 binding.rvComment.visibility = View.VISIBLE
                 setAdapter(commentDataList)
             }
             else {
                 binding.llZeroComment.visibility = View.VISIBLE
-                binding.rvComment.visibility = View.INVISIBLE
+                binding.rvComment.visibility = View.GONE
             }
         }
         else {

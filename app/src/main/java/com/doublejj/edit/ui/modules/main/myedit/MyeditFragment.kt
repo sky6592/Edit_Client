@@ -32,6 +32,7 @@ import com.doublejj.edit.ui.modules.main.myedit.certificate_mentor.CertificateLo
 import com.doublejj.edit.ui.modules.main.myedit.certificate_mentor.CertificateMentorActivity
 import com.doublejj.edit.ui.modules.main.myedit.certificate_mentor.CertificateRejectActivity
 import com.doublejj.edit.ui.modules.main.myedit.manage_coin.ManageCoinActivity
+import com.doublejj.edit.ui.modules.main.myedit.my_comment.MyCommentListActivity
 import com.doublejj.edit.ui.modules.main.myedit.my_sentence_completed.MySentenceCompletedActivity
 import com.doublejj.edit.ui.modules.main.myedit.my_sentence_not_adopted.MySentenceNotAdoptedActivity
 import com.doublejj.edit.ui.modules.main.myedit.profile.ProfileActivity
@@ -125,6 +126,8 @@ class MyeditFragment : Fragment(), ProfileInfoView, LogoutView, AuthMentorStatus
         }
         binding.ibMenuCommentList.setOnClickListener {
             // TODO : 코멘트 목록 페이지 (멘토)
+            val sendIntent = Intent(activity, MyCommentListActivity::class.java)
+            startActivity(sendIntent)
             CustomSnackbar.make(binding.root, getString(R.string.tv_to_be_develop), Snackbar.LENGTH_SHORT).show()
         }
 
