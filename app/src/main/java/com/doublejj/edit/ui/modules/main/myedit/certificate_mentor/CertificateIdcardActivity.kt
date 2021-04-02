@@ -223,11 +223,11 @@ class CertificateIdcardActivity : AppCompatActivity(), AuthMentorView {
         CustomLoadingDialog(this).dismiss()
     }
 
-    override fun onResume() {
-        super.onResume()
-
-        selectedImageUri = null
-    }
+//    override fun onResume() {
+//        super.onResume()
+//
+//        selectedImageUri = null
+//    }
 
     override fun onDestroy() {
         super.onDestroy()
