@@ -198,7 +198,6 @@ class InfoSecondActivity : AppCompatActivity(), InfoSecondView {
 
                     Log.d("sky", mBinding.etPwInfoSecond.text.toString() + ", " + s.toString())
 
-
                     //비밀번호 정규식
                     if (s.toString().matches(pwPattern.toRegex())) {
                         mBinding.tvRePwCaptionInfoFirst.setTextColor(R.color.purple)
@@ -214,7 +213,6 @@ class InfoSecondActivity : AppCompatActivity(), InfoSecondView {
                         mBinding.tvRePwCaptionInfoFirst.setTextColor(R.color.purple)
                         mBinding.tvRePwCaptionInfoFirst.text = getString(R.string.tv_pw_result_info)
                         mRePwFlag = true
-
                     } else {
                         mBinding.btnInfoSecond.setBackgroundResource(R.color.very_light_pink)
                         mBinding.tvRePwCaptionInfoFirst.setTextColor(R.color.purple)

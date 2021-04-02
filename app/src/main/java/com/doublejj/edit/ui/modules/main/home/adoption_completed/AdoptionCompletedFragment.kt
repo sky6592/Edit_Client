@@ -14,7 +14,7 @@ import com.doublejj.edit.data.api.services.adoption_completed.AdoptionCompletedV
 import com.doublejj.edit.data.models.lookup_sentences_home.LookupSentenceResponse
 import com.doublejj.edit.databinding.AdoptionCompletedFragmentBinding
 import com.doublejj.edit.ui.modules.main.MainActivity
-import com.doublejj.edit.ui.modules.main.home.today_sentence.SentenceAdapter
+import com.doublejj.edit.ui.modules.main.home.today_sentence.SentenceFragmentAdapter
 import com.doublejj.edit.ui.utils.snackbar.CustomSnackbar
 import com.google.android.material.snackbar.Snackbar
 
@@ -62,7 +62,7 @@ class AdoptionCompletedFragment : Fragment(), AdoptionCompletedView {
 
     override fun onGetAdoptionCompletedSentenceSuccess(response: LookupSentenceResponse) {
         if (response.isSuccess) {
-            binding.rvSentence.adapter = SentenceAdapter(requireContext(), response.result, requireActivity().supportFragmentManager)
+            binding.rvSentence.adapter = SentenceFragmentAdapter(requireContext(), response.result.coverLetters, requireActivity().supportFragmentManager)
         }
         else {
             CustomSnackbar.make(requireView(), response.message.toString(), Snackbar.LENGTH_SHORT).show()

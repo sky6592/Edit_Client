@@ -206,10 +206,8 @@ class InfoFirstActivity : AppCompatActivity(), InfoFirstView {
         mBinding.etPhoneInfoFirst.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
             }
-
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
             }
-
             @SuppressLint("ResourceAsColor", "ResourceType")
             override fun afterTextChanged(s: Editable?) {
                 if (s != null) {
@@ -221,18 +219,15 @@ class InfoFirstActivity : AppCompatActivity(), InfoFirstView {
                         mPhoneSpacingFlag = true
                         mPhoneFlag = false
                         mBinding.btnInfoFirst.setBackgroundResource(R.color.very_light_pink)
-
                     } else {
                         mPhoneSpacingFlag = false
                     }
-
                     //엔터 입력 : 다른 내용 입력 되어있는지 확인
                     if (s.toString().contains("\n")) {
                         if (mNameFlag && mNickNameFlag) {
                             mBinding.btnInfoFirst.setBackgroundResource(R.color.purple)
                         }
                     }
-
                     // '-' 정규식
                     if (s.toString().contains("-")) {
                         mBinding.tvPhoneCaptionInfoFirst.setTextColor(R.color.purple)
@@ -241,7 +236,6 @@ class InfoFirstActivity : AppCompatActivity(), InfoFirstView {
                         mBinding.btnInfoFirst.setBackgroundResource(R.color.very_light_pink)
                         mPhoneFlag = false
                     }
-
                     //핸드폰 정규식
                     if (s.matches(phonePattern.toRegex()) && !mPhoneSpacingFlag) {
                         mBinding.tvPhoneCaptionInfoFirst.setTextColor(R.color.purple)

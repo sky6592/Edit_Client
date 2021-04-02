@@ -3,9 +3,12 @@ package com.doublejj.edit.ui.modules.main.myedit.certificate_mentor
 import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.provider.MediaStore
+import android.util.Base64
 import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -14,6 +17,7 @@ import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import com.doublejj.edit.ApplicationClass
 import com.doublejj.edit.R
+import com.doublejj.edit.data.api.retrofitinterfaces.certificate_mentor.ImageRequest
 import com.doublejj.edit.data.api.services.certificate_mentor.AuthMentorService
 import com.doublejj.edit.data.api.services.certificate_mentor.AuthMentorView
 import com.doublejj.edit.data.models.BaseResponse
@@ -22,11 +26,7 @@ import com.doublejj.edit.ui.utils.dialog.CustomLoadingDialog
 import com.doublejj.edit.ui.utils.snackbar.CustomSnackbar
 import com.doublejj.edit.ui.utils.span.CustomSpannableString
 import com.google.android.material.snackbar.Snackbar
-import okhttp3.MediaType.Companion.toMediaType
-import okhttp3.MediaType.Companion.toMediaTypeOrNull
-import okhttp3.MultipartBody
-import okhttp3.RequestBody.Companion.asRequestBody
-import java.io.File
+import java.io.ByteArrayOutputStream
 
 
 class CertificateIdcardActivity : AppCompatActivity(), AuthMentorView {
@@ -36,6 +36,8 @@ class CertificateIdcardActivity : AppCompatActivity(), AuthMentorView {
     val GET_GALLERY_IMAGE: Int = 2000
     private var isToggled = false
     private var selectedImageUri: Uri? = null
+    private var fileName: String? = null
+    private var bitmap: Bitmap? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -94,14 +96,9 @@ class CertificateIdcardActivity : AppCompatActivity(), AuthMentorView {
                             // 권한 설정 요청
                             ActivityCompat.requestPermissions(
                                 this,
-                                arrayOf<kotlin.String?>(
-                                    android.Manifest.permission.WRITE_EXTERNAL_STORAGE
-                                ),
-                                1
-                            )
+                                arrayOf<kotlin.String?>(android.Manifest.permission.WRITE_EXTERNAL_STORAGE),1)
                         }
                     }
-
             }
         }
 
@@ -120,18 +117,23 @@ class CertificateIdcardActivity : AppCompatActivity(), AuthMentorView {
             }
         }
         binding.btnSelect.setOnClickListener {
-            if (binding.btnSelect.isEnabled) {
-
-                val file = File(selectedImageUri!!.path)
-//                if (!file.getParentFile().exists()) file.getParentFile().mkdirs();
-//                if (!file.exists()) file.createNewFile();
-                val requestBody = file.asRequestBody("image/*".toMediaType())
-                val body = MultipartBody.Part.createFormData("file", file.name, requestBody)
+            if (binding.btnSelect.isEnabled && selectedImageUri != null) {
+                val encodedImage = bitmapToByteArray()
 
                 // apply auth mentor API
-                AuthMentorService(this).tryPostAuthMentor(body)
+                AuthMentorService(this).tryPostAuthMentor(ImageRequest(encodedImage))
             }
         }
+    }
+
+    fun bitmapToByteArray() : String {
+        val stream = ByteArrayOutputStream()
+        bitmap!!.compress(Bitmap.CompressFormat.JPEG, 100, stream)
+        val byteArray = stream.toByteArray()
+        val serialized = Base64.encodeToString(byteArray, Base64.NO_WRAP)
+        Log.d("tag", "bitmap converted base64: ${serialized}")
+
+        return serialized
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -147,7 +149,29 @@ class CertificateIdcardActivity : AppCompatActivity(), AuthMentorView {
             // 이미지뷰에 선택한 사진 할당
             selectedImageUri = data.data
             binding.ivImportedIdcard.setImageURI(selectedImageUri)
+
+            // Uri에서 이미지 이름 추출
+            fileName = getImageNameToUri(selectedImageUri!!)
+
+            Log.d("tag", "fileName: $fileName")
+
+            // 이미지 데이터를 비트맵으로 받기
+            bitmap = MediaStore.Images.Media.getBitmap(contentResolver, selectedImageUri)
+            // 비트맵 리사이즈 (800x600)
+            bitmap = Bitmap.createScaledBitmap(bitmap!!, 800, 600, true)
         }
+    }
+
+    fun getImageNameToUri(uri: Uri) : String {
+        val proj: Array<String> = arrayOf(MediaStore.Images.Media.DATA)
+        val cursor = managedQuery(uri, proj, null, null, null)
+        val columnIndex = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA)
+        cursor.moveToFirst()
+
+        val imgPath = cursor.getString(columnIndex)
+//        val imgName = imgPath.substring(imgPath.lastIndexOf("/") + 1)
+
+        return imgPath
     }
 
     fun toggleButton(on: Boolean) {
@@ -184,6 +208,7 @@ class CertificateIdcardActivity : AppCompatActivity(), AuthMentorView {
         if (response.isSuccess) {
             val sendIntent = Intent(this, CertificateMentorCompleteActivity::class.java)
             startActivity(sendIntent)
+            CustomSnackbar.make(binding.root, response.message.toString(), Snackbar.LENGTH_SHORT).show()
         }
         else {
             CustomSnackbar.make(binding.root, response.message.toString(), Snackbar.LENGTH_SHORT).show()
@@ -198,8 +223,16 @@ class CertificateIdcardActivity : AppCompatActivity(), AuthMentorView {
         CustomLoadingDialog(this).dismiss()
     }
 
+    override fun onResume() {
+        super.onResume()
+
+        selectedImageUri = null
+    }
+
     override fun onDestroy() {
         super.onDestroy()
         ApplicationClass.sActivityList.remove(this)
     }
+
+
 }

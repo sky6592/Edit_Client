@@ -4,12 +4,14 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
+import com.doublejj.edit.ApplicationClass
 import com.doublejj.edit.ApplicationClass.Companion.USER_NICKNAME
 import com.doublejj.edit.ApplicationClass.Companion.sActivityList
 import com.doublejj.edit.ApplicationClass.Companion.sSharedPreferences
 import com.doublejj.edit.R
 import com.doublejj.edit.databinding.ActivityCertificateMentorCompleteBinding
 import com.doublejj.edit.ui.modules.main.MainActivity
+import com.doublejj.edit.ui.modules.main.splash.SplashActivity
 import com.doublejj.edit.ui.utils.span.CustomSpannableString
 
 class CertificateMentorCompleteActivity : AppCompatActivity() {
@@ -19,6 +21,9 @@ class CertificateMentorCompleteActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_certificate_mentor_complete)
+
+        // add activity at sActivityList
+        ApplicationClass.sActivityList.add(this)
 
         /** toolbar buttons **/
         binding.ibBack.setOnClickListener {
@@ -36,10 +41,20 @@ class CertificateMentorCompleteActivity : AppCompatActivity() {
         
         binding.btnMain.setOnClickListener {
             // 메인화면으로 가기
-            val sendIntent = Intent(this, MainActivity::class.java)
-            startActivity(sendIntent)
-            sActivityList.actFinish()
+            onDestroy()
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        ApplicationClass.sActivityList.remove(this)
+
+        // 메인화면으로 가기
+        val sendIntent = Intent(this, MainActivity::class.java)
+        sendIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+        startActivity(sendIntent)
+
+        sActivityList.actFinish()
     }
 
 }

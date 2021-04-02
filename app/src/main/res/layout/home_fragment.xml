@@ -60,6 +60,7 @@
             </androidx.appcompat.widget.Toolbar>
 
             <androidx.core.widget.NestedScrollView
+                android:id="@+id/nsv_home"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
 
@@ -123,365 +124,620 @@
                                 android:layout_height="wrap_content"
                                 android:orientation="horizontal">
 
-                                <include
-                                    android:id="@+id/cv_home_today_sentence_zero_0"
+                                <FrameLayout
                                     android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    layout="@layout/cardview_home_today_sentence_zero_0"
+                                    android:layout_height="wrap_content">
+                                    <androidx.cardview.widget.CardView
+                                        android:id="@+id/cv_home_today_sentence_zero_0"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        app:cardCornerRadius="@dimen/size_card_radius_7dp"
+                                        app:cardElevation="@dimen/size_10dp"
 
-                                    android:layout_marginTop="@dimen/margin_card_top_space"
-                                    android:layout_marginBottom="@dimen/margin_card_inner_text_start_and_end_20dp"
-                                    android:layout_marginStart="@dimen/margin_component_inset_20dp"
-                                    android:layout_marginLeft="@dimen/margin_component_inset_20dp"
-                                    android:layout_marginEnd="@dimen/margin_card_end_space"
-                                    android:layout_marginRight="@dimen/margin_card_end_space" />
-                                <include
-                                    android:id="@+id/cv_home_today_sentence_zero_1"
+                                        android:layout_marginTop="@dimen/margin_card_top_space"
+                                        android:layout_marginBottom="@dimen/margin_card_inner_text_start_and_end_20dp"
+                                        android:layout_marginStart="@dimen/margin_component_inset_20dp"
+                                        android:layout_marginLeft="@dimen/margin_component_inset_20dp"
+                                        android:layout_marginEnd="@dimen/size_8dp"
+                                        android:layout_marginRight="@dimen/size_8dp">
+                                        <androidx.constraintlayout.widget.ConstraintLayout
+                                            android:layout_width="@dimen/size_card_home_today_sentence_width"
+                                            android:layout_height="@dimen/size_card_home_today_sentence_height"
+                                            android:orientation="vertical">
+                                            <TextView
+                                                android:id="@+id/tv_today_sentence_zero_title"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                style="@style/CustomTextViewMidBlack"
+                                                android:fontFamily="@font/noto_sans_kr_bold"
+                                                android:textColor="@color/purple_active"
+                                                android:text="@string/tv_card_zero_title"
+                                                android:textSize="@dimen/size_tv_title_15dp"
+
+                                                android:layout_marginTop="@dimen/size_48dp"
+                                                app:layout_constraintTop_toTopOf="parent"
+                                                app:layout_constraintStart_toStartOf="parent"
+                                                app:layout_constraintEnd_toEndOf="parent" />
+                                            <TextView
+                                                android:id="@+id/tv_today_sentence_zero_content"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+
+                                                style="@style/CustomTextViewMidBlack"
+                                                android:fontFamily="@font/noto_sans_kr_bold"
+                                                android:text="@string/tv_card_zero_content"
+                                                android:textSize="@dimen/size_tv_card_content_12dp"
+
+                                                android:layout_marginBottom="@dimen/size_48dp"
+                                                app:layout_constraintBottom_toBottomOf="parent"
+                                                app:layout_constraintStart_toStartOf="parent"
+                                                app:layout_constraintEnd_toEndOf="parent" />
+                                            <ImageView
+                                                android:id="@+id/iv_star_left"
+                                                android:layout_width="@dimen/size_15dp"
+                                                android:layout_height="@dimen/size_20dp"
+                                                android:src="@drawable/ic_graphic_star_shape"
+                                                android:scaleType="fitXY"
+
+                                                android:layout_marginTop="@dimen/size_11dp"
+                                                android:layout_marginStart="@dimen/size_12dp"
+                                                android:layout_marginLeft="@dimen/size_12dp"
+                                                app:layout_constraintTop_toTopOf="parent"
+                                                app:layout_constraintStart_toStartOf="parent" />
+                                            <ImageView
+                                                android:id="@+id/iv_dot_left"
+                                                android:layout_width="@dimen/size_6dp"
+                                                android:layout_height="@dimen/size_6dp"
+                                                android:src="@drawable/ic_graphic_dot_shape"
+                                                android:scaleType="fitXY"
+
+                                                android:layout_marginStart="@dimen/size_11dp"
+                                                android:layout_marginLeft="@dimen/size_11dp"
+                                                app:layout_constraintTop_toTopOf="@id/iv_star_left"
+                                                app:layout_constraintStart_toEndOf="@id/iv_star_left" />
+                                            <ImageView
+                                                android:id="@+id/iv_donuts_left"
+                                                android:layout_width="@dimen/size_10dp"
+                                                android:layout_height="@dimen/size_10dp"
+                                                android:src="@drawable/ic_graphic_donuts_shape"
+                                                android:scaleType="fitXY"
+
+                                                android:layout_marginTop="@dimen/size_10dp"
+                                                android:layout_marginStart="@dimen/size_9dp"
+                                                android:layout_marginLeft="@dimen/size_9dp"
+                                                app:layout_constraintTop_toBottomOf="@id/iv_star_left"
+                                                app:layout_constraintStart_toStartOf="parent" />
+
+                                            <ImageView
+                                                android:id="@+id/iv_star_right"
+                                                android:layout_width="@dimen/size_15dp"
+                                                android:layout_height="@dimen/size_20dp"
+                                                android:src="@drawable/ic_graphic_star_shape"
+                                                android:scaleType="fitXY"
+
+                                                android:layout_marginBottom="@dimen/size_11dp"
+                                                android:layout_marginEnd="@dimen/size_12dp"
+                                                android:layout_marginRight="@dimen/size_12dp"
+                                                app:layout_constraintBottom_toBottomOf="parent"
+                                                app:layout_constraintEnd_toEndOf="parent" />
+                                            <ImageView
+                                                android:id="@+id/iv_dot_right"
+                                                android:layout_width="@dimen/size_6dp"
+                                                android:layout_height="@dimen/size_6dp"
+                                                android:src="@drawable/ic_graphic_dot_shape"
+                                                android:scaleType="fitXY"
+
+                                                android:layout_marginEnd="@dimen/size_11dp"
+                                                android:layout_marginRight="@dimen/size_11dp"
+                                                app:layout_constraintBottom_toBottomOf="@id/iv_star_right"
+                                                app:layout_constraintEnd_toStartOf="@id/iv_star_right" />
+                                            <ImageView
+                                                android:id="@+id/iv_donuts_right"
+                                                android:layout_width="@dimen/size_10dp"
+                                                android:layout_height="@dimen/size_10dp"
+                                                android:src="@drawable/ic_graphic_donuts_shape"
+                                                android:scaleType="fitXY"
+
+                                                android:layout_marginBottom="@dimen/size_6dp"
+                                                android:layout_marginEnd="@dimen/size_9dp"
+                                                android:layout_marginRight="@dimen/size_9dp"
+                                                app:layout_constraintEnd_toEndOf="parent"
+                                                app:layout_constraintBottom_toTopOf="@id/iv_star_right" />
+
+                                        </androidx.constraintlayout.widget.ConstraintLayout>
+                                    </androidx.cardview.widget.CardView>
+
+                                    <androidx.cardview.widget.CardView
+                                        android:id="@+id/cv_home_today_sentence_0"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        app:cardCornerRadius="@dimen/size_card_radius_7dp"
+                                        app:cardElevation="@dimen/size_10dp"
+
+                                        android:layout_marginTop="@dimen/margin_card_top_space"
+                                        android:layout_marginBottom="@dimen/margin_card_inner_text_start_and_end_20dp"
+                                        android:layout_marginStart="@dimen/margin_component_inset_20dp"
+                                        android:layout_marginLeft="@dimen/margin_component_inset_20dp"
+                                        android:layout_marginEnd="@dimen/size_8dp"
+                                        android:layout_marginRight="@dimen/size_8dp">
+                                        <androidx.constraintlayout.widget.ConstraintLayout
+                                            android:layout_width="@dimen/size_card_home_today_sentence_width"
+                                            android:layout_height="@dimen/size_card_home_today_sentence_height"
+                                            android:paddingTop="@dimen/size_16dp"
+                                            android:paddingBottom="@dimen/size_16dp"
+                                            android:paddingStart="@dimen/margin_component_inset_20dp"
+                                            android:paddingLeft="@dimen/margin_component_inset_20dp"
+                                            android:layout_marginEnd="@dimen/margin_component_inset_20dp"
+                                            android:layout_marginRight="@dimen/margin_component_inset_20dp">
+                                            <TextView
+                                                android:id="@+id/tv_today_sentence_writer_0"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                style="@style/CustomTextViewMidBlack"
+                                                android:text="@null"
+                                                android:fontFamily="@font/noto_sans_kr_bold"
+                                                android:textSize="@dimen/size_tv_card_writer_14dp"
+                                                android:textColor="@color/purple_active"
+
+                                                app:layout_constraintTop_toTopOf="parent"
+                                                app:layout_constraintStart_toStartOf="parent" />
+                                            <TextView
+                                                android:id="@+id/tv_today_sentence_position_0"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                style="@style/CustomTextViewMidBlack"
+                                                android:text="@string/tv_card_position"
+                                                android:fontFamily="@font/noto_sans_kr_bold"
+                                                android:textSize="@dimen/size_tv_card_writer_14dp"
+
+                                                android:paddingStart="@dimen/size_5dp"
+                                                android:paddingLeft="@dimen/size_5dp"
+                                                app:layout_constraintTop_toTopOf="parent"
+                                                app:layout_constraintStart_toEndOf="@id/tv_today_sentence_writer_0" />
+                                            <TextView
+                                                android:id="@+id/tv_today_sentence_content_0"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="83dp"
+                                                android:maxLines="4"
+
+                                                style="@style/CustomTextViewMidBlack"
+                                                android:text="@null"
+                                                android:textSize="@dimen/size_tv_card_content_12dp"
+
+                                                android:layout_marginTop="@dimen/size_14dp"
+                                                app:layout_constraintTop_toBottomOf="@id/tv_today_sentence_writer_0"
+                                                app:layout_constraintStart_toStartOf="parent"
+                                                app:layout_constraintEnd_toEndOf="parent" />
+                                        </androidx.constraintlayout.widget.ConstraintLayout>
+                                    </androidx.cardview.widget.CardView>
+                                </FrameLayout>
+
+                                <FrameLayout
                                     android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    layout="@layout/cardview_home_today_sentence_zero_1"
+                                    android:layout_height="wrap_content">
+                                    <androidx.cardview.widget.CardView
+                                        android:id="@+id/cv_home_today_sentence_zero_1"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        app:cardCornerRadius="@dimen/size_card_radius_7dp"
+                                        app:cardElevation="@dimen/size_10dp"
 
-                                    android:layout_marginTop="@dimen/margin_card_top_space"
-                                    android:layout_marginBottom="@dimen/margin_card_inner_text_start_and_end_20dp"
-                                    android:layout_marginEnd="@dimen/margin_card_end_space"
-                                    android:layout_marginRight="@dimen/margin_card_end_space" />
-                                <include
-                                    android:id="@+id/cv_home_today_sentence_zero_2"
+                                        android:layout_marginTop="@dimen/margin_card_top_space"
+                                        android:layout_marginBottom="@dimen/margin_card_inner_text_start_and_end_20dp"
+                                        android:layout_marginStart="@dimen/size_8dp"
+                                        android:layout_marginLeft="@dimen/size_8dp"
+                                        android:layout_marginEnd="@dimen/size_8dp"
+                                        android:layout_marginRight="@dimen/size_8dp">
+                                        <androidx.constraintlayout.widget.ConstraintLayout
+                                            android:layout_width="@dimen/size_card_home_today_sentence_width"
+                                            android:layout_height="@dimen/size_card_home_today_sentence_height">
+                                            <ImageView
+                                                android:id="@+id/iv_leaf_tripple"
+                                                android:layout_width="@dimen/size_iv_leaf_triple_width"
+                                                android:layout_height="@dimen/size_iv_leaf_triple_height"
+                                                android:src="@drawable/ic_graphic_leaf_triple"
+                                                android:scaleType="fitXY"
+
+                                                android:layout_marginTop="@dimen/size_10dp"
+                                                app:layout_constraintTop_toTopOf="parent"
+                                                app:layout_constraintBottom_toBottomOf="parent"
+                                                app:layout_constraintEnd_toEndOf="parent"
+                                                app:layout_constraintStart_toStartOf="parent" />
+                                        </androidx.constraintlayout.widget.ConstraintLayout>
+                                    </androidx.cardview.widget.CardView>
+                                    <androidx.cardview.widget.CardView
+                                        android:id="@+id/cv_home_today_sentence_1"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        app:cardCornerRadius="@dimen/size_card_radius_7dp"
+                                        app:cardElevation="@dimen/size_10dp"
+
+                                        android:layout_marginTop="@dimen/margin_card_top_space"
+                                        android:layout_marginBottom="@dimen/margin_card_inner_text_start_and_end_20dp"
+                                        android:layout_marginStart="@dimen/size_8dp"
+                                        android:layout_marginLeft="@dimen/size_8dp"
+                                        android:layout_marginEnd="@dimen/size_8dp"
+                                        android:layout_marginRight="@dimen/size_8dp">
+                                        <androidx.constraintlayout.widget.ConstraintLayout
+                                            android:layout_width="@dimen/size_card_home_today_sentence_width"
+                                            android:layout_height="@dimen/size_card_home_today_sentence_height"
+                                            android:paddingTop="@dimen/size_16dp"
+                                            android:paddingBottom="@dimen/size_16dp"
+                                            android:paddingStart="@dimen/margin_component_inset_20dp"
+                                            android:paddingLeft="@dimen/margin_component_inset_20dp"
+                                            android:layout_marginEnd="@dimen/margin_component_inset_20dp"
+                                            android:layout_marginRight="@dimen/margin_component_inset_20dp">
+                                            <TextView
+                                                android:id="@+id/tv_today_sentence_writer_1"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                style="@style/CustomTextViewMidBlack"
+                                                android:text="@null"
+                                                android:fontFamily="@font/noto_sans_kr_bold"
+                                                android:textSize="@dimen/size_tv_card_writer_14dp"
+                                                android:textColor="@color/purple_active"
+
+                                                app:layout_constraintTop_toTopOf="parent"
+                                                app:layout_constraintStart_toStartOf="parent" />
+                                            <TextView
+                                                android:id="@+id/tv_today_sentence_position_1"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                style="@style/CustomTextViewMidBlack"
+                                                android:text="@string/tv_card_position"
+                                                android:fontFamily="@font/noto_sans_kr_bold"
+                                                android:textSize="@dimen/size_tv_card_writer_14dp"
+
+                                                android:paddingStart="@dimen/size_5dp"
+                                                android:paddingLeft="@dimen/size_5dp"
+                                                app:layout_constraintTop_toTopOf="parent"
+                                                app:layout_constraintStart_toEndOf="@id/tv_today_sentence_writer_1" />
+                                            <TextView
+                                                android:id="@+id/tv_today_sentence_content_1"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="83dp"
+                                                android:maxLines="4"
+
+                                                style="@style/CustomTextViewMidBlack"
+                                                android:text="@null"
+                                                android:textSize="@dimen/size_tv_card_content_12dp"
+
+                                                android:layout_marginTop="@dimen/size_14dp"
+                                                app:layout_constraintTop_toBottomOf="@id/tv_today_sentence_writer_1"
+                                                app:layout_constraintStart_toStartOf="parent"
+                                                app:layout_constraintEnd_toEndOf="parent" />
+                                        </androidx.constraintlayout.widget.ConstraintLayout>
+                                    </androidx.cardview.widget.CardView>
+                                </FrameLayout>
+
+                                <FrameLayout
                                     android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    layout="@layout/cardview_home_today_sentence_zero_2"
+                                    android:layout_height="wrap_content">
+                                    <androidx.cardview.widget.CardView
+                                        android:id="@+id/cv_home_today_sentence_zero_2"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        app:cardCornerRadius="@dimen/size_card_radius_7dp"
+                                        app:cardElevation="@dimen/size_10dp"
 
-                                    android:layout_marginTop="@dimen/margin_card_top_space"
-                                    android:layout_marginBottom="@dimen/margin_card_inner_text_start_and_end_20dp"
-                                    android:layout_marginEnd="@dimen/margin_card_end_space"
-                                    android:layout_marginRight="@dimen/margin_card_end_space" />
-                                <include
-                                    android:id="@+id/cv_home_today_sentence_zero_3"
+                                        android:layout_marginTop="@dimen/margin_card_top_space"
+                                        android:layout_marginBottom="@dimen/margin_card_inner_text_start_and_end_20dp"
+                                        android:layout_marginStart="@dimen/size_8dp"
+                                        android:layout_marginLeft="@dimen/size_8dp"
+                                        android:layout_marginEnd="@dimen/size_8dp"
+                                        android:layout_marginRight="@dimen/size_8dp">
+                                        <androidx.constraintlayout.widget.ConstraintLayout
+                                            android:layout_width="@dimen/size_card_home_today_sentence_width"
+                                            android:layout_height="@dimen/size_card_home_today_sentence_height">
+                                            <ImageView
+                                                android:id="@+id/iv_leaf_double"
+                                                android:layout_width="@dimen/size_iv_leaf_double_width"
+                                                android:layout_height="@dimen/size_iv_leaf_double_height"
+                                                android:src="@drawable/ic_graphic_leaf_double"
+                                                android:scaleType="fitXY"
+
+                                                android:layout_marginTop="@dimen/size_10dp"
+                                                app:layout_constraintTop_toTopOf="parent"
+                                                app:layout_constraintBottom_toBottomOf="parent"
+                                                app:layout_constraintEnd_toEndOf="parent"
+                                                app:layout_constraintStart_toStartOf="parent" />
+
+                                        </androidx.constraintlayout.widget.ConstraintLayout>
+                                    </androidx.cardview.widget.CardView>
+                                    <androidx.cardview.widget.CardView
+                                        android:id="@+id/cv_home_today_sentence_2"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        app:cardCornerRadius="@dimen/size_card_radius_7dp"
+                                        app:cardElevation="@dimen/size_10dp"
+
+                                        android:layout_marginTop="@dimen/margin_card_top_space"
+                                        android:layout_marginBottom="@dimen/margin_card_inner_text_start_and_end_20dp"
+                                        android:layout_marginStart="@dimen/size_8dp"
+                                        android:layout_marginLeft="@dimen/size_8dp"
+                                        android:layout_marginEnd="@dimen/size_8dp"
+                                        android:layout_marginRight="@dimen/size_8dp">
+                                        <androidx.constraintlayout.widget.ConstraintLayout
+                                            android:layout_width="@dimen/size_card_home_today_sentence_width"
+                                            android:layout_height="@dimen/size_card_home_today_sentence_height"
+                                            android:paddingTop="@dimen/size_16dp"
+                                            android:paddingBottom="@dimen/size_16dp"
+                                            android:paddingStart="@dimen/margin_component_inset_20dp"
+                                            android:paddingLeft="@dimen/margin_component_inset_20dp"
+                                            android:layout_marginEnd="@dimen/margin_component_inset_20dp"
+                                            android:layout_marginRight="@dimen/margin_component_inset_20dp">
+                                            <TextView
+                                                android:id="@+id/tv_today_sentence_writer_2"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                style="@style/CustomTextViewMidBlack"
+                                                android:text="@null"
+                                                android:fontFamily="@font/noto_sans_kr_bold"
+                                                android:textSize="@dimen/size_tv_card_writer_14dp"
+                                                android:textColor="@color/purple_active"
+
+                                                app:layout_constraintTop_toTopOf="parent"
+                                                app:layout_constraintStart_toStartOf="parent" />
+                                            <TextView
+                                                android:id="@+id/tv_today_sentence_position_2"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                style="@style/CustomTextViewMidBlack"
+                                                android:text="@string/tv_card_position"
+                                                android:fontFamily="@font/noto_sans_kr_bold"
+                                                android:textSize="@dimen/size_tv_card_writer_14dp"
+
+                                                android:paddingStart="@dimen/size_5dp"
+                                                android:paddingLeft="@dimen/size_5dp"
+                                                app:layout_constraintTop_toTopOf="parent"
+                                                app:layout_constraintStart_toEndOf="@id/tv_today_sentence_writer_2" />
+                                            <TextView
+                                                android:id="@+id/tv_today_sentence_content_2"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="83dp"
+                                                android:maxLines="4"
+
+                                                style="@style/CustomTextViewMidBlack"
+                                                android:text="@null"
+                                                android:textSize="@dimen/size_tv_card_content_12dp"
+
+                                                android:layout_marginTop="@dimen/size_14dp"
+                                                app:layout_constraintTop_toBottomOf="@id/tv_today_sentence_writer_2"
+                                                app:layout_constraintStart_toStartOf="parent"
+                                                app:layout_constraintEnd_toEndOf="parent" />
+                                        </androidx.constraintlayout.widget.ConstraintLayout>
+                                    </androidx.cardview.widget.CardView>
+                                </FrameLayout>
+
+                                <FrameLayout
                                     android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    layout="@layout/cardview_home_today_sentence_zero_3"
+                                    android:layout_height="wrap_content">
+                                    <androidx.cardview.widget.CardView
+                                        android:id="@+id/cv_home_today_sentence_zero_3"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        app:cardCornerRadius="@dimen/size_card_radius_7dp"
+                                        app:cardElevation="@dimen/size_10dp"
 
-                                    android:layout_marginTop="@dimen/margin_card_top_space"
-                                    android:layout_marginBottom="@dimen/margin_card_inner_text_start_and_end_20dp"
-                                    android:layout_marginEnd="@dimen/margin_card_end_space"
-                                    android:layout_marginRight="@dimen/margin_card_end_space" />
-                                <include
-                                    android:id="@+id/cv_home_today_sentence_zero_4"
+                                        android:layout_marginTop="@dimen/margin_card_top_space"
+                                        android:layout_marginBottom="@dimen/margin_card_inner_text_start_and_end_20dp"
+                                        android:layout_marginStart="@dimen/size_8dp"
+                                        android:layout_marginLeft="@dimen/size_8dp"
+                                        android:layout_marginEnd="@dimen/size_8dp"
+                                        android:layout_marginRight="@dimen/size_8dp">
+                                        <androidx.constraintlayout.widget.ConstraintLayout
+                                            android:layout_width="@dimen/size_card_home_today_sentence_width"
+                                            android:layout_height="@dimen/size_card_home_today_sentence_height">
+                                            <ImageView
+                                                android:id="@+id/iv_flower_red"
+                                                android:layout_width="@dimen/size_iv_flower_red_width"
+                                                android:layout_height="@dimen/size_iv_flower_red_height"
+                                                android:src="@drawable/ic_graphic_flower_red"
+                                                android:scaleType="fitXY"
+
+                                                android:layout_marginTop="@dimen/size_10dp"
+                                                android:layout_marginStart="@dimen/size_63dp"
+                                                android:layout_marginLeft="@dimen/size_63dp"
+                                                app:layout_constraintTop_toTopOf="parent"
+                                                app:layout_constraintBottom_toBottomOf="parent"
+                                                app:layout_constraintStart_toStartOf="parent" />
+                                            <ImageView
+                                                android:layout_width="@dimen/size_iv_leaf_double_width"
+                                                android:layout_height="@dimen/size_iv_leaf_double_height"
+                                                android:src="@drawable/ic_graphic_leaf_double"
+                                                android:scaleType="fitXY"
+                                                android:rotation="23"
+
+                                                android:layout_marginTop="@dimen/size_10dp"
+                                                app:layout_constraintTop_toTopOf="parent"
+                                                app:layout_constraintBottom_toBottomOf="parent"
+                                                app:layout_constraintStart_toEndOf="@id/iv_flower_red" />
+
+                                        </androidx.constraintlayout.widget.ConstraintLayout>
+                                    </androidx.cardview.widget.CardView>
+                                    <androidx.cardview.widget.CardView
+                                        android:id="@+id/cv_home_today_sentence_3"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        app:cardCornerRadius="@dimen/size_card_radius_7dp"
+                                        app:cardElevation="@dimen/size_10dp"
+
+                                        android:layout_marginTop="@dimen/margin_card_top_space"
+                                        android:layout_marginBottom="@dimen/margin_card_inner_text_start_and_end_20dp"
+                                        android:layout_marginStart="@dimen/size_8dp"
+                                        android:layout_marginLeft="@dimen/size_8dp"
+                                        android:layout_marginEnd="@dimen/size_8dp"
+                                        android:layout_marginRight="@dimen/size_8dp">
+                                        <androidx.constraintlayout.widget.ConstraintLayout
+                                            android:layout_width="@dimen/size_card_home_today_sentence_width"
+                                            android:layout_height="@dimen/size_card_home_today_sentence_height"
+                                            android:paddingTop="@dimen/size_16dp"
+                                            android:paddingBottom="@dimen/size_16dp"
+                                            android:paddingStart="@dimen/margin_component_inset_20dp"
+                                            android:paddingLeft="@dimen/margin_component_inset_20dp"
+                                            android:layout_marginEnd="@dimen/margin_component_inset_20dp"
+                                            android:layout_marginRight="@dimen/margin_component_inset_20dp">
+                                            <TextView
+                                                android:id="@+id/tv_today_sentence_writer_3"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                style="@style/CustomTextViewMidBlack"
+                                                android:text="@null"
+                                                android:fontFamily="@font/noto_sans_kr_bold"
+                                                android:textSize="@dimen/size_tv_card_writer_14dp"
+                                                android:textColor="@color/purple_active"
+
+                                                app:layout_constraintTop_toTopOf="parent"
+                                                app:layout_constraintStart_toStartOf="parent" />
+                                            <TextView
+                                                android:id="@+id/tv_today_sentence_position_3"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                style="@style/CustomTextViewMidBlack"
+                                                android:text="@string/tv_card_position"
+                                                android:fontFamily="@font/noto_sans_kr_bold"
+                                                android:textSize="@dimen/size_tv_card_writer_14dp"
+
+                                                android:paddingStart="@dimen/size_5dp"
+                                                android:paddingLeft="@dimen/size_5dp"
+                                                app:layout_constraintTop_toTopOf="parent"
+                                                app:layout_constraintStart_toEndOf="@id/tv_today_sentence_writer_3" />
+                                            <TextView
+                                                android:id="@+id/tv_today_sentence_content_3"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="83dp"
+                                                android:maxLines="4"
+
+                                                style="@style/CustomTextViewMidBlack"
+                                                android:text="@null"
+                                                android:textSize="@dimen/size_tv_card_content_12dp"
+
+                                                android:layout_marginTop="@dimen/size_14dp"
+                                                app:layout_constraintTop_toBottomOf="@id/tv_today_sentence_writer_3"
+                                                app:layout_constraintStart_toStartOf="parent"
+                                                app:layout_constraintEnd_toEndOf="parent" />
+                                        </androidx.constraintlayout.widget.ConstraintLayout>
+                                    </androidx.cardview.widget.CardView>
+                                </FrameLayout>
+
+                                <FrameLayout
                                     android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    layout="@layout/cardview_home_today_sentence_zero_4"
+                                    android:layout_height="wrap_content">
+                                    <androidx.cardview.widget.CardView
+                                        android:id="@+id/cv_home_today_sentence_zero_4"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        app:cardCornerRadius="@dimen/size_card_radius_7dp"
+                                        app:cardElevation="@dimen/size_10dp"
 
-                                    android:layout_marginTop="@dimen/margin_card_top_space"
-                                    android:layout_marginBottom="@dimen/margin_card_inner_text_start_and_end_20dp"
-                                    android:layout_marginEnd="@dimen/margin_card_end_space"
-                                    android:layout_marginRight="@dimen/margin_card_inner_text_start_and_end_20dp" />
-                                <androidx.cardview.widget.CardView
-                                    android:id="@+id/cv_home_today_sentence_0"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    app:cardCornerRadius="@dimen/size_card_radius_7dp"
-                                    android:elevation="10dp"
+                                        android:layout_marginTop="@dimen/margin_card_top_space"
+                                        android:layout_marginBottom="@dimen/margin_card_inner_text_start_and_end_20dp"
+                                        android:layout_marginEnd="@dimen/size_16dp"
+                                        android:layout_marginRight="@dimen/size_16dp">
+                                        <androidx.constraintlayout.widget.ConstraintLayout
+                                            android:layout_width="@dimen/size_card_home_today_sentence_width"
+                                            android:layout_height="@dimen/size_card_home_today_sentence_height">
+                                            <ImageView
+                                                android:id="@+id/iv_flower_red4"
+                                                android:layout_width="@dimen/size_iv_flower_red_width"
+                                                android:layout_height="@dimen/size_iv_flower_red_height"
+                                                android:src="@drawable/ic_graphic_flower_red"
+                                                android:scaleType="fitXY"
 
-                                    android:layout_marginTop="@dimen/margin_card_top_space"
-                                    android:layout_marginBottom="@dimen/margin_card_inner_text_start_and_end_20dp"
-                                    android:layout_marginStart="@dimen/margin_component_inset_20dp"
-                                    android:layout_marginLeft="@dimen/margin_component_inset_20dp"
-                                    android:layout_marginEnd="@dimen/margin_card_end_space"
-                                    android:layout_marginRight="@dimen/margin_card_end_space">
-                                    <androidx.constraintlayout.widget.ConstraintLayout
-                                        android:layout_width="@dimen/size_card_home_today_sentence_width"
-                                        android:layout_height="@dimen/size_card_home_today_sentence_height"
-                                        android:paddingTop="@dimen/size_16dp"
-                                        android:paddingBottom="@dimen/size_16dp"
-                                        android:paddingStart="@dimen/margin_component_inset_20dp"
-                                        android:paddingLeft="@dimen/margin_component_inset_20dp"
-                                        android:layout_marginEnd="@dimen/margin_component_inset_20dp"
-                                        android:layout_marginRight="@dimen/margin_component_inset_20dp">
-                                        <TextView
-                                            android:id="@+id/tv_today_sentence_writer_0"
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            style="@style/CustomTextViewMidBlack"
-                                            android:text="@string/tv_card_writer"
-                                            android:fontFamily="@font/noto_sans_kr_bold"
-                                            android:textSize="@dimen/size_tv_card_writer_14dp"
-                                            android:textColor="@color/purple_active"
+                                                android:layout_marginTop="@dimen/size_31dp"
+                                                android:layout_marginStart="@dimen/size_56dp"
+                                                android:layout_marginLeft="@dimen/size_56dp"
+                                                app:layout_constraintTop_toTopOf="parent"
+                                                app:layout_constraintStart_toStartOf="parent" />
+                                            <ImageView
+                                                android:id="@+id/iv_leaf_tripple4"
+                                                android:layout_width="@dimen/size_iv_leaf_double_width"
+                                                android:layout_height="@dimen/size_iv_leaf_double_height"
+                                                android:src="@drawable/ic_graphic_leaf_triple"
+                                                android:scaleType="fitXY"
+                                                android:rotation="-30"
 
-                                            app:layout_constraintTop_toTopOf="parent"
-                                            app:layout_constraintStart_toStartOf="parent" />
-                                        <TextView
-                                            android:id="@+id/tv_today_sentence_position_0"
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            style="@style/CustomTextViewMidBlack"
-                                            android:text="@string/tv_card_position"
-                                            android:fontFamily="@font/noto_sans_kr_bold"
-                                            android:textSize="@dimen/size_tv_card_writer_14dp"
+                                                android:layout_marginTop="@dimen/size_10dp"
+                                                app:layout_constraintTop_toTopOf="parent"
+                                                app:layout_constraintBottom_toBottomOf="parent"
+                                                app:layout_constraintStart_toEndOf="@id/iv_flower_red4" />
+                                            <ImageView
+                                                android:id="@+id/iv_flower_yellow4"
+                                                android:layout_width="@dimen/size_iv_flower_yellow_width"
+                                                android:layout_height="@dimen/size_iv_flower_yellow_height"
+                                                android:src="@drawable/ic_graphic_flower_yellow"
+                                                android:scaleType="fitXY"
+                                                android:rotation="44"
 
-                                            android:paddingStart="@dimen/size_5dp"
-                                            android:paddingLeft="@dimen/size_5dp"
-                                            app:layout_constraintTop_toTopOf="parent"
-                                            app:layout_constraintStart_toEndOf="@id/tv_today_sentence_writer_0" />
-                                        <TextView
-                                            android:id="@+id/tv_today_sentence_content_0"
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="83dp"
-                                            android:maxLines="4"
+                                                android:layout_marginBottom="@dimen/size_26dp"
+                                                app:layout_constraintBottom_toBottomOf="parent"
+                                                app:layout_constraintStart_toEndOf="@id/iv_leaf_tripple4" />
 
-                                            style="@style/CustomTextViewMidBlack"
-                                            android:text="@string/tv_sentence_content_example"
-                                            android:textSize="@dimen/size_tv_card_content_12dp"
+                                        </androidx.constraintlayout.widget.ConstraintLayout>
+                                    </androidx.cardview.widget.CardView>
+                                    <androidx.cardview.widget.CardView
+                                        android:id="@+id/cv_home_today_sentence_4"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        app:cardCornerRadius="@dimen/size_card_radius_7dp"
+                                        app:cardElevation="@dimen/size_10dp"
 
-                                            android:layout_marginTop="@dimen/size_14dp"
-                                            app:layout_constraintTop_toBottomOf="@id/tv_today_sentence_writer_0"
-                                            app:layout_constraintStart_toStartOf="parent"
-                                            app:layout_constraintEnd_toEndOf="parent" />
-                                    </androidx.constraintlayout.widget.ConstraintLayout>
-                                </androidx.cardview.widget.CardView>
-                                <androidx.cardview.widget.CardView
-                                    android:id="@+id/cv_home_today_sentence_1"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    app:cardCornerRadius="@dimen/size_card_radius_7dp"
-                                    android:elevation="10dp"
+                                        android:layout_marginTop="@dimen/margin_card_top_space"
+                                        android:layout_marginBottom="@dimen/margin_card_inner_text_start_and_end_20dp"
+                                        android:layout_marginEnd="@dimen/size_16dp"
+                                        android:layout_marginRight="@dimen/size_16dp">
+                                        <androidx.constraintlayout.widget.ConstraintLayout
+                                            android:layout_width="@dimen/size_card_home_today_sentence_width"
+                                            android:layout_height="@dimen/size_card_home_today_sentence_height"
+                                            android:paddingTop="@dimen/size_16dp"
+                                            android:paddingBottom="@dimen/size_16dp"
+                                            android:paddingStart="@dimen/margin_component_inset_20dp"
+                                            android:paddingLeft="@dimen/margin_component_inset_20dp"
+                                            android:layout_marginEnd="@dimen/margin_component_inset_20dp"
+                                            android:layout_marginRight="@dimen/margin_component_inset_20dp">
+                                            <TextView
+                                                android:id="@+id/tv_today_sentence_writer_4"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                style="@style/CustomTextViewMidBlack"
+                                                android:text="@null"
+                                                android:fontFamily="@font/noto_sans_kr_bold"
+                                                android:textSize="@dimen/size_tv_card_writer_14dp"
+                                                android:textColor="@color/purple_active"
 
-                                    android:layout_marginTop="@dimen/margin_card_top_space"
-                                    android:layout_marginBottom="@dimen/margin_card_inner_text_start_and_end_20dp"
-                                    android:layout_marginEnd="@dimen/margin_card_end_space"
-                                    android:layout_marginRight="@dimen/margin_card_end_space">
-                                    <androidx.constraintlayout.widget.ConstraintLayout
-                                        android:layout_width="@dimen/size_card_home_today_sentence_width"
-                                        android:layout_height="@dimen/size_card_home_today_sentence_height"
-                                        android:paddingTop="@dimen/size_16dp"
-                                        android:paddingBottom="@dimen/size_16dp"
-                                        android:paddingStart="@dimen/margin_component_inset_20dp"
-                                        android:paddingLeft="@dimen/margin_component_inset_20dp"
-                                        android:layout_marginEnd="@dimen/margin_component_inset_20dp"
-                                        android:layout_marginRight="@dimen/margin_component_inset_20dp">
-                                        <TextView
-                                            android:id="@+id/tv_today_sentence_writer_1"
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            style="@style/CustomTextViewMidBlack"
-                                            android:text="@string/tv_card_writer"
-                                            android:fontFamily="@font/noto_sans_kr_bold"
-                                            android:textSize="@dimen/size_tv_card_writer_14dp"
-                                            android:textColor="@color/purple_active"
+                                                app:layout_constraintTop_toTopOf="parent"
+                                                app:layout_constraintStart_toStartOf="parent" />
+                                            <TextView
+                                                android:id="@+id/tv_today_sentence_position_4"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                style="@style/CustomTextViewMidBlack"
+                                                android:text="@string/tv_card_position"
+                                                android:fontFamily="@font/noto_sans_kr_bold"
+                                                android:textSize="@dimen/size_tv_card_writer_14dp"
 
-                                            app:layout_constraintTop_toTopOf="parent"
-                                            app:layout_constraintStart_toStartOf="parent" />
-                                        <TextView
-                                            android:id="@+id/tv_today_sentence_position_1"
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            style="@style/CustomTextViewMidBlack"
-                                            android:text="@string/tv_card_position"
-                                            android:fontFamily="@font/noto_sans_kr_bold"
-                                            android:textSize="@dimen/size_tv_card_writer_14dp"
+                                                android:paddingStart="@dimen/size_5dp"
+                                                android:paddingLeft="@dimen/size_5dp"
+                                                app:layout_constraintTop_toTopOf="parent"
+                                                app:layout_constraintStart_toEndOf="@id/tv_today_sentence_writer_4" />
+                                            <TextView
+                                                android:id="@+id/tv_today_sentence_content_4"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="83dp"
+                                                android:maxLines="4"
 
-                                            android:paddingStart="@dimen/size_5dp"
-                                            android:paddingLeft="@dimen/size_5dp"
-                                            app:layout_constraintTop_toTopOf="parent"
-                                            app:layout_constraintStart_toEndOf="@id/tv_today_sentence_writer_1" />
-                                        <TextView
-                                            android:id="@+id/tv_today_sentence_content_1"
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="83dp"
-                                            android:maxLines="4"
+                                                style="@style/CustomTextViewMidBlack"
+                                                android:text="@null"
+                                                android:textSize="@dimen/size_tv_card_content_12dp"
 
-                                            style="@style/CustomTextViewMidBlack"
-                                            android:text="@string/tv_sentence_content_example"
-                                            android:textSize="@dimen/size_tv_card_content_12dp"
+                                                android:layout_marginTop="@dimen/size_14dp"
+                                                app:layout_constraintTop_toBottomOf="@id/tv_today_sentence_writer_4"
+                                                app:layout_constraintStart_toStartOf="parent"
+                                                app:layout_constraintEnd_toEndOf="parent" />
+                                        </androidx.constraintlayout.widget.ConstraintLayout>
+                                    </androidx.cardview.widget.CardView>
+                                </FrameLayout>
 
-                                            android:layout_marginTop="@dimen/size_14dp"
-                                            app:layout_constraintTop_toBottomOf="@id/tv_today_sentence_writer_1"
-                                            app:layout_constraintStart_toStartOf="parent"
-                                            app:layout_constraintEnd_toEndOf="parent" />
-                                    </androidx.constraintlayout.widget.ConstraintLayout>
-                                </androidx.cardview.widget.CardView>
-                                <androidx.cardview.widget.CardView
-                                    android:id="@+id/cv_home_today_sentence_2"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    app:cardCornerRadius="@dimen/size_card_radius_7dp"
-                                    android:elevation="10dp"
-
-                                    android:layout_marginTop="@dimen/margin_card_top_space"
-                                    android:layout_marginBottom="@dimen/margin_card_inner_text_start_and_end_20dp"
-                                    android:layout_marginEnd="@dimen/margin_card_end_space"
-                                    android:layout_marginRight="@dimen/margin_card_end_space">
-                                    <androidx.constraintlayout.widget.ConstraintLayout
-                                        android:layout_width="@dimen/size_card_home_today_sentence_width"
-                                        android:layout_height="@dimen/size_card_home_today_sentence_height"
-                                        android:paddingTop="@dimen/size_16dp"
-                                        android:paddingBottom="@dimen/size_16dp"
-                                        android:paddingStart="@dimen/margin_component_inset_20dp"
-                                        android:paddingLeft="@dimen/margin_component_inset_20dp"
-                                        android:layout_marginEnd="@dimen/margin_component_inset_20dp"
-                                        android:layout_marginRight="@dimen/margin_component_inset_20dp">
-                                        <TextView
-                                            android:id="@+id/tv_today_sentence_writer_2"
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            style="@style/CustomTextViewMidBlack"
-                                            android:text="@string/tv_card_writer"
-                                            android:fontFamily="@font/noto_sans_kr_bold"
-                                            android:textSize="@dimen/size_tv_card_writer_14dp"
-                                            android:textColor="@color/purple_active"
-
-                                            app:layout_constraintTop_toTopOf="parent"
-                                            app:layout_constraintStart_toStartOf="parent" />
-                                        <TextView
-                                            android:id="@+id/tv_today_sentence_position_2"
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            style="@style/CustomTextViewMidBlack"
-                                            android:text="@string/tv_card_position"
-                                            android:fontFamily="@font/noto_sans_kr_bold"
-                                            android:textSize="@dimen/size_tv_card_writer_14dp"
-
-                                            android:paddingStart="@dimen/size_5dp"
-                                            android:paddingLeft="@dimen/size_5dp"
-                                            app:layout_constraintTop_toTopOf="parent"
-                                            app:layout_constraintStart_toEndOf="@id/tv_today_sentence_writer_2" />
-                                        <TextView
-                                            android:id="@+id/tv_today_sentence_content_2"
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="83dp"
-                                            android:maxLines="4"
-
-                                            style="@style/CustomTextViewMidBlack"
-                                            android:text="@string/tv_sentence_content_example"
-                                            android:textSize="@dimen/size_tv_card_content_12dp"
-
-                                            android:layout_marginTop="@dimen/size_14dp"
-                                            app:layout_constraintTop_toBottomOf="@id/tv_today_sentence_writer_2"
-                                            app:layout_constraintStart_toStartOf="parent"
-                                            app:layout_constraintEnd_toEndOf="parent" />
-                                    </androidx.constraintlayout.widget.ConstraintLayout>
-                                </androidx.cardview.widget.CardView>
-                                <androidx.cardview.widget.CardView
-                                    android:id="@+id/cv_home_today_sentence_3"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    app:cardCornerRadius="@dimen/size_card_radius_7dp"
-                                    android:elevation="10dp"
-
-                                    android:layout_marginTop="@dimen/margin_card_top_space"
-                                    android:layout_marginBottom="@dimen/margin_card_inner_text_start_and_end_20dp"
-                                    android:layout_marginEnd="@dimen/margin_card_end_space"
-                                    android:layout_marginRight="@dimen/margin_card_end_space">
-                                    <androidx.constraintlayout.widget.ConstraintLayout
-                                        android:layout_width="@dimen/size_card_home_today_sentence_width"
-                                        android:layout_height="@dimen/size_card_home_today_sentence_height"
-                                        android:paddingTop="@dimen/size_16dp"
-                                        android:paddingBottom="@dimen/size_16dp"
-                                        android:paddingStart="@dimen/margin_component_inset_20dp"
-                                        android:paddingLeft="@dimen/margin_component_inset_20dp"
-                                        android:layout_marginEnd="@dimen/margin_component_inset_20dp"
-                                        android:layout_marginRight="@dimen/margin_component_inset_20dp">
-                                        <TextView
-                                            android:id="@+id/tv_today_sentence_writer_3"
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            style="@style/CustomTextViewMidBlack"
-                                            android:text="@string/tv_card_writer"
-                                            android:fontFamily="@font/noto_sans_kr_bold"
-                                            android:textSize="@dimen/size_tv_card_writer_14dp"
-                                            android:textColor="@color/purple_active"
-
-                                            app:layout_constraintTop_toTopOf="parent"
-                                            app:layout_constraintStart_toStartOf="parent" />
-                                        <TextView
-                                            android:id="@+id/tv_today_sentence_position_3"
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            style="@style/CustomTextViewMidBlack"
-                                            android:text="@string/tv_card_position"
-                                            android:fontFamily="@font/noto_sans_kr_bold"
-                                            android:textSize="@dimen/size_tv_card_writer_14dp"
-
-                                            android:paddingStart="@dimen/size_5dp"
-                                            android:paddingLeft="@dimen/size_5dp"
-                                            app:layout_constraintTop_toTopOf="parent"
-                                            app:layout_constraintStart_toEndOf="@id/tv_today_sentence_writer_3" />
-                                        <TextView
-                                            android:id="@+id/tv_today_sentence_content_3"
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="83dp"
-                                            android:maxLines="4"
-
-                                            style="@style/CustomTextViewMidBlack"
-                                            android:text="@string/tv_sentence_content_example"
-                                            android:textSize="@dimen/size_tv_card_content_12dp"
-
-                                            android:layout_marginTop="@dimen/size_14dp"
-                                            app:layout_constraintTop_toBottomOf="@id/tv_today_sentence_writer_3"
-                                            app:layout_constraintStart_toStartOf="parent"
-                                            app:layout_constraintEnd_toEndOf="parent" />
-                                    </androidx.constraintlayout.widget.ConstraintLayout>
-                                </androidx.cardview.widget.CardView>
-                                <androidx.cardview.widget.CardView
-                                    android:id="@+id/cv_home_today_sentence_4"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    app:cardCornerRadius="@dimen/size_card_radius_7dp"
-                                    android:elevation="10dp"
-
-                                    android:layout_marginTop="@dimen/margin_card_top_space"
-                                    android:layout_marginBottom="@dimen/margin_card_inner_text_start_and_end_20dp"
-                                    android:layout_marginEnd="@dimen/margin_card_end_space"
-                                    android:layout_marginRight="@dimen/margin_card_inner_text_start_and_end_20dp">
-                                    <androidx.constraintlayout.widget.ConstraintLayout
-                                        android:layout_width="@dimen/size_card_home_today_sentence_width"
-                                        android:layout_height="@dimen/size_card_home_today_sentence_height"
-                                        android:paddingTop="@dimen/size_16dp"
-                                        android:paddingBottom="@dimen/size_16dp"
-                                        android:paddingStart="@dimen/margin_component_inset_20dp"
-                                        android:paddingLeft="@dimen/margin_component_inset_20dp"
-                                        android:layout_marginEnd="@dimen/margin_component_inset_20dp"
-                                        android:layout_marginRight="@dimen/margin_component_inset_20dp">
-                                        <TextView
-                                            android:id="@+id/tv_today_sentence_writer_4"
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            style="@style/CustomTextViewMidBlack"
-                                            android:text="@string/tv_card_writer"
-                                            android:fontFamily="@font/noto_sans_kr_bold"
-                                            android:textSize="@dimen/size_tv_card_writer_14dp"
-                                            android:textColor="@color/purple_active"
-
-                                            app:layout_constraintTop_toTopOf="parent"
-                                            app:layout_constraintStart_toStartOf="parent" />
-                                        <TextView
-                                            android:id="@+id/tv_today_sentence_position_4"
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            style="@style/CustomTextViewMidBlack"
-                                            android:text="@string/tv_card_position"
-                                            android:fontFamily="@font/noto_sans_kr_bold"
-                                            android:textSize="@dimen/size_tv_card_writer_14dp"
-
-                                            android:paddingStart="@dimen/size_5dp"
-                                            android:paddingLeft="@dimen/size_5dp"
-                                            app:layout_constraintTop_toTopOf="parent"
-                                            app:layout_constraintStart_toEndOf="@id/tv_today_sentence_writer_4" />
-                                        <TextView
-                                            android:id="@+id/tv_today_sentence_content_4"
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="83dp"
-                                            android:maxLines="4"
-
-                                            style="@style/CustomTextViewMidBlack"
-                                            android:text="@string/tv_sentence_content_example"
-                                            android:textSize="@dimen/size_tv_card_content_12dp"
-
-                                            android:layout_marginTop="@dimen/size_14dp"
-                                            app:layout_constraintTop_toBottomOf="@id/tv_today_sentence_writer_4"
-                                            app:layout_constraintStart_toStartOf="parent"
-                                            app:layout_constraintEnd_toEndOf="parent" />
-                                    </androidx.constraintlayout.widget.ConstraintLayout>
-                                </androidx.cardview.widget.CardView>
                             </LinearLayout>
                         </HorizontalScrollView>
 
@@ -544,6 +800,7 @@
                             android:layout_width="0dp"
                             android:layout_height="@dimen/size_card_home_sentence_box_height"
 
+                            android:visibility="gone"
                             android:background="@drawable/shape_gray_border_box"
 
                             android:paddingTop="@dimen/size_12dp"
@@ -559,7 +816,7 @@
                                 android:layout_height="wrap_content"
                                 style="@style/CustomTextViewMidBlack"
                                 android:fontFamily="@font/noto_sans_kr_bold"
-                                android:text="@string/tv_card_writer"
+                                android:text="@null"
                                 android:textSize="@dimen/size_tv_card_writer_14dp"
                                 android:textColor="@color/purple_active"
 
@@ -587,7 +844,7 @@
                                 style="@style/CustomTextViewMidBlack"
 
                                 android:layout_marginTop="@dimen/size_12dp"
-                                android:text="@string/tv_sentence_content_example"
+                                android:text="@null"
                                 android:textSize="@dimen/size_tv_card_content_12dp"
                                 app:layout_constraintTop_toBottomOf="@id/tv_sentence_writer_0"
                                 app:layout_constraintStart_toStartOf="parent"
@@ -598,6 +855,7 @@
                             android:layout_width="0dp"
                             android:layout_height="@dimen/size_card_home_sentence_box_height"
                             android:background="@drawable/shape_gray_border_box"
+                            android:visibility="gone"
 
                             android:paddingTop="@dimen/size_12dp"
                             android:paddingBottom="@dimen/size_18dp"
@@ -613,7 +871,7 @@
                                 android:layout_height="wrap_content"
                                 style="@style/CustomTextViewMidBlack"
                                 android:fontFamily="@font/noto_sans_kr_bold"
-                                android:text="@string/tv_card_writer"
+                                android:text="@null"
                                 android:textSize="@dimen/size_tv_card_writer_14dp"
                                 android:textColor="@color/purple_active"
 
@@ -641,7 +899,7 @@
                                 style="@style/CustomTextViewMidBlack"
 
                                 android:layout_marginTop="@dimen/size_12dp"
-                                android:text="@string/tv_sentence_content_example"
+                                android:text="@null"
                                 android:textSize="@dimen/size_tv_card_content_12dp"
                                 app:layout_constraintTop_toBottomOf="@id/tv_sentence_writer_1"
                                 app:layout_constraintStart_toStartOf="parent"
@@ -774,6 +1032,7 @@
                             android:id="@+id/ll_home_completed_adoption_0"
                             android:layout_width="0dp"
                             android:layout_height="@dimen/size_card_home_sentence_box_height"
+                            android:visibility="gone"
                             android:background="@drawable/shape_gray_border_box"
 
                             android:paddingTop="@dimen/size_12dp"
@@ -789,7 +1048,7 @@
                                 android:layout_height="wrap_content"
                                 style="@style/CustomTextViewMidBlack"
                                 android:fontFamily="@font/noto_sans_kr_bold"
-                                android:text="@string/tv_card_writer"
+                                android:text="@null"
                                 android:textSize="@dimen/size_tv_card_writer_14dp"
                                 android:textColor="@color/purple_active"
 
@@ -817,7 +1076,7 @@
                                 style="@style/CustomTextViewMidBlack"
 
                                 android:layout_marginTop="@dimen/size_12dp"
-                                android:text="@string/tv_sentence_content_example"
+                                android:text="@null"
                                 android:textSize="@dimen/size_tv_card_content_12dp"
                                 app:layout_constraintTop_toBottomOf="@id/tv_sentence_writer_2"
                                 app:layout_constraintStart_toStartOf="parent"
@@ -827,6 +1086,7 @@
                             android:id="@+id/ll_home_completed_adoption_1"
                             android:layout_width="0dp"
                             android:layout_height="@dimen/size_card_home_sentence_box_height"
+                            android:visibility="gone"
                             android:background="@drawable/shape_gray_border_box"
 
                             android:paddingTop="@dimen/size_12dp"
@@ -843,7 +1103,7 @@
                                 android:layout_height="wrap_content"
                                 style="@style/CustomTextViewMidBlack"
                                 android:fontFamily="@font/noto_sans_kr_bold"
-                                android:text="@string/tv_card_writer"
+                                android:text="@null"
                                 android:textSize="@dimen/size_tv_card_writer_14dp"
                                 android:textColor="@color/purple_active"
 
@@ -871,7 +1131,7 @@
                                 style="@style/CustomTextViewMidBlack"
 
                                 android:layout_marginTop="@dimen/size_12dp"
-                                android:text="@string/tv_sentence_content_example"
+                                android:text="@null"
                                 android:textSize="@dimen/size_tv_card_content_12dp"
                                 app:layout_constraintTop_toBottomOf="@id/tv_sentence_writer_3"
                                 app:layout_constraintStart_toStartOf="parent"
@@ -937,6 +1197,7 @@
                             android:id="@+id/ll_home_sympathy_comment_0"
                             android:layout_width="0dp"
                             android:layout_height="@dimen/size_card_home_sentence_box_height"
+                            android:visibility="gone"
                             android:background="@drawable/shape_gray_border_box"
 
                             android:paddingTop="@dimen/size_12dp"
@@ -952,7 +1213,7 @@
                                 android:layout_height="wrap_content"
                                 style="@style/CustomTextViewMidBlack"
                                 android:fontFamily="@font/noto_sans_kr_bold"
-                                android:text="@string/tv_card_writer"
+                                android:text="@null"
                                 android:textSize="@dimen/size_tv_card_writer_14dp"
                                 android:textColor="@color/purple_active"
 
@@ -980,7 +1241,7 @@
                                 style="@style/CustomTextViewMidBlack"
 
                                 android:layout_marginTop="@dimen/size_12dp"
-                                android:text="@string/tv_sentence_content_example"
+                                android:text="@null"
                                 android:textSize="@dimen/size_tv_card_content_12dp"
                                 app:layout_constraintTop_toBottomOf="@id/tv_sentence_writer_4"
                                 app:layout_constraintStart_toStartOf="parent"
@@ -990,6 +1251,7 @@
                             android:id="@+id/ll_home_sympathy_comment_1"
                             android:layout_width="0dp"
                             android:layout_height="@dimen/size_card_home_sentence_box_height"
+                            android:visibility="gone"
                             android:background="@drawable/shape_gray_border_box"
 
                             android:paddingTop="@dimen/size_12dp"
@@ -1006,7 +1268,7 @@
                                 android:layout_height="wrap_content"
                                 style="@style/CustomTextViewMidBlack"
                                 android:fontFamily="@font/noto_sans_kr_bold"
-                                android:text="@string/tv_card_writer"
+                                android:text="@null"
                                 android:textSize="@dimen/size_tv_card_writer_14dp"
                                 android:textColor="@color/purple_active"
 
@@ -1034,7 +1296,7 @@
                                 style="@style/CustomTextViewMidBlack"
 
                                 android:layout_marginTop="@dimen/size_12dp"
-                                android:text="@string/tv_sentence_content_example"
+                                android:text="@null"
                                 android:textSize="@dimen/size_tv_card_content_12dp"
                                 app:layout_constraintTop_toBottomOf="@id/tv_sentence_writer_5"
                                 app:layout_constraintStart_toStartOf="parent"

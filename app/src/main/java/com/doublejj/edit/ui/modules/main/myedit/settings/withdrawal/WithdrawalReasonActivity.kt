@@ -13,6 +13,7 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.TextView
 import androidx.databinding.DataBindingUtil
+import com.doublejj.edit.ApplicationClass
 import com.doublejj.edit.R
 import com.doublejj.edit.data.api.services.withdrawal.WithdrawalService
 import com.doublejj.edit.data.api.services.withdrawal.WithdrawalView
@@ -36,6 +37,9 @@ class WithdrawalReasonActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_withdrawal_reason)
+
+        // add activity at sActivityList
+        ApplicationClass.sActivityList.add(this)
 
         /** toolbar buttons **/
         binding.ibBack.setOnClickListener {
@@ -183,4 +187,9 @@ class WithdrawalReasonActivity : AppCompatActivity() {
         return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dipValue, resources.displayMetrics).toInt()
     }
 
+
+    override fun onDestroy() {
+        super.onDestroy()
+        ApplicationClass.sActivityList.remove(this)
+    }
 }

@@ -27,12 +27,15 @@ import com.doublejj.edit.data.models.BaseResponse
 import com.doublejj.edit.data.models.certificate_mentor.AuthMentorStatusResponse
 import com.doublejj.edit.data.models.profile.info.ProfileInfoResponse
 import com.doublejj.edit.databinding.MyeditFragmentBinding
+import com.doublejj.edit.ui.modules.main.myedit.certificate_mentor.CertificateInProgressActivity
 import com.doublejj.edit.ui.modules.main.myedit.certificate_mentor.CertificateLogoutActivity
 import com.doublejj.edit.ui.modules.main.myedit.certificate_mentor.CertificateMentorActivity
 import com.doublejj.edit.ui.modules.main.myedit.certificate_mentor.CertificateRejectActivity
 import com.doublejj.edit.ui.modules.main.myedit.manage_coin.ManageCoinActivity
+import com.doublejj.edit.ui.modules.main.myedit.my_comment.MyCommentListActivity
 import com.doublejj.edit.ui.modules.main.myedit.my_sentence_completed.MySentenceCompletedActivity
 import com.doublejj.edit.ui.modules.main.myedit.my_sentence_not_adopted.MySentenceNotAdoptedActivity
+import com.doublejj.edit.ui.modules.main.myedit.my_sympathized_sentence.MySympathizedSentenceActivity
 import com.doublejj.edit.ui.modules.main.myedit.profile.ProfileActivity
 import com.doublejj.edit.ui.modules.main.myedit.settings.SettingsActivity
 import com.doublejj.edit.ui.modules.main.myedit.switch_position.SwitchToMenteeActivity
@@ -88,8 +91,9 @@ class MyeditFragment : Fragment(), ProfileInfoView, LogoutView, AuthMentorStatus
         }
 
         /** toolbar buttons **/
-        binding.tvLogo.setOnClickListener { 
-            // TODO : 맨 위로 가기
+        binding.tvLogo.setOnClickListener {
+            // scroll to top
+            binding.nsvMyedit.smoothScrollTo(0, 0)
         }
         binding.ibSettings.setOnClickListener {
             val sendIntent = Intent(activity, SettingsActivity::class.java)
@@ -108,7 +112,9 @@ class MyeditFragment : Fragment(), ProfileInfoView, LogoutView, AuthMentorStatus
             startActivity(sendIntent)
         }
         binding.ibMenuSympathy.setOnClickListener {
-            // TODO : 공감 페이지
+            // 공감 페이지
+            val sendIntent = Intent(activity, MySympathizedSentenceActivity::class.java)
+            startActivity(sendIntent)
         }
         binding.ibMenuSentence.setOnClickListener {
             // 자소서 목록 페이지 (멘티)
@@ -121,18 +127,22 @@ class MyeditFragment : Fragment(), ProfileInfoView, LogoutView, AuthMentorStatus
             startActivity(sendIntent)
         }
         binding.ibMenuCommentList.setOnClickListener {
-            // TODO : 코멘트 목록 페이지 (멘토)
+            // 코멘트 목록 페이지 (멘토)
+            val sendIntent = Intent(activity, MyCommentListActivity::class.java)
+            startActivity(sendIntent)
         }
 
         // TODO : 임시저장 추후 업데이트
         binding.ibMenuTemp.setOnClickListener {
             // TODO : 임시 저장 페이지
+            CustomSnackbar.make(binding.root, getString(R.string.tv_to_be_develop), Snackbar.LENGTH_SHORT).show()
         }
 
         /** position buttons **/
         binding.llBtnCertificateMentor.setOnClickListener {
-            // TODO : pending 중이 아니라면 멘토 인증 페이지
+            // pending 중이 아니라면 멘토 인증 페이지
             AuthMentorStatusService(this).tryGetAuthMentorStatus()
+
 //            CustomLoadingDialog(requireContext()).show()
         }
         binding.llBtnSwitchPosition.setOnClickListener {
@@ -233,7 +243,7 @@ class MyeditFragment : Fragment(), ProfileInfoView, LogoutView, AuthMentorStatus
                     editor.putBoolean(MENTOR_AUTH_CONFIRM, false)
                     editor.commit()
                     editor.apply()
-                    startActivity(Intent(activity, CertificateMentorActivity::class.java))
+                    startActivity(Intent(activity, CertificateInProgressActivity::class.java))
                 }
             }
         }

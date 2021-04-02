@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar_title_with_buttons"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size_toolbar_height"
+                app:contentInsetStart="@dimen/margin_component_inset_20dp"
+                app:contentInsetEnd="@dimen/margin_component_inset_20dp"
+                android:background="@color/white"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <ImageButton
+                        android:id="@+id/ib_back"
+                        android:layout_width="@dimen/size_icon_button_24dp"
+                        android:layout_height="@dimen/size_icon_button_24dp"
+                        android:src="@drawable/icon_back"
+                        android:background="@color/transparent"
+                        android:scaleType="fitXY"
+
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent" />
+                    <TextView
+                        android:id="@+id/tv_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        style="@style/CustomTextViewMidBlack"
+                        android:text="@string/tv_menu_comment_list"
+                        android:textSize="@dimen/size_tv_title_15dp"
+                        android:fontFamily="@font/noto_sans_kr_medium"
+                        android:background="@color/transparent"
+                        android:gravity="center"
+
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.appcompat.widget.Toolbar>
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+
+                android:background="@color/gray_background"
+                android:fillViewport="true"
+
+                app:layout_constraintTop_toBottomOf="@id/toolbar_title_with_buttons"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <!--  comment section  -->
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rv_comment"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:visibility="visible"
+
+                        tools:listitem="@layout/layout_comment"
+                        app:layout_constraintTop_toBottomOf="@id/cl_sentence_section"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent" />
+
+                    <LinearLayout
+                        android:id="@+id/ll_zero_comment"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:orientation="vertical"
+                        android:visibility="visible"
+
+                        android:gravity="center"
+                        android:background="@color/white"
+                        app:layout_constraintTop_toBottomOf="@id/cl_sentence_section"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent">
+                        <ImageView
+                            android:layout_width="@dimen/size_179dp"
+                            android:layout_height="@dimen/size_148dp"
+                            android:src="@drawable/ic_graphic_comment"
+                            android:background="@color/transparent" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            style="@style/CustomTextViewMidBlack"
+                            android:text="@string/tv_open_comment_zero_title"
+                            android:fontFamily="@font/noto_sans_kr_bold"
+                            android:textSize="@dimen/size_15dp"
+                            android:textColor="@color/purple_active"
+                            android:paddingTop="@dimen/size_20dp" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            style="@style/CustomTextViewMidBlack"
+                            android:text="@string/tv_open_comment_zero_content"
+                            android:fontFamily="@font/noto_sans_kr_medium"
+                            android:textSize="@dimen/size_12dp"
+                            android:gravity="center"
+                            android:paddingTop="@dimen/size_13dp"
+                            android:paddingBottom="@dimen/size_34dp" />
+                    </LinearLayout>
+
+                </LinearLayout>
+            </androidx.core.widget.NestedScrollView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </FrameLayout>
+</layout>

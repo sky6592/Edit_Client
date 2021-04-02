@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
+import com.doublejj.edit.ApplicationClass
 import com.doublejj.edit.ApplicationClass.Companion.USER_NICKNAME
 import com.doublejj.edit.ApplicationClass.Companion.sSharedPreferences
 import com.doublejj.edit.R
@@ -18,6 +19,9 @@ class WithdrawalActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_withdrawal)
+
+        // add activity at sActivityList
+        ApplicationClass.sActivityList.add(this)
 
         /** toolbar buttons **/
         binding.ibBack.setOnClickListener {
@@ -35,5 +39,10 @@ class WithdrawalActivity : AppCompatActivity() {
             sendIntent.putExtra("nickName", nickName)
             startActivity(sendIntent)
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        ApplicationClass.sActivityList.remove(this)
     }
 }

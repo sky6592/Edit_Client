@@ -3,213 +3,224 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.modules.main.signup.infofirst.InfoFirstActivity">
-
-        <!-- logo -->
-        <ImageView
-            android:id="@+id/iv_info_first"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/icon_edit_logo"
-            app:layout_constraintBottom_toTopOf="@id/linear_info_first"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <!-- Middle -->
+        android:fillViewport="true">
         <LinearLayout
-            android:id="@+id/linear_info_first"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingHorizontal="@dimen/padding_20dp"
-            app:layout_constraintBottom_toTopOf="@+id/linear_privacy_info_first"
-            app:layout_constraintTop_toBottomOf="@+id/iv_info_first">
-
-            <!-- Name -->
-            <LinearLayout
-                android:id="@+id/linear_name_info_first"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/margin_10dp"
-                android:orientation="vertical">
+                android:layout_height="match_parent"
+                tools:context=".ui.modules.main.signup.infofirst.InfoFirstActivity">
 
-                <TextView
-                    android:id="@+id/tv_name_info_first"
+                <!-- logo -->
+                <ImageView
+                    android:id="@+id/iv_info_first"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/noto_sans_kr_regular"
-                    android:text="@string/tv_name_info"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/tv_15sp" />
+                    android:src="@drawable/icon_edit_logo"
+                    app:layout_constraintBottom_toTopOf="@id/linear_info_first"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-                <EditText
-                    android:id="@+id/et_name_info_first"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/margin_5dp"
-                    android:background="@drawable/shape_et_btn_info"
-                    android:fontFamily="@font/noto_sans_kr_regular"
-                    android:hint="@string/hint_name_info"
-                    android:imeOptions="actionSearch"
-                    android:inputType="textPersonName|textNoSuggestions"
-                    android:paddingHorizontal="@dimen/hint_padding_10dp"
-                    android:paddingVertical="@dimen/padding_2.5dp"
-                    android:textSize="@dimen/tv_15sp" />
-
-                <TextView
-                    android:id="@+id/tv_name_caption_info_first"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/noto_sans_kr_regular"
-                    android:text="@string/tv_name_caption_info"
-                    android:textColor="@color/very_light_pink"
-                    android:textSize="@dimen/tv_10sp" />
-            </LinearLayout>
-
-            <!-- Nick_Name -->
-            <LinearLayout
-                android:id="@+id/linear_nick_name_info_first"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/tv_nick_name_info_first"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/noto_sans_kr_regular"
-                    android:text="@string/tv_nick_name_info"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/tv_15sp" />
-
-                <!-- Double Check Nick Name -->
+                <!-- Middle -->
                 <LinearLayout
-                    android:id="@+id/linear_nick_name_middle_info_first"
+                    android:id="@+id/linear_info_first"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/margin_5dp"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
+                    android:orientation="vertical"
+                    android:paddingHorizontal="@dimen/padding_20dp"
+                    app:layout_constraintBottom_toTopOf="@+id/linear_privacy_info_first"
+                    app:layout_constraintTop_toBottomOf="@+id/iv_info_first">
 
-                    <EditText
-                        android:id="@+id/et_nick_name_info_first"
+                    <!-- Name -->
+                    <LinearLayout
+                        android:id="@+id/linear_name_info_first"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="@dimen/margin_10dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/shape_et_btn_info"
-                        android:fontFamily="@font/noto_sans_kr_regular"
-                        android:hint="@string/hint_nick_name_info"
-                        android:imeOptions="actionSearch"
-                        android:inputType="textPersonName|textNoSuggestions"
-                        android:paddingHorizontal="@dimen/hint_padding_10dp"
-                        android:paddingVertical="@dimen/padding_2.5dp"
-                        android:textSize="@dimen/tv_15sp" />
+                        android:layout_marginBottom="@dimen/margin_10dp"
+                        android:orientation="vertical">
 
-                    <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/btn_double_check"
-                        android:layout_width="wrap_content"
+                        <TextView
+                            android:id="@+id/tv_name_info_first"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/noto_sans_kr_regular"
+                            android:text="@string/tv_name_info"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/size_15dp" />
+
+                        <EditText
+                            android:id="@+id/et_name_info_first"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/margin_5dp"
+                            android:background="@drawable/shape_et_btn_info"
+                            android:fontFamily="@font/noto_sans_kr_regular"
+                            android:hint="@string/hint_name_info"
+                            android:imeOptions="actionSearch"
+                            android:inputType="textPersonName|textNoSuggestions"
+                            android:paddingHorizontal="@dimen/hint_padding_10dp"
+                            android:paddingVertical="@dimen/padding_2.5dp"
+                            android:textSize="@dimen/size_15dp" />
+
+                        <TextView
+                            android:id="@+id/tv_name_caption_info_first"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/noto_sans_kr_regular"
+                            android:text="@string/tv_name_caption_info"
+                            android:textColor="@color/very_light_pink"
+                            android:textSize="@dimen/size_10dp" />
+                    </LinearLayout>
+
+                    <!-- Nick_Name -->
+                    <LinearLayout
+                        android:id="@+id/linear_nick_name_info_first"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/shape_btn_info"
-                        android:fontFamily="@font/noto_sans_kr_regular"
-                        android:imeOptions="actionSearch"
-                        android:text="@string/tv_double_check"
-                        android:textColor="@color/purple" />
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tv_nick_name_info_first"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/noto_sans_kr_regular"
+                            android:text="@string/tv_nick_name_info"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/size_15dp" />
+
+                        <!-- Double Check Nick Name -->
+                        <LinearLayout
+                            android:id="@+id/linear_nick_name_middle_info_first"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/margin_5dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <EditText
+                                android:id="@+id/et_nick_name_info_first"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="@dimen/margin_10dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/shape_et_btn_info"
+                                android:fontFamily="@font/noto_sans_kr_regular"
+                                android:hint="@string/hint_nick_name_info"
+                                android:imeOptions="actionSearch"
+                                android:inputType="textPersonName|textNoSuggestions"
+                                android:paddingHorizontal="@dimen/hint_padding_10dp"
+                                android:paddingVertical="@dimen/padding_2.5dp"
+                                android:textSize="@dimen/size_15dp" />
+
+                            <androidx.appcompat.widget.AppCompatButton
+                                android:id="@+id/btn_double_check"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/shape_btn_info"
+                                android:fontFamily="@font/noto_sans_kr_regular"
+                                android:imeOptions="actionSearch"
+                                android:text="@string/tv_double_check"
+                                android:textColor="@color/purple" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/tv_nick_name_caption_info_first"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/margin_10dp"
+                            android:fontFamily="@font/noto_sans_kr_regular"
+                            android:text="@string/tv_nick_name_caption_info"
+                            android:textColor="@color/very_light_pink"
+                            android:textSize="@dimen/size_10dp" />
+                    </LinearLayout>
+
+                    <!-- Phone -->
+                    <LinearLayout
+                        android:id="@+id/linear_phone_info_first"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/margin_10dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tv_phone_info_first"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/margin_10dp"
+                            android:fontFamily="@font/noto_sans_kr_regular"
+                            android:text="@string/tv_phone_info"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/size_15dp" />
+
+                        <EditText
+                            android:id="@+id/et_phone_info_first"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/margin_5dp"
+                            android:background="@drawable/shape_et_btn_info"
+                            android:fontFamily="@font/noto_sans_kr_regular"
+                            android:hint="@string/hint_phone_info"
+                            android:imeOptions="actionSearch"
+                            android:inputType="phone|textNoSuggestions"
+                            android:paddingHorizontal="@dimen/hint_padding_10dp"
+                            android:paddingVertical="@dimen/padding_2.5dp"
+                            android:textSize="@dimen/size_15dp" />
+
+                        <TextView
+                            android:id="@+id/tv_phone_caption_info_first"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/noto_sans_kr_regular"
+                            android:text="@string/tv_phone_caption_info"
+                            android:textColor="@color/very_light_pink"
+                            android:textSize="@dimen/size_10dp" />
+                    </LinearLayout>
+
+
                 </LinearLayout>
 
-                <TextView
-                    android:id="@+id/tv_nick_name_caption_info_first"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/margin_10dp"
-                    android:fontFamily="@font/noto_sans_kr_regular"
-                    android:text="@string/tv_nick_name_caption_info"
-                    android:textColor="@color/very_light_pink"
-                    android:textSize="@dimen/tv_10sp" />
-            </LinearLayout>
-
-            <!-- Phone -->
-            <LinearLayout
-                android:id="@+id/linear_phone_info_first"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/margin_10dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/tv_phone_info_first"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/margin_10dp"
-                    android:fontFamily="@font/noto_sans_kr_regular"
-                    android:text="@string/tv_phone_info"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/tv_15sp" />
-
-                <EditText
-                    android:id="@+id/et_phone_info_first"
+                <LinearLayout
+                    android:id="@+id/linear_privacy_info_first"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/margin_5dp"
-                    android:background="@drawable/shape_et_btn_info"
-                    android:fontFamily="@font/noto_sans_kr_regular"
-                    android:hint="@string/hint_phone_info"
-                    android:imeOptions="actionSearch"
-                    android:inputType="phone|textNoSuggestions"
-                    android:paddingHorizontal="@dimen/hint_padding_10dp"
-                    android:paddingVertical="@dimen/padding_2.5dp"
-                    android:textSize="@dimen/tv_15sp" />
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent">
 
-                <TextView
-                    android:id="@+id/tv_phone_caption_info_first"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/noto_sans_kr_regular"
-                    android:text="@string/tv_phone_caption_info"
-                    android:textColor="@color/very_light_pink"
-                    android:textSize="@dimen/tv_10sp" />
-            </LinearLayout>
+                    <!-- Privacy -->
+                    <TextView
+                        android:id="@+id/tv_privacy_info_first"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/noto_sans_kr_regular"
+                        android:gravity="center_vertical"
+                        android:paddingHorizontal="@dimen/padding_20dp"
+                        android:text="@string/tv_privacy_info_first"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/size_12dp"
+                        tools:ignore="MissingConstraints" />
 
+                    <!-- Button -->
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btn_info_first"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/very_light_pink"
+                        android:fontFamily="@font/noto_sans_kr_regular"
+                        android:imeOptions="actionSearch"
+                        android:text="@string/tv_sign_up_info"
+                        android:textColor="@color/white" />
+                </LinearLayout>
 
+            </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/linear_privacy_info_first"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent">
-
-            <!-- Privacy -->
-            <TextView
-                android:id="@+id/tv_privacy_info_first"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/noto_sans_kr_regular"
-                android:gravity="center_vertical"
-                android:paddingHorizontal="@dimen/padding_20dp"
-                android:text="@string/tv_privacy_info_first"
-                android:textColor="@color/black"
-                android:textSize="@dimen/tv_12sp"
-                tools:ignore="MissingConstraints" />
-
-            <!-- Button -->
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btn_info_first"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/very_light_pink"
-                android:fontFamily="@font/noto_sans_kr_regular"
-                android:imeOptions="actionSearch"
-                android:text="@string/tv_sign_up_info"
-                android:textColor="@color/white" />
-        </LinearLayout>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
 </layout>

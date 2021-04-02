@@ -188,10 +188,11 @@
                             android:layout_weight="1"
                             android:layout_marginStart="@dimen/size_20dp"
                             android:layout_marginLeft="@dimen/size_20dp" />
-                        <ImageView
-                            android:layout_width="@dimen/size_icon_button_24dp"
+                        <TextView
+                            android:layout_width="wrap_content"
                             android:layout_height="@dimen/size_icon_button_24dp"
-                            android:src="@drawable/icon_expand"
+                            android:includeFontPadding="false"
+                            android:text="0.0.1"
                             android:background="@color/transparent"
                             android:layout_gravity="right|center_vertical"
                             android:layout_marginEnd="@dimen/size_20dp"

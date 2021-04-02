@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.doublejj.edit.ApplicationClass
 import com.doublejj.edit.ApplicationClass.Companion.USER_COLOR
 import com.doublejj.edit.ApplicationClass.Companion.USER_EMOTION
@@ -24,6 +25,7 @@ import com.doublejj.edit.data.models.lookup_sentences_home.LookupSentenceRespons
 import com.doublejj.edit.databinding.TodaySentenceFragmentBinding
 import com.doublejj.edit.ui.modules.main.MainActivity
 import com.doublejj.edit.ui.modules.main.home.writing_sentence.WritingSentenceActivity
+import com.doublejj.edit.ui.utils.dialog.CustomLoadingDialog
 import com.doublejj.edit.ui.utils.snackbar.CustomSnackbar
 import com.google.android.material.snackbar.Snackbar
 
@@ -80,8 +82,10 @@ class TodaySentenceFragment : Fragment(), TodaySentenceView, SentenceLimitView {
         return binding.root
     }
 
+    // 리사이클러뷰에 더 보여줄 데이터를 로드하는 경우
     fun getSentences() {
         // TODO : 무한스크롤 처리
+//        CustomLoadingDialog(requireContext()).show()
         TodaySentenceService(this).tryGetTodaySentence(page = 1)
     }
 
@@ -91,11 +95,18 @@ class TodaySentenceFragment : Fragment(), TodaySentenceView, SentenceLimitView {
 
     override fun onGetTodaySentenceSuccess(response: LookupSentenceResponse) {
         if (response.isSuccess) {
-            binding.rvSentence.adapter = SentenceAdapter(requireContext(), response.result, requireActivity().supportFragmentManager)
+            binding.rvSentence.adapter = SentenceFragmentAdapter(requireContext(), response.result.coverLetters, requireActivity().supportFragmentManager)
         }
+        else {
+            CustomSnackbar.make(requireView(), response.message.toString(), Snackbar.LENGTH_SHORT).show()
+        }
+
+
+        CustomLoadingDialog(requireContext()).dismiss()
     }
 
     override fun onGetTodaySentenceFailure(message: String) {
+        CustomLoadingDialog(requireContext()).dismiss()
         CustomSnackbar.make(requireView(), message, Snackbar.LENGTH_SHORT).show()
     }
 
@@ -129,4 +140,5 @@ class TodaySentenceFragment : Fragment(), TodaySentenceView, SentenceLimitView {
         super.onDetach()
         (activity as MainActivity).decreaseFragmentCount()
     }
+
 }

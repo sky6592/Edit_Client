@@ -12,17 +12,16 @@ import com.doublejj.edit.R
 import com.doublejj.edit.databinding.RankingFragmentBinding
 import com.doublejj.edit.ui.modules.main.ranking.clickfragment.ClickActivity
 
+
 class RankingFragment : Fragment() {
     private lateinit var binding: RankingFragmentBinding
     private lateinit var viewModel: RankingViewModel
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.ranking_fragment, container, false)
         viewModel = ViewModelProvider(this).get(RankingViewModel::class.java)
-
         binding.rankingViewModel = viewModel
         binding.lifecycleOwner = this
 
@@ -42,5 +41,4 @@ class RankingFragment : Fragment() {
 
         return binding.root
     }
-
 }

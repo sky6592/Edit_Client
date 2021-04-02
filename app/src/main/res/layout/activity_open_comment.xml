@@ -64,16 +64,14 @@
             </androidx.appcompat.widget.Toolbar>
 
             <androidx.core.widget.NestedScrollView
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="0dp"
 
                 android:background="@color/gray_background"
                 android:fillViewport="true"
 
                 app:layout_constraintTop_toBottomOf="@id/toolbar_title_with_buttons"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent">
+                app:layout_constraintBottom_toBottomOf="parent">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -108,7 +106,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 style="@style/CustomTextViewMidBlack"
-                                android:text="@string/tv_card_writer"
+                                android:text="@null"
                                 android:textStyle="bold"
                                 android:textSize="@dimen/size_tv_card_writer_14dp"
                                 android:textColor="@color/purple_active"
@@ -166,7 +164,7 @@
                                 android:layout_height="wrap_content"
 
                                 style="@style/CustomTextViewMidBlack"
-                                android:text="@string/tv_occupation_type"
+                                android:text="@null"
                                 android:textSize="@dimen/size_11dp"
                                 android:fontFamily="@font/noto_sans_kr_medium"
 
@@ -221,7 +219,7 @@
                                 android:layout_height="wrap_content"
 
                                 style="@style/CustomTextViewMidBlack"
-                                android:text="@string/spinner_self_writing_3"
+                                android:text="@null"
                                 android:textSize="@dimen/size_11dp"
                                 android:fontFamily="@font/noto_sans_kr_medium"
 
@@ -236,7 +234,7 @@
                                 android:layout_height="wrap_content"
 
                                 style="@style/CustomTextViewMidBlack"
-                                android:text="@string/tv_sentence_content_example"
+                                android:text="@null"
                                 android:textSize="@dimen/size_13dp"
                                 android:maxLines="4"
                                 android:lineSpacingExtra="@dimen/size_5dp"
@@ -260,28 +258,24 @@
                         <androidx.recyclerview.widget.RecyclerView
                             android:id="@+id/rv_comment"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                            android:layout_height="0dp"
                             android:visibility="visible"
 
                             tools:listitem="@layout/layout_comment"
                             app:layout_constraintTop_toBottomOf="@id/cl_sentence_section"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent" />
+                            app:layout_constraintBottom_toBottomOf="parent" />
 
                         <LinearLayout
                             android:id="@+id/ll_zero_comment"
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
                             android:orientation="vertical"
-                            android:visibility="visible"
+                            android:visibility="gone"
 
                             android:gravity="center"
                             android:background="@color/white"
                             app:layout_constraintTop_toBottomOf="@id/cl_sentence_section"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent">
+                            app:layout_constraintBottom_toBottomOf="parent">
                             <ImageView
                                 android:layout_width="@dimen/size_179dp"
                                 android:layout_height="@dimen/size_148dp"

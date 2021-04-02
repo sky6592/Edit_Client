@@ -12,8 +12,10 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.TextView
 import androidx.databinding.DataBindingUtil
+import com.doublejj.edit.ApplicationClass
 import com.doublejj.edit.R
 import com.doublejj.edit.data.api.services.switch_position.SwitchPositionView
+import com.doublejj.edit.data.api.services.switch_position.SwitchToMenteeService
 import com.doublejj.edit.data.api.services.switch_position.SwitchToMentorService
 import com.doublejj.edit.data.models.ResultResponse
 import com.doublejj.edit.data.models.switch_position.SwitchPositionRequest
@@ -32,6 +34,9 @@ class SwitchToMenteeReasonActivity : AppCompatActivity(), SwitchPositionView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_switch_position_reason)
+
+        // add activity at sActivityList
+        ApplicationClass.sActivityList.add(this)
 
         /** toolbar buttons **/
         binding.ibBack.setOnClickListener {
@@ -133,7 +138,7 @@ class SwitchToMenteeReasonActivity : AppCompatActivity(), SwitchPositionView {
                 }
 
                 // switch mentee to mentor 역할 변경 API
-                SwitchToMentorService(this).tryPatchSwitchToMentor(
+                SwitchToMenteeService(this).tryPatchSwitchToMentee(
                     SwitchPositionRequest(
                         changeContent = getSelectedString(changeContent!!),
                         etcChangeContent = etcChangeContent!!
@@ -144,7 +149,7 @@ class SwitchToMenteeReasonActivity : AppCompatActivity(), SwitchPositionView {
     }
 
     fun getSelectedString(index: Int) : String {
-        val typeStringArray = resources.getStringArray(R.array.array_withdrawal_type).toMutableList()
+        val typeStringArray = resources.getStringArray(R.array.array_mentor_to_mentee_type).toMutableList()
         return typeStringArray[index]
     }
 
@@ -159,9 +164,17 @@ class SwitchToMenteeReasonActivity : AppCompatActivity(), SwitchPositionView {
             sendIntent.putExtra("nickName", nickName)
             startActivity(sendIntent)
         }
+        else {
+            CustomSnackbar.make(binding.root, response.message.toString(), Snackbar.LENGTH_SHORT).show()
+        }
     }
 
     override fun onSwitchPositionFailure(message: String) {
         CustomSnackbar.make(binding.root, message, Snackbar.LENGTH_SHORT).show()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        ApplicationClass.sActivityList.remove(this)
     }
 }

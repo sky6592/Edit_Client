@@ -204,18 +204,12 @@
     <dimen name="padding_common">36dp</dimen>
     <dimen name="padding_20dp">20dp</dimen>
     <dimen name="btn_corners">5dp</dimen>
-    <dimen name="tv_15sp">15sp</dimen>
     <dimen name="margin_10dp">10dp</dimen>
     <dimen name="margin_20dp">20dp</dimen>
     <dimen name="margin_5dp">5dp</dimen>
     <dimen name="hint_padding_5dp">5dp</dimen>
     <dimen name="hint_padding_10dp">10dp</dimen>
-    <dimen name="tv_10sp">10sp</dimen>
-    <dimen name="tv_12sp">12sp</dimen>
-    <dimen name="tv_17sp">17sp</dimen>
-    <dimen name="tv_18sp">18sp</dimen>
     <dimen name="stroke_2px">2px</dimen>
-    <dimen name="tv_13sp">13sp</dimen>
     <dimen name="padding_2.5dp">2.5dp</dimen>
 
 

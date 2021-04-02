@@ -12,6 +12,7 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.TextView
 import androidx.databinding.DataBindingUtil
+import com.doublejj.edit.ApplicationClass
 import com.doublejj.edit.R
 import com.doublejj.edit.data.api.services.switch_position.SwitchPositionView
 import com.doublejj.edit.data.api.services.switch_position.SwitchToMentorService
@@ -32,6 +33,9 @@ class SwitchToMentorReasonActivity : AppCompatActivity(), SwitchPositionView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_switch_position_reason)
+
+        // add activity at sActivityList
+        ApplicationClass.sActivityList.add(this)
 
         /** toolbar buttons **/
         binding.ibBack.setOnClickListener {
@@ -144,7 +148,7 @@ class SwitchToMentorReasonActivity : AppCompatActivity(), SwitchPositionView {
     }
 
     fun getSelectedString(index: Int) : String {
-        val typeStringArray = resources.getStringArray(R.array.array_withdrawal_type).toMutableList()
+        val typeStringArray = resources.getStringArray(R.array.array_mentee_to_mentor_type).toMutableList()
         return typeStringArray[index]
     }
 
@@ -159,9 +163,18 @@ class SwitchToMentorReasonActivity : AppCompatActivity(), SwitchPositionView {
             sendIntent.putExtra("nickName", nickName)
             startActivity(sendIntent)
         }
+        else {
+            CustomSnackbar.make(binding.root, response.message.toString(), Snackbar.LENGTH_SHORT).show()
+        }
     }
 
     override fun onSwitchPositionFailure(message: String) {
         CustomSnackbar.make(binding.root, message, Snackbar.LENGTH_SHORT).show()
+    }
+
+
+    override fun onDestroy() {
+        super.onDestroy()
+        ApplicationClass.sActivityList.remove(this)
     }
 }
