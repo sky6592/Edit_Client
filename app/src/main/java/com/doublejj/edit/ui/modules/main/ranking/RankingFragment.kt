@@ -10,6 +10,8 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import com.doublejj.edit.R
 import com.doublejj.edit.databinding.RankingFragmentBinding
+import com.doublejj.edit.ui.modules.main.ranking.clickfragment.ClickActivity
+
 //import com.doublejj.edit.ui.modules.main.ranking.clickfragment.ClickActivity
 
 class RankingFragment : Fragment() {
@@ -23,16 +25,16 @@ class RankingFragment : Fragment() {
         viewModel = ViewModelProvider(this).get(RankingViewModel::class.java)
         binding.rankingViewModel = viewModel
         binding.lifecycleOwner = this
-//        val intent = Intent(requireActivity(), ClickActivity::class.java)
-//        binding.cvOneRank.setOnClickListener {
-////            startActivity(intent)
-//        }
-//        binding.cvTwoRank.setOnClickListener {
-////            startActivity(intent)
-//        }
-//        binding.cvThreeRank.setOnClickListener {
-////            startActivity(intent)
-//        }
+        val intent = Intent(requireActivity(), ClickActivity::class.java)
+        binding.cvOneRank.setOnClickListener {
+//            startActivity(intent)
+        }
+        binding.cvTwoRank.setOnClickListener {
+//            startActivity(intent)
+        }
+        binding.cvThreeRank.setOnClickListener {
+//            startActivity(intent)
+        }
         return binding.root
     }
 }
