@@ -18,21 +18,15 @@ import com.doublejj.edit.ui.utils.dialog.CustomDialogClickListener
 import com.doublejj.edit.ui.utils.dialog.CustomRadioDialogFragment
 import com.doublejj.edit.ui.utils.snackbar.CustomSnackbar
 import com.google.android.material.snackbar.Snackbar
-<<<<<<< HEAD
 import java.util.regex.Pattern
-=======
->>>>>>> 2abbbc4 (feat: Add change job layouts, apply api)
 
 class ChangeJobActivity : AppCompatActivity(), ChangeJobView {
     private val TAG: String = javaClass.simpleName.toString()
     private lateinit var binding: ActivityChangeJobBinding
-<<<<<<< HEAD
 
     // 직군 기타 입력 정규식 : 영문 대소문자, 숫자, 한글 (숫자, 특수문자 불가)
     val jobPattern = "^([a-zA-Zㄱ-ㅎ가-힇]*)$"
 
-=======
->>>>>>> 2abbbc4 (feat: Add change job layouts, apply api)
     private var selectedId: Int? = null
     private var selectedStr: String? = null
     private var etcStr: String? = null
@@ -52,7 +46,7 @@ class ChangeJobActivity : AppCompatActivity(), ChangeJobView {
         /** select job **/
         binding.tvJob.setOnClickListener {
             val dialog = CustomRadioDialogFragment("JOB", selectedId)
-            
+
             dialog.setDialogClickListener(object : CustomDialogClickListener {
                 override fun onPositiveClick() {
                     // 직군 선택한게 있다면 object 상위 클래스의 멤버에 저장
@@ -83,7 +77,7 @@ class ChangeJobActivity : AppCompatActivity(), ChangeJobView {
                     // 선택해주세요 hint 다시 설정
                     this@ChangeJobActivity.binding.tvJob.text = getString(R.string.spinner_hint)
                     this@ChangeJobActivity.binding.tvJob.setTextColor(ContextCompat.getColor(applicationContext, R.color.gray_shadow))
-                    
+
                     // 기타 옵션 닫아주기
                     visibleEtcEditText(false)
                     etcStr = null
@@ -96,23 +90,14 @@ class ChangeJobActivity : AppCompatActivity(), ChangeJobView {
         binding.etInputJobEtc.addTextChangedListener(object : TextWatcher {
             // gets triggered immediately after something is typed
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-<<<<<<< HEAD
-=======
-                binding.btnSave.isEnabled = binding.etInputJobEtc.text.toString().length >= 10
->>>>>>> 2abbbc4 (feat: Add change job layouts, apply api)
             }
 
             // gets triggered before the next input
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-<<<<<<< HEAD
-=======
-                binding.btnSave.isEnabled = binding.etInputJobEtc.text.toString().length >= 10
->>>>>>> 2abbbc4 (feat: Add change job layouts, apply api)
             }
 
             // gets triggered during an input
             override fun afterTextChanged(s: Editable?) {
-<<<<<<< HEAD
                 // if not matches pattern
                 if (!Pattern.matches(jobPattern, s.toString())) {
                     binding.tvInputJobEtcCaption.setTextColor(ContextCompat.getColor(applicationContext, R.color.red_light))
@@ -123,19 +108,13 @@ class ChangeJobActivity : AppCompatActivity(), ChangeJobView {
                     binding.tvInputJobEtcCaption.setTextColor(ContextCompat.getColor(applicationContext, R.color.gray_shadow))
                     binding.btnSave.isEnabled = true
                 }
-=======
-                binding.btnSave.isEnabled = binding.etInputJobEtc.text.toString().length >= 10
->>>>>>> 2abbbc4 (feat: Add change job layouts, apply api)
             }
         })
 
         binding.btnSave.setOnClickListener {
             if (binding.btnSave.isEnabled) {
                 etcStr = binding.etInputJobEtc.text.toString()
-<<<<<<< HEAD
                 if (selectedId == R.id.rb_job_12) selectedStr = "기타"
-=======
->>>>>>> 2abbbc4 (feat: Add change job layouts, apply api)
                 if (etcStr == "" || etcStr == null || selectedId != R.id.rb_job_12) etcStr = "NONE"
                 if (selectedId != null) {
                     // 직군 변경 API 적용
@@ -167,11 +146,7 @@ class ChangeJobActivity : AppCompatActivity(), ChangeJobView {
     }
 
     override fun onChangeJobFailure(message: String) {
-<<<<<<< HEAD
         CustomSnackbar.make(binding.root, message, Snackbar.LENGTH_SHORT).show()
-=======
-        CustomSnackbar.make(binding.root, message, Snackbar.LENGTH_SHORT)
->>>>>>> 2abbbc4 (feat: Add change job layouts, apply api)
     }
 
     override fun onDestroy() {
