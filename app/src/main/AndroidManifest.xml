@@ -22,14 +22,16 @@
         android:theme="@style/Theme.Edit"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
+        <activity android:name=".ui.modules.main.ranking.clickfragment.ClickActivity"></activity>
         <activity
             android:name=".ui.modules.main.signup.entercode.EnterCodeActivity"
             android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".ui.modules.main.assistance.pw.PwFindActivity"
             android:windowSoftInputMode="adjustResize" />
-        <activity android:name=".ui.modules.main.assistance.email.EmailFindActivity"
-            android:windowSoftInputMode="adjustResize"/>
+        <activity
+            android:name=".ui.modules.main.assistance.email.EmailFindActivity"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".ui.modules.main.signup.emailcheck.EmailCheckActivity"
             android:windowSoftInputMode="adjustResize" />

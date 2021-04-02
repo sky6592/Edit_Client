@@ -248,21 +248,22 @@ class InfoFirstActivity : AppCompatActivity(), InfoFirstView {
                         mBinding.tvPhoneCaptionInfoFirst.text =
                             getString(R.string.tv_phone_caption_result_info)
                         mPhoneFlag = true
+                    }else{
+                        mPhoneFlag = false
                     }
                     //빈공란 정규식
                     if (s.toString().isEmpty()) {
                         mBinding.tvPhoneCaptionInfoFirst.setTextColor(R.color.purple)
                         mBinding.tvPhoneCaptionInfoFirst.text =
                             getString(R.string.tv_phone_caption_info)
+                        mPhoneFlag = false
                     }
                     //입력 완료여부 정규식
                     if (mNameFlag && mNickNameFlag && mPhoneFlag) {
                         mBinding.btnInfoFirst.setBackgroundResource(R.color.purple)
                     }
-
                 }
             }
-
         })
 
         //버튼 클릭
