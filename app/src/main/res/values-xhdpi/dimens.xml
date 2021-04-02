@@ -115,7 +115,10 @@
     <dimen name="size_75dp">75dp</dimen>
     <dimen name="size_76dp">76dp</dimen>
     <dimen name="size_77dp">77dp</dimen>
+<<<<<<< HEAD
     <dimen name="size_78dp">78dp</dimen>
+=======
+>>>>>>> 1cd3a59 (feat: Add certificate status layouts)
     <dimen name="size_79dp">79dp</dimen>
     <dimen name="size_83dp">83dp</dimen>
     <dimen name="size_84dp">84dp</dimen>
