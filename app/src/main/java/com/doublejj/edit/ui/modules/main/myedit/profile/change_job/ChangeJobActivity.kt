@@ -46,7 +46,7 @@ class ChangeJobActivity : AppCompatActivity(), ChangeJobView {
         /** select job **/
         binding.tvJob.setOnClickListener {
             val dialog = CustomRadioDialogFragment("JOB", selectedId)
-            
+
             dialog.setDialogClickListener(object : CustomDialogClickListener {
                 override fun onPositiveClick() {
                     // 직군 선택한게 있다면 object 상위 클래스의 멤버에 저장
@@ -77,7 +77,7 @@ class ChangeJobActivity : AppCompatActivity(), ChangeJobView {
                     // 선택해주세요 hint 다시 설정
                     this@ChangeJobActivity.binding.tvJob.text = getString(R.string.spinner_hint)
                     this@ChangeJobActivity.binding.tvJob.setTextColor(ContextCompat.getColor(applicationContext, R.color.gray_shadow))
-                    
+
                     // 기타 옵션 닫아주기
                     visibleEtcEditText(false)
                     etcStr = null
