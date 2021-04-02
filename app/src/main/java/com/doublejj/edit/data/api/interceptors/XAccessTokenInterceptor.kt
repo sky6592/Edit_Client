@@ -9,8 +9,14 @@ import okhttp3.Response
 class XAccessTokenInterceptor : Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
         val builder: Request.Builder = chain.request().newBuilder()
+<<<<<<< HEAD
         val jwtToken: String? = sSharedPreferences.getString(ApplicationClass.X_ACCESS_TOKEN, null)
 
+=======
+        // TODO : 테스트 jwt 지우기
+        val jwtToken: String? = sSharedPreferences.getString(ApplicationClass.X_ACCESS_TOKEN, "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOjIwLCJyb2xlIjoiTUVOVEVFIiwiaWF0IjoxNjE2ODM1OTgzLCJleHAiOjE2MTgwNDU1ODN9.1cTxKz925DQtBMOmPjS_yLJGGhgU_FxyhmPd03A9dVE")
+//        val jwtToken: String? = sSharedPreferences.getString(ApplicationClass.X_ACCESS_TOKEN, null)
+>>>>>>> 2abbbc4 (feat: Add change job layouts, apply api)
         if (jwtToken != null) {
             builder.addHeader("X-ACCESS-TOKEN", jwtToken)
         }

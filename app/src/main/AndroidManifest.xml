@@ -3,115 +3,115 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.doublejj.edit">
 
-        <uses-permission android:name="android.permission.INTERNET" />
-        <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-        <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
-        <uses-feature
-            android:name="android.hardware.camera"
-            android:required="true" />
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
 
-        <application
-            android:name=".ApplicationClass"
-            android:allowBackup="false"
-            android:fullBackupContent="false"
-            android:icon="@mipmap/ic_launcher"
-            android:label="@string/app_name"
-            android:requestLegacyExternalStorage="true"
-            android:roundIcon="@mipmap/ic_launcher_round"
-            android:supportsRtl="true"
-            android:theme="@style/Theme.Edit"
-            android:usesCleartextTraffic="true"
-            tools:targetApi="m">
-                <activity android:name=".ui.modules.main.myedit.my_sympathized_sentence.MySympathizedSentenceActivity" />
-                <activity android:name=".ui.modules.main.myedit.my_comment.open_comment.LookupMyCommentActivity" />
-                <activity android:name=".ui.modules.main.myedit.my_comment.MyCommentListActivity" />
-                <activity
-                    android:name=".ui.modules.main.signup.entercode.EnterCodeActivity"
-                    android:windowSoftInputMode="adjustResize" />
-                <activity
-                    android:name=".ui.modules.main.assistance.pw.PwFindActivity"
-                    android:windowSoftInputMode="adjustResize" />
-                <activity
-                    android:name=".ui.modules.main.assistance.email.EmailFindActivity"
-                    android:windowSoftInputMode="adjustResize" />
-                <activity
-                    android:name=".ui.modules.main.signup.emailcheck.EmailCheckActivity"
-                    android:windowSoftInputMode="adjustResize" />
-                <activity
-                    android:name=".ui.modules.main.signup.read.ReadActivity"
-                    android:windowSoftInputMode="adjustResize" />
-                <activity
-                    android:name=".ui.modules.main.myedit.profile.change_job.ChangeJobActivity"
-                    android:windowSoftInputMode="adjustPan" />
-                <activity android:name=".ui.modules.main.myedit.certificate_mentor.CertificateLogoutActivity" />
-                <activity android:name=".ui.modules.main.myedit.certificate_mentor.CertificateRejectActivity" />
-                <activity android:name=".ui.modules.main.myedit.certificate_mentor.CertificateInProgressActivity" />
-                <activity android:name=".ui.modules.main.myedit.certificate_mentor.CertificateMentorCompleteActivity" />
-                <activity android:name=".ui.modules.main.myedit.certificate_mentor.CertificateIdcardActivity" />
-                <activity android:name=".ui.modules.main.myedit.certificate_mentor.TrainingFourActivity" />
-                <activity android:name=".ui.modules.main.myedit.certificate_mentor.TrainingThreeActivity" />
-                <activity android:name=".ui.modules.main.myedit.certificate_mentor.TrainingTwoActivity" />
-                <activity android:name=".ui.modules.main.myedit.certificate_mentor.TrainingOneActivity" />
-                <activity android:name=".ui.modules.main.ranking.clickfragment.ClickActivity"/>
-                <activity android:name=".ui.modules.main.myedit.certificate_mentor.CertificateMentorActivity" />
-                <activity android:name=".ui.modules.main.myedit.manage_coin.ManageCoinActivity" />
-                <activity android:name=".ui.modules.main.myedit.my_sentence_completed.MySentenceCompletedActivity" />
-                <activity android:name=".ui.modules.main.myedit.my_sentence_not_adopted.MySentenceNotAdoptedActivity" />
-                <activity android:name=".ui.modules.main.myedit.my_sentence_not_adopted.CompleteWritingSentenceActivity" />
-                <activity android:name=".ui.modules.main.myedit.switch_position.SwitchPositionCompleteActivity" />
-                <activity
-                    android:name=".ui.modules.main.myedit.switch_position.SwitchToMentorReasonActivity"
-                    android:windowSoftInputMode="adjustPan" />
-                <activity
-                    android:name=".ui.modules.main.myedit.switch_position.SwitchToMenteeReasonActivity"
-                    android:windowSoftInputMode="adjustPan" />
-                <activity android:name=".ui.modules.main.myedit.switch_position.SwitchToMentorActivity" />
-                <activity android:name=".ui.modules.main.myedit.switch_position.SwitchToMenteeActivity" />
-                <activity android:name=".ui.modules.main.myedit.profile.change_password.ChangePasswordCompleteActivity" />
-                <activity
-                    android:name=".ui.modules.main.myedit.profile.change_password.ChangeNewPasswordActivity"
-                    android:windowSoftInputMode="adjustPan" />
-                <activity
-                    android:name=".ui.modules.main.myedit.profile.change_password.ChangePasswordActivity"
-                    android:windowSoftInputMode="adjustPan" />
-                <activity android:name=".ui.modules.main.myedit.profile.change_profile.ChangeProfileActivity" />
-                <activity
-                    android:name=".ui.modules.main.signup.slectjopgroup.JobGroupActivity"
-                    android:windowSoftInputMode="adjustResize" />
-                <activity
-                    android:name=".ui.modules.main.login.LogInActivity"
-                    android:windowSoftInputMode="adjustResize" />
-                <activity android:name=".ui.modules.main.signup.slecttype.SelectTypeActivity" />
-                <activity android:name=".ui.modules.main.signup.privacyagree.PrivacyAgreeActivity" />
-                <activity android:name=".ui.modules.main.walkthrough.WalkThroughActivity" />
-                <activity
-                    android:name=".ui.modules.main.signup.infosecond.InfoSecondActivity"
-                    android:windowSoftInputMode="adjustResize" />
-                <activity
-                    android:name=".ui.modules.main.signup.infofirst.InfoFirstActivity"
-                    android:windowSoftInputMode="adjustResize" />
-                <activity android:name=".ui.modules.main.signin.SignInActivity" />
-                <activity android:name=".ui.modules.main.myedit.profile.ProfileActivity" />
-                <activity android:name=".ui.modules.main.myedit.settings.withdrawal.WithdrawalCompleteActivity" />
-                <activity
-                    android:name=".ui.modules.main.myedit.settings.withdrawal.WithdrawalReasonActivity"
-                    android:windowSoftInputMode="adjustPan" />
-                <activity android:name=".ui.modules.main.myedit.settings.withdrawal.WithdrawalActivity" />
-                <activity android:name=".ui.modules.main.myedit.settings.SettingsActivity" />
-                <activity
-                    android:name=".ui.modules.main.home.writing_sentence.WritingSentenceActivity"
-                    android:windowSoftInputMode="adjustResize" />
-                <activity android:name=".ui.modules.main.home.open_comment.OpenCommentActivity" />
-                <activity android:name=".ui.modules.main.home.writing_comment.WritingCommentActivity" />
-                <activity android:name=".ui.modules.main.splash.SplashActivity">
-                        <intent-filter>
-                                <action android:name="android.intent.action.MAIN" />
+    <application
+        android:name=".ApplicationClass"
+        android:allowBackup="false"
+        android:fullBackupContent="false"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:requestLegacyExternalStorage="true"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Edit"
+        android:usesCleartextTraffic="true"
+        tools:targetApi="m">
+        <activity android:name=".ui.modules.main.myedit.my_sympathized_sentence.MySympathizedSentenceActivity" />
+        <activity android:name=".ui.modules.main.myedit.my_comment.open_comment.LookupMyCommentActivity" />
+        <activity android:name=".ui.modules.main.myedit.my_comment.MyCommentListActivity" />
+        <activity
+            android:name=".ui.modules.main.signup.entercode.EnterCodeActivity"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".ui.modules.main.assistance.pw.PwFindActivity"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".ui.modules.main.assistance.email.EmailFindActivity"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".ui.modules.main.signup.emailcheck.EmailCheckActivity"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".ui.modules.main.signup.read.ReadActivity"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".ui.modules.main.myedit.profile.change_job.ChangeJobActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".ui.modules.main.myedit.certificate_mentor.CertificateLogoutActivity" />
+        <activity android:name=".ui.modules.main.myedit.certificate_mentor.CertificateRejectActivity" />
+        <activity android:name=".ui.modules.main.myedit.certificate_mentor.CertificateInProgressActivity" />
+        <activity android:name=".ui.modules.main.myedit.certificate_mentor.CertificateMentorCompleteActivity" />
+        <activity android:name=".ui.modules.main.myedit.certificate_mentor.CertificateIdcardActivity" />
+        <activity android:name=".ui.modules.main.myedit.certificate_mentor.TrainingFourActivity" />
+        <activity android:name=".ui.modules.main.myedit.certificate_mentor.TrainingThreeActivity" />
+        <activity android:name=".ui.modules.main.myedit.certificate_mentor.TrainingTwoActivity" />
+        <activity android:name=".ui.modules.main.myedit.certificate_mentor.TrainingOneActivity" />
+        <activity android:name=".ui.modules.main.ranking.clickfragment.ClickActivity"/>
+        <activity android:name=".ui.modules.main.myedit.certificate_mentor.CertificateMentorActivity" />
+        <activity android:name=".ui.modules.main.myedit.manage_coin.ManageCoinActivity" />
+        <activity android:name=".ui.modules.main.myedit.my_sentence_completed.MySentenceCompletedActivity" />
+        <activity android:name=".ui.modules.main.myedit.my_sentence_not_adopted.MySentenceNotAdoptedActivity" />
+        <activity android:name=".ui.modules.main.myedit.my_sentence_not_adopted.CompleteWritingSentenceActivity" />
+        <activity android:name=".ui.modules.main.myedit.switch_position.SwitchPositionCompleteActivity" />
+        <activity
+            android:name=".ui.modules.main.myedit.switch_position.SwitchToMentorReasonActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ui.modules.main.myedit.switch_position.SwitchToMenteeReasonActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".ui.modules.main.myedit.switch_position.SwitchToMentorActivity" />
+        <activity android:name=".ui.modules.main.myedit.switch_position.SwitchToMenteeActivity" />
+        <activity android:name=".ui.modules.main.myedit.profile.change_password.ChangePasswordCompleteActivity" />
+        <activity
+            android:name=".ui.modules.main.myedit.profile.change_password.ChangeNewPasswordActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ui.modules.main.myedit.profile.change_password.ChangePasswordActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".ui.modules.main.myedit.profile.change_profile.ChangeProfileActivity" />
+        <activity
+            android:name=".ui.modules.main.signup.slectjopgroup.JobGroupActivity"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".ui.modules.main.login.LogInActivity"
+            android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".ui.modules.main.signup.slecttype.SelectTypeActivity" />
+        <activity android:name=".ui.modules.main.signup.privacyagree.PrivacyAgreeActivity" />
+        <activity android:name=".ui.modules.main.walkthrough.WalkThroughActivity" />
+        <activity
+            android:name=".ui.modules.main.signup.infosecond.InfoSecondActivity"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".ui.modules.main.signup.infofirst.InfoFirstActivity"
+            android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".ui.modules.main.signin.SignInActivity" />
+        <activity android:name=".ui.modules.main.myedit.profile.ProfileActivity" />
+        <activity android:name=".ui.modules.main.myedit.settings.withdrawal.WithdrawalCompleteActivity" />
+        <activity
+            android:name=".ui.modules.main.myedit.settings.withdrawal.WithdrawalReasonActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".ui.modules.main.myedit.settings.withdrawal.WithdrawalActivity" />
+        <activity android:name=".ui.modules.main.myedit.settings.SettingsActivity" />
+        <activity
+            android:name=".ui.modules.main.home.writing_sentence.WritingSentenceActivity"
+            android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".ui.modules.main.home.open_comment.OpenCommentActivity" />
+        <activity android:name=".ui.modules.main.home.writing_comment.WritingCommentActivity" />
+        <activity android:name=".ui.modules.main.splash.SplashActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-                                <category android:name="android.intent.category.LAUNCHER" />
-                        </intent-filter>
-                </activity>
-                <activity android:name=".ui.modules.main.MainActivity" />
-        </application>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ui.modules.main.MainActivity" />
+    </application>
 
 </manifest>

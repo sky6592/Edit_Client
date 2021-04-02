@@ -80,9 +80,15 @@
     <!--  writing_comment_activity  -->
     <string name="tv_writing_comment_toolbar_title">코멘트 입력하기</string>
     <string name="tv_writing_comment_input_title">멘토 코멘트 입력</string>
+<<<<<<< HEAD
     <string name="tv_writing_comment_input_hint">해당 자소서에 대한 의견을 작성해주세요.\n(40자 이상 작성 필수)</string>
     <string name="tv_writing_comment_input_caption_0">코멘트를 40자 이상 입력해주세요.</string>
     <string name="tv_writing_comment_input_caption_1">모든 항목을 평가해주세요.</string>
+=======
+    <string name="tv_writing_comment_input_hint">
+        해당 자소서에 대한 의견을 작성해주세요.\n(40자 이상 작성 필수)
+    </string>
+>>>>>>> 2abbbc4 (feat: Add change job layouts, apply api)
     <string name="tv_writing_comment_notice_first">한 번 등록한 코멘트는 수정이 어렵습니다. 신중히 확인 후 등록해주세요!</string>
     <string name="tv_writing_comment_notice_second">코멘트 삭제는 ‘나의 에딧 &gt; 작성한 코멘트’에서 가능합니다.</string>
 
@@ -118,9 +124,19 @@
     <string name="tv_dialog_self_writing_title">문장 완성을 할 수 없어요!</string>
     <string name="tv_dialog_self_writing_content">코멘트가 아직 없거나, 채택한 코멘트가 없는 경우 문장 완성을 할 수 없어요.</string>
     <string name="tv_dialog_open_comment_title">코멘트를 삭제하시겠어요?</string>
+<<<<<<< HEAD
     <string name="tv_dialog_open_comment_content">삭제된 코멘트는 복구할 수 없습니다.\n정말 삭제하시겠어요?</string>
     <string name="tv_dialog_open_sentence_title">문장을 삭제하시겠어요?</string>
     <string name="tv_dialog_open_sentence_content">삭제된 문장은 복구할 수 없습니다.\n정말 삭제하시겠어요?</string>
+=======
+    <string name="tv_dialog_open_comment_content">
+        삭제된 코멘트는 복구할 수 없습니다.\n정말 삭제하시겠어요?
+    </string>
+    <string name="tv_dialog_open_sentence_title">문장을 삭제하시겠어요?</string>
+    <string name="tv_dialog_open_sentence_content">
+        삭제된 문장은 복구할 수 없습니다.\n정말 삭제하시겠어요?
+    </string>
+>>>>>>> 2abbbc4 (feat: Add change job layouts, apply api)
     <string name="tv_dialog_sentence_report_title">이 글을 신고하시겠어요?</string>
     <string name="tv_dialog_sentence_report_content">
         해당 글이 에딧의 가이드에 어긋나거나\n불쾌감을 줄 경우 신고해주세요.
@@ -181,9 +197,15 @@
     <string name="tv_change_job">직군 변경</string>
     <string name="tv_input_etc">기타 입력</string>
     <string name="tv_change_reason_title">변경 사유</string>
+<<<<<<< HEAD
     <string name="tv_change_job_title">변경하실 직군을\n선택해주세요.</string>
     <string name="tv_change_job_etc_hint">직군을 입력해주세요.</string>
     <string name="tv_change_job_etc_caption">영문, 한글만 입력 가능합니다. (숫자, 특수문자 불가)</string>
+=======
+    <string name="tv_change_job_title">
+        변경하실 직군을\n선택해주세요.
+    </string>
+>>>>>>> 2abbbc4 (feat: Add change job layouts, apply api)
     <string name="spinner_job_0">개발</string>
     <string name="spinner_job_1">경영</string>
     <string name="spinner_job_2">기획</string>
@@ -198,8 +220,12 @@
     <string name="spinner_job_11">C/S</string>
     <string name="spinner_job_12">기타 (직접 입력)</string>
 
+<<<<<<< HEAD
     <string name="tv_mentor_change_job_select">직군 선택</string>
     <string name="tv_mentee_change_job_select">희망 직군 선택</string>
+=======
+    <string name="tv_change_job_select">직군 선택</string>
+>>>>>>> 2abbbc4 (feat: Add change job layouts, apply api)
     <string name="tv_menu_sympathy_list">공감 목록</string>
     <string name="tv_menu_sentence_list">자소서 목록</string>
     <string name="tv_menu_sentence_complete_list">자소서 완성</string>
