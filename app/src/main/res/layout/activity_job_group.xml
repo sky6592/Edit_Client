@@ -70,7 +70,7 @@
                 android:gravity="center"
                 android:text="@string/tv_mentor_info_job_group"
                 android:textColor="@color/black"
-                android:textSize="@dimen/tv_18sp" />
+                android:textSize="@dimen/size_18dp" />
         </LinearLayout>
 
         <!--Spinner-->
@@ -89,7 +89,7 @@
                 android:fontFamily="@font/noto_sans_kr_regular"
                 android:text="@string/tv_job_group"
                 android:textColor="@color/black"
-                android:textSize="@dimen/tv_15sp" />
+                android:textSize="@dimen/size_15dp" />
 
             <TextView
                 android:id="@+id/tv_info_select_job_group"
@@ -105,7 +105,7 @@
                 android:paddingHorizontal="@dimen/hint_padding_10dp"
                 android:paddingVertical="@dimen/padding_2.5dp"
                 android:textColor="@color/black"
-                android:textSize="@dimen/tv_15sp"
+                android:textSize="@dimen/size_15dp"
                 android:textStyle="bold" />
 
             <EditText
@@ -121,7 +121,7 @@
                 android:maxLines="1"
                 android:paddingHorizontal="@dimen/hint_padding_10dp"
                 android:paddingVertical="@dimen/padding_2.5dp"
-                android:textSize="@dimen/tv_15sp"
+                android:textSize="@dimen/size_15dp"
                 android:visibility="gone" />
 
             <TextView
@@ -131,7 +131,7 @@
                 android:fontFamily="@font/noto_sans_kr_regular"
                 android:text="@string/tv_change_job_etc_caption"
                 android:textColor="@color/very_light_pink"
-                android:textSize="@dimen/tv_10sp"
+                android:textSize="@dimen/size_10dp"
                 android:visibility="gone" />
         </LinearLayout>
 

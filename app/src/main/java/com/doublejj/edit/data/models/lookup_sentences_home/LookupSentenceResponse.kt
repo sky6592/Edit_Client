@@ -5,5 +5,11 @@ import com.doublejj.edit.data.models.sentence.SentenceData
 import com.google.gson.annotations.SerializedName
 
 class LookupSentenceResponse (
-    @SerializedName("result") val result: MutableList<SentenceData>
+    @SerializedName("result") val result: GetCoverLettersForLimitScrollResult
 ) : BaseResponse()
+
+data class GetCoverLettersForLimitScrollResult (
+    @SerializedName("coverLetters") val coverLetters: MutableList<SentenceData>,
+    @SerializedName("totalCoverLetterCount") val totalCoverLetterCount: Long,
+    @SerializedName("hasNext") val hasNext: Boolean
+)

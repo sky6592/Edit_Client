@@ -23,7 +23,8 @@
         android:theme="@style/Theme.Edit"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
-        <activity android:name=".ui.modules.main.myedit.my_comment.open_comment.LookupMyCommentActivity"></activity>
+        <activity android:name=".ui.modules.main.myedit.my_sympathized_sentence.MySympathizedSentenceActivity" />
+        <activity android:name=".ui.modules.main.myedit.my_comment.open_comment.LookupMyCommentActivity" />
         <activity android:name=".ui.modules.main.myedit.my_comment.MyCommentListActivity" />
         <activity
             android:name=".ui.modules.main.signup.entercode.EnterCodeActivity"

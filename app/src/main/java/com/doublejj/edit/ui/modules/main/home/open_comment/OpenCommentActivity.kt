@@ -32,7 +32,7 @@ class OpenCommentActivity : AppCompatActivity(), CommentsOfSentenceView {
 
         /** toolbar buttons **/
         binding.ibBack.setOnClickListener {
-            supportFragmentManager.popBackStack()
+            finish()
         }
         binding.ibRefresh.setOnClickListener {
             // refresh data

@@ -71,7 +71,7 @@
                     android:gravity="center"
                     android:text="@string/tv_title_email_find"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/tv_18sp" />
+                    android:textSize="@dimen/size_18dp" />
             </LinearLayout>
 
             <!--Enter Content-->
@@ -98,7 +98,7 @@
                         android:fontFamily="@font/noto_sans_kr_regular"
                         android:text="@string/tv_name_info"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/tv_15sp" />
+                        android:textSize="@dimen/size_15dp" />
 
                     <EditText
                         android:id="@+id/et_name_email_find"
@@ -112,7 +112,7 @@
                         android:inputType="textPersonName|textNoSuggestions"
                         android:paddingHorizontal="@dimen/hint_padding_10dp"
                         android:paddingVertical="@dimen/padding_2.5dp"
-                        android:textSize="@dimen/tv_15sp" />
+                        android:textSize="@dimen/size_15dp" />
 
                     <TextView
                         android:id="@+id/tv_name_caption_email_find"
@@ -121,7 +121,7 @@
                         android:fontFamily="@font/noto_sans_kr_regular"
                         android:text="@string/tv_name_caption_info"
                         android:textColor="@color/very_light_pink"
-                        android:textSize="@dimen/tv_10sp" />
+                        android:textSize="@dimen/size_10dp" />
                 </LinearLayout>
 
                 <!-- Phone -->
@@ -140,7 +140,7 @@
                         android:fontFamily="@font/noto_sans_kr_regular"
                         android:text="@string/tv_phone_info"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/tv_15sp" />
+                        android:textSize="@dimen/size_15dp" />
 
                     <EditText
                         android:id="@+id/et_phone_email_find"
@@ -154,7 +154,7 @@
                         android:inputType="phone|textNoSuggestions"
                         android:paddingHorizontal="@dimen/hint_padding_10dp"
                         android:paddingVertical="@dimen/padding_2.5dp"
-                        android:textSize="@dimen/tv_15sp" />
+                        android:textSize="@dimen/size_15dp" />
 
                     <TextView
                         android:id="@+id/tv_phone_caption_email_find"
@@ -163,7 +163,7 @@
                         android:fontFamily="@font/noto_sans_kr_regular"
                         android:text="@string/tv_phone_caption_info"
                         android:textColor="@color/very_light_pink"
-                        android:textSize="@dimen/tv_10sp" />
+                        android:textSize="@dimen/size_10dp" />
                 </LinearLayout>
             </LinearLayout>
 
