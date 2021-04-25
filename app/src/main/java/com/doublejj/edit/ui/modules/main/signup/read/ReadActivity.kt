@@ -66,7 +66,7 @@ class ReadActivity : AppCompatActivity(), ReadView {
         var selectType = ""
         if (mArrayList[6] == "MENTEE") {
             selectType = "멘티"
-        }else{
+        } else {
             selectType = "멘토"
         }
 

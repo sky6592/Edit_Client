@@ -684,5 +684,8 @@ Edit. 은(는) 정보주체의 이용정보를 저장하고 수시로 불러오�
 이 개인정보처리방침은 시행일로부터 적용되며, 법령 및 방침에 따른 변경내용의 추가, 삭제 및 정정이 있는 경우에는 변경사항의 시행 7일 전부터 공지사항을 통하여 고지할 것입니다.</string>
     <string name="tv_btn_privacy_agree">동의하기</string>
 
+    <!-- Ranking -->
+    <string name="tv_rank_mento">멘토 랭킹</string>
+    <string name="tv_rank_mentee">멘티 랭킹</string>
 
 </resources>

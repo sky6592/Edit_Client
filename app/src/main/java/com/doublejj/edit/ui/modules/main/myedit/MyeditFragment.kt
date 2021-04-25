@@ -17,14 +17,20 @@ import com.doublejj.edit.ApplicationClass.Companion.USER_POSITION
 import com.doublejj.edit.ApplicationClass.Companion.X_ACCESS_TOKEN
 import com.doublejj.edit.ApplicationClass.Companion.sSharedPreferences
 import com.doublejj.edit.R
+<<<<<<< HEAD
 import com.doublejj.edit.data.api.services.certificate_mentor.AuthMentorStatusService
 import com.doublejj.edit.data.api.services.certificate_mentor.AuthMentorStatusView
+=======
+>>>>>>> e37452e (feat: Add logout api)
 import com.doublejj.edit.data.api.services.logout.LogoutService
 import com.doublejj.edit.data.api.services.logout.LogoutView
 import com.doublejj.edit.data.api.services.profile.info.ProfileInfoService
 import com.doublejj.edit.data.api.services.profile.info.ProfileInfoView
 import com.doublejj.edit.data.models.BaseResponse
+<<<<<<< HEAD
 import com.doublejj.edit.data.models.certificate_mentor.AuthMentorStatusResponse
+=======
+>>>>>>> e37452e (feat: Add logout api)
 import com.doublejj.edit.data.models.profile.info.ProfileInfoResponse
 import com.doublejj.edit.databinding.MyeditFragmentBinding
 import com.doublejj.edit.ui.modules.main.myedit.certificate_mentor.CertificateInProgressActivity
@@ -41,11 +47,18 @@ import com.doublejj.edit.ui.modules.main.myedit.settings.SettingsActivity
 import com.doublejj.edit.ui.modules.main.myedit.switch_position.SwitchToMenteeActivity
 import com.doublejj.edit.ui.modules.main.myedit.switch_position.SwitchToMentorActivity
 import com.doublejj.edit.ui.modules.main.splash.SplashActivity
+<<<<<<< HEAD
 import com.doublejj.edit.ui.utils.dialog.CustomLoadingDialog
 import com.doublejj.edit.ui.utils.snackbar.CustomSnackbar
 import com.google.android.material.snackbar.Snackbar
 
 class MyeditFragment : Fragment(), ProfileInfoView, LogoutView, AuthMentorStatusView {
+=======
+import com.doublejj.edit.ui.utils.snackbar.CustomSnackbar
+import com.google.android.material.snackbar.Snackbar
+
+class MyeditFragment : Fragment(), ProfileInfoView, LogoutView {
+>>>>>>> e37452e (feat: Add logout api)
     private val TAG: String = javaClass.simpleName.toString()
     private lateinit var binding: MyeditFragmentBinding
     private lateinit var viewModel: MyeditViewModel
@@ -156,7 +169,10 @@ class MyeditFragment : Fragment(), ProfileInfoView, LogoutView, AuthMentorStatus
         binding.btnLogout.setOnClickListener {
             // 로그아웃 API 적용
             LogoutService(this).tryPostLogout()
+<<<<<<< HEAD
             CustomLoadingDialog(requireContext()).show()
+=======
+>>>>>>> e37452e (feat: Add logout api)
         }
 
         return binding.root
@@ -205,10 +221,15 @@ class MyeditFragment : Fragment(), ProfileInfoView, LogoutView, AuthMentorStatus
             binding.ivProfile.setImageResource((requireContext().applicationContext as ApplicationClass).getCharacterResId(response.result.colorName, response.result.emotionName))
         }
         else {
+<<<<<<< HEAD
             CustomSnackbar.make(binding.root, response.message.toString(), Snackbar.LENGTH_SHORT).show()
         }
 
         CustomLoadingDialog(requireContext()).dismiss()
+=======
+            CustomSnackbar.make(binding.root, response.message.toString(), Snackbar.LENGTH_SHORT)
+        }
+>>>>>>> e37452e (feat: Add logout api)
     }
 
     override fun onProfileInfoFailure(message: String) {
@@ -295,5 +316,28 @@ class MyeditFragment : Fragment(), ProfileInfoView, LogoutView, AuthMentorStatus
         CustomSnackbar.make(binding.root, message, Snackbar.LENGTH_SHORT).show()
 
         CustomLoadingDialog(requireContext()).dismiss()
+    }
+
+    override fun onPostLogoutSuccess(response: BaseResponse) {
+        if (response.isSuccess) {
+            val editor = sSharedPreferences.edit()
+            editor.putString(X_ACCESS_TOKEN, null)
+            editor.putString(USER_POSITION, null)
+            editor.putString(MENTOR_AUTH_CONFIRM, null)
+            editor.putString(USER_NICKNAME, null)
+            editor.putString(USER_EMOTION, null)
+            editor.putString(USER_COLOR, null)
+            editor.commit()
+            editor.apply()
+
+            // 초기화면으로 가기
+            val sendIntent = Intent(activity, SplashActivity::class.java)
+            sendIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+            startActivity(sendIntent)
+        }
+    }
+
+    override fun onPostLogoutFailure(message: String) {
+        CustomSnackbar.make(binding.root, message, Snackbar.LENGTH_SHORT)
     }
 }

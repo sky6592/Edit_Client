@@ -68,7 +68,7 @@ class TodaySentenceFragment : Fragment(), TodaySentenceView, SentenceLimitView {
             // TODO : refresh data
             onResume()
         }
-        
+
         // 내 프로필 캐릭터로 바꾸기
         val charColor = sSharedPreferences.getString(USER_COLOR, "purple").toString()
         val charEmotion = sSharedPreferences.getString(USER_EMOTION, "bigSmile").toString()

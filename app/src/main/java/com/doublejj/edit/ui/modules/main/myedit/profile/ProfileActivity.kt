@@ -39,7 +39,7 @@ class ProfileActivity : AppCompatActivity() {
             val sendIntent = Intent(this, ChangeJobActivity::class.java)
             startActivity(sendIntent)
 
-            }
         }
-
     }
+
+}
