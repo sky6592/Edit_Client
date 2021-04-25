@@ -12,6 +12,6 @@
         android:topRightRadius="@dimen/btn_corners" />
 
     <stroke
-        android:width="@dimen/stroke_2px"
+        android:width="@dimen/size_2dp"
         android:color="@color/purple" />
 </shape>

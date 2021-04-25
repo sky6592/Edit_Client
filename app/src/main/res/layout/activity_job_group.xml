@@ -12,9 +12,9 @@
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar_title"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/size_toolbar_height"
-            app:contentInsetStart="@dimen/margin_component_inset_20dp"
-            app:contentInsetEnd="@dimen/margin_component_inset_20dp"
+            android:layout_height="@dimen/size_54dp"
+            app:contentInsetStart="@dimen/size_20dp"
+            app:contentInsetEnd="@dimen/size_20dp"
             android:background="@color/white"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -24,8 +24,8 @@
                 android:layout_height="wrap_content">
                 <ImageButton
                     android:id="@+id/iv_back_job_group"
-                    android:layout_width="@dimen/size_icon_button_24dp"
-                    android:layout_height="@dimen/size_icon_button_24dp"
+                    android:layout_width="@dimen/size_24dp"
+                    android:layout_height="@dimen/size_24dp"
                     android:src="@drawable/icon_back"
                     android:background="@color/transparent"
                     android:scaleType="fitXY"

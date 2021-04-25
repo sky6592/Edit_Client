@@ -4,9 +4,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
 
     android:layout_width="match_parent"
-    android:layout_height="@dimen/size_toolbar_height"
-    app:contentInsetStart="@dimen/margin_component_inset_20dp"
-    app:contentInsetEnd="@dimen/margin_component_inset_20dp"
+    android:layout_height="@dimen/size_54dp"
+    app:contentInsetStart="@dimen/size_20dp"
+    app:contentInsetEnd="@dimen/size_20dp"
     android:background="@color/white">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -19,7 +19,7 @@
             android:text="@string/app_name"
             android:fontFamily="@font/noto_sans_kr_bold"
             android:textColor="@color/purple_active"
-            android:textSize="@dimen/size_toolbar_logo_text"
+            android:textSize="@dimen/size_22dp"
             android:background="@color/transparent"
             android:gravity="center"
 
@@ -28,8 +28,8 @@
             app:layout_constraintBottom_toBottomOf="parent" />
         <ImageButton
             android:id="@+id/ib_settings"
-            android:layout_width="@dimen/size_icon_button_24dp"
-            android:layout_height="@dimen/size_icon_button_24dp"
+            android:layout_width="@dimen/size_24dp"
+            android:layout_height="@dimen/size_24dp"
             android:src="@drawable/icon_settings"
             android:background="@color/transparent"
             android:scaleType="fitXY"

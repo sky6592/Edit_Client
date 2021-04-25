@@ -9,11 +9,11 @@
     app:cardCornerRadius="@dimen/size_card_radius_7dp"
     android:elevation="@dimen/size_10dp"
 
-    android:layout_marginTop="@dimen/margin_card_inner_text_start_and_end_20dp"
-    android:layout_marginBottom="@dimen/margin_card_inner_text_start_and_end_20dp">
+    android:layout_marginTop="@dimen/size_20dp"
+    android:layout_marginBottom="@dimen/size_20dp">
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="@dimen/size_card_home_today_sentence_width"
-        android:layout_height="@dimen/size_card_home_today_sentence_height"
+        android:layout_width="@dimen/size_294dp"
+        android:layout_height="@dimen/size_150dp"
         android:orientation="vertical">
         <TextView
             android:id="@+id/tv_today_sentence_zero_title"
@@ -37,7 +37,7 @@
             style="@style/CustomTextViewMidBlack"
             android:fontFamily="@font/noto_sans_kr_bold"
             android:text="@string/tv_card_zero_content"
-            android:textSize="@dimen/size_tv_card_content_12dp"
+            android:textSize="@dimen/size_12dp"
 
             android:layout_marginBottom="@dimen/size_48dp"
             app:layout_constraintBottom_toBottomOf="parent"
