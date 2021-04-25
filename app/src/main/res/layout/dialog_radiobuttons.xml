@@ -14,11 +14,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="@style/CustomTextViewMidBlack"
-<<<<<<< HEAD
                 android:text="@string/tv_mentor_change_job_select"
-=======
-                android:text="@string/tv_change_job_select"
->>>>>>> 2abbbc4 (feat: Add change job layouts, apply api)
                 android:textSize="@dimen/size_18dp"
                 android:fontFamily="@font/noto_sans_kr_medium"
                 android:gravity="center"

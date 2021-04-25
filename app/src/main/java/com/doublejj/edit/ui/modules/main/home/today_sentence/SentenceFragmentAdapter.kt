@@ -78,8 +78,8 @@ class SentenceFragmentAdapter(
         val characterResId = (context.applicationContext as ApplicationClass).getCharacterResId(sentenceData!!.userProfile)
         holder.ivCharacter.setImageResource(characterResId)
 
-        holder.tvSentenceWriter.text = sentenceData!!.nickName
-        holder.tvOccupationType.text = sentenceData!!.jobName
+        holder.tvSentenceWriter.text = sentenceData.nickName
+        holder.tvOccupationType.text = sentenceData.jobName
 
         // 내 문장일 경우 신고대신 삭제 처리
         if (sentenceData.isMine) {
@@ -87,7 +87,7 @@ class SentenceFragmentAdapter(
         }
         holder.ibMenu.setOnClickListener {
             var dialog: CustomDialogFragment
-            if (sentenceData!!.isMine) {
+            if (sentenceData.isMine) {
                 dialog = CustomDialogFragment(
                     R.string.tv_dialog_open_sentence_title,
                     R.string.tv_dialog_open_sentence_content,
@@ -106,21 +106,21 @@ class SentenceFragmentAdapter(
             dialog.setDialogClickListener(object : CustomDialogClickListener {
                 override fun onPositiveClick() {
                     // 내 문장일 경우 문장 삭제 API
-                    if (sentenceData!!.isMine) {
+                    if (sentenceData.isMine) {
                         // 문장 삭제 API
                         DeletePublishedSentenceService(this@SentenceFragmentAdapter).tryDeletePublishedSentence(
-                            sentenceData!!.coverLetterId
+                            sentenceData.coverLetterId
                         )
 
                         // 삭제 후 리스트에서 바로 지우기
-                        sentenceDataList.remove(sentenceData!!)
+                        sentenceDataList.remove(sentenceData)
                         notifyDataSetChanged()
                     }
                     // 내 문장이 아닐 경우
                     else {
                         // 해당 문장 신고 API
                         ReportSentenceService(this@SentenceFragmentAdapter).tryReportSentence(
-                            ReportSentenceRequest(sentenceData!!.coverLetterId)
+                            ReportSentenceRequest(sentenceData.coverLetterId)
                         )
                     }
                 }
@@ -131,58 +131,58 @@ class SentenceFragmentAdapter(
             dialog.show(fm, "CustomDialog")
         }
 
-        holder.tvSelfWritingType.text = sentenceData!!.coverLetterCategoryName
-        holder.tvSentenceContent.text = sentenceData!!.coverLetterContent
+        holder.tvSelfWritingType.text = sentenceData.coverLetterCategoryName
+        holder.tvSentenceContent.text = sentenceData.coverLetterContent
 
-        holder.tbSympathy.isChecked = sentenceData!!.isSympathy
-        holder.tvSympathyCount.text = sentenceData!!.sympathiesCount.toString()
+        holder.tbSympathy.isChecked = sentenceData.isSympathy
+        holder.tvSympathyCount.text = sentenceData.sympathiesCount.toString()
 
         holder.llBtnSympathy.setOnClickListener {
             // 공감 처리
-            val sympathyState = sentenceData!!.isSympathy
+            val sympathyState = sentenceData.isSympathy
             holder.tbSympathy.isChecked = !sympathyState
-            if (!sympathyState) sentenceData!!.sympathiesCount += 1
-            else sentenceData!!.sympathiesCount -= 1
-            sentenceData!!.isSympathy = !sympathyState
-            holder.tvSympathyCount.text = sentenceData!!.sympathiesCount.toString()
+            if (!sympathyState) sentenceData.sympathiesCount += 1
+            else sentenceData.sympathiesCount -= 1
+            sentenceData.isSympathy = !sympathyState
+            holder.tvSympathyCount.text = sentenceData.sympathiesCount.toString()
 
             // 공감 API 적용
-            SympathizeSentenceService(this).tryPatchSympathizeSentence(sentenceData!!.coverLetterId)
-            sentenceDataList.set(position, sentenceData!!)
+            SympathizeSentenceService(this).tryPatchSympathizeSentence(sentenceData.coverLetterId)
+            sentenceDataList.set(position, sentenceData)
             notifyDataSetChanged()
 
-            holder.tbSympathy.isChecked = sentenceData!!.isSympathy
-            holder.tvSympathyCount.text = sentenceData!!.sympathiesCount.toString()
+            holder.tbSympathy.isChecked = sentenceData.isSympathy
+            holder.tvSympathyCount.text = sentenceData.sympathiesCount.toString()
         }
         // ToggleButton 혼자만 눌리는 이슈 처리
         holder.tbSympathy.setOnClickListener {
             // 공감 처리
-            val sympathyState = sentenceData!!.isSympathy
+            val sympathyState = sentenceData.isSympathy
             holder.tbSympathy.isChecked = !sympathyState
-            if (!sympathyState) sentenceData!!.sympathiesCount += 1
-            else sentenceData!!.sympathiesCount -= 1
-            sentenceData!!.isSympathy = !sympathyState
-            holder.tvSympathyCount.text = sentenceData!!.sympathiesCount.toString()
+            if (!sympathyState) sentenceData.sympathiesCount += 1
+            else sentenceData.sympathiesCount -= 1
+            sentenceData.isSympathy = !sympathyState
+            holder.tvSympathyCount.text = sentenceData.sympathiesCount.toString()
 
             // 공감 API 적용
-            SympathizeSentenceService(this).tryPatchSympathizeSentence(sentenceData!!.coverLetterId)
-            sentenceDataList.set(position, sentenceData!!)
+            SympathizeSentenceService(this).tryPatchSympathizeSentence(sentenceData.coverLetterId)
+            sentenceDataList.set(position, sentenceData)
             notifyDataSetChanged()
 
-            holder.tbSympathy.isChecked = sentenceData!!.isSympathy
-            holder.tvSympathyCount.text = sentenceData!!.sympathiesCount.toString()
+            holder.tbSympathy.isChecked = sentenceData.isSympathy
+            holder.tvSympathyCount.text = sentenceData.sympathiesCount.toString()
         }
 
         holder.llBtnOpenComment.setOnClickListener {
             // 해당 카드의 코멘트 보기 화면으로 이동
             val bundle = Bundle()
-            bundle.putLong("coverLetterId", sentenceData!!.coverLetterId)
+            bundle.putLong("coverLetterId", sentenceData.coverLetterId)
             bundle.putInt("ivCharacter", characterResId)
-            bundle.putString("tvSentenceWriter", sentenceData!!.nickName)
-            bundle.putString("tvOccupationType", sentenceData!!.jobName)
-            bundle.putString("tvSelfWritingType", sentenceData!!.coverLetterCategoryName)
-            bundle.putString("tvSentenceContent", sentenceData!!.coverLetterContent)
-            bundle.putBoolean("isMine", sentenceData!!.isMine)
+            bundle.putString("tvSentenceWriter", sentenceData.nickName)
+            bundle.putString("tvOccupationType", sentenceData.jobName)
+            bundle.putString("tvSelfWritingType", sentenceData.coverLetterCategoryName)
+            bundle.putString("tvSentenceContent", sentenceData.coverLetterContent)
+            bundle.putBoolean("isMine", sentenceData.isMine)
 
             fm.beginTransaction()
                 .add(R.id.fl_home, OpenCommentFragment().apply {

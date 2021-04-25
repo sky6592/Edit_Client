@@ -3,6 +3,7 @@ package com.doublejj.edit.ui.modules.main.myedit.profile.change_profile
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import com.doublejj.edit.ApplicationClass
 import com.doublejj.edit.ApplicationClass.Companion.USER_COLOR
@@ -95,36 +96,36 @@ class ChangeProfileActivity : AppCompatActivity(), ChangeProfileView {
     fun setSelectedResource(color: String) {
         when (color) {
             "purple" -> {
-                binding.rbEmotion0.background = resources.getDrawable(R.drawable.selector_char_purple_active_0)
-                binding.rbEmotion1.background = resources.getDrawable(R.drawable.selector_char_purple_active_1)
-                binding.rbEmotion2.background = resources.getDrawable(R.drawable.selector_char_purple_active_2)
-                binding.rbEmotion3.background = resources.getDrawable(R.drawable.selector_char_purple_active_3)
-                binding.rbEmotion4.background = resources.getDrawable(R.drawable.selector_char_purple_active_4)
-                binding.rbEmotion5.background = resources.getDrawable(R.drawable.selector_char_purple_active_5)
+                binding.rbEmotion0.background = ContextCompat.getDrawable(applicationContext, R.drawable.selector_char_purple_active_0)
+                binding.rbEmotion1.background = ContextCompat.getDrawable(applicationContext, R.drawable.selector_char_purple_active_1)
+                binding.rbEmotion2.background = ContextCompat.getDrawable(applicationContext, R.drawable.selector_char_purple_active_2)
+                binding.rbEmotion3.background = ContextCompat.getDrawable(applicationContext, R.drawable.selector_char_purple_active_3)
+                binding.rbEmotion4.background = ContextCompat.getDrawable(applicationContext, R.drawable.selector_char_purple_active_4)
+                binding.rbEmotion5.background = ContextCompat.getDrawable(applicationContext, R.drawable.selector_char_purple_active_5)
             }
             "lightPurple" -> {
-                binding.rbEmotion0.background = resources.getDrawable(R.drawable.selector_char_mid_purple_0)
-                binding.rbEmotion1.background = resources.getDrawable(R.drawable.selector_char_mid_purple_1)
-                binding.rbEmotion2.background = resources.getDrawable(R.drawable.selector_char_mid_purple_2)
-                binding.rbEmotion3.background = resources.getDrawable(R.drawable.selector_char_mid_purple_3)
-                binding.rbEmotion4.background = resources.getDrawable(R.drawable.selector_char_mid_purple_4)
-                binding.rbEmotion5.background = resources.getDrawable(R.drawable.selector_char_mid_purple_5)
+                binding.rbEmotion0.background = ContextCompat.getDrawable(applicationContext, R.drawable.selector_char_mid_purple_0)
+                binding.rbEmotion1.background = ContextCompat.getDrawable(applicationContext, R.drawable.selector_char_mid_purple_1)
+                binding.rbEmotion2.background = ContextCompat.getDrawable(applicationContext, R.drawable.selector_char_mid_purple_2)
+                binding.rbEmotion3.background = ContextCompat.getDrawable(applicationContext, R.drawable.selector_char_mid_purple_3)
+                binding.rbEmotion4.background = ContextCompat.getDrawable(applicationContext, R.drawable.selector_char_mid_purple_4)
+                binding.rbEmotion5.background = ContextCompat.getDrawable(applicationContext, R.drawable.selector_char_mid_purple_5)
             }
             "lightBlue" -> {
-                binding.rbEmotion0.background = resources.getDrawable(R.drawable.selector_char_sky_0)
-                binding.rbEmotion1.background = resources.getDrawable(R.drawable.selector_char_sky_1)
-                binding.rbEmotion2.background = resources.getDrawable(R.drawable.selector_char_sky_2)
-                binding.rbEmotion3.background = resources.getDrawable(R.drawable.selector_char_sky_3)
-                binding.rbEmotion4.background = resources.getDrawable(R.drawable.selector_char_sky_4)
-                binding.rbEmotion5.background = resources.getDrawable(R.drawable.selector_char_sky_5)
+                binding.rbEmotion0.background = ContextCompat.getDrawable(applicationContext, R.drawable.selector_char_sky_0)
+                binding.rbEmotion1.background = ContextCompat.getDrawable(applicationContext, R.drawable.selector_char_sky_1)
+                binding.rbEmotion2.background = ContextCompat.getDrawable(applicationContext, R.drawable.selector_char_sky_2)
+                binding.rbEmotion3.background = ContextCompat.getDrawable(applicationContext, R.drawable.selector_char_sky_3)
+                binding.rbEmotion4.background = ContextCompat.getDrawable(applicationContext, R.drawable.selector_char_sky_4)
+                binding.rbEmotion5.background = ContextCompat.getDrawable(applicationContext, R.drawable.selector_char_sky_5)
             }
             "blue" -> {
-                binding.rbEmotion0.background = resources.getDrawable(R.drawable.selector_char_navy_0)
-                binding.rbEmotion1.background = resources.getDrawable(R.drawable.selector_char_navy_1)
-                binding.rbEmotion2.background = resources.getDrawable(R.drawable.selector_char_navy_2)
-                binding.rbEmotion3.background = resources.getDrawable(R.drawable.selector_char_navy_3)
-                binding.rbEmotion4.background = resources.getDrawable(R.drawable.selector_char_navy_4)
-                binding.rbEmotion5.background = resources.getDrawable(R.drawable.selector_char_navy_5)
+                binding.rbEmotion0.background = ContextCompat.getDrawable(applicationContext, R.drawable.selector_char_navy_0)
+                binding.rbEmotion1.background = ContextCompat.getDrawable(applicationContext, R.drawable.selector_char_navy_1)
+                binding.rbEmotion2.background = ContextCompat.getDrawable(applicationContext, R.drawable.selector_char_navy_2)
+                binding.rbEmotion3.background = ContextCompat.getDrawable(applicationContext, R.drawable.selector_char_navy_3)
+                binding.rbEmotion4.background = ContextCompat.getDrawable(applicationContext, R.drawable.selector_char_navy_4)
+                binding.rbEmotion5.background = ContextCompat.getDrawable(applicationContext, R.drawable.selector_char_navy_5)
             }
         }
 
