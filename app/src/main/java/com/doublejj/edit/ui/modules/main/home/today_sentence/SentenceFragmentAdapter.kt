@@ -154,7 +154,25 @@ class SentenceFragmentAdapter(
             holder.tbSympathy.isChecked = sentenceData!!.isSympathy
             holder.tvSympathyCount.text = sentenceData!!.sympathiesCount.toString()
         }
-        // TODO : ToggleButton 혼자만 눌리는 이슈 해결하기
+        // TODO : ToggleButton!! 혼자만 눌리는 이슈 해결하기
+        holder.tbSympathy.setOnClickListener {
+            // 공감 처리
+            val sympathyState = sentenceData!!.isSympathy
+            holder.tbSympathy.isChecked = !sympathyState
+            if (!sympathyState) sentenceData!!.sympathiesCount += 1
+            else sentenceData!!.sympathiesCount -= 1
+            sentenceData!!.isSympathy = !sympathyState
+            holder.tvSympathyCount.text = sentenceData!!.sympathiesCount.toString()
+
+            // 공감 API 적용
+            SympathizeSentenceService(this).tryPatchSympathizeSentence(sentenceData!!.coverLetterId)
+            sentenceDataList.set(position, sentenceData!!)
+            notifyDataSetChanged()
+
+            holder.tbSympathy.isChecked = sentenceData!!.isSympathy
+            holder.tvSympathyCount.text = sentenceData!!.sympathiesCount.toString()
+        }
+
         holder.llBtnOpenComment.setOnClickListener {
             // 해당 카드의 코멘트 보기 화면으로 이동
             val bundle = Bundle()

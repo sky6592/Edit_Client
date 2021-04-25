@@ -176,7 +176,7 @@
             android:drawablePadding="0dp"
             android:textOn="@null"
             android:textOff="@null"
-            android:enabled="false"
+            android:enabled="true"
             android:background="@color/transparent" />
         <TextView
             android:layout_width="wrap_content"
