@@ -76,12 +76,12 @@
             android:windowSoftInputMode="adjustPan" />
         <activity android:name=".ui.modules.main.myedit.profile.change_profile.ChangeProfileActivity" />
         <activity
-            android:name=".ui.modules.main.signup.slectjopgroup.JobGroupActivity"
+            android:name=".ui.modules.main.signup.selectjobgroup.JobGroupActivity"
             android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".ui.modules.main.login.LogInActivity"
             android:windowSoftInputMode="adjustResize" />
-        <activity android:name=".ui.modules.main.signup.slecttype.SelectTypeActivity" />
+        <activity android:name=".ui.modules.main.signup.selecttype.SelectTypeActivity" />
         <activity android:name=".ui.modules.main.signup.privacyagree.PrivacyAgreeActivity" />
         <activity android:name=".ui.modules.main.walkthrough.WalkThroughActivity" />
         <activity

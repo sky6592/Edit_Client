@@ -1,4 +1,4 @@
-package com.doublejj.edit.ui.modules.main.signup.slectjopgroup
+package com.doublejj.edit.ui.modules.main.signup.selectjobgroup
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -11,7 +11,6 @@ import android.text.SpannableStringBuilder
 import android.text.TextWatcher
 import android.text.style.ForegroundColorSpan
 import android.util.Log
-import android.util.TypedValue
 import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.databinding.DataBindingUtil

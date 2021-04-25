@@ -1,4 +1,4 @@
-package com.doublejj.edit.ui.modules.main.signup.slecttype
+package com.doublejj.edit.ui.modules.main.signup.selecttype
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -15,7 +15,7 @@ import androidx.databinding.DataBindingUtil
 import com.doublejj.edit.R
 import com.doublejj.edit.databinding.ActivitySelectTypeBinding
 import com.doublejj.edit.databinding.DialogEmailFindBinding
-import com.doublejj.edit.ui.modules.main.signup.slectjopgroup.JobGroupActivity
+import com.doublejj.edit.ui.modules.main.signup.selectjobgroup.JobGroupActivity
 import com.doublejj.edit.ui.modules.main.walkthrough.WalkThroughActivity
 
 class SelectTypeActivity : AppCompatActivity() {
