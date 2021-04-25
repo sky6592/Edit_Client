@@ -1,6 +1,8 @@
 package com.doublejj.edit
 
 import android.content.SharedPreferences
+import android.os.Build
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.multidex.MultiDexApplication
 import com.doublejj.edit.data.api.interceptors.XAccessTokenInterceptor
 import com.doublejj.edit.ui.utils.ActivityList
@@ -49,6 +51,9 @@ class ApplicationClass : MultiDexApplication() {
 
         // ActivityList 인스턴스 최초 생성
         sActivityList = ActivityList()
+
+        // only force light mode
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
     }
 
     // 레트로핏 인스턴스를 생성하고, 레트로핏에 각종 설정값들을 지정해줍니다.

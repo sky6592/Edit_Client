@@ -5,10 +5,12 @@
         <item name="colorPrimary">@color/purple_active</item>
         <item name="colorPrimaryVariant">@color/purple_inactive</item>
         <item name="colorOnPrimary">@color/purple_active</item>
+
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/purple_active</item>
         <item name="colorSecondaryVariant">@color/purple_active</item>
         <item name="colorOnSecondary">@color/white</item>
+
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">@color/white</item>
         <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
