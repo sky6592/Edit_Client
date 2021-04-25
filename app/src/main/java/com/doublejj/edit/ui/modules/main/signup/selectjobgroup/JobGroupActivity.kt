@@ -111,10 +111,6 @@ class JobGroupActivity : AppCompatActivity() {
             binding.rgDialogJobGroup.setOnCheckedChangeListener { group, checkedId ->
                 when (checkedId) {
                     R.id.rb_job_group_0 -> {
-                        mBinding.tvInfoSelectJobGroup.text = binding.rbJobGroup0.text
-                        mSelectRadioFlag = true
-                    }
-                    R.id.rb_job_group_0 -> {
                         mBinding.tvInfoSelectJobGroup.text =
                             binding.rbJobGroup0.text
                         mSelectRadioFlag = true

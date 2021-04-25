@@ -186,7 +186,7 @@ class EmailFindActivity : AppCompatActivity(), EmailFindView {
         if (response.code == 1000) {
             binding.tvDialogContentEmailFind.text =
                 getString(R.string.tv_dialog_content_find_email) + "\n" + response.result.email
-            builder.setPositiveButton("확인") { _, i ->
+            builder.setPositiveButton("확인") { _, _ ->
 
             }
             builder.setView(binding.root).show()
