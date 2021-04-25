@@ -131,7 +131,7 @@ class SentenceActivityAdapter(
             holder.tbSympathy.isChecked = sentenceData.isSympathy
             holder.tvSympathyCount.text = sentenceData.sympathiesCount.toString()
         }
-        // TODO : ToggleButton!! 혼자만 눌리는 이슈 해결하기
+        // ToggleButton 혼자만 눌리는 이슈 처리
         holder.tbSympathy.setOnClickListener {
             // 공감 처리
             val sympathyState = sentenceData.isSympathy
