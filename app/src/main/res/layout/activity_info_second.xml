@@ -32,7 +32,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:paddingHorizontal="@dimen/padding_common"
+                    android:paddingHorizontal="@dimen/padding_20dp"
                     app:layout_constraintBottom_toTopOf="@+id/tv_info_second"
                     app:layout_constraintTop_toBottomOf="@+id/iv_info_second">
 
@@ -42,13 +42,13 @@
                         android:id="@+id/linear_email_info_second"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/margin_10dp"
                         android:orientation="vertical">
 
                         <TextView
                             android:id="@+id/tv_nick_name_info_second"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginBottom="@dimen/margin_10dp"
                             android:fontFamily="@font/noto_sans_kr_regular"
                             android:text="@string/tv_email_info"
                             android:textColor="@color/black"
@@ -74,8 +74,9 @@
                                 android:hint="@string/hint_email_info"
                                 android:imeOptions="actionSearch"
                                 android:inputType="textPersonName"
-                                android:paddingHorizontal="@dimen/hint_padding_10dp"
-                                android:paddingVertical="@dimen/padding_2.5dp"
+                                android:includeFontPadding="false"
+                                android:paddingVertical="@dimen/size_10dp"
+                                android:paddingHorizontal="@dimen/size_14dp"
                                 android:textSize="@dimen/size_15dp" />
 
                             <androidx.appcompat.widget.AppCompatButton
@@ -86,6 +87,7 @@
                                 android:fontFamily="@font/noto_sans_kr_regular"
                                 android:imeOptions="actionSearch"
                                 android:text="@string/tv_double_check"
+                                android:minHeight="0dp"
                                 android:textColor="@color/purple" />
                         </LinearLayout>
 
@@ -93,7 +95,6 @@
                             android:id="@+id/tv_email_caption_info_first"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginBottom="@dimen/margin_10dp"
                             android:fontFamily="@font/noto_sans_kr_regular"
                             android:text="@string/tv_email_caption_info"
                             android:textColor="@color/very_light_pink"
@@ -112,7 +113,6 @@
                             android:id="@+id/tv_pw_info_second"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginBottom="@dimen/margin_10dp"
                             android:fontFamily="@font/noto_sans_kr_regular"
                             android:text="@string/tv_pw_info"
                             android:textColor="@color/black"
@@ -128,8 +128,9 @@
                             android:hint="@string/hint_pw_info"
                             android:imeOptions="actionSearch"
                             android:inputType="textPassword"
-                            android:paddingHorizontal="@dimen/hint_padding_10dp"
-                            android:paddingVertical="@dimen/padding_2.5dp"
+                            android:includeFontPadding="false"
+                            android:paddingVertical="@dimen/size_10dp"
+                            android:paddingHorizontal="@dimen/size_14dp"
                             android:textSize="@dimen/size_15dp" />
 
                         <TextView
@@ -154,7 +155,6 @@
                             android:id="@+id/tv_re_pw_info_first"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginBottom="@dimen/margin_10dp"
                             android:fontFamily="@font/noto_sans_kr_regular"
                             android:text="@string/tv_re_pw_info"
                             android:textColor="@color/black"
@@ -170,8 +170,9 @@
                             android:hint="@string/hint_re_pw_info"
                             android:imeOptions="actionSearch"
                             android:inputType="textPassword"
-                            android:paddingHorizontal="@dimen/hint_padding_10dp"
-                            android:paddingVertical="@dimen/padding_2.5dp"
+                            android:includeFontPadding="false"
+                            android:paddingVertical="@dimen/size_10dp"
+                            android:paddingHorizontal="@dimen/size_14dp"
                             android:textSize="@dimen/size_15dp" />
 
                         <TextView

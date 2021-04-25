@@ -110,8 +110,9 @@
                         android:hint="@string/hint_name_info"
                         android:imeOptions="actionSearch"
                         android:inputType="textPersonName|textNoSuggestions"
-                        android:paddingHorizontal="@dimen/hint_padding_10dp"
-                        android:paddingVertical="@dimen/padding_2.5dp"
+                        android:includeFontPadding="false"
+                        android:paddingVertical="@dimen/size_10dp"
+                        android:paddingHorizontal="@dimen/size_14dp"
                         android:textSize="@dimen/size_15dp" />
 
                     <TextView
@@ -136,7 +137,6 @@
                         android:id="@+id/tv_phone_email_find"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="@dimen/margin_10dp"
                         android:fontFamily="@font/noto_sans_kr_regular"
                         android:text="@string/tv_phone_info"
                         android:textColor="@color/black"
@@ -152,8 +152,9 @@
                         android:hint="@string/hint_phone_info"
                         android:imeOptions="actionSearch"
                         android:inputType="phone|textNoSuggestions"
-                        android:paddingHorizontal="@dimen/hint_padding_10dp"
-                        android:paddingVertical="@dimen/padding_2.5dp"
+                        android:includeFontPadding="false"
+                        android:paddingVertical="@dimen/size_10dp"
+                        android:paddingHorizontal="@dimen/size_14dp"
                         android:textSize="@dimen/size_15dp" />
 
                     <TextView

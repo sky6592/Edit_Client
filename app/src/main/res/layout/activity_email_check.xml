@@ -100,12 +100,13 @@
                         android:id="@+id/et_email_check"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="@dimen/margin_10dp"
                         android:imeOptions="actionSearch"
                         android:background="@drawable/shape_et_btn_info"
                         android:fontFamily="@font/noto_sans_kr_regular"
                         android:inputType="textPersonName|textNoSuggestions"
-                        android:paddingHorizontal="@dimen/hint_padding_10dp"
+                        android:includeFontPadding="false"
+                        android:paddingVertical="@dimen/size_10dp"
+                        android:paddingHorizontal="@dimen/size_14dp"
                         android:paddingTop="@dimen/hint_padding_5dp"
                         android:textSize="@dimen/size_15dp" />
 

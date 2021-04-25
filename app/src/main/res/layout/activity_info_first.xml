@@ -59,14 +59,15 @@
                             android:id="@+id/et_name_info_first"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginBottom="@dimen/margin_5dp"
                             android:background="@drawable/shape_et_btn_info"
+                            android:layout_marginBottom="@dimen/margin_5dp"
                             android:fontFamily="@font/noto_sans_kr_regular"
                             android:hint="@string/hint_name_info"
                             android:imeOptions="actionSearch"
                             android:inputType="textPersonName|textNoSuggestions"
-                            android:paddingHorizontal="@dimen/hint_padding_10dp"
-                            android:paddingVertical="@dimen/padding_2.5dp"
+                            android:includeFontPadding="false"
+                            android:paddingVertical="@dimen/size_10dp"
+                            android:paddingHorizontal="@dimen/size_14dp"
                             android:textSize="@dimen/size_15dp" />
 
                         <TextView
@@ -115,8 +116,9 @@
                                 android:hint="@string/hint_nick_name_info"
                                 android:imeOptions="actionSearch"
                                 android:inputType="textPersonName|textNoSuggestions"
-                                android:paddingHorizontal="@dimen/hint_padding_10dp"
-                                android:paddingVertical="@dimen/padding_2.5dp"
+                                android:includeFontPadding="false"
+                                android:paddingVertical="@dimen/size_10dp"
+                                android:paddingHorizontal="@dimen/size_14dp"
                                 android:textSize="@dimen/size_15dp" />
 
                             <androidx.appcompat.widget.AppCompatButton
@@ -127,6 +129,7 @@
                                 android:fontFamily="@font/noto_sans_kr_regular"
                                 android:imeOptions="actionSearch"
                                 android:text="@string/tv_double_check"
+                                android:minHeight="0dp"
                                 android:textColor="@color/purple" />
                         </LinearLayout>
 
@@ -153,7 +156,6 @@
                             android:id="@+id/tv_phone_info_first"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginBottom="@dimen/margin_10dp"
                             android:fontFamily="@font/noto_sans_kr_regular"
                             android:text="@string/tv_phone_info"
                             android:textColor="@color/black"
@@ -163,14 +165,15 @@
                             android:id="@+id/et_phone_info_first"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginBottom="@dimen/margin_5dp"
                             android:background="@drawable/shape_et_btn_info"
                             android:fontFamily="@font/noto_sans_kr_regular"
+                            android:layout_marginBottom="@dimen/margin_5dp"
                             android:hint="@string/hint_phone_info"
                             android:imeOptions="actionSearch"
                             android:inputType="phone|textNoSuggestions"
-                            android:paddingHorizontal="@dimen/hint_padding_10dp"
-                            android:paddingVertical="@dimen/padding_2.5dp"
+                            android:includeFontPadding="false"
+                            android:paddingVertical="@dimen/size_10dp"
+                            android:paddingHorizontal="@dimen/size_14dp"
                             android:textSize="@dimen/size_15dp" />
 
                         <TextView

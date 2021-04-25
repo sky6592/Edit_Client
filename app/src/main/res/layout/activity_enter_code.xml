@@ -104,8 +104,9 @@
                     android:fontFamily="@font/noto_sans_kr_regular"
                     android:imeOptions="actionSearch"
                     android:inputType="textPersonName|textNoSuggestions"
-                    android:paddingHorizontal="@dimen/hint_padding_10dp"
-                    android:paddingVertical="@dimen/padding_2.5dp"
+                    android:includeFontPadding="false"
+                    android:paddingVertical="@dimen/size_10dp"
+                    android:paddingHorizontal="@dimen/size_14dp"
                     android:textSize="@dimen/size_15dp" />
 
                 <TextView
