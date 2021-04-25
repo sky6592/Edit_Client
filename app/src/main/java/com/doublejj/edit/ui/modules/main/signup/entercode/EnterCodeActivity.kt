@@ -17,10 +17,8 @@ import com.doublejj.edit.data.models.entercode.EnterCodeResponse
 import com.doublejj.edit.databinding.ActivityEnterCodeBinding
 import com.doublejj.edit.databinding.DialogEmailFindBinding
 import com.doublejj.edit.ui.modules.main.signup.emailcheck.EmailCheckActivity
-import com.doublejj.edit.ui.modules.main.signup.slecttype.SelectTypeActivity
+import com.doublejj.edit.ui.modules.main.signup.selecttype.SelectTypeActivity
 import com.doublejj.edit.ui.modules.main.walkthrough.WalkThroughActivity
-import com.doublejj.edit.ui.utils.dialog.CustomDialogClickListener
-import com.doublejj.edit.ui.utils.dialog.CustomDialogFragment
 
 
 class EnterCodeActivity : AppCompatActivity(), EnterCodeView {

@@ -9,11 +9,11 @@
     app:cardCornerRadius="@dimen/size_card_radius_7dp"
     android:elevation="@dimen/size_10dp"
 
-    android:layout_marginTop="@dimen/margin_card_inner_text_start_and_end_20dp"
-    android:layout_marginBottom="@dimen/margin_card_inner_text_start_and_end_20dp">
+    android:layout_marginTop="@dimen/size_20dp"
+    android:layout_marginBottom="@dimen/size_20dp">
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="@dimen/size_card_home_today_sentence_width"
-        android:layout_height="@dimen/size_card_home_today_sentence_height">
+        android:layout_width="@dimen/size_294dp"
+        android:layout_height="@dimen/size_150dp">
         <ImageView
             android:id="@+id/iv_leaf_tripple"
             android:layout_width="@dimen/size_iv_leaf_triple_width"

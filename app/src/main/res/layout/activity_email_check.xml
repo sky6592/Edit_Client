@@ -21,9 +21,9 @@
                 <androidx.appcompat.widget.Toolbar
                     android:id="@+id/toolbar_title"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/size_toolbar_height"
-                    app:contentInsetStart="@dimen/margin_component_inset_20dp"
-                    app:contentInsetEnd="@dimen/margin_component_inset_20dp"
+                    android:layout_height="@dimen/size_54dp"
+                    app:contentInsetStart="@dimen/size_20dp"
+                    app:contentInsetEnd="@dimen/size_20dp"
                     android:background="@color/white"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -33,8 +33,8 @@
                         android:layout_height="wrap_content">
                         <ImageButton
                             android:id="@+id/iv_back_email_check"
-                            android:layout_width="@dimen/size_icon_button_24dp"
-                            android:layout_height="@dimen/size_icon_button_24dp"
+                            android:layout_width="@dimen/size_24dp"
+                            android:layout_height="@dimen/size_24dp"
                             android:src="@drawable/icon_back"
                             android:background="@color/transparent"
                             android:scaleType="fitXY"
@@ -100,12 +100,13 @@
                         android:id="@+id/et_email_check"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="@dimen/margin_10dp"
                         android:imeOptions="actionSearch"
                         android:background="@drawable/shape_et_btn_info"
                         android:fontFamily="@font/noto_sans_kr_regular"
                         android:inputType="textPersonName|textNoSuggestions"
-                        android:paddingHorizontal="@dimen/hint_padding_10dp"
+                        android:includeFontPadding="false"
+                        android:paddingVertical="@dimen/size_10dp"
+                        android:paddingHorizontal="@dimen/size_14dp"
                         android:paddingTop="@dimen/hint_padding_5dp"
                         android:textSize="@dimen/size_15dp" />
 

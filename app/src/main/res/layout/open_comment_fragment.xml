@@ -17,9 +17,9 @@
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar_title_with_buttons"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/size_toolbar_height"
-                app:contentInsetStart="@dimen/margin_component_inset_20dp"
-                app:contentInsetEnd="@dimen/margin_component_inset_20dp"
+                android:layout_height="@dimen/size_54dp"
+                app:contentInsetStart="@dimen/size_20dp"
+                app:contentInsetEnd="@dimen/size_20dp"
                 android:background="@color/white"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -29,8 +29,8 @@
                     android:layout_height="wrap_content">
                     <ImageButton
                         android:id="@+id/ib_back"
-                        android:layout_width="@dimen/size_icon_button_24dp"
-                        android:layout_height="@dimen/size_icon_button_24dp"
+                        android:layout_width="@dimen/size_24dp"
+                        android:layout_height="@dimen/size_24dp"
                         android:src="@drawable/icon_back"
                         android:background="@color/transparent"
                         android:scaleType="fitXY"
@@ -55,8 +55,8 @@
                         app:layout_constraintBottom_toBottomOf="parent" />
                     <ImageButton
                         android:id="@+id/ib_refresh"
-                        android:layout_width="@dimen/size_icon_button_24dp"
-                        android:layout_height="@dimen/size_icon_button_24dp"
+                        android:layout_width="@dimen/size_24dp"
+                        android:layout_height="@dimen/size_24dp"
                         android:src="@drawable/icon_refresh"
                         android:background="@color/transparent"
                         android:scaleType="fitXY"
@@ -114,7 +114,7 @@
                                 style="@style/CustomTextViewMidBlack"
                                 android:text="@string/tv_card_writer"
                                 android:textStyle="bold"
-                                android:textSize="@dimen/size_tv_card_writer_14dp"
+                                android:textSize="@dimen/size_14dp"
                                 android:textColor="@color/purple_active"
                                 android:fontFamily="@font/noto_sans_kr_bold"
 
@@ -129,7 +129,7 @@
                                 style="@style/CustomTextViewMidBlack"
                                 android:text="@string/tv_card_position"
                                 android:textStyle="bold"
-                                android:textSize="@dimen/size_tv_card_writer_14dp"
+                                android:textSize="@dimen/size_14dp"
                                 android:fontFamily="@font/noto_sans_kr_bold"
 
                                 android:layout_marginStart="@dimen/size_5dp"
@@ -181,8 +181,8 @@
 
                             <ImageButton
                                 android:id="@+id/ib_menu"
-                                android:layout_width="@dimen/size_icon_button_24dp"
-                                android:layout_height="@dimen/size_icon_button_24dp"
+                                android:layout_width="@dimen/size_24dp"
+                                android:layout_height="@dimen/size_24dp"
                                 android:src="@drawable/icon_report"
                                 android:background="@color/transparent"
 
@@ -254,7 +254,7 @@
                             <View
                                 android:id="@+id/view_space_divider"
                                 android:layout_width="match_parent"
-                                android:layout_height="@dimen/margin_section_10dp"
+                                android:layout_height="@dimen/margin_10dp"
                                 android:background="@color/gray_background"
 
                                 app:layout_constraintTop_toBottomOf="@id/tv_sentence_content" />

@@ -12,6 +12,7 @@ import com.doublejj.edit.R
 import com.doublejj.edit.databinding.RankingFragmentBinding
 import com.doublejj.edit.ui.modules.main.ranking.clickfragment.ClickActivity
 
+//import com.doublejj.edit.ui.modules.main.ranking.clickfragment.ClickActivity
 
 class RankingFragment : Fragment() {
     private lateinit var binding: RankingFragmentBinding
@@ -24,21 +25,16 @@ class RankingFragment : Fragment() {
         viewModel = ViewModelProvider(this).get(RankingViewModel::class.java)
         binding.rankingViewModel = viewModel
         binding.lifecycleOwner = this
-
         val intent = Intent(requireActivity(), ClickActivity::class.java)
-
         binding.cvOneRank.setOnClickListener {
-            startActivity(intent)
+//            startActivity(intent)
         }
-
         binding.cvTwoRank.setOnClickListener {
-            startActivity(intent)
+//            startActivity(intent)
         }
-
         binding.cvThreeRank.setOnClickListener {
-            startActivity(intent)
+//            startActivity(intent)
         }
-
         return binding.root
     }
 }

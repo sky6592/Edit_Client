@@ -230,36 +230,36 @@ class HomeFragment : Fragment(), MainOneshotView, SentenceLimitView {
 
     fun setSentenceBox(sentences: MainSentences) {
         // 코멘트 대기
-        if (sentences.waitingForCommentCoverLetters.size == 1) {
+        if (sentences.waitingForCommentCoverLetters.size >= 1) {
             binding.llHomeWaitedComment0.visibility = View.VISIBLE
             binding.tvSentenceWriter0.text = sentences.waitingForCommentCoverLetters.get(0).nickName
             binding.tvSentenceContent0.text = sentences.waitingForCommentCoverLetters.get(0).coverLetterContent
         }
-        if (sentences.waitingForCommentCoverLetters.size == 2) {
+        if (sentences.waitingForCommentCoverLetters.size >= 2) {
             binding.llHomeWaitedComment1.visibility = View.VISIBLE
             binding.tvSentenceWriter1.text = sentences.waitingForCommentCoverLetters.get(1).nickName
             binding.tvSentenceContent1.text = sentences.waitingForCommentCoverLetters.get(1).coverLetterContent
         }
 
         // 채택 완료
-        if (sentences.adoptedCoverLetters.size == 1) {
+        if (sentences.adoptedCoverLetters.size >= 1) {
             binding.llHomeCompletedAdoption0.visibility = View.VISIBLE
             binding.tvSentenceWriter2.text = sentences.adoptedCoverLetters.get(0).nickName
             binding.tvSentenceContent2.text = sentences.adoptedCoverLetters.get(0).coverLetterContent
         }
-        if (sentences.adoptedCoverLetters.size == 2) {
+        if (sentences.adoptedCoverLetters.size >= 2) {
             binding.llHomeCompletedAdoption1.visibility = View.VISIBLE
             binding.tvSentenceWriter3.text = sentences.adoptedCoverLetters.get(1).nickName
             binding.tvSentenceContent3.text = sentences.adoptedCoverLetters.get(1).coverLetterContent
         }
 
         // 공감 정렬
-        if (sentences.sympathiesCoverLetters.size == 1) {
+        if (sentences.sympathiesCoverLetters.size >= 1) {
             binding.llHomeSympathyComment0.visibility = View.VISIBLE
             binding.tvSentenceWriter4.text = sentences.sympathiesCoverLetters.get(0).nickName
             binding.tvSentenceContent4.text = sentences.sympathiesCoverLetters.get(0).coverLetterContent
         }
-        if (sentences.sympathiesCoverLetters.size == 2) {
+        if (sentences.sympathiesCoverLetters.size >= 2) {
             binding.llHomeSympathyComment1.visibility = View.VISIBLE
             binding.tvSentenceWriter5.text = sentences.sympathiesCoverLetters.get(1).nickName
             binding.tvSentenceContent5.text = sentences.sympathiesCoverLetters.get(1).coverLetterContent
