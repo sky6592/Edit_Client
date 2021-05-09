@@ -3,7 +3,6 @@ package com.doublejj.edit.ui.modules.main.home.today_sentence
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -36,6 +35,7 @@ class TodaySentenceFragment : Fragment(), TodaySentenceView, SentenceLimitView {
     private lateinit var binding: TodaySentenceFragmentBinding
     private lateinit var viewModel: TodaySentenceViewModel
     private lateinit var adapter: SentenceFragmentAdapter
+    private lateinit var layoutManager: LinearLayoutManager
 
     private var page = 1
     private var hasNext = false
@@ -52,12 +52,8 @@ class TodaySentenceFragment : Fragment(), TodaySentenceView, SentenceLimitView {
         binding.lifecycleOwner = this
         (activity as MainActivity).increaseFragmentCount()
 
-        /** get sentences from server **/
-        getSentences()
-
         /** set adapter **/
         setAdapter()
-
         initScrollListener()
 
         /** toolbar buttons **/
@@ -65,8 +61,16 @@ class TodaySentenceFragment : Fragment(), TodaySentenceView, SentenceLimitView {
             requireActivity().supportFragmentManager.popBackStack()
         }
         binding.ibRefresh.setOnClickListener {
-            // TODO : refresh data
-            onResume()
+            // refresh data
+            adapter.sentenceDataList.clear()
+            page = 1
+            hasNext = false
+            isLoading = false
+            getSentences()
+
+            // 뷰 레이아웃을 모두 지워주고 어댑터를 다시 붙여서 새로고침 효과
+            binding.rvSentence.removeAllViewsInLayout()
+            binding.rvSentence.adapter = adapter
         }
 
         // 내 프로필 캐릭터로 바꾸기
@@ -94,14 +98,18 @@ class TodaySentenceFragment : Fragment(), TodaySentenceView, SentenceLimitView {
 
     // 리사이클러뷰에 더 보여줄 데이터를 로드하는 경우
     fun getSentences() {
-        // TODO : 무한스크롤 처리
-//        CustomLoadingDialog(requireContext()).show()
-        TodaySentenceService(this).tryGetTodaySentence(page = this.page)
+        // endless scrolling
+        TodaySentenceService(this).tryGetTodaySentence(page = page)
     }
 
     fun setAdapter() {
+        layoutManager = LinearLayoutManager(context)
+        binding.rvSentence.layoutManager = layoutManager
+
         adapter = SentenceFragmentAdapter(requireContext(), mutableListOf(), requireActivity().supportFragmentManager)
         binding.rvSentence.adapter = adapter
+
+        getSentences()
     }
 
     fun initScrollListener() {
@@ -110,18 +118,16 @@ class TodaySentenceFragment : Fragment(), TodaySentenceView, SentenceLimitView {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
 
-                val layoutManager = binding.rvSentence.layoutManager as LinearLayoutManager
                 val lastVisibleItemPosition = layoutManager.findLastCompletelyVisibleItemPosition()
-                val itemTotalCount = binding.rvSentence.adapter!!.itemCount - 1
+                val itemTotalPosition = binding.rvSentence.adapter!!.itemCount - 1
 
                 if (!isLoading) {
                     // 스크롤이 최하단에 도달하고 && 리스트의 마지막이라면
-//                    if (layoutManager != null && lastVisibleItemPosition == itemTotalCount) {
-                    if (!binding.rvSentence.canScrollVertically(1) && lastVisibleItemPosition == itemTotalCount) {
-                        if (hasNext) {
+                    if (!binding.rvSentence.canScrollVertically(1) && lastVisibleItemPosition == itemTotalPosition) {
+                        if (hasNext && !isLoading) {
                             page += 1
-                            loadMore()
                             isLoading = true
+                            loadMore()
                         }
                     }
                 }
@@ -131,18 +137,19 @@ class TodaySentenceFragment : Fragment(), TodaySentenceView, SentenceLimitView {
 
     fun loadMore() {
         // progress bar 추가
-        adapter.sentenceDataList.add(null)
-        adapter.notifyItemInserted(adapter.sentenceDataList.lastIndex)
+        Handler().post {
+            adapter.setList(mutableListOf(null))
+            adapter.notifyItemInserted(adapter.sentenceDataList.size - 1)
+        }
 
-        val handler: Handler = Handler()
-        handler.postDelayed({
+        Handler().postDelayed({
             adapter.deleteLoading()
-            adapter.notifyItemRemoved(adapter.sentenceDataList.lastIndex)
+            adapter.notifyItemRemoved(adapter.sentenceDataList.size)
 
             // 아이템 더 가져오기
             getSentences()
-            isLoading = false
-        }, 1000)
+        }, 500)
+
     }
 
     override fun onGetTodaySentenceSuccess(response: LookupSentenceResponse) {
@@ -157,6 +164,8 @@ class TodaySentenceFragment : Fragment(), TodaySentenceView, SentenceLimitView {
             CustomSnackbar.make(requireView(), response.message.toString(), Snackbar.LENGTH_SHORT).show()
         }
 
+        // 다 추가한 후에 false로 바꿈
+        isLoading = false
 
         CustomLoadingDialog(requireContext()).dismiss()
     }
