@@ -2,6 +2,7 @@ package com.doublejj.edit.ui.modules.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil.setContentView
 import androidx.fragment.app.FragmentTransaction
@@ -81,6 +82,12 @@ class MainActivity : AppCompatActivity() {
 //                    transaction.hide(rankingFragment)
                 }
             }
+
+            // 프래그먼트 즉시 빠져나오기
+            while (supportFragmentManager.backStackEntryCount > 1) {
+                supportFragmentManager.popBackStackImmediate()
+            }
+
             transaction.commit()
 
             return@setOnNavigationItemSelectedListener true
