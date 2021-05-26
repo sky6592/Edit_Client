@@ -1,6 +1,5 @@
 package com.doublejj.edit.ui.modules.main.ranking
 
-import android.content.Intent
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -25,7 +24,7 @@ class RankingFragment : Fragment() {
         viewModel = ViewModelProvider(this).get(RankingViewModel::class.java)
         binding.rankingViewModel = viewModel
         binding.lifecycleOwner = this
-        val intent = Intent(requireActivity(), ClickActivity::class.java)
+        /*val intent = Intent(requireActivity(), ClickActivity::class.java)
         binding.cvOneRank.setOnClickListener {
 //            startActivity(intent)
         }
@@ -34,7 +33,7 @@ class RankingFragment : Fragment() {
         }
         binding.cvThreeRank.setOnClickListener {
 //            startActivity(intent)
-        }
+        }*/
         return binding.root
     }
 }

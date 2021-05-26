@@ -16,4 +16,8 @@
     <style name="CheckboxFontStyle" parent="@android:style/Widget.DeviceDefault.CompoundButton.CheckBox">
         <item name="android:fontFamily">@font/noto_sans_kr_font_family</item>
     </style>
+    <style name="TabTextStyle">
+        <item name="android:textSize">@dimen/size_15dp</item>
+        <item name="android:fontFamily">@font/noto_sans_kr_bold</item>
+    </style>
 </resources>
