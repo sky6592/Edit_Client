@@ -915,11 +915,13 @@
                             android:layout_width="@dimen/size_iv_leaf_triple_width"
                             android:layout_height="@dimen/size_iv_leaf_triple_height"
                             android:src="@drawable/ic_graphic_leaf_triple"
+                            android:scaleX="1.2"
+                            android:scaleY="1.2"
 
                             android:layout_marginTop="@dimen/size_11dp"
                             android:layout_marginBottom="@dimen/size_11dp"
-                            android:layout_marginStart="@dimen/size_56dp"
-                            android:layout_marginLeft="@dimen/size_56dp"
+                            android:layout_marginStart="@dimen/size_61dp"
+                            android:layout_marginLeft="@dimen/size_61dp"
                             app:layout_constraintTop_toBottomOf="@id/ll_home_waited_comment_1"
                             app:layout_constraintStart_toStartOf="parent"/>
                         <ImageView
@@ -927,10 +929,12 @@
                             android:layout_width="@dimen/size_iv_leaf_triple_width"
                             android:layout_height="@dimen/size_iv_leaf_triple_height"
                             android:src="@drawable/ic_graphic_leaf_double"
+                            android:scaleX="1.2"
+                            android:scaleY="1.2"
 
                             android:layout_marginTop="@dimen/size_11dp"
-                            android:layout_marginStart="@dimen/size_67dp"
-                            android:layout_marginLeft="@dimen/size_67dp"
+                            android:layout_marginStart="@dimen/size_79dp"
+                            android:layout_marginLeft="@dimen/size_79dp"
                             app:layout_constraintTop_toBottomOf="@id/ll_home_waited_comment_1"
                             app:layout_constraintStart_toEndOf="@id/iv_waited_comment_leaf_tripple" />
                         <ImageView
@@ -939,10 +943,12 @@
                             android:layout_height="@dimen/size_iv_flower_red_height"
                             android:src="@drawable/ic_graphic_flower_red"
                             android:rotation="19"
+                            android:scaleX="1.4"
+                            android:scaleY="1.4"
 
                             android:layout_marginTop="@dimen/size_7dp"
-                            android:layout_marginStart="@dimen/size_15dp"
-                            android:layout_marginLeft="@dimen/size_15dp"
+                            android:layout_marginStart="@dimen/size_20dp"
+                            android:layout_marginLeft="@dimen/size_20dp"
                             app:layout_constraintTop_toBottomOf="@id/ll_home_waited_comment_1"
                             app:layout_constraintStart_toStartOf="parent" />
                         <ImageView
@@ -951,6 +957,8 @@
                             android:layout_height="@dimen/size_iv_flower_red_height"
                             android:src="@drawable/ic_graphic_flower_red"
                             android:rotation="-19"
+                            android:scaleX="1.4"
+                            android:scaleY="1.4"
 
                             android:layout_marginTop="@dimen/size_57dp"
                             android:layout_marginStart="@dimen/size_5dp"
@@ -963,6 +971,8 @@
                             android:layout_height="@dimen/size_iv_flower_red_height"
                             android:src="@drawable/ic_graphic_flower_red"
                             android:rotation="38"
+                            android:scaleX="1.4"
+                            android:scaleY="1.4"
 
                             android:layout_marginTop="@dimen/size_5dp"
                             android:layout_marginEnd="@dimen/size_20dp"
@@ -974,11 +984,13 @@
                             android:layout_width="@dimen/size_iv_flower_yellow_width"
                             android:layout_height="@dimen/size_iv_flower_yellow_height"
                             android:src="@drawable/ic_graphic_flower_yellow"
-                            android:rotation="-12"
+                            android:rotation="-20"
+                            android:scaleX="2"
+                            android:scaleY="2"
 
                             android:layout_marginTop="@dimen/size_25dp"
-                            android:layout_marginStart="@dimen/size_26dp"
-                            android:layout_marginLeft="@dimen/size_26dp"
+                            android:layout_marginStart="@dimen/size_30dp"
+                            android:layout_marginLeft="@dimen/size_30dp"
                             app:layout_constraintTop_toBottomOf="@id/ll_home_waited_comment_1"
                             app:layout_constraintStart_toEndOf="@id/iv_waited_comment_leaf_tripple" />
                         <ImageView
@@ -987,9 +999,13 @@
                             android:layout_height="@dimen/size_iv_flower_yellow_height"
                             android:src="@drawable/ic_graphic_flower_yellow"
 
+                            android:rotation="40"
+                            android:scaleX="2"
+                            android:scaleY="2"
+
                             android:layout_marginTop="@dimen/size_54dp"
-                            android:layout_marginStart="@dimen/size_6dp"
-                            android:layout_marginLeft="@dimen/size_6dp"
+                            android:layout_marginStart="@dimen/size_16dp"
+                            android:layout_marginLeft="@dimen/size_16dp"
                             app:layout_constraintTop_toBottomOf="@id/ll_home_waited_comment_1"
                             app:layout_constraintStart_toEndOf="@id/iv_waited_comment_leaf_double" />
 
@@ -1000,7 +1016,7 @@
                             android:layout_height="@dimen/margin_10dp"
                             android:background="@color/gray_background"
 
-                            android:layout_marginTop="@dimen/size_100dp"
+                            android:layout_marginTop="@dimen/size_110dp"
                             app:layout_constraintTop_toBottomOf="@id/ll_home_waited_comment_1" />
                         <ImageButton
                             android:id="@+id/ib_expand_completed_adoption"
