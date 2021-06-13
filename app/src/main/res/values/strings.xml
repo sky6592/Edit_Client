@@ -688,4 +688,31 @@ Edit. 은(는) 정보주체의 이용정보를 저장하고 수시로 불러오�
     <string name="ti_rank_mentor">멘토 랭킹</string>
     <string name="ti_rank_mentee">멘티 랭킹</string>
 
+    <string name="tv_top_three">일간 Top 3</string>
+    <string name="tv_rank1">1위</string>
+    <string name="tv_rank2">2위</string>
+    <string name="tv_rank3">3위</string>
+
+    <string name="tv_none">없음</string>
+
+    <string name="tv_rank_page">랭킹 페이지</string>
+    <string name="tv_rank_mentee_write">자소서 작성 수</string>
+    <string name="tv_rank_mentee_adopt">자소서 완성 수</string>
+    <string name="tv_rank_mentor_write">코멘트 작성 수</string>
+    <string name="tv_rank_mentor_adopt">코멘트 채택 수</string>
+    <string name="tv_count">개</string>
+    <string name="btn_praise_mentee">칭찬하기</string>
+    <string name="btn_request_mentor">코멘트 요청</string>
+    <string name="tv_top_mentee_title">자소서 현황 Top 3</string>
+    <string name="tv_top_mentor_title">코멘트 현황 Top 3</string>
+
+    <string name="tv_rank_dialog_title_mentor">코멘트 요청 기능 안내</string>
+    <string name="tv_rank_dialog_content_mentor">멘토님께 1:1 코멘트를 요청할 수 있는 서비스를 개발하고 있습니다.\n조금만 더 기다려주세요! </string>
+    <string name="tv_rank_dialog_title_mentee">칭찬하기 기능 안내</string>
+    <string name="tv_rank_dialog_content_mentee">멘티님께 칭찬할 수 있는 서비스를 개발하고 있습니다.\n조금만 더 기다려주세요! </string>
+
+    <string-array name="array_ranking_tab">
+        <item>@string/ti_rank_mentor</item>
+        <item>@string/ti_rank_mentee</item>
+    </string-array>
 </resources>

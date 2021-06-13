@@ -23,6 +23,7 @@
         android:theme="@style/Theme.Edit"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
+        <activity android:name=".ui.modules.main.ranking.DetailedRankerActivity"></activity>
         <activity android:name=".ui.modules.main.myedit.my_sympathized_sentence.MySympathizedSentenceActivity" />
         <activity android:name=".ui.modules.main.myedit.my_comment.open_comment.LookupMyCommentActivity" />
         <activity android:name=".ui.modules.main.myedit.my_comment.MyCommentListActivity" />
@@ -53,7 +54,7 @@
         <activity android:name=".ui.modules.main.myedit.certificate_mentor.TrainingThreeActivity" />
         <activity android:name=".ui.modules.main.myedit.certificate_mentor.TrainingTwoActivity" />
         <activity android:name=".ui.modules.main.myedit.certificate_mentor.TrainingOneActivity" />
-        <activity android:name=".ui.modules.main.ranking.clickfragment.ClickActivity"/>
+        <activity android:name=".ui.modules.main.ranking.clickfragment.ClickActivity" />
         <activity android:name=".ui.modules.main.myedit.certificate_mentor.CertificateMentorActivity" />
         <activity android:name=".ui.modules.main.myedit.manage_coin.ManageCoinActivity" />
         <activity android:name=".ui.modules.main.myedit.my_sentence_completed.MySentenceCompletedActivity" />

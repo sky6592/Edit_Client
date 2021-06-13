@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    android:id="@+id/ll_rank_item"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:paddingVertical="@dimen/size_15dp"
+    android:paddingHorizontal="@dimen/size_20dp">
+
+    <TextView
+        android:id="@+id/tv_rank_number"
+        android:layout_width="@dimen/size_40dp"
+        android:layout_height="@dimen/size_40dp"
+        android:gravity="center"
+        tools:text="1"
+        android:fontFamily="@font/noto_sans_kr_bold"
+        android:textColor="@color/purple_active"
+        android:textSize="@dimen/size_13dp"
+        android:includeFontPadding="true"
+        android:background="@drawable/shape_bordered_oval" />
+
+    <TextView
+        android:id="@+id/tv_rank_nickname"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.9"
+        android:gravity="center_vertical|start"
+        tools:text="길이가엄청나게긴닉네임"
+        android:fontFamily="@font/noto_sans_kr_bold"
+        android:textColor="@color/mid_black"
+        android:textSize="@dimen/size_13dp"
+        android:includeFontPadding="true"
+        android:ellipsize="marquee"
+        android:singleLine="true"
+
+        android:layout_marginStart="@dimen/size_22dp"
+        android:layout_marginLeft="@dimen/size_22dp" />
+
+    <TextView
+        android:id="@+id/tv_rank_position"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center_vertical|start"
+        tools:text="길이가엄청나게긴직무"
+        android:fontFamily="@font/noto_sans_kr_bold"
+        android:textColor="@color/mid_black"
+        android:textSize="@dimen/size_13dp"
+        android:includeFontPadding="true"
+        android:ellipsize="marquee"
+        android:singleLine="true"
+
+        android:layout_marginEnd="@dimen/size_22dp"
+        android:layout_marginStart="@dimen/size_22dp"
+        android:layout_marginLeft="@dimen/size_22dp" />
+
+    <ImageView
+        android:id="@+id/iv_rank_detail"
+        android:layout_width="@dimen/size_44dp"
+        android:layout_height="@dimen/size_44dp"
+        android:src="@drawable/icon_expand"
+        android:scaleType="fitEnd"
+        android:background="@null"
+        android:padding="@dimen/size_10dp" />
+</LinearLayout>

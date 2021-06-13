@@ -22,10 +22,12 @@
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar_main_home"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/size_54dp"
+                android:layout_height="wrap_content"
                 android:background="@color/white"
                 app:contentInsetEnd="@dimen/size_20dp"
                 app:contentInsetStart="@dimen/size_20dp"
+
+                android:elevation="@dimen/size_10dp"
 
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -38,15 +40,15 @@
                     <TextView
                         android:id="@+id/tv_logo"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="@dimen/size_54dp"
                         android:background="@color/transparent"
                         android:fontFamily="@font/noto_sans_kr_bold"
                         android:gravity="center"
                         android:text="@string/app_name"
                         android:textColor="@color/purple_active"
                         android:textSize="@dimen/size_22dp"
+                        android:includeFontPadding="false"
 
-                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -58,68 +60,50 @@
                         android:scaleType="fitXY"
                         android:src="@drawable/icon_refresh"
 
-                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toTopOf="@id/tv_logo"
+                        app:layout_constraintBottom_toBottomOf="@id/tv_logo"/>
+
+
+                    <com.google.android.material.tabs.TabLayout
+                        android:id="@+id/tl_ranking"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:tabContentStart="@dimen/padding_20dp"
+                        app:tabMode="fixed"
+                        app:tabTextColor="@color/mid_gray"
+                        app:tabSelectedTextColor="@color/mid_black"
+                        app:tabTextAppearance="@style/TabTextStyle"
+
+                        app:tabIndicatorColor="@color/purple_active"
+                        app:tabIndicatorHeight="@dimen/size_2dp"
+                        app:tabIndicatorFullWidth="false"
+
+                        app:layout_constraintTop_toBottomOf="@id/tv_logo"
+                        app:layout_constraintStart_toStartOf="parent">
+
+                        <com.google.android.material.tabs.TabItem
+                            android:id="@+id/ti_mentor"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/ti_rank_mentor" />
+
+                        <com.google.android.material.tabs.TabItem
+                            android:id="@+id/ti_mentee"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/ti_rank_mentee" />
+                    </com.google.android.material.tabs.TabLayout>
+
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.appcompat.widget.Toolbar>
 
-            <com.google.android.material.tabs.TabLayout
-                android:id="@+id/tl_ranking"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:tabContentStart="@dimen/padding_20dp"
-                app:tabMode="fixed"
-                app:tabTextColor="@color/mid_gray"
-                app:tabSelectedTextColor="@color/mid_black"
-                app:tabTextAppearance="@style/TabTextStyle"
-
-                app:tabIndicatorColor="@color/purple_active"
-                app:tabIndicatorHeight="@dimen/size_2dp"
-                app:tabIndicatorFullWidth="false"
-
-                android:layout_marginHorizontal="@dimen/padding_20dp"
-                app:layout_constraintTop_toBottomOf="@id/toolbar_main_home"
-                app:layout_constraintStart_toStartOf="parent">
-
-                <com.google.android.material.tabs.TabItem
-                    android:id="@+id/ti_mentor"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/ti_rank_mentor" />
-
-                <com.google.android.material.tabs.TabItem
-                    android:id="@+id/ti_mentee"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/ti_rank_mentee" />
-            </com.google.android.material.tabs.TabLayout>
-
-
-            <androidx.core.widget.NestedScrollView
-                android:id="@+id/nsv_home"
-                android:layout_width="0dp"
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/vp_ranking"
+                android:layout_width="match_parent"
                 android:layout_height="0dp"
-
-                app:layout_constraintTop_toBottomOf="@id/tl_ranking"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-
-                </LinearLayout>
-            </androidx.core.widget.NestedScrollView>
+                app:layout_constraintTop_toBottomOf="@id/toolbar_main_home"
+                app:layout_constraintBottom_toBottomOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
