@@ -71,7 +71,7 @@
     <string name="tv_self_writing_input_include_space">공백 포함 :</string>
     <string name="tv_self_writing_input_without_space">공백 제외 :</string>
     <string name="tv_self_writing_input_count">자</string>
-    <string name="tv_self_writing_input_hint">문장은 공백 포함 90자 내로 제한됩니다.</string>
+    <string name="tv_self_writing_input_hint">문장은 공백 제외 150자 내로 제한됩니다.</string>
     <string name="tv_self_writing_notice_input_first">한 번 등록한 문장은 수정이 어렵습니다. 신중히 확인 후 등록해주세요!</string>
     <string name="tv_self_writing_notice_input_second">문장 삭제는 ‘나의 에딧 &gt; 자소서 목록’에서 가능합니다.</string>
     <string name="btn_self_writing_temp">임시 저장</string>

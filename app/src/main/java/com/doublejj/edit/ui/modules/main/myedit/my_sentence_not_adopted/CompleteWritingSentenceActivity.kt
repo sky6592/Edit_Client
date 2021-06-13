@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.InputFilter
 import android.text.TextWatcher
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import com.doublejj.edit.R
@@ -41,10 +42,6 @@ class CompleteWritingSentenceActivity : AppCompatActivity() {
 
 
         /** edittext **/
-        binding.etInputSentence.filters = arrayOf(
-            InputFilter.LengthFilter(resources.getInteger(R.integer.length_limit_sentence))
-        )
-
         binding.etInputSentence.addTextChangedListener(object : TextWatcher {
             // gets triggered immediately after something is typed
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
@@ -70,19 +67,32 @@ class CompleteWritingSentenceActivity : AppCompatActivity() {
                 var colorResId: Int
 
                 // include spaces
-                if (includeSpaces >= limitCount) colorResId = R.color.red_light
+                if (includeSpaces > limitCount) colorResId = R.color.red_light
                 else colorResId = R.color.purple_active
                 binding.tvInputSentenceIncludeSpaceCount.setTextColor(ContextCompat.getColor(applicationContext, colorResId))
                 binding.tvInputSentenceIncludeSpaceCount.text = includeSpaces.toString()
 
                 // without spaces
-                if (withoutSpaces >= limitCount) colorResId = R.color.red_light
+                if (withoutSpaces > limitCount) colorResId = R.color.red_light
                 else colorResId = R.color.purple_active
                 binding.tvInputSentenceWithoutSpaceCount.setTextColor(ContextCompat.getColor(applicationContext, colorResId))
                 binding.tvInputSentenceWithoutSpaceCount.text = withoutSpaces.toString()
 
                 // enabled button
                 binding.btnSubmit.isEnabled = binding.etInputSentence.text.toString().isNotEmpty()
+
+
+                if (withoutSpaces > limitCount) {
+                    if (binding.btnSubmit.isEnabled) Toast.makeText(applicationContext, getString(R.string.tv_self_writing_input_hint), Toast.LENGTH_SHORT).show()
+
+                    // button
+                    binding.btnSubmit.isEnabled = false
+                    binding.btnSubmit.setTextColor(ContextCompat.getColor(applicationContext, R.color.mid_gray))
+                }
+                else {
+                    binding.btnSubmit.isEnabled = true
+                    binding.btnSubmit.setTextColor(ContextCompat.getColor(applicationContext, R.color.white))
+                }
             }
         })
 
